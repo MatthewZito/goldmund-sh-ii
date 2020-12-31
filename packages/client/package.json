@@ -5,9 +5,9 @@
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
   "scripts": {
-    "env:check": "node -e 'console.log(process.env)' | grep npm",
+    "env:check": "node -e 'console.log(process.env)' | grep yarn",
     "serve": "vue-cli-service serve",
-    "serve:watch": "nodemon --watch vue.config.js --exec 'npm run serve",
+    "serve:watch": "nodemon --watch vue.config.js --exec 'yarn run serve'",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint"
@@ -26,9 +26,7 @@
     "@vue/cli-plugin-router": "4.5.9",
     "@vue/cli-plugin-vuex": "4.5.9",
     "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
     "babel-plugin-dynamic-import-node": "2.3.3",
-    "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.13.0",
     "nodemon": "2.0.6",

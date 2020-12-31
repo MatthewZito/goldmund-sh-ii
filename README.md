@@ -9,8 +9,8 @@ LAN Monitor is a user interface for monitoring and administrating your local net
 
 ### <a name="pkg"></a> Packages
 
-  - [@lan-monitor/client] Vue user interface for LAN monitoring and management
-  - [@lan-monitor/api] Node API for routing and interfacing with UNIX processes
+  - [@lan-monitor/client]() Vue user interface for LAN monitoring and management
+  - [@lan-monitor/api]() Node API for routing and interfacing with UNIX processes
 
 ### <a name="usage"></a> Installation and Usage
 The LAN Monitor project is housed in a mono-repo architecture. To properly initialize the project, from the repository root (here):

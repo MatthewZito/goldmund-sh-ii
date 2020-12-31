@@ -4,12 +4,7 @@
   "description": "",
   "main": "",
   "private": true,
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "dev": "lerna run serve:watch --stream",
-    "lint": "lerna run lint",
-    "lint:fix": "lerna run lint:fix"
-  },
+  "scripts": {},
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
   "workspaces": [

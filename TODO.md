@@ -1,0 +1,4 @@
+- [ ] Initialize API for comm w/shell
+- [ ] Either vendor or write netstat interface for node env
+- [ ] Extract Vuex packages into node modules
+- [ ] CI/CD!

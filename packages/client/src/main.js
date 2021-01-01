@@ -1,13 +1,27 @@
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store'
-import router from './router'
-import './quasar'
+import Vue from 'vue';
+import App from './App.vue';
 
-Vue.config.productionTip = false
+/* Plugins */
+import store from './state';
+import router from './router';
 
-new Vue({
+/* Root CSS and Stylesheets */
+import './plugins/quasar';
+
+/* Global Vue Configurations */
+Vue.config.productionTip = false;
+
+
+/***********************************
+ *
+ * Root Vue Instance Initialization
+ *
+ ***********************************/
+
+const root = new Vue({
   store,
   router,
   render: h => h(App)
-}).$mount('#app')
+});
+
+root.$mount('#app');

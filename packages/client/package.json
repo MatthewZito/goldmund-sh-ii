@@ -4,6 +4,7 @@
   "private": true,
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
+  "customName": "LAN Monitor",
   "scripts": {
     "env:inspect": "node -e 'console.log(process.env)' | grep npm",
     "serve": "vue-cli-service serve",

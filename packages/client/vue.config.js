@@ -10,5 +10,15 @@ module.exports = {
   },
   transpileDependencies: [
     'quasar'
-  ]
+  ],
+  configureWebpack: {
+    resolve: {}
+  },
+  chainWebpack: config => {
+    config.plugin('html')
+      .tap((args) => {
+        args[0].title = require('./package.json').customName;
+        return args;
+      });
+  }
 };

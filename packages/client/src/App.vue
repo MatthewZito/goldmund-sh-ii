@@ -23,7 +23,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-2"
+
     >
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
@@ -91,6 +91,15 @@ export default {
   },
   data: () => ({
     leftDrawerOpen: false
-  })
+  }),
+  created () {
+    this.$storage.setItem('test', {
+      a: 1,
+      b: {
+        a: 1
+      }
+    });
+    console.log(this.$storage.getItem('je')); // eslint-disable-line no-console
+  }
 };
 </script>

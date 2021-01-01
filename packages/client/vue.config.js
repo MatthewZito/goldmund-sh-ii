@@ -1,6 +1,9 @@
+const path = require('path');
+
 module.exports = {
   devServer: {
-    disableHostCheck: true
+    disableHostCheck: true,
+    port: 3000
   },
   pluginOptions: {
     quasar: {
@@ -12,7 +15,11 @@ module.exports = {
     'quasar'
   ],
   configureWebpack: {
-    resolve: {}
+    resolve: {
+      alias: {
+        '@config': path.join(__dirname, './config')
+      }
+    }
   },
   chainWebpack: config => {
     config.plugin('html')

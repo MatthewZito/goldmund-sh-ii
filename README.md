@@ -24,7 +24,7 @@ The LAN Monitor project is housed in a mono-repo architecture. To properly initi
 
 #### Serve w/ full HMR Config (dev)
 ```
-lerna run serve:watch
+lerna run serve:watch --stream
 ```
 
 #### Lint Files (no auto-fix)

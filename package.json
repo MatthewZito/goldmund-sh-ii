@@ -1,10 +1,12 @@
 {
   "name": "@lan-monitor/root",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
   "description": "",
   "main": "",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "version": "lerna version --conventional-commits"
+  },
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
   "workspaces": [
@@ -12,11 +14,17 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@commitlint/config-lerna-scopes": "11.0.0",
     "babel-eslint": "10.1.0",
+    "commitlint": "11.0.0",
     "concurrently": "5.3.0",
     "cross-env": "7.0.3",
     "eslint": "7.16.0",
+    "husky": "4.3.6",
     "lerna": "3.22.1",
+    "lerna-changelog": "1.0.1",
     "rimraf": "3.0.2"
   }
 }

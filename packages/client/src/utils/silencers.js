@@ -3,24 +3,24 @@ import { Maybe, Prop } from './utils.helpers';
 /* Silencers - utilities for silent evaluations and executions */
 
 /**
- * @summary Nullifies a function call, including those that are curried
+ * Nullifies a function call, including those that are curried
  */
 const nullify = () => nullify;
 
 /**
- * @summary Returns the given argument
+ * Returns the given argument
  * @param {any} _
  */
 const identity = _ => _;
 
 /**
- * @summary Returns the given arguments
+ * Returns the given arguments
  * @param {any[]} _
  */
 const identities = (..._) => _;
 
 /**
- * @summary Evaluates nested properties on a given object
+ * Evaluates nested properties on a given object
  */
 function has (obj) {
   return function (propList) {

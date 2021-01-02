@@ -1,8 +1,10 @@
 <template>
    <q-page-container>
-     <keep-alive :include="getCachedViews" >
-      <router-view :key="viewKey" />
-     </keep-alive>
+     <transition name="base-apparate" mode="out-in">
+      <keep-alive :include="getCachedViews" >
+        <router-view :key="viewKey" />
+      </keep-alive>
+     </transition>
     </q-page-container>
 </template>
 

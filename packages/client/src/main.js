@@ -2,8 +2,9 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-/* Root CSS and Stylesheets */
+/* Root UI Configurations */
 import './plugins/quasar';
+import '@/components/common/_globals';
 
 /* Plugins */
 import store from './state';

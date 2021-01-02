@@ -4,7 +4,9 @@ const req = require.context(
   '.',
   false,
   /_base-[\w-]+\.vue$/
-)
+);
+
+req
   .keys()
   .forEach(file => {
     const componentConf = req(file);

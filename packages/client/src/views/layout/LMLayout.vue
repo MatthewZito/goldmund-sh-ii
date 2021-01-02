@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import LMVestibule from '@/views/layout/LMVestibule.vue';
-import LMDrawer from '@/views/layout/LMDrawer.vue';
-import LMToolbar from '@/views/layout/LMToolbar.vue';
+import LMVestibule from '@/views/LMVestibule.vue';
+import LMDrawer from '@/views/LMDrawer.vue';
+import LMToolbar from '@/views/LMToolbar.vue';
 
 export default {
-  name: 'App',
+  name: 'LMLayout',
   components: {
     LMVestibule,
     LMDrawer,

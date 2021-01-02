@@ -1,0 +1,16 @@
+/* Custom Transitions */
+
+.base-apparate-leave-active,
+.base-apparate-enter-active {
+  transition: all .5s;
+}
+
+.base-apparate-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.base-apparate-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}

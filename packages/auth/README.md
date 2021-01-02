@@ -14,19 +14,7 @@ Nevertheless, follows are the scoped scripts:
 
 #### Serve w/ HMR (dev)
 ```
-npm|yarn run serve
-```
-
-#### Serve w/ HMR Enabled on Webpack Config (dev)
-This command watches the Vue config for changes so you don't need to recompile:
-
-```
 npm|yarn run serve:watch
-```
-
-#### Compile, Minify Build (prod)
-```
-npm|yarn run build
 ```
 
 #### Lint Files (no auto-fix)

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "scripts": {
+    "env:inspect": "node -e 'console.log(process.env)' | grep npm",
     "serve:watch": "ts-node-dev src/index.ts"
   },
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
@@ -14,5 +15,10 @@
     "express-validator": "6.9.0",
     "ts-node-dev": "1.1.1",
     "typescript": "4.1.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "4.11.1",
+    "@typescript-eslint/parser": "4.11.1",
+    "eslint": "7.17.0"
   }
 }

@@ -1,11 +1,7 @@
 import { body } from 'express-validator';
+import conf from './conf';
 
-const conf = {
-  password: {
-    min: 8,
-    max: 30
-  }
-};
+const { min, max } = conf.password;
 
 const signinValidators = [1];
 
@@ -16,13 +12,11 @@ const signupValidators = [
   body('password')
     .trim()
     .isLength({ 
-      min: conf.password.min, 
-      max: conf.password.max 
+      min, 
+      max
     })
-    .withMessage(`Password must be between ${conf.password.min} and ${conf.password.max} characters`)
+    .withMessage(`Password must be between ${min} and ${max} characters`)
 ];
-
-
 
 export {
   signinValidators,

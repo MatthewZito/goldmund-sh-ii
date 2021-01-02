@@ -38,5 +38,5 @@ app.use(errorNormalizer);
  ****************************/
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
+  console.log(`Listening on port ${PORT}...`); // TODO replace w/PM2
 });

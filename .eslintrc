@@ -8,5 +8,6 @@
       2,
       "always"
     ]
-  }
+  },
+  "reportUnusedDisableDirectives": true
 }

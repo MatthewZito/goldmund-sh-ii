@@ -1,0 +1,10 @@
+{
+  "name": "@lan-monitor/common",
+  "version": "0.0.1",
+  "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "4.17.9",
+    "express": "4.17.1"
+  }
+}

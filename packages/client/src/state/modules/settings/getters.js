@@ -13,3 +13,7 @@ export const getAppMetadata = (state, getters) => ({
   title: getters.getAppName,
   version: getters.getAppVersion
 });
+
+export const isDrawerOpen = state => state.drawerState;
+
+export const getCachedViews = state => state.viewCache;

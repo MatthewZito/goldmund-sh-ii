@@ -6,7 +6,9 @@ const state = {
   title,
   version,
   settings,
-  logger
+  logger,
+  drawerState: false,
+  viewCache: []
 };
 
 export default state;

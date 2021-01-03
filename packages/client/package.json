@@ -1,10 +1,10 @@
 {
-  "name": "@lan-monitor/client",
+  "name": "@vue-forum/client",
   "version": "0.0.1",
   "private": true,
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
-  "customName": "LAN Monitor",
+  "customName": "Vue Forum",
   "scripts": {
     "env:inspect": "node -e 'console.log(process.env)' | grep npm",
     "serve": "vue-cli-service serve",

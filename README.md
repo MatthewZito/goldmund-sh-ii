@@ -1,5 +1,5 @@
-## @lan-monitor
-LAN Monitor is a fullstack system for monitoring and administrating your local network.
+## @vue-forum
+Vue Forum is a fullstack system template for creating a forum site with Vue.
 
 ## Table of Contents
   - [Packages](#pkg)
@@ -8,12 +8,12 @@ LAN Monitor is a fullstack system for monitoring and administrating your local n
 
 ### <a name="pkg"></a> Packages and Services
 
-  - [@lan-monitor/client](https://github.com/MatthewZito/lan-monitor/tree/master/packages/client) Vue user interface for LAN monitoring and admin
-  - [@lan-monitor/auth](https://github.com/MatthewZito/lan-monitor/tree/master/packages/auth) Authentication and user microservice
-  - [@lan-monitor/common](https://github.com/MatthewZito/lan-monitor/tree/master/packages/common) Houses transitive dependencies used across various services
+  - [@vue-forum/client](https://github.com/MatthewZito/vue-forum/tree/master/packages/client) Vue user interface
+  - [@vue-forum/auth](https://github.com/MatthewZito/vue-forum/tree/master/packages/auth) Authentication and user microservice
+  - [@vue-forum/common](https://github.com/MatthewZito/vue-forum/tree/master/packages/common) Houses transitive dependencies used across various services
 
 ### <a name="usage"></a> Installation and Usage
-The LAN Monitor project is housed in a mono-repo architecture. To properly initialize the project, from the repository root (here):
+The Vue Forum project is housed in a mono-repo architecture. To properly initialize the project, from the repository root (here):
 
   1. Install Lerna globally `npm i -g lerna | yarn add -g lerna`
     * Optionally, you can use npx - just prefix all lerna commands with `npx <cmd>`

@@ -1,9 +1,11 @@
 import { 
   signin,
-  signout
+  signout,
+  signup
 } from './users';
 
 export {
   signin,
-  signout
+  signout,
+  signup
 };

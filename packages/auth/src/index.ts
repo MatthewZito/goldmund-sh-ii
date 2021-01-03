@@ -1,17 +1,18 @@
-import { config } from 'dotenv';
 /* Base Dependencies */
 import express from 'express';
 import 'express-async-errors'; // catch thrown errors in async handlers
 import { json } from 'body-parser';
+import { init as initializeMongo } from './database';
 
 /* Transitive Dependencies */
-import { ErrorNormalizer, NotFoundError } from '@lan-monitor/common';
+import { ErrorNormalizer, NotFoundError } from '@vue-forum/common';
 
 /* Router Configurations */
 import {
   signinRouter,
-  signoutRouter
-} from './routes';
+  signoutRouter,
+  signupRouter
+} from './routes/users';
 
 /****************************
  * 
@@ -19,8 +20,7 @@ import {
  * 
  ****************************/
 
-config({ path: '../../../.env.example' });
-const PORT = process.env.AUTH_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(json());
@@ -28,6 +28,7 @@ app.use(json());
 /* Router Associations */
 app.use(signinRouter);
 app.use(signoutRouter);
+app.use(signupRouter);
 
 /* Fallback */
 app.all('*', () => { throw new NotFoundError(); });
@@ -45,3 +46,4 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`); // eslint-disable-line no-console
 });
 // TODO replace w/PM2
+initializeMongo();

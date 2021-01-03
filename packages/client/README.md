@@ -1,11 +1,11 @@
-## @lan-monitor/client
+## @vue-forum/client
 
 ## Table of Contents
   - [Installation + Usage](#usage)
   - [Scripts](#scripts)
 
 ### <a name="usage"></a> Installation and Usage
-The LAN Monitor project is housed in a mono-repo architecture. To properly initialize the project, see the README in the repository root (at scope `@lan-monitor/root`)
+The Vue Forum project is housed in a mono-repo architecture. To properly initialize the project, see the README in the repository root (at scope `@vue-forum/root`)
 
 
 ### <a name="scripts"></a> Package Scripts

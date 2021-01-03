@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { Password } from '../models/Hash';
 
+/* Extensions for Type-checking Resolution */
 interface UserAttrs {
   email: string;
   password: string;
@@ -15,6 +16,7 @@ interface UserDocument extends mongoose.Document {
   password: string;
 }
 
+/* Base Model / Schema */
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -26,14 +28,23 @@ const userSchema = new mongoose.Schema({
   }
 });
 
+/* Hooks */
+
+// hash password prior to persisting in local db
 userSchema.pre('save', async function (next) {
+  // `isModified` will return true upon user creation
   if (this.isModified('password')) {
     const hashed = await Password.hash(this.get('password'));
     this.set('password', hashed);
   }
+  // if not modified, the pw is already hashed - we don't want to hash the hash
   next();
 });
 
+/* Statics */
+
+// necessary workaround to resolve TypeScript type conflicts w/ Mongoose
+// accords to type-checking resolution, as noted above
 userSchema.statics.construct = (attrs: UserAttrs) => {
   return new User(attrs);
 };

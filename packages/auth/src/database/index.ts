@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 import { DatabaseConnError } from '@vue-forum/common';
 
+/**
+ * @summary Initializes a connection to the auth / user database
+ */
 export const init = async () => {
   try {
     await mongoose.connect(`${process.env.MONGO_CONN_STR}`, {

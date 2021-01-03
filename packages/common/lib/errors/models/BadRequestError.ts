@@ -1,5 +1,8 @@
 import { SystemError } from './Base';
 
+/**
+ * Denotes malformed or otherwise invalid requests
+ */
 export class BadRequestError extends SystemError {
   statusCode = 400;
   reason = 'Unable to initialize database connection';

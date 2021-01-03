@@ -1,10 +1,13 @@
 import { body } from 'express-validator';
 import conf from './conf';
 
+/* Validator Configurations */
+
 const { min, max } = conf.password;
 
 const signinValidators = [1];
 
+/* Signup Router */
 const signupValidators = [
   body('email')
     .isEmail()

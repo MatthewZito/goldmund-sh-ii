@@ -1,6 +1,9 @@
 import { ValidationError } from 'express-validator';
 import { SystemError } from './Base';
 
+/**
+ * Denotes a request with invalid parameters / payload
+ */
 export class RequestValidationError extends SystemError {
   statusCode = 400;
   constructor (private errors: ValidationError[]) { // eslint-disable-line no-unused-vars

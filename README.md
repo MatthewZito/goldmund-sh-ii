@@ -10,15 +10,17 @@ Vue Forum is a fullstack system template for creating a forum site with Vue.js a
 
   - [@vue-forum/client](https://github.com/MatthewZito/vue-forum/tree/master/packages/client) Vue user interface
   - [@vue-forum/auth](https://github.com/MatthewZito/vue-forum/tree/master/packages/auth) Authentication and user micro-service
-  - [@vue-forum/common](https://github.com/MatthewZito/vue-forum/tree/master/packages/common) Transitive utility dependencies consumed across various services
+  - [@vue-forum/common](https://github.com/MatthewZito/vue-forum/tree/master/packages/common) Transitive utility dependencies consumed by various services
 
 ### <a name="usage"></a> Installation and Usage
 The Vue Forum project is housed in a mono-repo architecture. To properly initialize the system, from the repository root (here):
 
   1. Install Lerna globally `npm i -g lerna | yarn add -g lerna`
-    * Optionally, you can use npx - just prefix all lerna commands with `npx <cmd>`
-  1. Install dependencies and symlink: `lerna run bootstrap`
-  2. Initialize required services: `lerna run serve:watch`
+  1a. Optionally, you can use npx - just prefix all lerna commands with `npx <cmd>`
+  2. Install dependencies and symlink: `lerna run bootstrap`
+  3. Initialize required services: `lerna run serve:watch`
+
+See the [contributing guide]() for more detailed information on how the mono-repo works.
 
 ### <a name="scripts"></a> Scripts
 
@@ -29,9 +31,9 @@ lerna run serve:watch --stream
 
 OR
 
-Serve w/bash script
-1. Add execute permissions: `chmod -R u+x scripts/`
-2. `./scripts/serve.sh`
+Serve w/bash script:
+  1. Add execute permissions: `chmod -R u+x scripts/`
+  2. `./scripts/serve.sh`
 
 #### Lint Files (no auto-fix)
 ```
@@ -46,4 +48,9 @@ lerna run lint:fix
 #### Inspect Current Environment and Node Processes
 ```
 lerna run env:inspect
+```
+
+#### Symlink Transitive Dependencies
+```
+yarn link
 ```

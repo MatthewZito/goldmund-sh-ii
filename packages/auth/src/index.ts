@@ -34,7 +34,9 @@ app.use(signupRouter);
 app.all('*', () => { throw new NotFoundError(); });
 
 /* Middlewares */
-app.use(ErrorNormalizer);
+
+// will catch all thrown errors, even those in async fns
+app.use(ErrorNormalizer); 
 
 /****************************
  * 
@@ -44,6 +46,7 @@ app.use(ErrorNormalizer);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`); // eslint-disable-line no-console
-});
-// TODO replace w/PM2
+}); // TODO replace w/PM2
+
+// initialize db conn
 initializeMongo();

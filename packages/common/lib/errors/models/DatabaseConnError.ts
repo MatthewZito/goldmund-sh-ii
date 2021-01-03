@@ -1,5 +1,8 @@
 import { SystemError } from './Base';
 
+/**
+ * Denotes errors pertaining to database connections and procedures
+ */
 export class DatabaseConnError extends SystemError {
   statusCode = 500;
   reason = 'Unable to initialize database connection';

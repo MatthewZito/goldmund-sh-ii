@@ -16,7 +16,6 @@
     "@types/express": "4.17.9",
     "@types/mongoose": "5.10.3",
     "@vue-forum/common": "^0.0.1",
-    "dotenv": "8.2.0",
     "express": "4.17.1",
     "express-async-errors": "3.1.1",
     "express-validator": "6.9.0",

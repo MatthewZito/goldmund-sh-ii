@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
-import { DatabaseConnectionError } from '@vue-forum/common';
+import { DatabaseConnError } from '@vue-forum/common';
 
 export const init = async () => {
   try {
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
+    await mongoose.connect(`${process.env.MONGO_CONN_STR}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
     });
   }
   catch (err) {
-     throw new DatabaseConnectionError();
+     throw new DatabaseConnError();
   }
 };

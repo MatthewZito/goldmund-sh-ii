@@ -1,5 +1,5 @@
 ## @vue-forum
-Vue Forum is a fullstack system template for creating a forum site with Vue.
+Vue Forum is a fullstack system template for creating a forum site with Vue.js and Node. The system leverages and demonstrates an enterprise implementation of micro-services, event-streaming, and mono-repo in a cloud-infrastructure.
 
 ## Table of Contents
   - [Packages](#pkg)
@@ -9,11 +9,11 @@ Vue Forum is a fullstack system template for creating a forum site with Vue.
 ### <a name="pkg"></a> Packages and Services
 
   - [@vue-forum/client](https://github.com/MatthewZito/vue-forum/tree/master/packages/client) Vue user interface
-  - [@vue-forum/auth](https://github.com/MatthewZito/vue-forum/tree/master/packages/auth) Authentication and user microservice
-  - [@vue-forum/common](https://github.com/MatthewZito/vue-forum/tree/master/packages/common) Houses transitive dependencies used across various services
+  - [@vue-forum/auth](https://github.com/MatthewZito/vue-forum/tree/master/packages/auth) Authentication and user micro-service
+  - [@vue-forum/common](https://github.com/MatthewZito/vue-forum/tree/master/packages/common) Transitive utility dependencies consumed across various services
 
 ### <a name="usage"></a> Installation and Usage
-The Vue Forum project is housed in a mono-repo architecture. To properly initialize the project, from the repository root (here):
+The Vue Forum project is housed in a mono-repo architecture. To properly initialize the system, from the repository root (here):
 
   1. Install Lerna globally `npm i -g lerna | yarn add -g lerna`
     * Optionally, you can use npx - just prefix all lerna commands with `npx <cmd>`

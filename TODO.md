@@ -1,14 +1,31 @@
 ## TODOs
 
 ### @lan-monitor/root
-- [ ] Initialize API for comm w/shell
-- [ ] Either vendor or write netstat interface for node env
+- [ ] initialize API for comm w/shell
+- [x] either vendor or write netstat interface for node env
 - [ ] CI/CD!
-- [ ] commitlint
-- [ ] husky
-- [ ] changelog cz
+- [x] commitlint
+- [x] husky
+- [x] changelog cz
+- [ ] containerize
+  - [ ] docker conf
+  - [ ] k8s conf
+  - [ ] skaffold conf ---> k8s dev
+  - [ ] nginx & ingress conf
+  - [ ] docker overlay for comm w/ host os
 
 ### @lan-monitor/client
-- [ ] Extract Vuex packages into node modules
+- [ ] extract Vuex packages into node modules, where applicable
+- [ ] auth schema w/ SSO
+- [ ] mocks
 
-### @lan-monitor/api
+### @lan-monitor/procd
+- [ ] pipe to task runner
+- [ ] unit tests
+
+### @lan-monitor/auth
+- [ ]  mocks, unit tests
+
+### @lan-monitor/common
+- [ ] unit tests
+

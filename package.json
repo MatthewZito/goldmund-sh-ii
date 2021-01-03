@@ -12,9 +12,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "clean": "rimraf **/*error.log"
-  },
   "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "11.0.0",

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "scripts": {
+    "clean": "rimraf **/*.log",
     "env:inspect": "node -e 'console.log(process.env)' | grep npm",
     "serve:watch": "ts-node-dev src/index.ts"
   },
@@ -18,7 +19,6 @@
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.11.1",
-    "@typescript-eslint/parser": "4.11.1",
-    "eslint": "7.17.0"
+    "@typescript-eslint/parser": "4.11.1"
   }
 }

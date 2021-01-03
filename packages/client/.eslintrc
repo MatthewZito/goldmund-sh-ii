@@ -13,9 +13,6 @@
   "plugins": [
     "vue"
   ],
-  "ignorePatterns": [
-    "repl.js"
-  ],
   "rules": {
     "vue/html-closing-bracket-newline": "off"
   }

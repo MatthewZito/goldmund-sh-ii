@@ -9,5 +9,8 @@
       "always"
     ]
   },
+  "ignorePatterns": [
+    "repl.js"
+  ],
   "reportUnusedDisableDirectives": true
 }

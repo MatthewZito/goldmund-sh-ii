@@ -42,7 +42,7 @@ export default {
         return this.isDrawerOpen;
       },
       set () {
-        return; // eslint-disable-line no-useless-return
+        return;
       }
     }
   }

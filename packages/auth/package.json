@@ -5,7 +5,10 @@
   "scripts": {
     "clean": "rimraf **/*.log",
     "env:inspect": "node -e 'console.log(process.env)' | grep npm",
-    "serve:watch": "ts-node-dev src/index.ts"
+    "serve:watch": "ts-node-dev src/index.ts",
+    "lint": "eslint . --ext .ts --no-fix",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "precommit": "lint-staged"
   },
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
   "license": "MIT",
@@ -19,6 +22,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.11.1",
-    "@typescript-eslint/parser": "4.11.1"
+    "@typescript-eslint/parser": "4.11.1",
+    "lint-staged": "10.5.3"
   }
 }

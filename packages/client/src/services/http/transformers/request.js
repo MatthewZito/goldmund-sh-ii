@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import state from '@/state';
 
 function transformRequest (data, headers) {

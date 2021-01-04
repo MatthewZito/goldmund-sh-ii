@@ -55,7 +55,7 @@ services:
     nginx: 
         restart: always
         build: 
-            context: infra/ingress
+            context: ingress
             dockerfile: Dockerfile.dev
         ports:
             - "80:80"

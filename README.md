@@ -14,14 +14,18 @@ Vue Forum is a full stack template for creating a real production-grade forum ap
 ### <a name="usage"></a> Installation and Usage
 The Vue Forum project is housed in a mono-repo architecture, orchestrated in a containerized environment. To properly initialize the system, use either the docker-compose or kubernetes (skaffold) dev configurations.
 
+#### Install
+*This section is optional and only required for contributors/dev*
+
+You'll need to install Lerna and Yarn globally if you plan to contribute. See the [contributing guide](https://github.com/MatthewZito/vue-forum/blob/master/CONTRIBUTING.md) for more detailed information on how the mono-repo works.
+
+#### Running Locally
 **Running with Docker Compose (recommended for development):**
 1. [Install Docker](https://docs.docker.com/get-docker/)
 
 **Running with kubectl:**
 
 [See the Kubernetes dev guide](https://github.com/MatthewZito/vue-forum/blob/master/docs/k8s_setup.md)
-
-See the [contributing guide](https://github.com/MatthewZito/vue-forum/blob/master/CONTRIBUTING.md) for more detailed information on how the mono-repo works.
 
 ### <a name="scripts"></a>
 

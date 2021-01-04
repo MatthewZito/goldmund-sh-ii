@@ -3,7 +3,7 @@
 #desc           :execute all observable dev scripts
 #author         :Matthew Zito (goldmund)
 #created        :11/2020
-#version        :1.0.0  
+#version        :1.0.1-DEPRECATED 
 #usage          :bash ./dev.sh
 #environment    :bash 5.0.17
 #===============================================================================

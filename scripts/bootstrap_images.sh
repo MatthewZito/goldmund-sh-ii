@@ -7,3 +7,5 @@
 #usage          :bash ./bootstrap_images.sh
 #environment    :bash 5.0.17
 #===============================================================================
+[[ ! -x "$(command -v docker)" ]] && echo '[-] Docker must be installed and resolved on PATH' && exit 1;
+docker build -t exbotanical/vue-forum-api-auth:latest ./packages/auth/Dockerfile.dev

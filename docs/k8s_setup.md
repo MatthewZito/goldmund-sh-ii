@@ -1,12 +1,24 @@
 ## Kubernetes Dev Guide
+*If you already have a kubernetes environment, skip to step 3*
 
 1. [Install Docker](https://docs.docker.com/get-docker/) (this step will soon be deprecated as images become available on DockerHub)
 2. [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
     1. On macos' Docker Desktop simply go to `settings -> kubernetes -> enable kubernetes`
     2. If using Linux, see the above link to install minikube - if using Ubuntu, refer to [the steps below](#ubuntu)
 3. Install [ingress-nginx](https://kubernetes.github.io/ingress-nginx/deploy/)
+4. Update your `/etc/hosts` file with a new entry:
+```
+<output of $(minikube ip)> vue-forum.dev
+```
 
-## <a name="ubuntu"></a> Minikube Setup for Ubuntu
+**example**
+```
+192.113.019.2 vue-forum.dev
+```
+
+5. Add [Skaffold](https://skaffold.dev/)
+
+### <a name="ubuntu"></a> Minikube Setup for Ubuntu
 
 1. Install `kubectl`:
 ```
@@ -40,7 +52,7 @@ sudo install minikube /usr/local/bin/
 minikube status
 ```
 
-### Installing Ingress and a HyperVisor
+### Installing Ingress and a Hypervisor
 
 1. Install `virtualbox`:
 ```

@@ -15,6 +15,11 @@
   "_moduleAliases": {
     "@/database": "src/database/"
   },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "yarn run lint"
+    ]
+  },
   "dependencies": {
     "@types/express": "4.17.9",
     "@types/mongoose": "5.10.3",

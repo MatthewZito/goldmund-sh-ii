@@ -13,6 +13,6 @@ export const init = async () => {
     });
   }
   catch (err) {
-     throw new DatabaseConnError();
+    throw new DatabaseConnError();
   }
 };

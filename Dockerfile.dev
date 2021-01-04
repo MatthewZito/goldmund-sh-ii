@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR /base
+
+COPY package.json .
+# copy all shared and peer dependencies
+COPY packages/common/package.json packages/common/package.json
+COPY packages/auth/package.json packages/auth/package.json
+# bootstrap monorepo and resolve symlinks
+RUN yarn
+# copy and prep for extension by services and sub-packages
+COPY . .

@@ -17,11 +17,12 @@ The Vue Forum project is housed in a mono-repo architecture, orchestrated in a c
 #### Install
 *This section is optional and only required for contributors/dev*
 
-You'll need to install Lerna and Yarn globally if you plan to contribute. See the [contributing guide](https://github.com/MatthewZito/vue-forum/blob/master/CONTRIBUTING.md) for more detailed information on how the mono-repo works.
+You'll need to install Lerna and Yarn globally if you plan to contribute or develop on top of this project. See the [contributing guide](https://github.com/MatthewZito/vue-forum/blob/master/CONTRIBUTING.md) for more detailed information on how the mono-repo works.
 
 #### Running Locally
 **Running with Docker Compose (recommended for development):**
 1. [Install Docker](https://docs.docker.com/get-docker/)
+2. In the root directory, run `docker-compose up --build`
 
 **Running with kubectl:**
 

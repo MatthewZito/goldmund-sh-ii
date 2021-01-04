@@ -10,6 +10,18 @@
   "workspaces": [
     "packages/*"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run precommit --since HEAD --exclude-dependents --concurrency 1 --stream",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional",
+      "@commitlint/config-lerna-scopes"
+    ]
+  },
   "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "11.0.0",

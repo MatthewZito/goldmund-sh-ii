@@ -8,7 +8,7 @@
   "scripts": {
     "env:inspect": "node -e 'console.log(process.env)' | grep npm",
     "serve": "vue-cli-service serve",
-    "serve:watch": "nodemon --watch vue.config.js --exec 'yarn run serve'",
+    "dev": "nodemon --watch vue.config.js --exec 'vue-cli-service serve --mode development'",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",

@@ -13,27 +13,18 @@ Vue Forum is a fullstack system template for creating a forum site with Vue.js a
   - [@vue-forum/common](https://github.com/MatthewZito/vue-forum/tree/master/packages/common) Transitive utility dependencies consumed by various services
 
 ### <a name="usage"></a> Installation and Usage
-The Vue Forum project is housed in a mono-repo architecture. To properly initialize the system, from the repository root (here):
+The Vue Forum project is housed in a mono-repo architecture, orchestrated in a containerized environment. To properly initialize the system, you may run either the docker-compose or kubernetes (skaffold) dev configurations.
 
-  1. Install Lerna globally `npm i -g lerna | yarn add -g lerna`
-  1a. Optionally, you can use npx - just prefix all lerna commands with `npx <cmd>`
-  2. Install dependencies and symlink: `lerna run bootstrap`
-  3. Initialize required services: `lerna run serve:watch`
+Running with Docker Compose:
+[See the Docker dev guide]()
+
+Running with kubectl:
+[See the Kubernetes dev guide]()
 
 See the [contributing guide]() for more detailed information on how the mono-repo works.
 
 ### <a name="scripts"></a> Scripts
-
-#### Serve w/ full HMR Config (dev)
-```
-lerna run serve:watch --stream
-```
-
-OR
-
-Serve w/bash script:
-  1. Add execute permissions: `chmod -R u+x scripts/`
-  2. `./scripts/serve.sh`
+These scripts will execute for each applicable package. To run at a specific scope, use Lerna's `exec` or `--scope` subcommands.
 
 #### Lint Files (no auto-fix)
 ```

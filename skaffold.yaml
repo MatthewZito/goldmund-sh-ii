@@ -8,10 +8,10 @@ build:
   local:
     push: false
   artifacts:
-    - image: vue-forum/auth
-      context: auth
+    - image: exbotanical/vue-forum-auth
+      context: packages/auth
       docker:
-        dockerfile: Dockerfile
+        dockerfile: Dockerfile.dev
       sync:
         manual:
           - src: 'src/**/*.ts'

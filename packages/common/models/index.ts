@@ -4,6 +4,7 @@ import RequestValidationError from './RequestValidationError';
 import DatabaseConnError from './DatabaseConnError';
 import NotFoundError from './NotFoundError';
 import BadRequestError from './BadRequestError';
+import NotAuthorizedError from './NotAuthorizedError';
 
 import AuthOkResponse from './AuthOkResponse';
 import ResourceCreatedResponse from './ResourceCreatedResponse';
@@ -15,5 +16,6 @@ export {
   BadRequestError,
   BaseError,
   AuthOkResponse,
-  ResourceCreatedResponse
+  ResourceCreatedResponse,
+  NotAuthorizedError
 };

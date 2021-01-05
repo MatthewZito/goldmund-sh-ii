@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Password } from '../models/Hash';
+import CryptUtil from '@/utils/CryptUtil';
 
 /* Extensions for Type-checking Resolution */
 interface UserAttrs {
@@ -26,6 +26,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+},
+{
+  // override stringification of user obj to remove specified props
+  toJSON: {
+    transform (doc, ret) {
+      delete ret.password;
+      delete ret.__v;
+    }
+  }
 });
 
 /* Hooks */
@@ -34,7 +43,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', async function (next) {
   // `isModified` will return true upon user creation
   if (this.isModified('password')) {
-    const hashed = await Password.hash(this.get('password'));
+    const hashed = await CryptUtil.hash(this.get('password'));
     this.set('password', hashed);
   }
   // if not modified, the pw is already hashed - we don't want to hash the hash
@@ -51,6 +60,4 @@ userSchema.statics.construct = (attrs: UserAttrs) => {
 
 const User = mongoose.model<UserDocument, UserModel>('User', userSchema);
 
-export {
-  User
-};
+export default User;

@@ -1,11 +1,11 @@
-import { 
-  signin,
-  signout,
-  signup
+import {
+  login,
+  logout,
+  register
 } from './users';
 
 export {
-  signin,
-  signout,
-  signup
+  login,
+  logout,
+  register
 };

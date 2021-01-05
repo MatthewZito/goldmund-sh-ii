@@ -1,14 +1,15 @@
 import { ValidationError } from 'express-validator';
-import { SystemError } from './Base';
+
+import BaseError from './factory/BaseError';
 
 /**
  * Denotes a request with invalid parameters / payload
  */
-export class RequestValidationError extends SystemError {
+class RequestValidationError extends BaseError {
   statusCode = 400;
   constructor (private errors: ValidationError[]) { // eslint-disable-line no-unused-vars
     super(new Date () + ' ERROR:REQ:VALIDATION');
-    
+
     Object.setPrototypeOf(this, RequestValidationError.prototype);
   }
 
@@ -19,3 +20,5 @@ export class RequestValidationError extends SystemError {
     }));
   }
 }
+
+export default RequestValidationError;

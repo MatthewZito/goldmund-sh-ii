@@ -3,7 +3,11 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
-    "rootDir": "lib",
+    "rootDir": ".",
   },
-  "include": ["lib"]
+  "include": [
+    "middlewares",
+    "models",
+    "logger"
+  ]
 }

@@ -1,20 +1,29 @@
+/****************************
+ *
+ * Base Dependencies / Imports
+ *
+ ****************************/
+
 // prevent module aliases from breaking once transpiled
 import 'module-alias/register';
+
 /* Base Dependencies */
 import express from 'express';
 import 'express-async-errors'; // catch thrown errors in async handlers
 import { json } from 'body-parser';
-import { init as initializeMongo } from './database';
 
 /* Transitive Dependencies */
-import { ErrorNormalizer, NotFoundError } from '@vue-forum/common';
+import { NormalizeError } from '@vue-forum/common/middlewares';
+import { NotFoundError } from '@vue-forum/common/models';
 
-/* Router Configurations */
+/* Routers and Local Middlewares */
 import {
-  signinRouter,
-  signoutRouter,
-  signupRouter
-} from './routes/users';
+  loginRouter,
+  logoutRouter,
+  registerRouter
+} from '@/routes/users';
+
+import initMongoConn from '@/database';
 
 /****************************
  *
@@ -25,20 +34,24 @@ import {
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+
+/*  Middlewares */
 app.use(json());
 
 /* Router Associations */
-app.use(signinRouter);
-app.use(signoutRouter);
-app.use(signupRouter);
+app.use(loginRouter);
+app.use(logoutRouter);
+app.use(registerRouter);
 
 /* Fallback */
-app.all('*', () => { throw new NotFoundError(); });
+app.all('*', () => {
+  throw new NotFoundError();
+});
 
-/* Middlewares */
+/* Error-handling */
 
 // will catch all thrown errors, even those in async fns
-app.use(ErrorNormalizer);
+app.use(NormalizeError);
 
 /****************************
  *
@@ -51,4 +64,4 @@ app.listen(PORT, () => {
 }); // TODO replace w/PM2
 
 // initialize db conn
-initializeMongo();
+initMongoConn();

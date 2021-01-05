@@ -1,13 +1,13 @@
-import { SystemError } from './Base';
+import BaseError from './factory/BaseError';
 
 /**
  * Denotes requests made for non-existent resources
  */
-export class NotFoundError extends SystemError {
+class NotFoundError extends BaseError {
   statusCode = 404;
   constructor () {
     super(new Date () + ' ERROR:REQ:NOT_FOUND');
-    
+
     Object.setPrototypeOf(this, NotFoundError.prototype);
   }
 
@@ -15,3 +15,5 @@ export class NotFoundError extends SystemError {
     return [{ message: 'Path not found' }];
   }
 }
+
+export default NotFoundError;

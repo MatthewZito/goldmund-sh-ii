@@ -1,14 +1,13 @@
-import { SystemError } from './Base';
+import BaseError from './factory/BaseError';
 
 /**
  * Denotes malformed or otherwise invalid requests
  */
-export class BadRequestError extends SystemError {
+class BadRequestError extends BaseError {
   statusCode = 400;
-  reason = 'Unable to initialize database connection';
   constructor (public message: string) { // eslint-disable-line no-unused-vars
     super(new Date () + ' ERROR:REQ:MALFORMED:');
-     
+
     Object.setPrototypeOf(this, BadRequestError.prototype);
   }
 
@@ -18,3 +17,5 @@ export class BadRequestError extends SystemError {
     ];
   }
 }
+
+export default BadRequestError;

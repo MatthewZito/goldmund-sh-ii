@@ -1,14 +1,14 @@
-import { SystemError } from './Base';
+import BaseError from './factory/BaseError';
 
 /**
  * Denotes errors pertaining to database connections and procedures
  */
-export class DatabaseConnError extends SystemError {
+class DatabaseConnError extends BaseError {
   statusCode = 500;
   reason = 'Unable to initialize database connection';
   constructor () {
     super(new Date () + ' ERROR:DATABASE:CONN');
-     
+
     Object.setPrototypeOf(this, DatabaseConnError.prototype);
   }
 
@@ -18,3 +18,5 @@ export class DatabaseConnError extends SystemError {
     ];
   }
 }
+
+export default DatabaseConnError;

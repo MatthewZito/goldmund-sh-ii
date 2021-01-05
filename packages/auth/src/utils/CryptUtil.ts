@@ -7,8 +7,8 @@ const crypt = promisify(scrypt);
 /**
  * @summary Provides a utility for hashing and comparing password strings
  */
-export class Password {
-  
+class CryptUtil {
+
   /**
    * @summary Hashes a given password and returns a buffer / salt pairing
    * @param password The user-supplied password
@@ -21,7 +21,7 @@ export class Password {
   }
 
   /**
-   * @summary Hashes a user-supplied password and compares it to the stored hash value 
+   * @summary Hashes a user-supplied password and compares it to the stored hash value
    * @param stored The hashed user password stored in the auth database
    * @param supplied The user-supplied password
    */
@@ -32,3 +32,5 @@ export class Password {
     return buffer.toString('hex') === hashed;
   }
 }
+
+export default CryptUtil;

@@ -1,9 +1,9 @@
-import { 
-  signinRouter,
-  signoutRouter
+import {
+  loginRouter,
+  logoutRouter
 } from './users';
 
 export {
-  signinRouter,
-  signoutRouter
+  loginRouter,
+  logoutRouter
 };

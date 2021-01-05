@@ -1,7 +1,16 @@
+# extend base image to copy shared dependencies
+FROM exbotanical/vue-forum-base as base
+
 FROM node:alpine
 
-WORKDIR /usr/src/app
-COPY package.json .
-RUN npm install
-COPY . .
-CMD ["npm","run","dev"]
+WORKDIR /base
+# copy shared node_modules
+COPY --from=base /base/node_modules /base/node_modules
+# copy transitive / peer dependencies - (pkg 'common' is required by auth service)
+COPY --from=base /base/packages/common /base/packages/common
+# copy client pkg
+COPY --from=base /base/packages/client /base/packages/client
+
+WORKDIR /base/packages/client
+
+CMD ["yarn", "run", "dev"]

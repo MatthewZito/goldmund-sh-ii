@@ -11,6 +11,7 @@
   - [x] skaffold conf ---> k8s dev
   - [x] nginx & ingress conf
 - [ ] Make a Windows conf so Windows users can enjoy ;)
+- [ ] Add issue template to GH [ref](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository)
 
 ### @vue-forum/client
 - [ ] extract Vuex packages into node modules, where applicable

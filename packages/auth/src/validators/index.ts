@@ -1,27 +1,31 @@
 import { body } from 'express-validator';
-import conf from './conf';
 
 /* Validator Configurations */
 
-const { min, max } = conf.password;
-
-const signinValidators = [1];
-
-/* Signup Router */
-const signupValidators = [
+const loginValidators = [
   body('email')
     .isEmail()
     .withMessage('A valid email address is required'),
   body('password')
     .trim()
-    .isLength({ 
-      min, 
-      max
+    .notEmpty()
+    .withMessage('A valid password is required')
+];
+
+const registerValidators = [
+  body('email')
+    .isEmail()
+    .withMessage('A valid email address is required'),
+  body('password')
+    .trim()
+    .isLength({
+      min: 8,
+      max: 20
     })
-    .withMessage(`Password must be between ${min} and ${max} characters`)
+    .withMessage('Password must be between 8 and 20 characters')
 ];
 
 export {
-  signinValidators,
-  signupValidators
+  loginValidators,
+  registerValidators
 };

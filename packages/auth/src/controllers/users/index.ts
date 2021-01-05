@@ -1,9 +1,9 @@
-import signin from './signin.ctrl';
-import signout from './signout.ctrl';
-import signup from './signup.ctrl';
+import login from './login.ctrl';
+import logout from './logout.ctrl';
+import register from './register.ctrl';
 
 export {
-  signin,
-  signout,
-  signup
+  login,
+  logout,
+  register
 };

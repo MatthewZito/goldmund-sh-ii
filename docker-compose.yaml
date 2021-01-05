@@ -10,6 +10,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    env_file:
+      - example.env
     volumes:
       - shared_cache:/usr/local/share/.cache
 
@@ -23,8 +25,6 @@ services:
       context: packages/auth
       dockerfile: Dockerfile.dev
     command: yarn run dev
-    # dev only
-    environment:
     volumes:
       - ./packages/auth:/base/packages/auth
       - logs:/base/packages/auth/logs

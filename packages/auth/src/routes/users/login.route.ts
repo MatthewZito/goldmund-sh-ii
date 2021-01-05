@@ -3,7 +3,7 @@ import express from 'express';
 import { ValidateRequest } from '@vue-forum/common/middlewares';
 
 import { loginValidators } from '@/validators';
-import { login } from '@/controllers/users';
+import { login } from '@/controllers';
 
 const loginRouter = express.Router();
 

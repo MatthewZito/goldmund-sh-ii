@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
 import {
-  DatabaseConnError,
-  BadRequestError,
-  ResourceCreatedResponse
+  DatabaseConnErr,
+  BadRequest,
+  ResourceCreated
 } from '@vue-forum/common/models';
 
 import { User } from '@/database';
@@ -20,7 +20,7 @@ async function register (req: Request, res: Response) {
   });
 
   if (userExists) {
-    throw new BadRequestError(`Email ${email} is already in use`);
+    throw new BadRequest(`Email ${email} is already in use`);
   }
 
   const newUser = User.construct({
@@ -31,24 +31,19 @@ async function register (req: Request, res: Response) {
   try {
     await newUser.save();
   } catch (ex) {
-    throw new DatabaseConnError();
+    throw new DatabaseConnErr();
   }
 
-  const userAuthToken = generateJwt({
+  const userAuthToken = await generateJwt({
     id: newUser.id,
     email: newUser.email
   });
 
-  const response = new ResourceCreatedResponse({ payload: newUser});
-
-  const resource = {
-    ...response,
-    token: userAuthToken
-  };
+  const response = new ResourceCreated(newUser);
 
   res
-    .status(resource.statusCode)
-    .send(resource);
+    .status(response.statusCode)
+    .send(Object.assign(response.serialize(), { token: userAuthToken }));
 }
 
 export default register;

@@ -1,6 +1,6 @@
 import BaseOkResponse from './factory/BaseOkResponse';
 
-class AuthOkResponse extends BaseOkResponse {
+class AuthOk extends BaseOkResponse {
   statusCode = 200;
   constructor (public token: string) { // eslint-disable-line no-unused-vars
     super();
@@ -13,4 +13,4 @@ class AuthOkResponse extends BaseOkResponse {
   }
 }
 
-export default AuthOkResponse;
+export default AuthOk;

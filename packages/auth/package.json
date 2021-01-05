@@ -16,6 +16,7 @@
     "@/controllers": "src/controllers/",
     "@/database": "src/database/",
     "@/models": "src/models/",
+    "@/utils": "src/utils/",
     "@/routes": "src/routes/",
     "@/validators": "src/validators/"
   },

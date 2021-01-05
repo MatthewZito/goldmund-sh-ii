@@ -3,12 +3,12 @@ import BaseError from './factory/BaseError';
 /**
  * Denotes malformed or otherwise invalid requests
  */
-class BadRequestError extends BaseError {
+class BadRequest extends BaseError {
   statusCode = 400;
   constructor (public message: string) { // eslint-disable-line no-unused-vars
     super(new Date () + ' ERROR:REQ:MALFORMED:');
 
-    Object.setPrototypeOf(this, BadRequestError.prototype);
+    Object.setPrototypeOf(this, BadRequest.prototype);
   }
 
   serialize () {
@@ -18,4 +18,4 @@ class BadRequestError extends BaseError {
   }
 }
 
-export default BadRequestError;
+export default BadRequest;

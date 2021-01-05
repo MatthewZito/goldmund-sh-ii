@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 
 import {
-  AuthOkResponse,
-  BadRequestError
+  AuthOk,
+  BadRequest
 } from '@vue-forum/common/models';
 
 import { User } from '@/database';
@@ -18,7 +18,7 @@ async function login (req: Request, res: Response) {
   });
 
   if (!existingUser) {
-    throw new BadRequestError('Invalid credentials');
+    throw new BadRequest('Invalid credentials');
   }
 
   const compare = await CryptUtil.compare(
@@ -27,7 +27,7 @@ async function login (req: Request, res: Response) {
   );
 
   if (!compare) {
-    throw new BadRequestError('Invalid credentials');
+    throw new BadRequest('Invalid credentials');
   }
 
   const token = await generateJwt({
@@ -35,11 +35,11 @@ async function login (req: Request, res: Response) {
     id: existingUser.id
   });
 
-  const response = new AuthOkResponse(token);
+  const response = new AuthOk(token);
 
   res
     .status(response.statusCode)
-    .send(response);
+    .send(response.serialize());
 }
 
 export default login;

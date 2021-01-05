@@ -5,7 +5,7 @@ import {
 } from 'express';
 
 import {
-  NotAuthorizedError
+  NotAuthorized
 } from '../models';
 
 function RequireAuthorization (
@@ -14,7 +14,7 @@ function RequireAuthorization (
   next: NextFunction
 ) {
   if (!req.currentUser) {
-    throw new NotAuthorizedError();
+    throw new NotAuthorized();
   }
   next();
 }

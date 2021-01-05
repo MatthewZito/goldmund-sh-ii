@@ -1,21 +1,21 @@
 import BaseError from './factory/BaseError';
 
-import RequestValidationError from './RequestValidationError';
-import DatabaseConnError from './DatabaseConnError';
-import NotFoundError from './NotFoundError';
-import BadRequestError from './BadRequestError';
-import NotAuthorizedError from './NotAuthorizedError';
+import RequestValidation from './RequestValidation';
+import DatabaseConnErr from './DatabaseConnErr';
+import NotFound from './NotFound';
+import BadRequest from './BadRequest';
+import NotAuthorized from './NotAuthorized';
 
-import AuthOkResponse from './AuthOkResponse';
-import ResourceCreatedResponse from './ResourceCreatedResponse';
+import AuthOk from './AuthOk';
+import ResourceCreated from './ResourceCreated';
 
 export {
-  RequestValidationError,
-  DatabaseConnError,
-  NotFoundError,
-  BadRequestError,
+  RequestValidation,
+  DatabaseConnErr,
+  NotFound,
+  BadRequest,
   BaseError,
-  AuthOkResponse,
-  ResourceCreatedResponse,
-  NotAuthorizedError
+  AuthOk,
+  ResourceCreated,
+  NotAuthorized
 };

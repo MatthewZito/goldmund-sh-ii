@@ -5,7 +5,7 @@ import {
   RequireAuthorization
 } from '@vue-forum/common/middlewares';
 
-import { renew } from '@/controllers/users';
+import { renew } from '@/controllers';
 
 const renewRouter = express.Router();
 

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import { DatabaseConnError } from '@vue-forum/common/models';
+import { DatabaseConnErr } from '@vue-forum/common/models';
 
 import User from './models/User';
 
@@ -16,7 +16,7 @@ async function initMongoConn () {
     });
   }
   catch (err) {
-    throw new DatabaseConnError();
+    throw new DatabaseConnErr();
   }
 }
 

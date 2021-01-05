@@ -1,11 +1,11 @@
 import {
   login,
-  logout,
-  register
+  register,
+  renew
 } from './users';
 
 export {
   login,
-  logout,
-  register
+  register,
+  renew
 };

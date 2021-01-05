@@ -1,9 +1,11 @@
 import {
   loginRouter,
-  logoutRouter
+  registerRouter,
+  renewRouter
 } from './users';
 
 export {
   loginRouter,
-  logoutRouter
+  registerRouter,
+  renewRouter
 };

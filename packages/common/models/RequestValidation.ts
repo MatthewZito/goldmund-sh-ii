@@ -5,12 +5,12 @@ import BaseError from './factory/BaseError';
 /**
  * Denotes a request with invalid parameters / payload
  */
-class RequestValidationError extends BaseError {
+class RequestValidation extends BaseError {
   statusCode = 400;
   constructor (private errors: ValidationError[]) { // eslint-disable-line no-unused-vars
     super(new Date () + ' ERROR:REQ:VALIDATION');
 
-    Object.setPrototypeOf(this, RequestValidationError.prototype);
+    Object.setPrototypeOf(this, RequestValidation.prototype);
   }
 
   serialize () {
@@ -21,4 +21,4 @@ class RequestValidationError extends BaseError {
   }
 }
 
-export default RequestValidationError;
+export default RequestValidation;

@@ -43,6 +43,11 @@ lerna run lint
 lerna run lint:fix
 ```
 
+##### Run Tests
+```
+lerna run test
+```
+
 ##### Inspect Current Environment and Node Processes
 ```
 lerna run env:inspect

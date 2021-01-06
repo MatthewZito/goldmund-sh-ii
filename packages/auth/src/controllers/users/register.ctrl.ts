@@ -9,9 +9,6 @@ import {
 import { User } from '@/database';
 import { generateJwt } from '@/utils';
 
-/**
- * @summary Handler for user login
- */
 async function register (req: Request, res: Response) {
   const { email, password } = req.body;
   // TODO check uname

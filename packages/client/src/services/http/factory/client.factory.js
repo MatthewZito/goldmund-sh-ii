@@ -5,18 +5,20 @@ class HTTPClient extends BaseClient {
     super({ opts: config });
   }
 
-  get (url, cb) {
+  get ({url, headers }, cb) {
     return this.client({
       method: 'get',
+      headers,
       url
     }).then(cb)
       .catch(cb);
   }
 
-  post (url, data, cb) {
+  post ({ url, headers, data }, cb) {
     return this.client({
       method: 'post',
       url,
+      headers,
       data
     }).then(cb)
       .catch(cb);

@@ -3,7 +3,7 @@ import axios from 'axios';
 class BaseClient {
   constructor ({ opts }) {
     if (this.constructor === BaseClient) {
-      throw new TypeError(`${this.constructor.name} is an abstract class and cannot be instantiated directly`);
+      throw new TypeError(`${this.constructor.name} cannot be instantiated directly`);
     }
     this.client = axios.create(opts);
   }

@@ -4,6 +4,7 @@ function interceptError (error) {
       ok: false,
       status: 499,
       message: 'Request cancelled',
+      errors: Object.freeze([].concat(error.response.data.errors)),
       data: null
     };
   }

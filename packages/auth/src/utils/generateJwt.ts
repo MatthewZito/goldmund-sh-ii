@@ -7,7 +7,7 @@ async function generateJwt ({ email, id }: { email: string, id: string }) {
       email,
       id
     },
-   `${process.env.EXAMPLE_JWT_SIGNING_KEY}`,
+    `${process.env.EXAMPLE_JWT_SIGNING_KEY}`,
     {
       issuer: process.env.SHARED_JWT_ISSUER,
       expiresIn: process.env.SHARED_JWT_EXPIRATION,

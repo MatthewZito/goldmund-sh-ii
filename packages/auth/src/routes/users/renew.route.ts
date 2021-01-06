@@ -5,12 +5,14 @@ import {
   RequireAuthorization
 } from '@vue-forum/common/middlewares';
 
+import { PATHS } from '@/config';
+
 import { renew } from '@/controllers';
 
 const renewRouter = express.Router();
 
 renewRouter.post(
-  '/users/renew',
+  PATHS.RENEW,
   CurrentUser,
   RequireAuthorization,
   renew

@@ -43,7 +43,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "10.5.3",
     "node-sass": "^4.13.0",
-    "nodemon": "2.0.6",
+    "nodemon": "2.0.7",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-quasar": "3.0.1",
     "vue-template-compiler": "^2.6.11"

@@ -1,4 +1,4 @@
-## @vue-forum/client
+## @vue-forum/auth
 
 ## Table of Contents
   - [Installation + Usage](#usage)

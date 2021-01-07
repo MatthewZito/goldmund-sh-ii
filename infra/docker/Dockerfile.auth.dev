@@ -1,0 +1,19 @@
+FROM node:alpine AS base
+
+WORKDIR /var/build
+
+FROM base AS prerequisite
+
+COPY package.json ./
+COPY yarn.lock ./
+COPY .eslintrc ./
+
+COPY packages/ts*.json packages/
+
+COPY packages/common packages/common/
+
+COPY packages/auth/package.json packages/auth/ts*.json packages/auth/
+
+FROM prerequisite AS development
+
+RUN yarn install --production --frozen-lockfile

@@ -3,40 +3,29 @@ version: "3.9"
 # NOT suitable for production - dev only
 services:
 
-  ### Shared Dependencies ###
-  vue-forum-base:
-    container_name: vue-forum-base
-    image: exbotanical/vue-forum-base
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    env_file:
-      - example.env
-    volumes:
-      - shared_cache:/usr/local/share/.cache
-
-  ### Auth / User Service ###
+### Auth / User Service ###
   vue-forum-auth:
-    extends:
-      service: vue-forum-base
     container_name: vue-forum-auth
     restart: always
     build:
-      context: packages/auth
-      dockerfile: Dockerfile.dev
-    command: yarn run dev
+      context: .
+      dockerfile: ./infra/docker/Dockerfile.auth.dev
+      target: development
+    working_dir: /var/build/packages/auth
+    env_file: 
+      - example.env
     volumes:
-      - ./packages/auth:/base/packages/auth
-      - logs:/base/packages/auth/logs
+      - ./packages/auth/src:/var/build/packages/auth/src:delegated
+      - ./packages/common:/var/build/packages/common:delegated
     depends_on:
       - vue-forum-auth-db
     ports:
       - 5000:5000
     networks:
       - vue-forum-bridge
+    command: yarn run dev
 
-  ### Auth / User DB ###
-  # TODO ADD WAIT SCRIPT
+### Auth / User DB ###
   vue-forum-auth-db:
     image: mongo:latest
     container_name: vue-forum-auth-db
@@ -51,32 +40,41 @@ services:
     networks:
       - vue-forum-bridge
 
+
 ### Vue Client ###
-# vue-forum-client:
-#     container_name: vue-forum-client
-#     build:
-#         context: packages/client
-#         dockerfile: Dockerfile.dev
-#     # command: /bin/bash -c "./wait-for-it.sh vue-forum-auth:5000 --timeout=60 -- yarn run dev"
-#     volumes:
-#         - ./packages/client:/base/packages/client
-#     networks:
-#         - vue-forum-bridge
-#     depends_on:
-#         - vue-forum-auth
+  vue-forum-client:
+    container_name: vue-forum-client
+    build:
+      context: .
+      dockerfile: ./infra/docker/Dockerfile.client.dev
+    working_dir: /var/build/packages/client
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+    volumes:
+      - ./packages/client/src:/var/build/packages/client/src:delegated
+      - ./packages/client/config:/var/build/packages/client/config:delegated
+      - client_node_modules:/var/build/packages/auth/node_modules
+    networks:
+      - vue-forum-bridge
+    depends_on:
+      - vue-forum-auth
+    ports:
+      - 3000:3000
+    command: yarn run dev
 
 ### Load Balancer / Ingress ###
-# nginx:
-#     restart: always
-#     build:
-#         context: ingress
-#         dockerfile: Dockerfile.dev
-#     ports:
-#         - "80:80"
-#     networks:
-#         - vue-forum-bridge
-#     depends_on:
-#         - vue-forum-client
+  nginx:
+    restart: always
+    build:
+      context: ingress
+      dockerfile: Dockerfile.dev
+    ports:
+      - "80:80"
+    networks:
+      - vue-forum-bridge
+    depends_on:
+      - vue-forum-client
 
 ### Base Network Conf ###
 networks:
@@ -85,10 +83,6 @@ networks:
 
 ### Persistent Volumes ###
 volumes:
-  shared_cache:
-  ### Auth Service Vols ###
-  auth_node_modules:
   logs:
   vue_forum_auth_db:
-### Client Vols ###
-# client_node_modules:
+  client_node_modules:

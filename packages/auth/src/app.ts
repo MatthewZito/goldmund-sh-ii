@@ -4,9 +4,6 @@
  *
  ****************************/
 
-// prevent module aliases from breaking once transpiled
-import 'module-alias/register';
-
 /* Base Dependencies */
 import express from 'express';
 import 'express-async-errors'; // catch thrown errors in async handlers

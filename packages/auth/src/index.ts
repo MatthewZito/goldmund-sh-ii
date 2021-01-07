@@ -1,4 +1,6 @@
-import initMongoConn from '@/database';
+// prevent module aliases from breaking once transpiled (test env)
+import 'module-alias/register';
+import initMongoConn from './database';
 import app from './app';
 
 /****************************

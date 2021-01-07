@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import CryptUtil from '@/utils/CryptUtil';
+import { CryptUtil } from '@/utils';
 
 /* Extensions for Type-checking Resolution */
 interface UserAttrs {

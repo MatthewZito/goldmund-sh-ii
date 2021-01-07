@@ -1,0 +1,24 @@
+FROM node:alpine AS base
+
+WORKDIR /var/build
+
+FROM base AS prerequisite
+
+# eslint is installed from root dir, not client
+COPY package.json ./
+COPY yarn.lock ./
+# capture root eslint conf - client relies on this
+COPY .eslintrc ./ 
+
+COPY packages/client/*.js packages/client/*.json packages/client/.eslintrc packages/client/
+
+FROM prerequisite AS development
+
+RUN apk --no-cache --virtual build-dependencies add \
+  python \
+  make \
+  g++ \
+  && yarn install \
+  && apk del build-dependencies
+
+CMD ["yarn", "run", "dev"]

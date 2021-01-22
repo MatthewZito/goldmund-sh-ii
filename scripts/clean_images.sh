@@ -12,6 +12,3 @@ docker images | grep vue-forum-auth | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} 
 
 echo '[*] Purging all vue-forum-client images'
 docker images | grep vue-forum-client | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi exbotanical/vue-forum-client:{}
-
-echo '[*] Purging all vue-forum-base images'
-docker images | grep vue-forum-base | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi exbotanical/vue-forum-auth:{}

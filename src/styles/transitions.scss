@@ -1,0 +1,53 @@
+/* Custom Transitions */
+
+/* fade-tab */
+.fade-tab-enter-active, .fade-tab-leave-active {
+  transition: all .5s;
+}
+.fade-tab-enter, .fade-tab-leave-to {
+  opacity: 0;
+  transform: translateX(90px);
+}
+
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .5s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* fade-popup */
+.fade-popup-leave-active,
+.fade-popup-enter-active {
+  transition: all .75s;
+}
+
+.fade-popup-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-popup-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}

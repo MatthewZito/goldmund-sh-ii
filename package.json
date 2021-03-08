@@ -1,0 +1,61 @@
+{
+  "name": "goldmund-sh-ui",
+  "version": "1.0.0",
+  "appName": "Goldmund.sh",
+  "main": "src/main.js",
+  "scripts": {
+    "serve:mon": "nodemon --watch vue.config.js --exec 'npm run serve'",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint --no-fix",
+    "lint:fix": "vue-cli-service lint"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "npm run lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.7",
+    "vuetify": "^2.3.15",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.8",
+    "@vue/cli-plugin-router": "^4.5.8",
+    "@vue/cli-plugin-vuex": "^4.5.8",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "css-loader": "^5.0.1",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.3.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "lint-staged": "^10.5.3",
+    "mini-css-extract-plugin": "^1.3.5",
+    "nodemon": "^2.0.6",
+    "postcss": "^8.2.4",
+    "postcss-loader": "^5.0.0",
+    "sass": "^1.19.0",
+    "sass-loader": "^10.1.0",
+    "vue-cli-plugin-vuetify": "~2.0.7",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0"
+  }
+}

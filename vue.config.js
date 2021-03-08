@@ -4,14 +4,24 @@ const { resolve } = require('path');
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
 const isProd = process.env.NODE_ENV === 'production';
+const isSSL = process.env.VUE_APP_MODE === 'SSL';
+
+const sslConf = {
+  host: 'goldmund.dev',
+  port: 443,
+  https: true
+};
+
+const httpConf = {
+  host: 'localhost',
+  port: 3000
+};
 
 module.exports = {
   devServer: {
     disableHostCheck: true,
-    host: 'goldmund.dev',
-    port: 443,
-    https: true,
-    proxy: {}
+    ...(isSSL ? sslConf : httpConf)
+    // proxy: {}
   },
   outputDir: 'dist',
   lintOnSave: !isProd,

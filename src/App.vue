@@ -16,6 +16,9 @@ import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
 import MainDrawer from '@/components/layout/MainDrawer.vue';
 import MainToolbar from '@/components/layout/MainToolbar.vue';
 
+import HttpClient from 'http-factory';
+const client = new HttpClient().setBaseUrl('https://jsonplaceholder.typicode.com')
+
 export default {
   name: 'App',
   components: {
@@ -27,6 +30,9 @@ export default {
   data: () => ({
     isLoading: false
   }),
+  mounted () {
+    client.get({ url: 'todos/1' }, ({ data }) => console.log(data));
+  }
 };
 </script>
 

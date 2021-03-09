@@ -7,7 +7,7 @@
     <v-toolbar-title class="headline text-uppercase white--text">
       <div>
         <span>
-          {{ appName}}
+          {{ appName }}
         </span>
         &nbsp;
       </div>

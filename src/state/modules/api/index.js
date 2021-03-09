@@ -11,4 +11,3 @@ export default {
   actions,
   state: () => state
 };
-// find cancel token implementation in here - cancel tokens abort requests

@@ -1,5 +1,5 @@
 import {
-  authApi as auth,
+  authApi as auth
 } from '@/services/api';
 
 const apiServicePlugin = {

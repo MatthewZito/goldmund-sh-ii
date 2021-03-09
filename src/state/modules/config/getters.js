@@ -1,10 +1,4 @@
 /**
- * @type {boolean}
- * @summary Get the current nav drawer state
- */
-export const isNavDrawerClosed = (state) => !state.isNavDrawerOpen;
-
-/**
  * @type {array}
  * @summary Get all cached views
  */

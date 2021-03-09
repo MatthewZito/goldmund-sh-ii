@@ -6,7 +6,7 @@ export default {
   primary: '#BD93F9',
   secondary: '#FF79C6',
   tertiary: '#50FA7B',
-  quadrenary: '#8BE9FD',
+  quaterenary: '#8BE9FD',
   warning: '#FFB86C',
   exception: '#FF5555',
   accent: '##F1FA8C'

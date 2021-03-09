@@ -4,7 +4,9 @@ module.exports = {
   ],
   env: {
     development: {
-      plugins: ['dynamic-import-node']
+      plugins: [
+        'dynamic-import-node'
+      ]
     }
   }
 };

@@ -40,12 +40,11 @@ module.exports = {
     ],
     resolve: {
       alias: {
-        '@pkg': resolveAbsolute('./package.json'),
+        '@pkg': resolveAbsolute('./package.json')
       }
     }
   },
   chainWebpack: (config) => {
-
     if (!isProd) config.plugins.delete('friendly-errors');
 
     config.plugin('html')
@@ -81,7 +80,7 @@ module.exports = {
       })
       .end();
 
-    /* Webpack SplitChunks Plugin (built-in) Configurations */
+    /* Webpack SplitChunks Configurations */
     config.optimization.splitChunks({
       chunks: 'all',
       cacheGroups: {

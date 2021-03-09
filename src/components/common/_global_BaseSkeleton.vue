@@ -1,11 +1,3 @@
-<template>
-  <v-skeleton-loader
-    :loading="true"
-    class="px-3"
-    :type="config.join(', ')"
-  />
-</template>
-
 <script>
 export default {
   name: 'BaseSkeleton',
@@ -17,3 +9,11 @@ export default {
   }
 };
 </script>
+
+<template>
+  <v-skeleton-loader
+    :loading="true"
+    class="px-3"
+    :type="config.join(', ')"
+  />
+</template>

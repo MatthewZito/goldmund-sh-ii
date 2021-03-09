@@ -1,9 +1,3 @@
-<template>
-  <div v-if="open">
-    <slot />
-  </div>
-</template>
-
 <script>
 function injectStylesheet (src, target) {
   Array.from(src.styleSheets).forEach(conf => {
@@ -71,3 +65,9 @@ export default {
   }
 };
 </script>
+
+<template>
+  <div v-if="open">
+    <slot />
+  </div>
+</template>

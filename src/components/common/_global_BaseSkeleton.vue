@@ -13,7 +13,7 @@ export default {
 <template>
   <v-skeleton-loader
     :loading="true"
-    class="px-3"
     :type="config.join(', ')"
+    v-bind="$attrs"
   />
 </template>

@@ -1,6 +1,11 @@
 <template>
-  <v-footer app fixed inset class="primary">
-    <span class="ml-2 white--text">
+  <v-footer
+    app
+    fixed
+    inset
+    class="secondary"
+  >
+    <span class="ml-2 black--text">
       {{ appAuthor }} &copy; {{ copyright }}
     </span>
   </v-footer>

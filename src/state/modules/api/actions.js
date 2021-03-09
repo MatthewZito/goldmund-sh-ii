@@ -1,10 +1,15 @@
-export const cancelPendingRequests = (context) => {
-  // cancel all requests on which a cancel token exists
-  context.state.cancelTokens.forEach((request) => {
-    if (request.cancel) {
-      request.cancel();
-    }
+export const cancelPendingRequests = ({ state, dispatch }) => {
+  state.cancelTokens.forEach((request) => {
+    if (request.cancel) request.cancel();
   });
-  // reset cancel token cache
-  context.commit('purgeCancelTokens');
+
+  dispatch('purgeCancelTokens');
+};
+
+export const addCancelToken = ({ commit }, token) => {
+  commit('addCancelToken', token);
+};
+
+export const purgeCancelTokens = ({ commit }) => {
+  commit('purgeCancelTokens');
 };

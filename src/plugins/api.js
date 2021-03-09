@@ -1,13 +1,11 @@
 import {
-  authApi as auth
+  entriesApi as entries
 } from '@/services/api';
 
-const apiServicePlugin = {
+export default  {
   install (Vue) {
     Vue.prototype.$api = {
-      auth
+      entries
     };
   }
 };
-
-export default apiServicePlugin;

@@ -9,9 +9,9 @@ export default {
       default: ''
     },
     tags: {
-      type: Object,
+      type: Array,
       required: false,
-      default: () => ({})
+      default: () => ([])
     },
     title: {
       type: String,
@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     hasTags () {
-      return Object.keys(this.tags).length;
+      return this.tags && this.tags.length;
     }
   }
 };
@@ -33,22 +33,23 @@ export default {
 <template>
   <v-flex>
     <v-card
-      class="mx-auto"
+      class="mx-auto mb-6"
       v-bind="$attrs"
       v-on="$listeners"
+      flat
+      tile
+      outlined
     >
       <v-img
         :src="img"
       />
 
-      <v-card-title>
+      <v-card-title class="black--text">
         {{ title }}
       </v-card-title>
 
-      <v-card-text>
-        <div>
-          {{ subtitle }}
-        </div>
+      <v-card-text class="black--text">
+        {{ subtitle }}
       </v-card-text>
 
       <v-divider
@@ -62,8 +63,9 @@ export default {
           column
         >
           <v-chip
-            v-for="({ text }, idx) in tags"
+            v-for="(text, idx) in tags"
             :key="idx"
+            color="quaterenary"
           >
             {{ text }}
           </v-chip>

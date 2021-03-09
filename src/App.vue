@@ -3,13 +3,15 @@
 import MainFooter from '@/components/layout/MainFooter.vue';
 import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
 import MainToolbar from '@/components/layout/MainToolbar.vue';
+import MainDrawer from '@/components/layout/MainDrawer.vue';
 
 export default {
   name: 'App',
   components: {
     MainFooter,
     MainToolbar,
-    MainCacheWrapper
+    MainCacheWrapper,
+    MainDrawer
   },
   data: () => ({
     isLoading: false
@@ -27,3 +29,9 @@ export default {
     </v-main>
   </v-app>
 </template>
+
+<style lang="scss">
+  .v-application {
+    background: var(--v-foreground-base) !important;
+  }
+</style>

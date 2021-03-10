@@ -24,14 +24,15 @@ main() {
     panic $E_BADARG "Invalid port number: $port"
   fi
 
-  pid=$(get_pid port)
+  pid=$(get_pid $port)
 
   if [[ -z "$pid" ]]; then
     echo "[*] Port not in use"
     exit 0
   fi
 
-  kill $pid 2>/dev/null || {
+  kill $pid 2>/dev/null &&
+  echo "[+] Process terminated" || {
     echo "[*] Process is a winport; executing taskkill..."
     eval "taskkill //PID $pid //F" 
   }

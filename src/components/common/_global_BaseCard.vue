@@ -22,6 +22,7 @@ export default {
       required: true
     }
   },
+  data: () => ({ hover: false }),
   computed: {
     hasTags () {
       return this.tags && this.tags.length;
@@ -32,46 +33,48 @@ export default {
 
 <template>
   <v-flex>
-    <v-card
-      class="mx-auto mb-6"
-      v-bind="$attrs"
-      v-on="$listeners"
-      flat
-      tile
-      outlined
-    >
-      <v-img
-        :src="img"
-      />
+    <v-hover v-slot:default="{ hover }">
+      <v-card
+        class="mx-auto mb-6"
+        flat
+        tile
+        outlined
+        :elevation="hover ? 8 : 2"
+        v-bind="$attrs"
+        v-on="$listeners"
+      >
+        <v-img
+          :src="img"
+        />
 
-      <v-card-title class="black--text">
-        {{ title }}
-      </v-card-title>
+        <v-card-title class="black--text">
+          {{ title }}
+        </v-card-title>
 
-      <v-card-text class="black--text">
-        {{ subtitle }}
-      </v-card-text>
+        <v-card-text class="black--text">
+          {{ subtitle }}
+        </v-card-text>
 
-      <v-divider
-        v-if="hasTags"
-        class="mx-4"
-      />
+        <v-divider
+          v-if="hasTags"
+          class="mx-4"
+        />
 
-      <v-card-text v-if="hasTags">
-        <v-chip-group
-          active-class="tertiary white--text"
-          column
-        >
-          <v-chip
-            v-for="(text, idx) in tags"
-            :key="idx"
-            color="quaterenary"
+        <v-card-text v-if="hasTags">
+          <v-chip-group
+            active-class="tertiary white--text"
+            column
           >
-            {{ text }}
-          </v-chip>
-        </v-chip-group>
-      </v-card-text>
-
-    </v-card>
+            <v-chip
+              v-for="(text, idx) in tags"
+              :key="idx"
+              color="quaterenary"
+            >
+              {{ text }}
+            </v-chip>
+          </v-chip-group>
+        </v-card-text>
+      </v-card>
+    </v-hover>
   </v-flex>
 </template>

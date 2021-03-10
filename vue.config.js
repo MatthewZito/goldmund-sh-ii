@@ -45,7 +45,6 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
-    if (!isProd) config.plugins.delete('friendly-errors');
 
     config.plugin('html')
       .tap((args) => {

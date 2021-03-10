@@ -12,19 +12,22 @@
             color="transparent"
             flat
           >
-            <h1 class="display-1 ml-4">
+            <h1 class="display-1">
               Page not found
             </h1>
-            <v-card-subtitle>
+            <v-card-subtitle class="pl-0">
               Unfortunately, this page does not exist
             </v-card-subtitle>
-            <v-card-text>
-              Please ensure that the URL you entered is correct,<br />
-               or click the button below to return to the landing page
-            </v-card-text>
-            <v-card-actions>
-              <BaseButton to="/" type="save" class="ml-2">
-                Home
+             <v-img
+              src="@/assets/sadmac.jpeg"
+            />
+
+            <v-card-actions class="pl-0">
+              <BaseButton
+                to="/"
+                type="submit"
+              >
+                Back
               </BaseButton>
             </v-card-actions>
           </v-card>

@@ -29,7 +29,7 @@ export default {
       return 'quaterenary';
     },
     textColor () {
-      return this.type === 'action' ? 'black--text' : this.type === 'submit' ? 'white--text' : '';
+      return this.type === 'action' ? 'white--text' : this.type === 'submit' ? 'black--text' : '';
     },
     placement () {
       return Object.keys(this.$attrs)

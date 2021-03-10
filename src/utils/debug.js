@@ -17,7 +17,7 @@ const peek = (function () {
         console.groupEnd();
       });
     } else {
-      Object.entries(data)
+      Object.articles(data)
         .forEach(([key, value]) => {
           console.groupCollapsed(`%c PEEK ITEM #${count}: ${key.toUpperCase()}`, printf);
           console.table({ [key]: value });

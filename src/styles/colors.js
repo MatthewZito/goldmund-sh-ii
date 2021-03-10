@@ -10,5 +10,5 @@ export default {
   quaterenary: '#8BE9FD',
   warning: '#FFB86C',
   exception: '#FF5555',
-  accent1: '##F1FA8C'
+  accent1: '#F1FA8C'
 };

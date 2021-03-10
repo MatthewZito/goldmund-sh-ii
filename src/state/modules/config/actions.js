@@ -1,7 +1,7 @@
 /**
  * @description Toggle the nav drawer state via negation
  */
- export const toggleNavDrawer = ({ commit }) => {
+export const toggleNavDrawer = ({ commit }) => {
   commit('toggleNavDrawer');
 };
 

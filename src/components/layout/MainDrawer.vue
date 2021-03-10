@@ -20,8 +20,8 @@ export default {
     topLevelRoutes () {
       return generateRoutingTable(sidebarRoutesFilter, routes);
     },
-    toggledIconPlacement () {
-      return this.isNavDrawerClosed ? '' : { position: 'absolute', right: '0' };
+    toggledIconStyle () {
+      return [this.$style.drawer_icon, (!this.isNavDrawerClosed && this.$style.drawer_icon__open)];
     },
     isNavDrawerOpen: {
       get () {
@@ -50,10 +50,11 @@ export default {
     disable-resize-watcher
     :mini-variant.sync="isNavDrawerOpen"
     class="quaterenary"
+    width="300"
   >
     <v-list-item class="px-2">
       <v-btn
-        :style="toggledIconPlacement"
+        :class="toggledIconStyle"
         icon
         @click.stop="toggleNavDrawer"
       >
@@ -65,3 +66,14 @@ export default {
     <MainDrawerItems :routes="topLevelRoutes" />
   </v-navigation-drawer>
 </template>
+
+<style module>
+  .drawer_icon__open {
+    position: absolute;
+    right: 0;
+    padding-right: 25px;
+  }
+  .drawer_icon {
+    padding-left: 5px;
+  }
+</style>

@@ -1,13 +1,22 @@
-import normalize from "../normalizers";
+import { objNotEmpty } from '@/utils';
+import normalize from '../normalizers';
+
+const data = null;
+const ok = false;
 
 export default function (error) {
-  if (error.response && error.response.status === 401) {
+  if (!objNotEmpty(error.response)) {
     return normalize({
-      error: 'Invalid permissions',
-      status: error.response.status
+      ok,
+      status: 499,
+      error: 'Request cancelled',
+      data
     });
   }
   return normalize({
-    status: error.response?.status || 400
+    ok,
+    status: error.response.status,
+    error: error.response?.data?.message || 'An error occurred while processing the request',
+    data
   });
 }

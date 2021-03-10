@@ -19,11 +19,7 @@ export default {
       return route.children && route.children.length > 0;
     },
     resolvePath (path) {
-      if (path === 'tab-nav-routes') path = 'tab-nav-routes/general'; // stupid manual overwrite to route to first tab in routed tabs example; ignore this
       return resolve(this.basePath, path);
-    },
-    shouldBeDense (route) {
-      return route.name !== 'Home' && !this.isNested(route);
     }
   }
 };
@@ -41,14 +37,26 @@ export default {
     <div v-for="(route, idx) in routes" :key="idx">
       <v-list-item
         v-if="!isNested(route)"
-        :dense="shouldBeDense(route)"
+        :dense="isNested(route)"
         :to="resolvePath(route.path)" ripple="ripple"
       >
-        <v-list-item-icon class="layout-drawer__icon">
-          <v-icon v-if="route.meta.icon">
-            {{ route.meta.icon }}
-          </v-icon>
-        </v-list-item-icon>
+        <v-tooltip right>
+          <template v-slot:activator="{on}">
+            <div
+              class="d-inline-block"
+              v-on="on"
+            >
+              <v-list-item-icon class="layout-drawer__icon">
+                <v-icon v-if="route.meta.icon">
+                  {{ route.meta.icon }}
+                </v-icon>
+              </v-list-item-icon>
+            </div>
+          </template>
+          <span>
+            {{ route.meta.label }}
+          </span>
+        </v-tooltip>
 
         <v-list-item-content>
           <v-list-item-title>

@@ -1,11 +1,11 @@
 import {
-  entriesApi as entries
+  articlesApi as articles
 } from '@/services/api';
 
-export default  {
+export default {
   install (Vue) {
     Vue.prototype.$api = {
-      entries
+      articles
     };
   }
 };

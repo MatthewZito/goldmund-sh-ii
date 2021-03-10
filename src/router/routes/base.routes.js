@@ -1,14 +1,33 @@
 export default [
   {
     path: '/',
-    name: 'Home',
+    name: 'Landing',
     component: () => import('@/views/Landing.vue'),
     meta: {
-      authRequired: true,
       cache: true,
       sidebar: true,
-      label: 'Home',
+      label: 'Main',
       icon: 'mdi-home'
     }
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: () => import('@/views/Blog.vue'),
+    meta: {
+      cache: true,
+      sidebar: true,
+      label: 'Blog',
+      icon: 'mdi-view-dashboard'
+    },
+    children: [{
+      path: ':slug',
+      name: 'Article',
+      component: () => import('@/views/Blog.vue'),
+      meta: {
+        cache: true,
+        sidebar: false
+      },
+    }]
   }
 ];

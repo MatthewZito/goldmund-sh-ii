@@ -13,7 +13,7 @@ export default {
     ...mapGetters([
       'pendingNotifications',
       'hasPendingNotifications'
-    ]),
+    ])
   },
   methods: {
     ...mapActions(['resolveNotification']),
@@ -27,7 +27,7 @@ export default {
 <template>
   <div>
     <transition-group
-      :name="$style.notif"
+      name="notif"
       mode="out-in"
     >
       <span
@@ -46,7 +46,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss" module>
+<style lang="scss" scoped>
 .notif-leave-active,
 .notif-enter-active {
   transition: all .75s;

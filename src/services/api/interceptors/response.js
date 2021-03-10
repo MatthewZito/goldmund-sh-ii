@@ -1,23 +1,20 @@
 import normalize from '../normalizers';
 
 export default function (response) {
-  if (rsOk(response)) {
+  if (isErroneous(response)) {
     return normalize({
-      ok: true,
       status: response.status,
-      data: response.data
+      error: response?.data?.message,
     });
   }
   return normalize({
-    ok: false,
+    ok: true,
     status: response.status,
-    data: null,
-    error: response?.data?.message || 'An error occurred while processing the request',
+    data: response.data,
+    error: null
   });
 }
 
-function rsOk ({ status }) {
-  return status === 200 ||
-    status === 201 ||
-    status === 204;
+function isErroneous ({ status }) {
+  return status && !(status < 300 && status >= 200);
 }

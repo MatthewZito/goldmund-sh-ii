@@ -14,5 +14,9 @@ const client = new HttpClient()
 export default {
   fetchAll (cb) {
     return client.get({ url: '/entries' }, cb);
+  },
+
+  fetchOne (slug, cb) {
+    return client.get({ url: `/entries?slug=${slug}` }, cb);
   }
 };

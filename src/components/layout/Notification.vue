@@ -48,4 +48,3 @@ export default {
     </v-row>
   </v-snackbar>
 </template>
-

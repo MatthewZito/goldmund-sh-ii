@@ -69,7 +69,6 @@ function objNotEmptyDeep (candidate) {
   return false;
 }
 
-// all of these are exported from @/utils, so no need to add anywhere else other than here
 export {
   is,
   isFunction,

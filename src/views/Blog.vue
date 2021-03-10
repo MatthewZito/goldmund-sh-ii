@@ -1,9 +1,15 @@
 <script>
 import { mapActions } from 'vuex';
 
-import { objNotEmpty } from '@/utils';
-
 import MainMasonryGrid from '@/components/layout/MainMasonryGrid';
+
+/* Local Helpers */
+function generateSkel (arr) {
+  for (let i = 0; i < 20; i++) {
+    arr[i] = { width: '320px' };
+  }
+  return arr;
+}
 
 export default {
   name: 'Blog',
@@ -11,7 +17,7 @@ export default {
     MainMasonryGrid
   },
   data: () => ({
-    articles: null,
+    articles: [],
     skeletonArticles: generateSkel([])
   }),
   computed: {
@@ -26,40 +32,35 @@ export default {
     this.isLoading = false;
   },
   methods: {
-    ...mapActions('notifications', ['addNotification']),
+    ...mapActions('notifications', [
+      'addNotification'
+    ]),
+
     async fetchArticles () {
-      await this.$api.articles.fetchAll(this.resolveFetchArticles);
+      await this.$api.articles.fetchAll(
+        ({ ok, data, error }) => {
+          if (!ok || !data.length) {
+            this.addNotification({
+              type: 'error',
+              message: error
+            });
+          } else this.articles = data;
+        });
     },
     launchArticle (slug) {
-      this.$router.push({ path: `/blog/${slug}` });
-    },
-
-    resolveFetchArticles ({ ok, data }) {
-      if (!ok || objNotEmpty(data)) {
-        this.addNotification({
-          type: 'error',
-          message: 'An error occurred while processing your request'
-        });
-        return;
-      }
-      this.articles = data;
+      this.$router.push({
+        name: 'Article',
+        params: { slug }
+      });
     }
   }
 };
-
-/* Local Helpers */
-function generateSkel (arr) {
-  for (let i = 0; i < 20; i++) {
-    arr[i] = { width: '320px' };
-  }
-  return arr;
-}
 </script>
 
 <template>
   <v-container
     class="container--fluid"
-    style="max-width: 1205px; position:relative"
+    style="max-width: 1405px; position:relative"
   >
     <MainMasonryGrid
       class="pa-4"
@@ -68,14 +69,21 @@ function generateSkel (arr) {
     >
       <template v-if="articlesExtant">
         <BaseCard
-          v-for="({ title, subtitle, imgSrc, tags, slug }, idx) in articles"
+          v-for="({
+            title,
+            subtitle,
+            imgSrc,
+            tags,
+            slug,
+            content
+          }, idx) in articles"
           :key="idx"
           :title="title"
           :subtitle="subtitle"
           :tags="tags"
           :img="imgSrc"
           color="accent1 lighten-2"
-          @click="launchArticle(slug)"
+          @click="launchArticle(slug, content)"
       />
       </template>
 

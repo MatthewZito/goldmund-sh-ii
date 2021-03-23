@@ -33,11 +33,11 @@ export default {
     async fetchArticle () {
       await this.$api.articles.fetchOne(
         this.$route.params.slug,
-        ({ ok, data, error }) => {
+        ({ ok, data, error: message }) => {
           if (!ok || !objNotEmpty(data)) {
             this.addNotification({
               type: 'error',
-              message: error
+              message
             });
           } else this.article = data;
         });

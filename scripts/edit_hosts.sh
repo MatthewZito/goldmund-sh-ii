@@ -19,7 +19,7 @@ HOSTS_FILE="/etc/hosts"
 DEFAULT_IP="127.0.0.1"
 IP=${3:-$DEFAULT_IP}
 
-usage() {
+usage () {
   cat <<EOF
 Add or remove a given line from /etc/hosts. Must be run as root.
 

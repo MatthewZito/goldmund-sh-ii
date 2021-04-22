@@ -1,79 +1,30 @@
 <script>
-/* Nav Sidebar */
-import { generateRoutingTable, sidebarRoutesFilter } from '@/utils';
-import routes from '@/router/routes';
-import MainDrawerItems from './MainDrawerItems.vue';
-
-import { createNamespacedHelpers } from 'vuex';
-const { mapGetters, mapActions } = createNamespacedHelpers('config');
-
 export default {
-  name: 'MainDrawer',
-  components: {
-    MainDrawerItems
-  },
-  computed: {
-    ...mapGetters([
-      'isNavDrawerClosed',
-      'appName'
-    ]),
-    topLevelRoutes () {
-      return generateRoutingTable(sidebarRoutesFilter, routes);
-    },
-    toggledIconStyle () {
-      return [this.$style.drawer_icon, (!this.isNavDrawerClosed && this.$style.drawer_icon__open)];
-    },
-    isNavDrawerOpen: {
-      get () {
-        return this.isNavDrawerClosed;
-      },
-      set () {
-        return; // eslint-disable-line no-useless-return
-      }
-    }
-  },
-  methods: {
-    ...mapActions(['toggleNavDrawer', 'setNavDrawer']),
-    closeNavDrawer () {
-      this.setNavDrawer(false);
-    }
-  }
+  name: 'MainDrawer'
 };
-</script>
+</script> lines (47 sloc)  1.3 KB
 
 <template>
-  <v-navigation-drawer
-    v-click-outside="closeNavDrawer"
-    app
-    permanent
-    disable-route-watcher
-    disable-resize-watcher
-    :mini-variant.sync="isNavDrawerOpen"
-    class="quaterenary"
-    width="300"
+  <q-drawer
+    persistent
+    no-swipe-close
+    behavior="desktop"
+    :value="true"
   >
-    <v-list-item class="px-2">
-      <v-btn
-        :class="toggledIconStyle"
-        icon
-        @click.stop="toggleNavDrawer"
-      >
-        <img src="@/assets/main-logo.svg" />
-      </v-btn>
-    </v-list-item>
+    <q-list>
+      <q-item-label header>Essential Links</q-item-label>
+      <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
+        <q-item-section>
+          here
+        </q-item-section>
 
-    <v-divider />
-    <MainDrawerItems :routes="topLevelRoutes" />
-  </v-navigation-drawer>
+      </q-item>
+      <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
+        <q-item-section>
+          here 2
+        </q-item-section>
+      </q-item>
+    </q-list>
+
+  </q-drawer>
 </template>
-
-<style module>
-  .drawer_icon__open {
-    position: absolute;
-    right: 0;
-    padding-right: 25px;
-  }
-  .drawer_icon {
-    padding-left: 5px;
-  }
-</style>

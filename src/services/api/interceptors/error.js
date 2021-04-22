@@ -10,6 +10,6 @@ export default function (error) {
   }
   return normalize({
     status: error.response.status,
-    error: error.response?.data?.message,
+    error: error.response?.data?.message
   });
 }

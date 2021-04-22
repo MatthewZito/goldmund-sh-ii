@@ -47,48 +47,8 @@ export default {
 </script>
 
 <template>
-  <v-container
-    class="py-12"
-    :class="$style.code_block__container"
-  >
-    <v-row
-      align="center"
-      justify="center"
-    >
-        <v-card
-          v-if="!isLoading"
-          width="80%"
-          align="center"
-          tile
-          flat
-        >
-          <code :class="$style.code_block">
-            <div v-html="article.sanitized" />
-            <div :class="$style.code_block__footer">
-              {{ dateFooter }}
-            </div>
-          </code>
-        </v-card>
-    </v-row>
-  </v-container>
+<div />
 </template>
 
 <style lang="scss" module>
-.code_block {
-  padding: 10px;
-  display: block;
-  white-space: pre;
-  height: 80vh;
-}
-
-.code_block__footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding-bottom: 10px;
-}
-
-.code_block__container {
-  max-width:1205px;
-}
 </style>

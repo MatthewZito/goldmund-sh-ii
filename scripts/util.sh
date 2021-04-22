@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-current_time() {
+current_time () {
   echo $(date +'%Y-%m-%dT%H:%M:%S%z')
 }
 
-panic() {
+panic () {
   local exit_status=$1
 
   shift # pop exit status; we don't want to print it

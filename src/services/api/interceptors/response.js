@@ -4,7 +4,7 @@ export default function (response) {
   if (isErroneous(response)) {
     return normalize({
       status: response.status,
-      error: response?.data?.message,
+      error: response?.data?.message
     });
   }
   return normalize({

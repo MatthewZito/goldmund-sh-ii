@@ -26,8 +26,14 @@ module.exports = {
   outputDir: 'dist',
   lintOnSave: !isProd,
   productionSourceMap: false,
+  pluginOptions: {
+    quasar: {
+      importStrategy: 'kebab',
+      rtlSupport: false
+    }
+  },
   transpileDependencies: [
-    'vuetify'
+    'quasar'
   ],
   configureWebpack: {
     optimization: {
@@ -95,10 +101,10 @@ module.exports = {
           chunks: 'all'
         },
 
-        /* Chunk Vuetify */
-        vuetify: {
-          name: 'chunk-vuetify',
-          test: /[\\/]node_modules[\\/]_?vuetify(.*)/,
+        /* Chunk Quasar */
+        quasar: {
+          name: 'chunk-quasar',
+          test: /[\\/]node_modules[\\/]_?quasar(.*)/,
           priority: 20
         },
 

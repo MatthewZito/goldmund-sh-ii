@@ -1,14 +1,3 @@
-<template>
-  <transition
-    :name="rootTransition"
-    mode="out-in"
-  >
-    <keep-alive :include="getCachedViews">
-      <router-view :key="viewKey" />
-    </keep-alive>
-  </transition>
-</template>
-
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapActions, mapGetters } = createNamespacedHelpers('config');
@@ -41,3 +30,16 @@ export default {
   }
 };
 </script>
+
+<template>
+  <q-page-container>
+    <transition
+      :name="rootTransition"
+      mode="out-in"
+    >
+      <keep-alive :include="getCachedViews">
+        <router-view :key="viewKey" />
+      </keep-alive>
+    </transition>
+  </q-page-container>
+</template>

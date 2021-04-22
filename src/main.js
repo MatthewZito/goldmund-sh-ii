@@ -5,7 +5,7 @@ import router from '@/router';
 import store from '@/state';
 
 /* Core CSS */
-import vuetify from './plugins/vuetify';
+import './plugins/quasar';
 import './styles/index.scss';
 
 /* Local Plugins */
@@ -55,7 +55,6 @@ Vue.config.warnHandler = function (msg, vm, trace) {
  *************************************/
 
 const vm = new Vue({
-  vuetify,
   router,
   store,
   render: h => h(App)

@@ -5,7 +5,6 @@ import router from '@/router';
 import store from '@/state';
 
 /* Core CSS */
-import './plugins/quasar';
 import './styles/index.scss';
 
 /* Local Plugins */

@@ -26,15 +26,6 @@ module.exports = {
   outputDir: 'dist',
   lintOnSave: !isProd,
   productionSourceMap: false,
-  pluginOptions: {
-    quasar: {
-      importStrategy: 'kebab',
-      rtlSupport: false
-    }
-  },
-  transpileDependencies: [
-    'quasar'
-  ],
   configureWebpack: {
     optimization: {
       minimize: isProd
@@ -99,13 +90,6 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           priority: 10,
           chunks: 'all'
-        },
-
-        /* Chunk Quasar */
-        quasar: {
-          name: 'chunk-quasar',
-          test: /[\\/]node_modules[\\/]_?quasar(.*)/,
-          priority: 20
         },
 
         /* Chunk Components */

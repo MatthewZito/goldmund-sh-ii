@@ -1,30 +1,61 @@
 <script>
+import MainFooter from './MainFooter.vue';
+
 export default {
-  name: 'MainDrawer'
+  name: 'MainDrawer',
+  components: {
+    MainFooter
+  }
 };
-</script> lines (47 sloc)  1.3 KB
+</script>
 
 <template>
-  <q-drawer
-    persistent
-    no-swipe-close
-    behavior="desktop"
-    :value="true"
-  >
-    <q-list>
-      <q-item-label header>Essential Links</q-item-label>
-      <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
-        <q-item-section>
-          here
-        </q-item-section>
-
-      </q-item>
-      <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
-        <q-item-section>
-          here 2
-        </q-item-section>
-      </q-item>
-    </q-list>
-
-  </q-drawer>
+  <div>
+    <div class="navbar navbar-default visible-xs">
+      <button aria-label="toggle menu" type="button">
+        <span class="sr-only">
+          Toggle navigation
+        </span>
+        <span class="icon-bar" />
+        <span class="icon-bar" />
+        <span class="icon-bar" />
+      </button>
+      <a class="navbar-brand">
+        ./goldmund.sh
+      </a>
+    </div>
+    <div>
+      <nav class="sidebar open">
+        <div class="navbar-collapse" id="navbar-collapse">
+          <div class="site-header hidden-xs">
+              <a class="site-brand">
+                <img class="img-responsive site-logo" alt="site logo" src="@/assets/main-logo.svg" />
+                $ pwd
+              </a>
+              <p style="color:#555;">
+                An archive of visual and literary media
+              </p>
+          </div>
+          <ul class="nav">
+            <li>
+              <a class="active">
+                Vestibule
+              </a>
+              </li>
+            <li>
+              <a>
+                Info
+              </a>
+              </li>
+            <li>
+              <a>
+                Comms
+              </a>
+            </li>
+          </ul>
+          <MainFooter />
+        </div>
+      </nav>
+    </div>
+  </div>
 </template>

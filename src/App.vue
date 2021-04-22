@@ -1,12 +1,10 @@
 <script>
 import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
-import MainToolbar from '@/components/layout/MainToolbar.vue';
 import MainDrawer from '@/components/layout/MainDrawer.vue';
 
 export default {
   name: 'App',
   components: {
-    MainToolbar,
     MainCacheWrapper,
     MainDrawer
   },
@@ -17,12 +15,21 @@ export default {
 </script>
 
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <MainDrawer v-if="$route.name !== 'NotFound'" />
-    <MainToolbar v-if="$route.name !== 'NotFound'" />
-    <MainCacheWrapper />
-  </q-layout>
+<div>
+  <MainDrawer v-if="$route.name !== 'NotFound'" />
+  <main id="main-collapse">
+    <div class="hero-full-wrapper">
+      <div class="grid" >
+        <div class="gutter-sizer" />
+        <div class="grid-sizer" />
+        <MainCacheWrapper />
+      </div>
+    </div>
+  </main>
+</div>
+
 </template>
 
 <style lang="scss">
+@import './styles/main.min.css';
 </style>

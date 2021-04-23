@@ -17,7 +17,7 @@ export default {
           <div class="row">
             <div class="col-md-6">
               <p>
-                Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and even encouraged.
+                Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
                 To this end, find below my self-signed GPG public key and accompanying fingerprint for validation.
               </p>
               <div class="form-group">

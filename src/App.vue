@@ -26,4 +26,19 @@ export default {
 
 <style lang="scss">
 @import './styles/main.min.css';
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.row:after,
+.row:before {
+  content: " ";
+  display: table;
+}
+
+.row:after {
+  clear: both;
+}
 </style>

@@ -61,7 +61,7 @@ JEfIEYA9BrzI/jp1
 <template>
   <pre
     id="pub-key"
-    style="width:minContent;wordBreaknormal;"
+    style="width:min-content;wordBreak:normal;"
   >
     {{ publickKey }}
   </pre>

@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="form__right form__offset form__left">
       <img
         class="img-responsive"
         style="marginTop:30px;"
@@ -16,8 +16,26 @@ export default {
       <p>
         Goldmund.sh author and administrator
       </p>
-
+    </div>
+    <div class="form__right form__offset form__left">
       <hr />
+      <p>
+        Welcome to Goldmund.sh. This website is an entrypoint to an experimental web application that was designed to inquiry
+        the nature of automation as it pertains to user-curated content. My name is +goldmund; I am an artist and computer scientist. I admire greatly elegant
+        system architectures; whether such architectures comprise software or humans is of negligible consequence to what is a rather unbridled interest anyway.
+      </p>
+
+      <p>
+        As someone who inhabits a markedly obsessive-compulsive framework, I have&mdash;for the greater duration of my life&mdash;taken to archiving and documenting
+        the topological graph that is my meandering outputs. Even prior to my foray into computer science, I comprised at the age of 14 the aptly and eponymously named
+        "Lexicon", intended to be a corpus of my various efforts, and coordinated as a comprehensive archive across several mediums.
+      </p>
+
+      <p>
+        I have until now&mdash;some fifteen years subsequent&mdash;held archive of Lex via hand, an endeavor that has left me with copious 'loose leafs' and tattered journals
+        to which they once (presumably) belonged. Now, I have decided to better archive this media. So yes, in short, you're looking at a glorified blog. But this site is also so very much more than that...
+      </p>
+
       <div>
         <router-link
           to="/communications"
@@ -30,3 +48,23 @@ export default {
     </div>
   </div>
 </template>
+
+<style scoped>
+.form__offset {
+  position:relative;
+  min-height:1px;
+  padding-left:15px;
+  padding-right:15px;
+}
+
+.form__right {
+  width:100%;
+}
+
+@media (min-width:992px) {
+  .form__left {
+    float:left;
+    width: 50%;
+  }
+}
+</style>

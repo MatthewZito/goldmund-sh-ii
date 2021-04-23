@@ -15,6 +15,7 @@ import '@/components/common/_globalRegistrar';
 
 /* Settings */
 import { appName } from '../package.json';
+
 const logF = (...args) => process.env.NODE_ENV !== 'production' && console.log(`[${appName}]`, ...args); // eslint-disable-line no-console
 
 /************************************

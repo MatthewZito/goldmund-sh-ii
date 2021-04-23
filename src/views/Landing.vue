@@ -5,5 +5,11 @@ export default {
 </script>
 
 <template>
-  <div />
+  <div class="hero-full-wrapper">
+    <div class="grid">
+      <div class="gutter-sizer" />
+
+      <div class="grid-sizer" />
+    </div>
+  </div>
 </template>

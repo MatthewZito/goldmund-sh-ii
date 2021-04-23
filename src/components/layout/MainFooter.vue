@@ -1,6 +1,13 @@
 <script>
 export default {
-  name: 'MainFooter'
+  name: 'MainFooter',
+  data: () => ({
+    outboundConfig: Object.freeze([
+      { label: 'instagram', title: 'instagram link', href: 'https://www.instagram.com/magister_zito' },
+      { label: 'youtube', title: 'youtube link', href: 'https://www.youtube.com/user/fasolplanetarium/videos' },
+      { label: 'github', title: 'github link', href: 'https://github.com/MatthewZito' }
+    ])
+  })
 };
 </script>
 
@@ -8,41 +15,17 @@ export default {
   <nav class="nav-footer">
     <p class="nav-footer-social-buttons">
       <a
-        aria-label="instagram"
+        v-for="({ label, href, title, }, idx) in outboundConfig"
+        :key="idx"
+        :aria-label="label"
         rel="noreferrer"
         class="fa-icon"
         target="_blank"
-        href="https://www.instagram.com/magister_zito"
-        title="instagram link"
+        :href="href"
+        :title="title"
       >
         <i
-          class="fab fa-instagram"
-          aria-hidden="true"
-        />
-      </a>
-      <a
-        aria-label="youtube"
-        rel="noreferrer"
-        class="fa-icon"
-        target="_blank"
-        href="https://www.youtube.com/user/fasolplanetarium/videos"
-        title="youtube link"
-      >
-        <i
-          class="fab fa-youtube"
-          aria-hidden="true"
-        />
-      </a>
-      <a
-        aria-label="github"
-        rel="noreferrer"
-        class="fa-icon"
-        target="_blank"
-        href="https://github.com/MatthewZito"
-        title="github link"
-      >
-        <i
-          class="fab fa-github"
+          :class="`fab fa-${title}`"
           aria-hidden="true"
         />
       </a>

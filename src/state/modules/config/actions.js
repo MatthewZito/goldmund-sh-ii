@@ -6,14 +6,6 @@ export const toggleNavDrawer = ({ commit }) => {
 };
 
 /**
- * @description Explicitly set the nav drawer state
- * @param {boolean} bool The Boolean value to which the nav drawer state will be set
- */
-export const setNavDrawer = ({ commit }, bool) => {
-  commit('setNavDrawer', bool);
-};
-
-/**
  * @description Add Vue Router route object to cache list, to be used by keep-alive
  * @param {object} view The Vue Router object to be cached
  */

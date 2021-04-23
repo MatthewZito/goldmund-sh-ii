@@ -1,11 +1,11 @@
 import {
-  articlesApi as articles
+  blogApi as blog
 } from '@/services/api';
 
 export default {
   install (Vue) {
     Vue.prototype.$api = {
-      articles
+      blog
     };
   }
 };

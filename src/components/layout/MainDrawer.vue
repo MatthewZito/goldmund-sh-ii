@@ -14,7 +14,7 @@ export default {
       { path: '/info', label: 'Info' },
       { path: '/communications', label: 'Comms' }
     ]),
-    routeLabel: '--help'
+    routeLabel: 'pwd'
   }),
   computed: {
     ...mapGetters('config', [

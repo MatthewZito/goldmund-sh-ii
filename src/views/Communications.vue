@@ -6,16 +6,16 @@ export default {
 
 <template>
   <div class="row">
-    <div class="form__offset">
-      <div class="section-container-spacer">
+    <div class="main-form">
+      <div class="container__section-spacer">
         <h1>
           Communications
         </h1>
       </div>
-      <div class="section-container-spacer">
+      <div class="container__section-spacer">
         <form>
           <div class="row">
-            <div class="form__offset form__left">
+            <div class="main-form main-form__offset">
               <p>
                 Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
                 To this end, find below my self-signed GPG public key and accompanying fingerprint for validation.
@@ -67,10 +67,10 @@ export default {
             </div>
 
             <div
-              class="form__offset form__left"
+              class="main-form main-.main-form__offset"
               style="marginLeft:-15px"
             >
-              <ul class="list-unstyled">
+              <ul class="main-list__unstyled">
                 <li>
                   <span class="fa-icon">
                     <i
@@ -102,16 +102,12 @@ export default {
 </template>
 
 <style scoped>
-.section-container-spacer{
-  margin-bottom: 30px;
-}
-
-.list-unstyled {
+.main-list__unstyled {
   padding-left: 0;
   list-style: none;
 }
 
-.form__offset {
+.main-form {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -119,7 +115,7 @@ export default {
 }
 
 @media (min-width: 992px) {
-  .form__left {
+  .main-form__offset {
     float: left;
     width: 50%;
   }

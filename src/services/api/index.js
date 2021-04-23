@@ -1,5 +1,5 @@
-import articlesApi from './clients/articles.api';
+import blogApi from './clients/blog.api';
 
 export {
-  articlesApi
+  blogApi
 };

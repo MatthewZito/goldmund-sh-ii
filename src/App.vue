@@ -41,4 +41,14 @@ export default {
 .row:after {
   clear: both;
 }
+
+.btn:focus,
+.btn:focus:active {
+  outline: none;
+}
+
+.container__section-spacer {
+  margin-bottom: 30px;
+}
+
 </style>

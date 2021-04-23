@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="row">
-    <div class="form__right form__offset form__left">
+    <div class="col-main col-main__offset col-main__right">
       <img
         class="img-responsive"
         style="marginTop:30px;"
@@ -17,7 +17,7 @@ export default {
         Goldmund.sh author and administrator
       </p>
     </div>
-    <div class="form__right form__offset form__left">
+    <div class="col-main col-main__offset col-main__right">
       <hr />
       <p>
         Welcome to Goldmund.sh. This website is an entrypoint to an experimental web application that was designed to inquiry
@@ -39,10 +39,14 @@ export default {
       <div>
         <router-link
           to="/communications"
-          tag="button"
-          class="btn btn-primary"
+           v-slot="{ navigate }"
         >
-          Communicate
+          <button
+            class="btn btn-primary"
+            @click="navigate"
+          >
+            Communicate
+          </button>
         </router-link>
       </div>
     </div>
@@ -50,20 +54,20 @@ export default {
 </template>
 
 <style scoped>
-.form__offset {
-  position:relative;
-  min-height:1px;
-  padding-left:15px;
-  padding-right:15px;
+.col-main {
+  width: 100%;
 }
 
-.form__right {
-  width:100%;
+.col-main__offset {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-@media (min-width:992px) {
-  .form__left {
-    float:left;
+@media (min-width: 992px) {
+  .col-main__right {
+    float: left;
     width: 50%;
   }
 }

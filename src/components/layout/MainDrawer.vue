@@ -74,11 +74,15 @@ export default {
               <img
                 class="img-responsive site-logo"
                 alt="site logo"
-                src="@/assets/main-logo.svg"
+                src="@/assets/images/main-logo.svg"
               />
               $ {{ routeLabel }}
             </router-link>
-            <p style="color:#555;">
+            <!-- TODO retain box-sizing, hide text -->
+            <p
+              v-if="$route.name === 'Landing'"
+              style="color:#555;"
+            >
               An archive of musings
             </p>
           </div>

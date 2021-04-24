@@ -1,4 +1,5 @@
-import { objNotEmpty } from '@/utils';
+import { objNotEmpty } from 'js-heuristics';
+
 import normalize from '../normalizers';
 
 export default function (error) {

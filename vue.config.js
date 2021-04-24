@@ -24,8 +24,16 @@ module.exports = {
     // proxy: {}
   },
   outputDir: 'dist',
+  assetsDir: 'assets',
   lintOnSave: !isProd,
   productionSourceMap: false,
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import '@/styles/index.scss';`,
+      }
+    }
+  },
   configureWebpack: {
     optimization: {
       minimize: isProd
@@ -70,10 +78,19 @@ module.exports = {
       .loader('file-loader')
       .tap(options => {
         options = {
-          name: 'fonts/[contenthash].[ext]'
+          limit: 10000
         };
         return options;
       })
+      .end();
+
+    config.module
+      .rule('images')
+      .use('url-loader')
+      .loader('url-loader')
+      .tap(options => Object.assign(options, {
+        limit: 10240
+      }))
       .end();
 
     /* Webpack SplitChunks Configurations */

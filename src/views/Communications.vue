@@ -7,12 +7,12 @@ export default {
 <template>
   <div class="row">
     <div class="main-form">
-      <div class="container__section-spacer">
+      <div class="container-section__spacer">
         <h1>
           Communications
         </h1>
       </div>
-      <div class="container__section-spacer">
+      <div class="container-section__spacer">
         <form>
           <div class="row">
             <div class="main-form main-form__offset">

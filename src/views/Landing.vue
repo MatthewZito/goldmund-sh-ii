@@ -1,49 +1,59 @@
 <script>
-import Masonry from 'masonry-layout';
 import { not, isArray } from 'js-heuristics';
 
-import BlogPostThumbnail from '@/components/BlogPostThumbnail.vue';
+import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 
 export default {
   name: 'Landing',
   components: {
-    BlogPostThumbnail
+    BlogPostCard
   },
   data: () => ({
     posts: []
   }),
   mounted () {
-    this.fetchPosts()
-      .then(() => {
-        new Masonry(document.querySelector('.grid'), {
-          columnWidth: '.grid-sizer',
-          itemSelector: '.grid-item',
-          gutter: '.gutter-sizer'
-        }).layout();
-      });
+    this.fetchPosts();
   },
   methods: {
     async fetchPosts () {
       const { ok, data } = await this.$api.blog.fetchAll();
 
-      if (!ok || not(isArray((data)))) console.warn('handle err');
-      else this.posts = data;
+      // if (!ok || not(isArray((data))))
+      // else
+
+      this.posts = data;
     }
   }
 };
 </script>
 
 <template>
-  <div class="grid">
-    <div class="gutter-sizer" />
-      <BlogPostThumbnail
-        v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
-        :key="idx"
-        :title="title"
-        :subtitle="subtitle"
-        :img-src="imgSrc"
-        :slug="slug"
-      />
-    <div class="grid-sizer" />
+  <div class="row">
+    <div class="main-container">
+      <div class="container-section__spacer container__preview">
+        <BlogPostCard
+          v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
+          :key="idx"
+          :title="title"
+          :subtitle="subtitle"
+          :img-src="imgSrc"
+          :slug="slug"
+        />
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.container__preview {
+  padding-right: 4em;
+
+  @media screen and (max-width: 1000px) {
+    padding: 0 1em;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0;
+  }
+}
+</style>

@@ -7,6 +7,15 @@ export default [{
     label: 'pwd'
   }
 },
+// {
+//   path: '/archive',
+//   name: 'Archive',
+//   component: () => import('@/views/Archive.vue'),
+//   meta: {
+//     cache: true,
+//     label: 'history'
+//   }
+// },
 {
   path: '/communications',
   name: 'Communications',

@@ -47,7 +47,7 @@ export default {
   outline: none;
 }
 
-.container__section-spacer {
+.container-section__spacer {
   margin-bottom: 30px;
 }
 

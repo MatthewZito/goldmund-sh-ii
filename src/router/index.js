@@ -4,13 +4,21 @@ import VueRouter from 'vue-router';
 import routes from '@/router/routes';
 import { globalBefore } from './guards';
 
-import { noop } from '@/utils';
+const noop = _ => {};
 
 // silence those nasty nav duplicated exceptions
-const ctx = VueRouter.prototype.push;
+const pushCtx = VueRouter.prototype.push;
 
 VueRouter.prototype.push = function push (loc) {
-  return ctx
+  return pushCtx
+    .call(this, loc)
+    .catch(noop);
+};
+
+const replaceCtx = VueRouter.prototype.replace;
+
+VueRouter.prototype.replace = function replace (loc) {
+  return replaceCtx
     .call(this, loc)
     .catch(noop);
 };

@@ -19,13 +19,13 @@ export default {
         :key="idx"
         :aria-label="label"
         rel="noreferrer"
-        class="fa-icon"
+        class="fa-icon icon__colored"
         target="_blank"
         :href="href"
         :title="title"
       >
-        <i
-          :class="`fab fa-${title}`"
+        <font-awesome-icon
+          :icon="['fab', label]"
           aria-hidden="true"
         />
       </a>
@@ -35,3 +35,13 @@ export default {
     </p>
   </nav>
 </template>
+
+<style scoped>
+.icon__colored {
+  color: var(--main-accent-color);
+}
+
+.icon__colored:hover {
+  color: var(--main-accent-active);
+}
+</style>

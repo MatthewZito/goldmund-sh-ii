@@ -1,17 +1,15 @@
 /* Core Deps */
-import Vue from 'vue';
-import App from './App.vue';
+import { createApp } from 'vue';
 import router from '@/router';
 import store from '@/state';
 
-/* Core CSS (sass-loader) */
+import App from './App.vue';
 
 /* Local Plugins */
 import apiServicePlugin from '@/plugins/api';
 
 /* Global Components */
-import '@/components/common/_globalRegistrar';
-import '@/plugins/fontAwesome';
+import fa from '@/plugins/fontAwesome';
 
 /* Global Error Handlers */
 import debug from '@/utils/debug';
@@ -22,30 +20,27 @@ import debug from '@/utils/debug';
  *
  ************************************/
 
-/* Plugins */
-Vue.use(apiServicePlugin);
-
-/* Vue Global API Config */
-Vue.config.productionTip = false;
+const app = createApp(App)
+  .use(router)
+  .use(store)
+  /* Plugins */
+  .use(apiServicePlugin);
 
 /************************************
  *
- * Root / Global Error Capturing
+ * Root / Global Configurations
  *
  ************************************/
 
-debug.call(Vue);
+/* Global Components */
+app.component('font-awesome-icon', fa());
+
+/* Debug */
+debug.call(app);
 
 /*************************************
  *
  * App / Vue Instance Initialization
  *
  *************************************/
-
-const vm = new Vue({
-  router,
-  store,
-  render: h => h(App)
-});
-
-vm.$mount('#app');
+app.mount('#app');

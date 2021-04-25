@@ -1,41 +1,41 @@
-<script>
+<script setup>
+import { ref, computed, watch } from 'vue';
+
+import { useRoute } from 'vue-router';
+import { createNamespacedHelpers } from 'vuex';
+
 import MainFooter from './MainFooter.vue';
 
-import { mapGetters, mapActions } from 'vuex';
+/* Est */
+const route = useRoute();
+const { mapGetters, mapActions } = createNamespacedHelpers('config');
 
-export default {
-  name: 'MainDrawer',
-  components: {
-    MainFooter
-  },
-  data: () => ({
-    navConfig: Object.freeze([
-      { path: '/', label: 'Vestibule' },
-      { path: '/info', label: 'Info' },
-      { path: '/communications', label: 'Comms' }
-    ]),
-    routeLabel: 'pwd'
-  }),
-  computed: {
-    ...mapGetters('config', [
-      'isNavDrawerClosed'
-    ])
-  },
-  watch: {
-    '$route.name': {
-      handler (to, from) {
-        if (to !== from) {
-          this.routeLabel = this.$route.meta.label;
-        }
-      }
+/* Data */
+const navConfig = [
+  { path: '/', label: 'Vestibule' },
+  { path: '/info', label: 'Info' },
+  { path: '/communications', label: 'Comms' }
+];
+
+const routeLabel = ref('pwd');
+
+/* Computed */
+const isNavDrawerClosed = computed(() => mapGetters(['isNavDrawerClosed']));
+
+/* Methods */
+const toggleNavDrawer = mapActions(['toggleNavDrawer']);
+
+function setRouteLabel () {
+  return function (to, from) {
+    if (to !== from) {
+      routeLabel.value = route.meta.label;
     }
-  },
-  methods: {
-    ...mapActions('config', [
-      'toggleNavDrawer'
-    ])
-  }
-};
+  };
+}
+
+/* Watchers */
+watch(() => route.name, setRouteLabel);
+
 </script>
 
 <template>
@@ -80,7 +80,7 @@ export default {
             </router-link>
             <!-- TODO retain box-sizing, hide text -->
             <p
-              v-if="$route.name === 'Landing'"
+              v-if="route.name === 'Landing'"
               style="color:#555;"
             >
               An archive of musings

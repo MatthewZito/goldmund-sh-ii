@@ -3,8 +3,8 @@ module.exports = {
     autoprefixer: {
       grid: 'autoplace'
     },
-    cssnano: {
-      preset: 'default'
+    'postcss-preset-env': {
+      stage: 1
     }
   }
 };

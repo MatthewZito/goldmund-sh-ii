@@ -3,9 +3,12 @@ import {
 } from '@/services/api';
 
 export default {
-  install (Vue) {
-    Vue.prototype.$api = {
+  install (app, options) {
+    const api = {
       blog
     };
+    app.config.globalProperties.$api = api;
+    app.provide('$api', api);
   }
+
 };

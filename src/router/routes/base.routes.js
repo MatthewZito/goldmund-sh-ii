@@ -1,7 +1,7 @@
 export default [{
   path: '/',
   name: 'Landing',
-  component: require('@/views/Landing.vue').default,
+  component: () => import('@/views/Landing.vue'),
   meta: {
     cache: true,
     label: 'pwd'

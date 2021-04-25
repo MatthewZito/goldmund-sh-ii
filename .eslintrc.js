@@ -9,13 +9,13 @@ module.exports = {
 
   extends: [
     'eslint:recommended',
-    'plugin:vue/recommended',
-    '@vue/standard'
+    'plugin:vue/vue3-recommended'
   ],
 
   parserOptions: {
     parser: 'babel-eslint',
-    ecmaVersion: 2020
+    ecmaVersion: 2021,
+    sourceType: 'module'
   },
 
   plugins: [

@@ -1,12 +1,7 @@
 node_modules
-coverage
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-
-# misc local files
+dist
+dist-ssr
+*.local
+.env
+.eslintcache
 repl.js

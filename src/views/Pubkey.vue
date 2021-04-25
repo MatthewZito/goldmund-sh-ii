@@ -1,8 +1,6 @@
-<script>
-export default {
-  name: 'Pubkey',
-  data: () => ({
-    publickKey: `-----BEGIN PGP PUBLIC KEY BLOCK-----
+<script setup>
+  /* Data */
+  const publickKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBF5oVmMBEADLwX2+YXgEp6srdrYc26yiEmUmD/NJJnwC4oBRMVgXNZ8zjXj9
 EG1XhXwEijgLiYca8hWk0HDBm3vM8THAeoUQHSNlsOpwxmwISAgUdJEXQ8AxXZp1
@@ -53,9 +51,7 @@ wowJ74J/8w0fOYkzRS4jqJksyVSEX2/CSDMg7V/DTc9jyUprf+K8BUlZN69m0OlL
 e1aOek5lvdx0THfCudD02ghV+pwvCTFjHkJnbydXkICxo67RUDk3xYZmjybw0xd9
 JEfIEYA9BrzI/jp1
 =5FGM
------END PGP PUBLIC KEY BLOCK-----`
-  })
-};
+-----END PGP PUBLIC KEY BLOCK-----`;
 </script>
 
 <template>

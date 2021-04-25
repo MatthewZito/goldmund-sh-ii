@@ -1,36 +1,38 @@
-<script>
-export default {
-  name: 'BlogPostCard',
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    subtitle: {
-      type: String,
-      default: ''
-    },
-    imgSrc: {
-      type: String,
-      required: true
-    },
-    slug: {
-      type: String,
-      required: true
-    }
+<script setup>
+import { defineProps, toRefs } from 'vue';
+
+/* Props */
+const props = defineProps({
+  title: {
+    type: String,
+    required: true
   },
-  computed: {
-    bgImg () {
-      return `background-image: url(${this.imgSrc})`;
-    }
+  subtitle: {
+    type: String,
+    default: ''
+  },
+  imgSrc: {
+    type: String,
+    required: true
+  },
+  slug: {
+    type: String,
+    required: true
   }
-};
+});
+
+const { imgSrc } = toRefs(props);
+
+/* Data */
+const bgImage = `background-image: url(${imgSrc.value})`;
 </script>
+
+
 
 <template>
   <div
     class="blog-post-card"
-    :style="bgImg"
+    :style="bgImage"
   >
     <div class="blog-post-card__overlay" />
     <div class="blog-post-card__share">

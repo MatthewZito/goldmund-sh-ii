@@ -1,30 +1,24 @@
-<script>
+<script setup>
+import { inject, ref, onMounted } from 'vue';
 import { not, isArray } from 'js-heuristics';
-
 import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 
-export default {
-  name: 'Landing',
-  components: {
-    BlogPostCard
-  },
-  data: () => ({
-    posts: []
-  }),
-  mounted () {
-    this.fetchPosts();
-  },
-  methods: {
-    async fetchPosts () {
-      const { ok, data } = await this.$api.blog.fetchAll();
+/* Est */
+const api = inject('$api');
 
-      // if (!ok || not(isArray((data))))
-      // else
+/* Data */
+let posts = ref([]);
 
-      this.posts = data;
-    }
-  }
-};
+/* Methods */
+async function fetchPosts () {
+  const { ok, data } = await api.blog.fetchAll();
+  posts.value = data;
+}
+
+/* Init */
+onMounted(() => {
+  fetchPosts();
+});
 </script>
 
 <template>

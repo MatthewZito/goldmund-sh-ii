@@ -1,27 +1,20 @@
-<script>
+<script setup>
+import { ref } from 'vue';
+
 import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
 import MainDrawer from '@/components/layout/MainDrawer.vue';
 
-export default {
-  name: 'App',
-  components: {
-    MainCacheWrapper,
-    MainDrawer
-  },
-  data: () => ({
-    isLoading: false
-  })
-};
+/* Data */
+const isLoading = ref(false);
 </script>
 
 <template>
-<div>
-  <MainDrawer />
-  <main id="main-collapse">
-    <MainCacheWrapper />
-  </main>
-</div>
-
+  <div>
+    <MainDrawer />
+    <main id="main-collapse">
+      <MainCacheWrapper />
+    </main>
+  </div>
 </template>
 
 <style lang="scss">
@@ -52,3 +45,4 @@ export default {
 }
 
 </style>
+

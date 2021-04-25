@@ -1,43 +1,47 @@
-<script>
-import { createNamespacedHelpers } from 'vuex';
-const { mapActions, mapGetters } = createNamespacedHelpers('config');
+<script setup>
+import { computed, watch, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
 
-export default {
-  name: 'MainCacheWrapper',
-  data: () => ({
-    rootTransition: 'fade-transform'
-  }),
-  computed: {
-    ...mapGetters(['getCachedViews']),
-    viewKey () {
-      return this.$route.path;
-    }
-  },
-  watch: {
-    $route (to, from) {
-      this.flagViewForCache();
-    }
-  },
-  mounted () {
-    this.flagViewForCache();
-  },
-  methods: {
-    ...mapActions(['addViewToCache']),
-    flagViewForCache () {
-      const { name } = this.$route;
-      if (name) this.addViewToCache(this.$route);
-    }
-  }
-};
+const route = useRoute();
+const store = useStore();
+
+/* Data */
+const rootTransition = 'fade-transform';
+
+/* Computed */
+const viewKey = computed(() => route.path);
+
+const getCachedViews = computed(() => store.getters['config/getCachedViews']);
+
+/* Methods */
+const addViewToCache = store.dispatch['config/addViewToCache'];
+
+function flagViewForCache () {
+  return function () {
+    if (route.name) addViewToCache(route);
+  };
+}
+
+/* Watchers */
+watch(() => route.name, flagViewForCache);
+
+/* Init */
+onMounted(() => {
+  flagViewForCache();
+});
+
 </script>
 
 <template>
-  <transition
-    :name="rootTransition"
-    mode="out-in"
-  >
-    <keep-alive :include="getCachedViews">
-      <router-view :key="viewKey" />
-    </keep-alive>
-  </transition>
+  <router-view v-slot="{ Component }" :key="viewKey" >
+    <transition
+      :name="rootTransition"
+      mode="out-in"
+    >
+      <keep-alive :include="getCachedViews">
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
 </template>

@@ -1,53 +1,56 @@
-<script>
-function defaultPostData () {
-  return {
-    createdAt: null,
-    imgSrc: null,
-    sanitized: null,
-    subtitle: null,
-    tags: null,
-    title: null,
-    updatedAt: null
-  };
+<script setup='props'>
+import { inject, reactive, computed, onMounted  } from 'vue';
+
+/* Est */
+const api = inject('$api');
+
+/* Data */
+const post = reactive({
+  createdAt: null,
+  imgSrc: null,
+  sanitized: null,
+  subtitle: null,
+  tags: null,
+  title: null,
+  updatedAt: null
+});
+
+/* Computed */
+const dateFooter = computed(() => {
+  const { createdAt, updatedAt } = post;
+
+  let footer = dateConv(createdAt.value);
+
+  if (createdAt.value !== updatedAt.value) {
+    const updated = dateConv(updatedAt.value);
+
+    footer += ` (updated on ${updated})`;
+  }
+
+  return footer;
+});
+
+/* Methods */
+async function fetchPost () {
+  await api.blog.fetchOne(props.slug, ({ ok, data }) => {
+    if (ok) Object.assign(post, data);
+  });
 }
 
+function dateConv (ts) {
+  return new Date(ts).toDateString();
+}
+
+/* Init */
+onMounted(() => {
+  fetchPost();
+});
+
 export default {
-  name: 'BlogPost',
   props: {
     slug: {
       type: String,
       required: true
-    }
-  },
-  data: () => ({
-    post: defaultPostData()
-  }),
-  computed: {
-    dateFooter () {
-      const { createdAt, updatedAt } = this.post;
-
-      let footer = this.dateConv(createdAt);
-
-      if (createdAt !== updatedAt) {
-        const updated = this.dateConv(updatedAt);
-
-        footer += ` (updated on ${updated})`;
-      }
-
-      return footer;
-    }
-  },
-  mounted () {
-    this.fetchPost();
-  },
-  methods: {
-    async fetchPost () {
-      await this.$api.blog.fetchOne(this.slug, ({ ok, data }) => {
-        if (ok) Object.assign(this.post, data);
-      });
-    },
-    dateConv (ts) {
-      return new Date(ts).toDateString();
     }
   }
 };

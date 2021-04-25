@@ -5,9 +5,9 @@ import blogRoutes from './blog.routes';
 export default [
   ...baseRoutes,
   ...blogRoutes,
-  {
-    path: '*',
-    name: 'NotFound',
-    redirect: '/'
-  }
+  // {
+  //   path: '/:(.*)*', // TODO
+  //   name: 'NotFound',
+  //   redirect: '/'
+  // }
 ];

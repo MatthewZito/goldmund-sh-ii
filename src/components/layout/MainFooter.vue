@@ -1,14 +1,10 @@
-<script>
-export default {
-  name: 'MainFooter',
-  data: () => ({
-    outboundConfig: Object.freeze([
-      { label: 'instagram', title: 'instagram link', href: 'https://www.instagram.com/magister_zito' },
-      { label: 'youtube', title: 'youtube link', href: 'https://www.youtube.com/user/fasolplanetarium/videos' },
-      { label: 'github', title: 'github link', href: 'https://github.com/MatthewZito' }
-    ])
-  })
-};
+<script setup>
+/* Data */
+const outboundConfig = [
+  { label: 'instagram', title: 'instagram link', href: 'https://www.instagram.com/magister_zito' },
+  { label: 'youtube', title: 'youtube link', href: 'https://www.youtube.com/user/fasolplanetarium/videos' },
+  { label: 'github', title: 'github link', href: 'https://github.com/MatthewZito' }
+];
 </script>
 
 <template>

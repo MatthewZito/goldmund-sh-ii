@@ -19,9 +19,6 @@ export default {
       required: true
     }
   },
-  data: () => ({
-    url: 'https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/58d86b3db3db2b57ce8f2986/1490578241899/?format=2500w'
-  }),
   computed: {
     bgImg () {
       return `background-image: url(${this.imgSrc})`;
@@ -76,8 +73,10 @@ button {
   font-family: $primary-font;
   border: 0;
   cursor: pointer;
+  opacity: .75;
   &:focus {
     outline: 0;
+     opacity: 1;
   }
 }
 
@@ -85,14 +84,14 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   height: 100%;
   min-height: 300px;
   display: block;
-  margin: 8vh auto;
+  margin: 6vh auto;
   border-radius: 8px;
   position: relative;
-  box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.25);
+  // box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.25);
 
   @media screen and (max-width: 800px) {
     width: 95%;
@@ -100,7 +99,7 @@ button {
   }
 
   @media screen and (max-width: 600px) {
-    background-position:50% 0%;
+    background-position: 50% 0%;
     background-size: cover;
     height: 300px;
   }

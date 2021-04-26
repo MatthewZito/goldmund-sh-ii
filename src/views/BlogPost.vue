@@ -1,8 +1,17 @@
-<script setup='props'>
-import { inject, reactive, computed, onMounted  } from 'vue';
+<script setup>
+import { inject, defineProps, reactive, computed, onMounted  } from 'vue';
 
 /* Est */
 const api = inject('$api');
+
+/* Props */
+/* Props */
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  }
+});
 
 /* Data */
 const post = reactive({
@@ -45,15 +54,6 @@ function dateConv (ts) {
 onMounted(() => {
   fetchPost();
 });
-
-export default {
-  props: {
-    slug: {
-      type: String,
-      required: true
-    }
-  }
-};
 </script>
 
 <template>
@@ -66,7 +66,7 @@ export default {
         <h2>
           {{ post.title }}
         </h2>
-        <p style="fontWeight:700;">
+        <p style="font-weight:700;">
           {{ post.subtitle }}
         </p>
         <hr />

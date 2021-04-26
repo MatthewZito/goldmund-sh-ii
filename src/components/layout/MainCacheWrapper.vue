@@ -6,12 +6,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const store = useStore();
 
-/* Data */
-const rootTransition = 'fade-transform';
-
 /* Computed */
-const viewKey = computed(() => route.path);
-
 const getCachedViews = computed(() => store.getters['config/getCachedViews']);
 
 /* Methods */
@@ -34,9 +29,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <router-view v-slot="{ Component }" :key="viewKey" >
+  <router-view v-slot="{ Component }">
     <transition
-      :name="rootTransition"
+      name="fade"
       mode="out-in"
     >
       <keep-alive :include="getCachedViews">

@@ -10,20 +10,17 @@ const store = useStore();
 const getCachedViews = computed(() => store.getters['config/getCachedViews']);
 
 /* Methods */
-const addViewToCache = store.dispatch['config/addViewToCache'];
-
-function flagViewForCache () {
-  return function () {
-    if (route.name) addViewToCache(route);
-  };
-}
+const addViewToCache = rte => store.dispatch('config/addViewToCache', rte);
 
 /* Watchers */
-watch(() => route.name, flagViewForCache);
+watch(
+  () => route.name,
+  () => addViewToCache(route)
+);
 
 /* Init */
 onMounted(() => {
-  flagViewForCache();
+  addViewToCache(route);
 });
 
 </script>

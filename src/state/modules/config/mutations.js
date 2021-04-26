@@ -5,8 +5,8 @@ export const toggleNavDrawer = (state) => {
 };
 
 export const addViewToCache = (state, view) => {
-  if (state.cachedViews.includes(view.name)) return;
-  if (view.meta.cache) {
+  if (state.cachedViews.includes(view?.name)) return;
+  if (view?.meta?.cache) {
     state.cachedViews.push(view.name);
   }
 };

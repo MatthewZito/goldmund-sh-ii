@@ -1,5 +1,5 @@
 <script setup>
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, onMounted, watch } from 'vue';
 
 import Masonry from 'masonry-layout';
 import { not, isArray } from 'js-heuristics';
@@ -12,6 +12,7 @@ const api = inject('$api');
 
 /* Data */
 let posts = ref([]);
+let masonryCharger = ref(null);
 
 /* Methods */
 async function fetchPosts () {
@@ -19,15 +20,16 @@ async function fetchPosts () {
   posts.value = data;
 }
 
+watch(() => posts, () => masonryCharger.value.layout());
 /* Init */
 onMounted(() => {
   fetchPosts()
     .then(() => {
-      new Masonry(document.querySelector('.grid'), {
+      masonryCharger.value = new Masonry(document.querySelector('.grid'), {
         columnWidth: '.grid-sizer',
         itemSelector: '.grid-item',
         gutter: '.gutter-sizer'
-      }).layout();
+      });
   });
 });
 </script>

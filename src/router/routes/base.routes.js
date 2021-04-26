@@ -4,7 +4,8 @@ export default [{
   component: () => import('@/views/Landing.vue'),
   meta: {
     cache: true,
-    label: 'pwd'
+    label: 'pwd',
+    desc: 'a blog about computing, programming, art, and...'
   }
 },
 {
@@ -13,7 +14,8 @@ export default [{
   component: () => import('@/views/Communications.vue'),
   meta: {
     cache: true,
-    label: 'ping'
+    label: 'ping',
+    desc: 'get in touch'
   }
 },
 {
@@ -22,6 +24,7 @@ export default [{
   component: () => import('@/views/Information.vue'),
   meta: {
     cache: true,
-    label: 'man'
+    label: 'man',
+    desc: 'about a random blog'
   }
 }];

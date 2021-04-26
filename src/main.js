@@ -1,5 +1,7 @@
 /* Core Deps */
 import { createApp } from 'vue';
+import { createHead } from '@vueuse/head';
+
 import router from '@/router';
 import store from '@/state';
 
@@ -19,12 +21,12 @@ import debug from '@/utils/debug';
  * Root Vue Instance Configurations
  *
  ************************************/
-
 const app = createApp(App)
   .use(router)
   .use(store)
   /* Plugins */
-  .use(apiServicePlugin);
+  .use(apiServicePlugin)
+  .use(createHead());
 
 /************************************
  *

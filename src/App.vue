@@ -1,9 +1,24 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { useHead } from '@vueuse/head';
 
 /* Components */
 import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
 import MainDrawer from '@/components/layout/MainDrawer.vue';
+
+/* Est */
+const route = useRoute();
+
+useHead({
+  title: 'goldmund.sh',
+  meta: [
+    {
+      name: `description`,
+      content: computed(() => route.meta.desc),
+    }
+  ]
+});
 
 /* Data */
 const isLoading = ref(false);

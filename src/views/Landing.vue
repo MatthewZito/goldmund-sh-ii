@@ -20,7 +20,13 @@ async function fetchPosts () {
   posts.value = data;
 }
 
-watch(() => posts, () => masonryCharger.value.layout());
+function initMasonry () {
+  masonryCharger.value.layout();
+}
+
+/* Watchers */
+watch(() => posts, initMasonry);
+
 /* Init */
 onMounted(() => {
   fetchPosts()
@@ -30,7 +36,8 @@ onMounted(() => {
         itemSelector: '.grid-item',
         gutter: '.gutter-sizer'
       });
-  });
+    })
+    .finally(initMasonry);
 });
 </script>
 <template>

@@ -20,7 +20,7 @@ const outboundConfig = [
         :href="href"
         :title="title"
       >
-        <font-awesome-icon
+        <FontAwesomeIcon
           :icon="['fab', label]"
           aria-hidden="true"
         />

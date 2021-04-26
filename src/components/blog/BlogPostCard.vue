@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, toRefs } from 'vue';
+import { defineProps, ref, toRefs } from 'vue';
 
 /* Props */
 const props = defineProps({
@@ -15,20 +15,37 @@ const props = defineProps({
     type: String,
     required: true
   },
-  slug: {
+  date: {
     type: String,
     required: true
   }
 });
 
-const { imgSrc } = toRefs(props);
 
 /* Data */
+const { imgSrc, title } = toRefs(props);
+
+let hasTargets = ref(false);
+
 const bgImage = `background-image: url(${imgSrc.value})`;
+
+const url = window.location.href; // TODO update when using SSG
+
+const shareBtns = [
+  { href:`https://www.facebook.com/share.php?u=${url}&title=${title.value}`, icon: ['fab', 'facebook'] },
+  { href: `https://twitter.com/intent/tweet?status=${title.value}+${url}`, icon: ['fab', 'twitter'] },
+  { href:`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title.value}`, icon: ['fab', 'linkedin'] },
+];
+
+/* Methods */
+function toggleTargets () {
+  hasTargets.value = !hasTargets.value;
+}
+
+function open (url) {  // TODO update when using SSG
+  window.open(url);
+}
 </script>
-
-
-
 <template>
   <div
     class="blog-post-card"
@@ -36,29 +53,42 @@ const bgImage = `background-image: url(${imgSrc.value})`;
   >
     <div class="blog-post-card__overlay" />
     <div class="blog-post-card__share">
-      <button class="blog-post-card__icon">
-        <font-awesome-icon
-          :icon="['fa', 'share-alt-square']"
-          class="blog-post-card__icon"
-        />
+      <button
+        class="blog-post-card__icon"
+        @click="toggleTargets"
+      >
+        <FontAwesomeIcon :icon="['fa', 'share-alt-square']" />
       </button>
+      <span
+        v-if="hasTargets"
+        style="margin-left:5px;"
+        class="blog-post-card__share-targets"
+      >
+        <button
+          v-for="({ href, icon }, idx) in shareBtns"
+          :key="idx"
+          class="blog-post-card__icon"
+          @click="open(href)"
+        >
+          <FontAwesomeIcon
+            :icon="icon"
+          />
+        </button>
+      </span>
     </div>
     <div class="blog-post-card__content">
       <div class="blog-post-card__header">
         <h1 class="blog-post-card__title">
-          title here
+          {{ title }}
         </h1>
         <h4 class="blog-post-card__info">
-          {{ new Date().toDateString() }}
+          {{ date }}
         </h4>
 
       </div>
       <p class="blog-post-card__desc">
-        a short description of the post
+        {{ subtitle }}
       </p>
-      <button class="blog-post-card__button button button-outline">
-        Read
-      </button>
     </div>
   </div>
 </template>
@@ -90,9 +120,9 @@ button {
   height: 100%;
   min-height: 300px;
   display: block;
-  margin: 6vh auto;
   border-radius: 8px;
   position: relative;
+  margin: 0 auto;
   // box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.25);
 
   @media screen and (max-width: 800px) {
@@ -109,7 +139,6 @@ button {
   &__overlay {
     width:100%;
     height: 100%;
-    border-radius: 8px;
     background: linear-gradient(to right, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
     background-blend-mode: multiply;
     position: absolute;
@@ -127,7 +156,7 @@ button {
     padding: 1em;
     display: inline-block;
     width: 100%;
-    max-width: 130px;
+    max-width: 200px;
 
     @media screen and (max-width: 600px) {
       display: block;
@@ -135,9 +164,16 @@ button {
     }
   }
 
+  &__share-targets {
+    animation-name: targets;
+    animation-duration: 1s;
+    > button {
+      color: var(--main-error-color);
+    }
+  }
+
   &__icon {
     color: var(--main-accent-color);
-    mix-blend-mode: lighten;
     background: none;
     padding: 0;
     font-size: 1.2em;
@@ -167,7 +203,6 @@ button {
       width: 50%;
     }
     @media screen and (max-width: 600px) {
-      margin-top: 4.2em;
       width: 100%;
       float: inherit;
       max-width: 100%;
@@ -215,17 +250,15 @@ h1,h2,h3 {
   padding: .5rem 2rem;
   background-color: rgba(255,255,255,.4);
   color: rgba(255,255,255,1);
-  border-radius: 2px;
 }
 
-.button-outline {
-  background-color: transparent;
-  border: 3px solid #ffffff;
-}
-
-.button-outline:hover {
-  border-color: var(--main-secondary-color);
-  color: var(--main-secondary-color);
+@keyframes targets {
+  to {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
 }
 
 </style>

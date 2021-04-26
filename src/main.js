@@ -33,7 +33,7 @@ const app = createApp(App)
  ************************************/
 
 /* Global Components */
-app.component('font-awesome-icon', fa());
+app.component('FontAwesomeIcon', fa());
 
 /* Debug */
 debug.call(app);

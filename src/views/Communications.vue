@@ -18,7 +18,7 @@ export default {
             <div class="main-form main-form__offset">
               <p>
                 Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
-                To this end, find below my self-signed GPG public key and accompanying fingerprint for validation.
+                To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
               </p>
               <div class="form-group">
                 <label htmlFor="email">
@@ -53,7 +53,7 @@ export default {
                   required type="text"
                   name="content"
                   class="form-control"
-                  rows="3"
+                  :rows="3"
                   placeholder="Enter your message"
                 />
               </div>
@@ -78,9 +78,9 @@ export default {
                       aria-hidden="true"
                     />
                   </span>
-                  <router-link to="/pubkey">
+                  <a href="'../../public/pub.asc" download>
                     public key
-                  </router-link>
+                  </a>
                 </li>
                 <li>
                   <span class="fa-icon">

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
+/* Components */
 import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
 import MainDrawer from '@/components/layout/MainDrawer.vue';
 

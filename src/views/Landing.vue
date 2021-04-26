@@ -1,7 +1,11 @@
 <script setup>
 import { inject, ref, onMounted } from 'vue';
+
+import Masonry from 'masonry-layout';
 import { not, isArray } from 'js-heuristics';
-import BlogPostCard from '@/components/blog/BlogPostCard.vue';
+
+/* Components */
+import BlogPostThumbnail from '@/components/blog/BlogPostThumbnail.vue';
 
 /* Est */
 const api = inject('$api');
@@ -17,37 +21,27 @@ async function fetchPosts () {
 
 /* Init */
 onMounted(() => {
-  fetchPosts();
+  fetchPosts()
+    .then(() => {
+      new Masonry(document.querySelector('.grid'), {
+        columnWidth: '.grid-sizer',
+        itemSelector: '.grid-item',
+        gutter: '.gutter-sizer'
+      }).layout();
+  });
 });
 </script>
-
 <template>
-  <div class="row">
-    <div class="main-container">
-      <div class="container-section__spacer container__preview">
-        <BlogPostCard
-          v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
-          :key="idx"
-          :title="title"
-          :subtitle="subtitle"
-          :img-src="imgSrc"
-          :slug="slug"
-        />
-      </div>
-    </div>
+  <div class="grid">
+    <div class="gutter-sizer" />
+      <BlogPostThumbnail
+        v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
+        :key="idx"
+        :title="title"
+        :subtitle="subtitle"
+        :img-src="imgSrc"
+        :slug="slug"
+      />
+    <div class="grid-sizer" />
   </div>
 </template>
-
-<style lang="scss" scoped>
-.container__preview {
-  padding-right: 4em;
-
-  @media screen and (max-width: 1000px) {
-    padding: 0 1em;
-  }
-
-  @media screen and (max-width: 600px) {
-    padding: 0;
-  }
-}
-</style>

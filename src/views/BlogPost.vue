@@ -1,10 +1,20 @@
 <script setup>
-import { inject, defineProps, reactive, computed, onMounted  } from 'vue';
+import {
+  inject,
+  defineProps,
+  ref,
+  reactive,
+  computed,
+  onMounted,
+  toRefs
+} from 'vue';
+
+/* Components */
+import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 
 /* Est */
 const api = inject('$api');
 
-/* Props */
 /* Props */
 const props = defineProps({
   slug: {
@@ -14,6 +24,8 @@ const props = defineProps({
 });
 
 /* Data */
+let isLoading = ref(true);
+
 const post = reactive({
   createdAt: null,
   imgSrc: null,
@@ -24,19 +36,21 @@ const post = reactive({
   updatedAt: null
 });
 
+const { createdAt, imgSrc, sanitized, subtitle, title, updatedAt } = toRefs(post);
+
 /* Computed */
+const dateHeader = computed(() => {
+  return dateConv(createdAt.value);
+});
+
 const dateFooter = computed(() => {
-  const { createdAt, updatedAt } = post;
+  if (updatedAt.value) {
+    const dateF = dateConv(updatedAt.value);
 
-  let footer = dateConv(createdAt.value);
-
-  if (createdAt.value !== updatedAt.value) {
-    const updated = dateConv(updatedAt.value);
-
-    footer += ` (updated on ${updated})`;
+    return `updated on ${dateF}`;
   }
 
-  return footer;
+  return false;
 });
 
 /* Methods */
@@ -52,28 +66,32 @@ function dateConv (ts) {
 
 /* Init */
 onMounted(() => {
-  fetchPost();
+  fetchPost()
+    .finally(() => isLoading.value = false);
 });
 </script>
 
 <template>
   <div
+    v-if="!isLoading"
     class="row"
     style="maxWidth:1150px;"
   >
+    <BlogPostCard
+      :title="title"
+      :subtitle="subtitle"
+      :img-src="imgSrc"
+      :date="dateHeader"
+    />
     <div class="main-container">
       <div class="container-section__spacer">
-        <h2>
-          {{ post.title }}
-        </h2>
-        <p style="font-weight:700;">
-          {{ post.subtitle }}
-        </p>
-        <hr />
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div v-html="post.sanitized" />
         <hr />
-        <p style="font-style:italic;color:#777;">
+        <p
+          v-if="dateFooter"
+          style="font-style:italic;color:#777;"
+        >
           {{ dateFooter }}
         </p>
       </div>

@@ -7,15 +7,6 @@ export default [{
     label: 'pwd'
   }
 },
-// {
-//   path: '/archive',
-//   name: 'Archive',
-//   component: () => import('@/views/Archive.vue'),
-//   meta: {
-//     cache: true,
-//     label: 'history'
-//   }
-// },
 {
   path: '/communications',
   name: 'Communications',
@@ -32,14 +23,5 @@ export default [{
   meta: {
     cache: true,
     label: 'man'
-  }
-},
-{
-  path: '/pubkey',
-  name: 'Pubkey',
-  component: () => import('@/views/Pubkey.vue'),
-  meta: {
-    cache: true,
-    label: 'gpg --import'
   }
 }];

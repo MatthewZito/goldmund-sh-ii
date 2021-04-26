@@ -34,16 +34,17 @@ const props = defineProps({
       :to="`/blog/${slug}`"
       class="blog-post__overlay"
     >
+      <div class="blog-post__overlay-inner" />
       <div class="blog-post__content">
         <div class="blog-post__header">
           <h3 class="blog-post__title">
             {{ title }}
           </h3>
         </div>
-        <p class="blog-post__desc">
-          {{ subtitle }}
-        </p>
       </div>
+      <p class="blog-post__desc">
+        {{ subtitle }}
+      </p>
     </router-link>
   </div>
 </template>
@@ -101,19 +102,34 @@ a {
   }
 
   &__title {
-    color: #ffffff;
+    color: #fff;
     margin-bottom: .25em;
     opacity: .75;
   }
 
   &__desc {
-    @include overlay-text(1, 700);
-    color: var(--main-secondary-color);
+    @include overlay-text(1, 400);
+    color: #fff;
     margin-bottom: 2em;
   }
 }
 
 .blog-post:hover > img {
   filter: blur(3px);
+}
+
+.blog-post:hover {
+   .blog-post__overlay-inner {
+    margin: 5%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 90%;
+    width: 90%;
+    background: linear-gradient(to right, rgba(216, 222, 228, 0.2) 0%,rgba(33,33,32,.6) 60%,rgba(17, 17, 17, 0.8) 100%);
+    background-blend-mode: multiply;
+  }
 }
 </style>

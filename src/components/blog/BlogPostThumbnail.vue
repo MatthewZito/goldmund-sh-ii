@@ -24,7 +24,6 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 .grid-item.blog-post
   img.img-responsive(
     alt="blog entry thumbnail"

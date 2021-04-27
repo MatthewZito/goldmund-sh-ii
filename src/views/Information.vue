@@ -3,7 +3,6 @@
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 .row
   .col-main.col-main__offset.col-main__right
     img(

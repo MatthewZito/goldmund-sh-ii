@@ -24,25 +24,27 @@ function initMasonry () {
   masonryCharger.value.layout();
 }
 
+function genMasonry () {
+  masonryCharger.value = new Masonry(
+    document.querySelector('.grid'), {
+      columnWidth: '.grid-sizer',
+      itemSelector: '.grid-item',
+      gutter: '.gutter-sizer'
+    });
+}
+
 /* Watchers */
 watch(() => posts, initMasonry);
 
 /* Init */
 onMounted(() => {
   fetchPosts()
-    .then(() => {
-      masonryCharger.value = new Masonry(document.querySelector('.grid'), {
-        columnWidth: '.grid-sizer',
-        itemSelector: '.grid-item',
-        gutter: '.gutter-sizer'
-      });
-    })
+    .then(genMasonry)
     .finally(initMasonry);
 });
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 .grid
   .gutter-sizer
     BlogPostThumbnail(

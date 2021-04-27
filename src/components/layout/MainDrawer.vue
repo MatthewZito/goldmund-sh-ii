@@ -40,7 +40,6 @@ watch(() => route.name, setRouteLabel);
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 div
   .navbar.navbar-default.visible-xs
     button.navbar-toggle.collapsed(

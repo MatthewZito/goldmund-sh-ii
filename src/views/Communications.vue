@@ -2,7 +2,6 @@
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 .row
   .main-form
     .container-section__spacer

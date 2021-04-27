@@ -79,7 +79,6 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 .row(
   v-if="!isLoading"
   style="max-width:1150px;"

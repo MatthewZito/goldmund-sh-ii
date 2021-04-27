@@ -30,12 +30,12 @@ export default defineConfig({
     }),
 
     /* runtime eslint parsing */
-    {
-      ...eslint({
-        include: 'src/**/*.+(js|vue)'
-      }),
-      enforce: 'pre'
-    }
+    // {
+    //   ...eslint({
+    //     include: 'src/**/*.+(js)'
+    //   }),
+    //   enforce: 'pre'
+    // }
   ],
 
   /* alias resolution */

@@ -27,7 +27,6 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 router-view(v-slot="{ Component }")
   transition(name="fade" mode="out-in")
     keep-alive(:include="getCachedViews")

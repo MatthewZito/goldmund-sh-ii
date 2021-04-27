@@ -46,8 +46,8 @@ function open (url) {  // TODO update when using SSG
   window.open(url);
 }
 </script>
+
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 .blog-post-card(:style="bgImage")
   .blog-post-card__overlay
   .blog-post-card__share

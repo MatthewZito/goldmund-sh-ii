@@ -8,7 +8,6 @@ const outboundConfig = [
 </script>
 
 <template lang="pug">
-<!-- /* eslint-disable */ -->
 nav.nav-footer
   p.nav-footer-social-buttons
     a.fa-icon.icon__colored(

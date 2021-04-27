@@ -23,30 +23,18 @@ const props = defineProps({
 
 </script>
 
-<template>
-  <div class="grid-item blog-post">
-    <img
-      class="img-responsive"
-      alt="blog entry thumbnail"
-      :src="imgSrc"
-    />
-    <router-link
-      :to="`/blog/${slug}`"
-      class="blog-post__overlay"
-    >
-      <div class="blog-post__overlay-inner" />
-      <div class="blog-post__content">
-        <div class="blog-post__header">
-          <h3 class="blog-post__title">
-            {{ title }}
-          </h3>
-        </div>
-      </div>
-      <p class="blog-post__desc">
-        {{ subtitle }}
-      </p>
-    </router-link>
-  </div>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+.grid-item.blog-post
+  img.img-responsive(
+    alt="blog entry thumbnail"
+    :src="imgSrc"
+  )
+  router-link.blog-post__overlay(:to="`/blog/${slug}`")
+    .blog-post__content
+      .blog-post__header
+        h3.blog-post__title {{ title }}
+    p.blog-post__desc {{ subtitle }}
 </template>
 
 <style lang="scss" scoped>
@@ -64,6 +52,11 @@ h1,h2,h3 {
     font-size: 4em;
   }
 
+  @media screen and (max-width: 400px) {
+    font-size: 2em;
+  }
+
+  /* Large Viewports */
   @media screen and (max-width: 400px) {
     font-size: 2em;
   }
@@ -118,18 +111,4 @@ a {
   filter: blur(3px);
 }
 
-.blog-post:hover {
-   .blog-post__overlay-inner {
-    margin: 5%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 90%;
-    width: 90%;
-    background: linear-gradient(to right, rgba(216, 222, 228, 0.2) 0%,rgba(33,33,32,.6) 60%,rgba(17, 17, 17, 0.8) 100%);
-    background-blend-mode: multiply;
-  }
-}
 </style>

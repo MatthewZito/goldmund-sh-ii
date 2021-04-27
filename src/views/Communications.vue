@@ -1,104 +1,62 @@
-<script>
-export default {
-  name: 'Communications'
-};
+<script setup>
 </script>
 
-<template>
-  <div class="row">
-    <div class="main-form">
-      <div class="container-section__spacer">
-        <h1>
-          Communications
-        </h1>
-      </div>
-      <div class="container-section__spacer">
-        <form>
-          <div class="row">
-            <div class="main-form main-form__offset">
-              <p>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+.row
+  .main-form
+    .container-section__spacer
+      h1 Communications
+    .container-section__spacer
+      form
+        .row
+          .main-form.main-form__offset
+            p
+              .
                 Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
                 To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
-              </p>
-              <div class="form-group">
-                <label htmlFor="email">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  required
-                  type="email"
-                  name="email"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label htmlFor="subject">
-                  Subject
-                </label>
-                <input
-                  id="subject"
-                  required
-                  type="text"
-                  name="subject"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label htmlFor="content">
-                  Message
-                </label>
-                <textarea
-                  id="content"
-                  required type="text"
-                  name="content"
-                  class="form-control"
-                  :rows="3"
-                  placeholder="Enter your message"
-                />
-              </div>
-              <button
-                aria-label="submit form"
-                type="submit"
-                class="btn btn-primary btn-lg"
-              >
-                Send
-              </button>
-            </div>
-
-            <div
-              class="main-form main-.main-form__offset"
-              style="marginLeft:-15px"
-            >
-              <ul class="main-list__unstyled">
-                <li>
-                  <span class="fa-icon">
-                    <i
-                      class="fas fa-key"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <a href="'../../public/pub.asc" download>
-                    public key
-                  </a>
-                </li>
-                <li>
-                  <span class="fa-icon">
-                    <i
-                      class="fas fa-fingerprint"
-                      aria-hidden="true"
-                    />
-                  </span>
-                    306E 7D6A 359E 3448 F2F4  F85A 204C 907B 2280 7B5B
-                </li>
-              </ul>
-            </div>
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
+            .form-group
+              label(htmlFor="email")
+                | Email
+              input#email.form-control(
+                required type="email"
+                name="email"
+              )
+            .form-group
+              label(htmlFor="subject")
+                | Subject
+              input#subject.form-control(
+                required type="text"
+                name="subject"
+              )
+            .form-group
+              label(htmlFor="content")
+                | Message
+              textarea#content.form-control(
+                required type="text"
+                name="content"
+                :rows="3"
+                placeholder="Enter your message"
+              )
+            button.btn.btn-primary.btn-lg(
+              aria-label="submit form"
+              type="submit"
+            )
+              | Send
+          div(
+            class="main-form main-.main-form__offset"
+            style="margin-left:-15px"
+          )
+            ul.main-list__unstyled
+              li
+                span.fa-icon
+                  i.fas.fa-key(aria-hidden="true")
+                a(href="'../../public/pub.asc" download)
+                  | public key
+              li
+                span.fa-icon
+                  i.fas.fa-fingerprint(aria-hidden="true")
+                | 306E 7D6A 359E 3448 F2F4  F85A 204C 907B 2280 7B5B
 </template>
 
 <style scoped>

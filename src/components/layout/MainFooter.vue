@@ -7,29 +7,21 @@ const outboundConfig = [
 ];
 </script>
 
-<template>
-  <nav class="nav-footer">
-    <p class="nav-footer-social-buttons">
-      <a
-        v-for="({ label, href, title, }, idx) in outboundConfig"
-        :key="idx"
-        :aria-label="label"
-        rel="noreferrer"
-        class="fa-icon icon__colored"
-        target="_blank"
-        :href="href"
-        :title="title"
-      >
-        <FontAwesomeIcon
-          :icon="['fab', label]"
-          aria-hidden="true"
-        />
-      </a>
-    </p>
-    <p>
-      © goldmund
-    </p>
-  </nav>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+nav.nav-footer
+  p.nav-footer-social-buttons
+    a.fa-icon.icon__colored(
+      v-for="({ label, href, title, }, idx) in outboundConfig"
+      :key="idx"
+      :href="href"
+      :title="title"
+      :aria-label="label"
+      rel="noreferrer"
+      target="_blank"
+    )
+      FontAwesomeIcon(:icon="['fab', label]" aria-hidden="true")
+  p © goldmund
 </template>
 
 <style scoped>

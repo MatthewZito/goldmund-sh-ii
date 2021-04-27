@@ -40,17 +40,18 @@ onMounted(() => {
     .finally(initMasonry);
 });
 </script>
-<template>
-  <div class="grid">
-    <div class="gutter-sizer" />
-      <BlogPostThumbnail
-        v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
-        :key="idx"
-        :title="title"
-        :subtitle="subtitle"
-        :img-src="imgSrc"
-        :slug="slug"
-      />
-    <div class="grid-sizer" />
-  </div>
+
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+.grid
+  .gutter-sizer
+    BlogPostThumbnail(
+      v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
+      :key="idx"
+      :title="title"
+      :subtitle="subtitle"
+      :img-src="imgSrc"
+      :slug="slug"
+    )
+  .grid-sizer
 </template>

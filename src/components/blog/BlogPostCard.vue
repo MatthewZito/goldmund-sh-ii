@@ -46,51 +46,28 @@ function open (url) {  // TODO update when using SSG
   window.open(url);
 }
 </script>
-<template>
-  <div
-    class="blog-post-card"
-    :style="bgImage"
-  >
-    <div class="blog-post-card__overlay" />
-    <div class="blog-post-card__share">
-      <button
-        class="blog-post-card__icon"
-        @click="toggleTargets"
-      >
-        <FontAwesomeIcon :icon="['fa', 'share-alt-square']" />
-      </button>
-      <span
-        v-if="hasTargets"
-        style="margin-left:5px;"
-        class="blog-post-card__share-targets"
-      >
-        <button
-          v-for="({ href, icon }, idx) in shareBtns"
-          :key="idx"
-          class="blog-post-card__icon"
-          @click="open(href)"
-        >
-          <FontAwesomeIcon
-            :icon="icon"
-          />
-        </button>
-      </span>
-    </div>
-    <div class="blog-post-card__content">
-      <div class="blog-post-card__header">
-        <h1 class="blog-post-card__title">
-          {{ title }}
-        </h1>
-        <h4 class="blog-post-card__info">
-          {{ date }}
-        </h4>
-
-      </div>
-      <p class="blog-post-card__desc">
-        {{ subtitle }}
-      </p>
-    </div>
-  </div>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+.blog-post-card(:style="bgImage")
+  .blog-post-card__overlay
+  .blog-post-card__share
+    button.blog-post-card__icon(@click="toggleTargets")
+      FontAwesomeIcon(:icon="['fa', 'share-alt-square']")
+    span.blog-post-card__share-targets(
+      v-if="hasTargets"
+      style="margin-left:5px;"
+    )
+      button.blog-post-card__icon(
+        v-for="({ href, icon }, idx) in shareBtns"
+        :key="idx"
+        @click="open(href)"
+      )
+        FontAwesomeIcon(:icon="icon")
+  .blog-post-card__content
+    .blog-post-card__header
+      h1.blog-post-card__title {{ title }}
+      h4.blog-post-card__info {{ date }}
+    p.blog-post-card__desc {{ subtitle }}
 </template>
 
 <style lang="scss" scoped>

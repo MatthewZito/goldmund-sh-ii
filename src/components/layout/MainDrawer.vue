@@ -2,13 +2,14 @@
 import { ref, computed, watch } from 'vue';
 
 import { useRoute } from 'vue-router';
-import { createNamespacedHelpers } from 'vuex';
+import { useStore } from 'vuex';
 
+/* Components */
 import MainFooter from './MainFooter.vue';
 
 /* Est */
 const route = useRoute();
-const { mapGetters, mapActions } = createNamespacedHelpers('config');
+const store = useStore();
 
 /* Data */
 const navConfig = [
@@ -20,10 +21,10 @@ const navConfig = [
 const routeLabel = ref('pwd');
 
 /* Computed */
-const isNavDrawerClosed = computed(() => mapGetters(['isNavDrawerClosed']));
+const isNavDrawerClosed = computed(() => store.getters['config/isNavDrawerClosed']);
 
 /* Methods */
-const toggleNavDrawer = mapActions(['toggleNavDrawer']);
+const toggleNavDrawer = _ => store.dispatch('config/toggleNavDrawer');
 
 function setRouteLabel () {
   return function (to, from) {
@@ -38,69 +39,42 @@ watch(() => route.name, setRouteLabel);
 
 </script>
 
-<template>
-  <div>
-    <div class="navbar navbar-default visible-xs">
-      <button
-        aria-label="toggle menu"
-        type="button"
-        class="navbar-toggle collapsed"
-        @click="toggleNavDrawer"
-      >
-        <span class="sr-only">
-          Toggle navigation
-        </span>
-        <span
-          v-for="idx of [0,1,2]"
-          :key="idx"
-          class="icon-bar"
-        />
-      </button>
-      <a class="navbar-brand">
-        ./goldmund.sh
-      </a>
-    </div>
-    <div>
-      <nav :class="`sidebar ${isNavDrawerClosed || 'open'}`">
-        <div
-          id="navbar-collapse"
-          class="navbar-collapse"
-        >
-          <div class="site-header hidden-xs">
-            <router-link
-              to="/"
-              class="site-brand"
-            >
-              <img
-                class="img-responsive site-logo"
-                alt="site logo"
-                src="@/assets/images/main-logo.svg"
-              />
-              $ {{ routeLabel }}
-            </router-link>
-            <!-- TODO retain box-sizing, hide text -->
-            <p
-              v-if="route.name === 'Landing'"
-              style="color:#555;"
-            >
-              An archive of musings
-            </p>
-          </div>
-          <ul class="nav">
-            <li
-              v-for="({ path, label: title }, idx) in navConfig"
-              :key="idx"
-            >
-              <router-link :to="path">
-                {{ title }}
-              </router-link>
-            </li>
-          </ul>
-          <MainFooter />
-        </div>
-      </nav>
-    </div>
-  </div>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+div
+  .navbar.navbar-default.visible-xs
+    button.navbar-toggle.collapsed(
+      aria-label="toggle menu"
+      type="button"
+      @click="toggleNavDrawer"
+    )
+      span.sr-only Toggle navigation
+      span.icon-bar(
+        v-for="idx of [0,1,2]"
+        :key="idx"
+      )
+    a.navbar-brand ./goldmund.sh
+  div
+    nav(:class="`sidebar ${isNavDrawerClosed || 'open'}`")
+      #navbar-collapse.navbar-collapse
+        .site-header.hidden-xs
+          router-link.site-brand(to="/")
+            img.img-responsive.site-logo(alt="site logo" src="@/assets/images/main-logo.svg")
+            | $ {{ routeLabel }}
+          //- TODO retain box-sizing, hide text
+          p(
+            v-if="route.name === 'Landing'"
+            style="color:#555;"
+          )
+            | An archive of musings
+        ul.nav
+          li(
+            v-for="({ path, label: title }, idx) in navConfig"
+            :key="idx"
+          )
+            router-link(:to="path")
+              | {{ title }}
+        MainFooter
 </template>
 
 <style scoped>

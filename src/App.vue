@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 
@@ -20,17 +20,14 @@ useHead({
   ]
 });
 
-/* Data */
-const isLoading = ref(false);
 </script>
 
-<template>
-  <div>
-    <MainDrawer />
-    <main id="main-collapse">
-      <MainCacheWrapper />
-    </main>
-  </div>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+div
+  MainDrawer
+  main#main-collapse
+    MainCacheWrapper
 </template>
 
 <style lang="scss">

@@ -3,6 +3,7 @@ import { computed, watch, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
+/* Est */
 const route = useRoute();
 const store = useStore();
 
@@ -25,15 +26,10 @@ onMounted(() => {
 
 </script>
 
-<template>
-  <router-view v-slot="{ Component }">
-    <transition
-      name="fade"
-      mode="out-in"
-    >
-      <keep-alive :include="getCachedViews">
-        <component :is="Component" />
-      </keep-alive>
-    </transition>
-  </router-view>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+router-view(v-slot="{ Component }")
+  transition(name="fade" mode="out-in")
+    keep-alive(:include="getCachedViews")
+      component(:is="Component")
 </template>

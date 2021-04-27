@@ -1,43 +1,31 @@
-<script>
-export default {
-  name: 'Information'
-};
+<script setup>
+
 </script>
 
-<template>
-  <div class="row">
-    <div class="col-main col-main__offset col-main__right">
-      <img
-        class="img-responsive"
-        style="marginTop:30px;"
-        alt="A picture of the site admin"
-        src="@/assets/images/headshot.jpg"
-      />
-      <p>
-        Goldmund.sh author and administrator
-      </p>
-    </div>
-    <div class="col-main col-main__offset col-main__right">
-      <hr />
-      <p>
-        Some info will go here
-      </p>
-      <div>
-        <router-link
-          v-slot="{ navigate }"
-          to="/communications"
-          custom
-        >
-          <button
-            class="btn btn-primary"
-            @click="navigate"
-          >
-            Communicate
-          </button>
-        </router-link>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+.row
+  .col-main.col-main__offset.col-main__right
+    img(
+      class="img-responsive"
+      style="marginTop:30px;"
+      alt="A picture of the site admin"
+      src="@/assets/images/headshot.jpg"
+    )
+    p
+      | Goldmund.sh author and administrator
+  .col-main.col-main__offset.col-main__right
+    hr
+    p
+      | Some info will go here
+    div
+      router-link(
+        v-slot="{ navigate }"
+        to="/communications"
+        custom
+      )
+        button.btn.btn-primary(@click="navigate")
+          | Communicate
 </template>
 
 <style scoped>

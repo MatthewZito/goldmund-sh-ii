@@ -36,7 +36,14 @@ const post = reactive({
   updatedAt: null
 });
 
-const { createdAt, imgSrc, sanitized, subtitle, title, updatedAt } = toRefs(post);
+const {
+  createdAt,
+  imgSrc,
+  sanitized,
+  subtitle,
+  title,
+  updatedAt
+} = toRefs(post);
 
 /* Computed */
 const dateHeader = computed(() => {
@@ -71,32 +78,27 @@ onMounted(() => {
 });
 </script>
 
-<template>
-  <div
-    v-if="!isLoading"
-    class="row"
-    style="maxWidth:1150px;"
-  >
-    <BlogPostCard
-      :title="title"
-      :subtitle="subtitle"
-      :img-src="imgSrc"
-      :date="dateHeader"
-    />
-    <div class="main-container">
-      <div class="container-section__spacer">
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="post.sanitized" />
-        <hr />
-        <p
-          v-if="dateFooter"
-          style="font-style:italic;color:#777;"
-        >
-          {{ dateFooter }}
-        </p>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+<!-- /* eslint-disable */ -->
+.row(
+  v-if="!isLoading"
+  style="max-width:1150px;"
+)
+  BlogPostCard(
+    :title="title"
+    :subtitle="subtitle"
+    :img-src="imgSrc"
+    :date="dateHeader"
+  )
+  .main-container
+    .container-section__spacer
+      div(v-html="post.sanitized")
+      hr
+      p(
+        v-if="dateFooter"
+        style="font-style:italic;color:#777;"
+      )
+        | {{ dateFooter }}
 </template>
 
 <style scoped>

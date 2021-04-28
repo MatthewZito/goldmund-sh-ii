@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-import { resolver } from './resolveFrontMatter';
+import { extractor } from './resolveFrontMatter';
 
 /* Plugins */
 import Vue from '@vitejs/plugin-vue';
@@ -13,20 +13,11 @@ import Pages from 'vite-plugin-pages';
 
 import prism from 'markdown-it-prism';
 
-const builtinsPlugin = {
-  ...builtins({
-    /* nodejs stdlib polyfills */
-    process: true,
-    util: true
-  }),
-  name: 'rollup-plugin-node-builtins'
-};
-
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
-let v;
 export default defineConfig({
-  v: null,
+
+  /* Plugins */
   plugins: [
 
     /* Vue */
@@ -37,7 +28,7 @@ export default defineConfig({
       ]
     }),
 
-    /* dynamic legacy environment support */
+    /* Legacy Environment Support */
     legacy({
       targets: [
         'defaults'
@@ -51,7 +42,7 @@ export default defineConfig({
         linkify: true,
         typographer: true,
       },
-      wrapperComponent: 'Container',
+      wrapperComponent: 'BlogContainer',
       markdownItUses: [
         prism
       ]
@@ -68,7 +59,9 @@ export default defineConfig({
 
           return {
             ...route,
-            meta: { frontmatter: resolver(route.component) }
+            meta: {
+              frontmatter: extractor(route.component)
+            }
           }
         }
       },
@@ -89,7 +82,7 @@ export default defineConfig({
     // }
   ],
 
-  /* alias resolution */
+  /* Alias Resolution */
   resolve: {
     alias: {
       '@': resolveAbsolute('src'),
@@ -97,15 +90,22 @@ export default defineConfig({
     }
   },
 
-  /* rollup overrides */
+  /* Rollup Overrides */
   rollupInputOptions: {
     preserveEntrySignatures: 'strict',
     plugins: [
-      builtinsPlugin
+      {
+        ...builtins({
+          /* nodejs stdlib polyfills */
+          process: true,
+          util: true
+        }),
+        name: 'rollup-plugin-node-builtins'
+      }
     ]
   },
 
-  /* auto-import */
+  /* Auto-Import */
   css: {
     preprocessorOptions: {
       scss: {
@@ -114,7 +114,7 @@ export default defineConfig({
     }
   },
 
-  /* build configurations */
+  /* Build Configurations */
   build: {
     // < limit to base64 string
     assetsInlineLimit: 10000

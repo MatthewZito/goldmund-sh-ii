@@ -12,7 +12,7 @@ import '@/plugins/prism';
 
 /* Global Components */
 import fa from '@/plugins/icon';
-import Container from '@/views/Container.vue';
+import BlogContainer from '@/components/layout/BlogContainer.vue';
 import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 
 /* Global Error Handlers */
@@ -37,7 +37,7 @@ const app = createApp(App)
 
 /* Global Components */
 app.component('FontAwesomeIcon', fa());
-app.component('Container', Container);
+app.component('BlogContainer', BlogContainer);
 app.component('BlogPostCard', BlogPostCard);
 
 /*************************************

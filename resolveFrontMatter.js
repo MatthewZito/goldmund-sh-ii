@@ -3,19 +3,23 @@ const fs = require('fs');
 
 const matter = require('gray-matter');
 
-const basePath = 'src/pages/blog/';
 const lookBehind = /(?<=\/blog\/).*$/;
-const ext = '.md';
-
-const extractor = _ => _.match(lookBehind);
-
 const frontmatter = /---(.|\n)*?---/;
+const matcher = _ => _.match(lookBehind);
 
-export function resolver (rte) {
-
+export function extractor (rte) {
   const filePath = join(__dirname, rte);
-  const raw = fs.readFileSync(filePath).toString().match(frontmatter)[0];
 
-  const { data } = matter(raw);
-  return data;
+  try {
+    const raw = fs.readFileSync(filePath)
+      .toString()
+      .match(frontmatter)
+      [0];
+
+    const { data } = matter(raw);
+    return data;
+  } catch ({ message }) {
+    console.log(message);
+    return {};
+  }
 }

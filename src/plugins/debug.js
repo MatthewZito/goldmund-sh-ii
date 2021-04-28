@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const header = 'color:#50fa7b;font-weight:bold;padding:6px;';
 const printf = hex => `color:${hex};font-weight:bold`;
 
-export default function () {
+function debug () {
   window.onerror = (message, source, line, column, error) => {
     logF(
       `%cUncaught Exception: ${message}\nInfo: ${source} - Ln${line} Col${column}`,
@@ -37,3 +37,9 @@ function logF (...args) {
     console.groupEnd();
   }
 }
+
+export default {
+  install (app, options) {
+    debug.apply(app);
+  }
+};

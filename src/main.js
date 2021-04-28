@@ -7,14 +7,16 @@ import store from '@/state';
 
 import App from './App.vue';
 
-/* Local Plugins */
-import apiServicePlugin from '@/plugins/api';
+/* Global Styles */
+import '@/plugins/prism';
 
 /* Global Components */
-import fa from '@/plugins/fontAwesome';
+import fa from '@/plugins/icon';
+import Container from '@/views/Container.vue';
+import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 
 /* Global Error Handlers */
-import debug from '@/utils/debug';
+import debug from '@/plugins/debug';
 
 /************************************
  *
@@ -22,10 +24,9 @@ import debug from '@/utils/debug';
  *
  ************************************/
 const app = createApp(App)
+  .use(debug)
   .use(router)
   .use(store)
-  /* Plugins */
-  .use(apiServicePlugin)
   .use(createHead());
 
 /************************************
@@ -36,9 +37,8 @@ const app = createApp(App)
 
 /* Global Components */
 app.component('FontAwesomeIcon', fa());
-
-/* Debug */
-debug.call(app);
+app.component('Container', Container);
+app.component('BlogPostCard', BlogPostCard);
 
 /*************************************
  *

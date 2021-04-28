@@ -1,18 +1,15 @@
-import store from '@/state';
+import { predicate } from '@/router/helpers';
 
 async function globalBefore (to, from, next) {
   const routeHas = predicate(to);
-  store.dispatch('api/cancelPendingRequests');
+
+  if (routeHas('redirect')) {
+    return next({ name: 'Landing' });
+  }
+
   return next();
 }
 
 export {
   globalBefore
 };
-
-/* Helpers */
-function predicate (to) {
-  return function (test) {
-    return to.matched.some(record => record.meta[test]);
-  };
-}

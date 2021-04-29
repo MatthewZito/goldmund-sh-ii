@@ -64,7 +64,6 @@ function dateConv (ts) {
 </template>
 
 <style lang="scss" scoped>
-
 .main-container {
   margin: auto;
   &__inner {

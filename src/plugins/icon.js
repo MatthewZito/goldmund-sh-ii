@@ -10,6 +10,8 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
 
 import { faShareAltSquare } from '@fortawesome/free-solid-svg-icons/faShareAltSquare';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons/faShareAlt';
+import { faFingerprint } from '@fortawesome/free-solid-svg-icons/faFingerprint';
+import { faKey } from '@fortawesome/free-solid-svg-icons/faKey';
 
 export default function () {
   library.add(
@@ -20,7 +22,9 @@ export default function () {
     faLinkedin,
     faTwitter,
     faShareAltSquare,
-    faShareAlt
+    faShareAlt,
+    faFingerprint,
+    faKey
   );
 
   return FontAwesomeIcon;

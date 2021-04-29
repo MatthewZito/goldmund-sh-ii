@@ -26,12 +26,12 @@ useHead({
 <!-- /* eslint-disable */ -->
 div
   MainDrawer
-  main#main-collapse
+  main
     MainCacheWrapper
 </template>
 
 <style lang="scss">
-@import './styles/main.min.css';
+@import './styles/index.css';
 
 .row {
   margin-left: -15px;

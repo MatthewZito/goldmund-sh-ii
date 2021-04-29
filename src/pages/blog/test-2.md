@@ -2,7 +2,7 @@
 title: test 2
 subtitle: lorem ipsum dolor
 createdAt: 2021-04-28
-imgSrc: https://lh3.googleusercontent.com/proxy/h2zyFMePW0XAMc58KjnQ8BuBBycvPagR-GOz7Tz4n9P0KG63ROAhmeO37FRy5yLJvqajuLTQhn0V3UyDGp1K4yvHZ1EYfA
+imgSrc: http://www.paperrad.org/media/greece3.jpg
 slug: test-2
 ---
 

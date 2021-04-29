@@ -1,4 +1,6 @@
 <script setup>
+/* data */
+const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 </script>
 
 <template lang="pug">
@@ -49,19 +51,25 @@
             ul.main-list__unstyled
               li
                 span.fa-icon
-                  i.fas.fa-key(aria-hidden="true")
+                  FontAwesomeIcon(
+                    :icon="['fa', 'key']",
+                    aria-hidden="true"
+                  )
                 a(href="'../../public/pub.asc" download)
                   | public key
               li
                 span.fa-icon
-                  i.fas.fa-fingerprint(aria-hidden="true")
-                | 306E 7D6A 359E 3448 F2F4  F85A 204C 907B 2280 7B5B
+                  FontAwesomeIcon(:icon="['fa', 'fingerprint']")
+                | {{ fingerprint }}
 </template>
 
-<style scoped>
-.main-list__unstyled {
-  padding-left: 0;
-  list-style: none;
+<style lang="scss" scoped>
+.main-list {
+  &__unstyled {
+    margin: 1rem;
+    padding-left: 0;
+    list-style: none;
+  }
 }
 
 .main-form {

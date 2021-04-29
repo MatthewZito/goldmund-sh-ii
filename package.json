@@ -47,7 +47,6 @@
     "hygen": "6.0.4",
     "lint-staged": "10.5.4",
     "markdown-it-prism": "2.1.6",
-    "nodemon": "2.0.7",
     "postcss-preset-env": "6.7.0",
     "prismjs": "1.23.0",
     "pug": "3.0.2",

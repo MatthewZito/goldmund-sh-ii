@@ -97,14 +97,18 @@ button {
   height: 100%;
   min-height: 300px;
   display: block;
-  border-radius: 8px;
   position: relative;
   margin: 0 auto;
-  // box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.25);
 
   @media screen and (max-width: 800px) {
     width: 95%;
     max-width: 95%;
+  }
+
+  /* Mobile Full Screen */
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
   }
 
   @media screen and (max-width: 600px) {

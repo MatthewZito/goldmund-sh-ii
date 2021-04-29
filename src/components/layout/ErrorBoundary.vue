@@ -10,8 +10,9 @@ onErrorCaptured((err, vm, info) => {
 </script>
 
 <template lang="pug">
-div(v-if="hasError")
-  | An error occurred
-div(v-else="")
-  slot
+div
+  div(v-if="hasError")
+    | An error occurred
+  div(v-else="")
+    slot
 </template>

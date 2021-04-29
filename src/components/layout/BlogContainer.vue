@@ -45,15 +45,15 @@ function dateConv (ts) {
 </script>
 
 <template lang="pug">
-.row(style="max-width:1150px;")
+.main-container(style="max-width:1150px;")
   BlogPostCard(
     :title="title"
     :subtitle="subtitle"
     :img-src="imgSrc"
     :date="dateHeader"
   )
-  .main-container
-    .container-section__spacer
+  .main-container__inner
+    div
       slot
       hr
       p(
@@ -63,13 +63,26 @@ function dateConv (ts) {
         | {{ dateFooter }}
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+
 .main-container {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  float: left;
-  width: 100%;
+  margin: auto;
+  &__inner {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0;
+    &__inner {
+      padding: 0;
+    }
+  }
 }
 </style>

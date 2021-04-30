@@ -20,21 +20,24 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
               label(htmlFor="email")
                 | Email
               input#email.form-control(
-                required type="email"
+                required
+                type="email"
                 name="email"
               )
             .form-group
               label(htmlFor="subject")
                 | Subject
               input#subject.form-control(
-                required type="text"
+                required
+                type="text"
                 name="subject"
               )
             .form-group
               label(htmlFor="content")
                 | Message
               textarea#content.form-control(
-                required type="text"
+                required
+                type="text"
                 name="content"
                 :rows="3"
                 placeholder="Enter your message"

@@ -57,6 +57,7 @@ onMounted(() => {
     initMasonry();
   }
 });
+// TODO virtual scroll
 </script>
 
 <template lang="pug">

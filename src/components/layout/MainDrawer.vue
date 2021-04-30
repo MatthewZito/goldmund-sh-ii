@@ -15,7 +15,7 @@ const store = useStore();
 const navConfig = [
   { path: '/', label: 'Vestibule' },
   { path: '/info', label: 'Info' },
-  { path: '/communications', label: 'Comms' }
+  { path: '/communications', label: 'Comm' }
 ];
 
 const routeLabel = ref('pwd');

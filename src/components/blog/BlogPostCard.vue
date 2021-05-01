@@ -192,7 +192,7 @@ button {
   }
 
   &__header {
-    margin-bottom: 2em;
+    margin-top: 2em;
   }
 
   &__title {

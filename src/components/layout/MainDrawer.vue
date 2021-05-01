@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
@@ -20,12 +20,7 @@ const navConfig = [
 
 const routeLabel = ref('pwd');
 
-/* Computed */
-const isNavDrawerClosed = computed(() => store.getters['config/isNavDrawerClosed']);
-
 /* Methods */
-const toggleNavDrawer = _ => store.dispatch('config/toggleNavDrawer');
-
 function setRouteLabel () {
   return function (to, from) {
     if (to !== from) {
@@ -41,20 +36,9 @@ watch(() => route.name, setRouteLabel);
 
 <template lang="pug">
 div
-  .navbar.navbar-default.visible-xs
-    button.navbar-toggle.collapsed(
-      aria-label="toggle menu"
-      type="button"
-      @click="toggleNavDrawer"
-    )
-      span.sr-only Toggle navigation
-      span.icon-bar(
-        v-for="idx of [0,1,2]"
-        :key="idx"
-      )
-    a.navbar-brand ./goldmund.sh
-  div
-    nav(:class="`sidebar ${isNavDrawerClosed || 'open'}`")
+  a.navbar-brand ./goldmund.sh
+  #main-nav
+    nav.sidebar
       #navbar-collapse.navbar-collapse
         .site-header.hidden-xs
           router-link.site-brand(to="/")

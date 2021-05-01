@@ -5,8 +5,7 @@
 <template lang="pug">
 .row
   .col-main.col-main__offset.col-main__right
-    img(
-      class="img-responsive"
+    img.img-responsive(
       style="marginTop:30px;"
       alt="A picture of the site admin"
       src="@/assets/images/headshot.jpg"
@@ -43,6 +42,13 @@
   .col-main__right {
     float: left;
     width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-main {
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

@@ -31,21 +31,19 @@ div
 </template>
 
 <style lang="scss">
-@import './styles/index.css';
-
 .row {
   margin-left: -15px;
   margin-right: -15px;
-}
 
-.row:after,
-.row:before {
-  content: " ";
-  display: table;
-}
+  &:after,
+  &:before {
+    content: " ";
+    display: table;
+  }
 
-.row:after {
-  clear: both;
+  &:after {
+    clear: both;
+  }
 }
 
 .btn:focus,

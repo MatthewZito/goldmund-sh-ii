@@ -83,6 +83,7 @@ button {
   border: 0;
   cursor: pointer;
   opacity: .75;
+
   &:focus {
     outline: 0;
      opacity: 1;
@@ -149,18 +150,18 @@ button {
     animation-name: targets;
     animation-duration: 1s;
     > button {
-      color: var(--main-error-color);
+      color: $main-error-color;
     }
   }
 
   &__icon {
-    color: var(--main-accent-color);
+    color: $main-accent-color;
     background: none;
     padding: 0;
     font-size: 1.2em;
 
     &:hover {
-      color: var(--main-success-color);
+      color: $main-success-color;
       mix-blend-mode: lighten;
     }
 
@@ -205,7 +206,7 @@ button {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: .8em;
-    color: var(--main-accent-color);
+    color: $main-accent-color;
     line-height: 1;
     margin: 0;
     font-weight: 700;
@@ -213,7 +214,7 @@ button {
   }
 
   &__desc {
-    color: var(--main-secondary-color);
+    color: $main-secondary-color;
     font-weight: 300;
     opacity: .84;
     margin-bottom: 2em;
@@ -225,12 +226,6 @@ h1,h2,h3 {
   letter-spacing: 2px;
   line-height: 1;
   font-weight: 400;
-}
-
-.button {
-  padding: .5rem 2rem;
-  background-color: rgba(255,255,255,.4);
-  color: rgba(255,255,255,1);
 }
 
 @keyframes targets {

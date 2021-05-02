@@ -22,20 +22,20 @@
         to="/communications"
         custom
       )
-        button.btn.btn-primary(@click="navigate")
+        button.btn.btn__primary(@click="navigate")
           | Communicate
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .col-main {
   width: 100%;
-}
 
-.col-main__offset {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  &__offset {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 @media (min-width: 992px) {

@@ -8,8 +8,8 @@ const outboundConfig = [
 </script>
 
 <template lang="pug">
-nav.nav-footer
-  p.nav-footer-social-buttons
+nav.navigator__footer
+  p.navigator__footer-social-buttons
     a.fa-icon.icon__colored(
       v-for="({ label, href, title, }, idx) in outboundConfig"
       :key="idx"
@@ -23,12 +23,12 @@ nav.nav-footer
   p © goldmund
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .icon__colored {
-  color: var(--main-accent-color);
-}
+  color: $main-accent-color;
 
-.icon__colored:hover {
-  color: var(--main-accent-active);
+  &:hover {
+    color: $main-accent-active;
+  }
 }
 </style>

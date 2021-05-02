@@ -17,7 +17,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
           .form-group
             label(htmlFor="email")
               | Email
-            input#email.form-control(
+            input#email.form-group__control(
               required
               type="email"
               name="email"
@@ -25,7 +25,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
           .form-group
             label(htmlFor="subject")
               | Subject
-            input#subject.form-control(
+            input#subject.form-group__control(
               required
               type="text"
               name="subject"
@@ -33,14 +33,14 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
           .form-group
             label(htmlFor="content")
               | Message
-            textarea#content.form-control(
+            textarea#content.form-group__control(
               required
               type="text"
               name="content"
               :rows="3"
               placeholder="Enter your message"
             )
-          button.btn.btn-primary.btn-lg(
+          button.btn.btn__primary.btn-lg(
             aria-label="submit form"
             type="submit"
           )
@@ -56,7 +56,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
                   :icon="['fa', 'key']",
                   aria-hidden="true"
                 )
-              a(href="'../../public/pub.asc" download)
+              a(href="'/pub.asc" download)
                 | public key
             li
               span.fa-icon
@@ -65,6 +65,15 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 </template>
 
 <style lang="scss" scoped>
+a {
+  color: $main-accent-color;
+  &:hover,
+  &:active {
+    color: $main-accent-active;
+    text-decoration: none;
+  }
+}
+
 .main-list {
   &__unstyled {
     margin: 1rem;

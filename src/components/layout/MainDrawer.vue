@@ -36,10 +36,10 @@ watch(() => route.name, setRouteLabel);
 
 <template lang="pug">
 div
-  a.navbar-brand ./goldmund.sh
-  #main-nav
-    nav.sidebar
-      #navbar-collapse.navbar-collapse
+  a.navigator__branding ./goldmund.sh
+  .navigator
+    nav.navigator__drawer
+      .navigator__collapsed
         .site-header.hidden-xs
           router-link.site-brand(to="/")
             img.img-responsive.site-logo(alt="site logo" src="@/assets/images/main-logo.svg")
@@ -50,7 +50,7 @@ div
             style="color:#555;"
           )
             | An archive of musings
-        ul.nav
+        ul.navigator-main
           li(
             v-for="({ path, label: title }, idx) in navConfig"
             :key="idx"
@@ -60,8 +60,31 @@ div
         MainFooter
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .router-link-exact-active {
   font-weight: 700;
+}
+
+.site-header {
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.site-brand,
+.site-logo {
+  margin-bottom: 6px;
+}
+
+.site-brand {
+  color: #000;
+  font-family: Cabin, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+    color: $main-accent-active;
+  }
 }
 </style>

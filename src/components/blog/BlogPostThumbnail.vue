@@ -24,7 +24,7 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.grid-item.blog-post
+.grid__item.blog-post
   img.img-responsive(
     alt="blog entry thumbnail"
     :src="imgSrc"
@@ -62,7 +62,7 @@ h1,h2,h3 {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .blog-post {

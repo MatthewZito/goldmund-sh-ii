@@ -38,8 +38,8 @@ function initMasonry () {
 function genMasonry () {
   masonryCharger.value = new Masonry(
     document.querySelector('.grid'), {
-      columnWidth: '.grid-sizer',
-      itemSelector: '.grid-item',
+      columnWidth: '.grid__sizer',
+      itemSelector: '.grid__item',
       gutter: '.gutter-sizer'
     });
 }
@@ -72,5 +72,5 @@ onMounted(() => {
         :img-src="imgSrc"
         :slug="slug"
       )
-  .grid-sizer
+  .grid__sizer
 </template>

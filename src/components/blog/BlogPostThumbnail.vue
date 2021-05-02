@@ -46,17 +46,17 @@ const props = defineProps({
 h1,h2,h3 {
   @include overlay-text(3, 400);
   text-transform: uppercase;
+  font-size: 3em;
 
   @media screen and (max-width: 768px) {
-    font-size: 3em;
+    font-size: 4em;
   }
 
   @media screen and (max-width: 400px) {
     font-size: 2em;
   }
 
-  /* Large Viewports */
-  @media screen and (max-width: 400px) {
+  @media (max-width: 768px) and (min-width: 551px) {
     font-size: 2em;
   }
 }

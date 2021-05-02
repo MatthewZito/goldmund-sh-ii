@@ -109,20 +109,30 @@ onMounted(() => {
   .grid {
     &__item,
     &__sizer {
-    width: 32.633%;
+      width: 32.633%;
     }
   }
 }
 
 /* Mobile + Tablet Viewports */
-@media (max-width:767px) {
+@media (max-width: 550px) {
+  .grid {
+    &__item {
+      margin: 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) and (min-width: 551px) {
   .hidden-xs {
     display: none !important;
   }
   .grid {
     margin: 0;
-    &__item {
-      margin: 1rem;
+
+    &__item,
+    &__sizer {
+      width: 49.5%;
     }
   }
 }

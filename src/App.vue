@@ -36,14 +36,8 @@ div
   margin-right: -15px;
 }
 
-.btn:focus,
-.btn:focus:active {
-  outline: none;
-}
-
 .container-section__spacer {
   margin-bottom: 30px;
 }
-
 </style>
 

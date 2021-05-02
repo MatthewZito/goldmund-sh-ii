@@ -52,6 +52,7 @@ watch(
 
 /* Init */
 onMounted(() => {
+  // console.log('MOUNT');
   if (predicate()) {
     genMasonry();
     initMasonry();
@@ -74,3 +75,55 @@ onMounted(() => {
       )
   .grid__sizer
 </template>
+
+<style lang="scss" scoped>
+.grid {
+  width: 100%;
+  margin-top: -11px;
+
+  &__item {
+    margin-bottom: 1%;
+    position: relative;
+    display: block;
+  }
+
+  &__sizer {
+    margin-bottom: 1%;
+  }
+}
+
+.gutter-sizer {
+  width: 1%;
+}
+
+@media (min-width:768px) {
+  .grid {
+    &__item,
+    &__sizer {
+      width: 49.5%;
+    }
+  }
+}
+
+@media (min-width:1200px) {
+  .grid {
+    &__item,
+    &__sizer {
+    width: 32.633%;
+    }
+  }
+}
+
+/* Mobile + Tablet Viewports */
+@media (max-width:767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+  .grid {
+    margin: 0;
+    &__item {
+      margin: 1rem;
+    }
+  }
+}
+</style>

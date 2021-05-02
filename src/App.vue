@@ -34,16 +34,6 @@ div
 .row {
   margin-left: -15px;
   margin-right: -15px;
-
-  &:after,
-  &:before {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
 }
 
 .btn:focus,

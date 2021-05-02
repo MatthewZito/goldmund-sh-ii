@@ -36,13 +36,16 @@ watch(() => route.name, setRouteLabel);
 
 <template lang="pug">
 div
-  a.navigator__branding ./goldmund.sh
+  router-link.navigator__branding(to="/") ./goldmund.sh
   .navigator
     nav.navigator__drawer
       .navigator__collapsed
         .site-header.hidden-xs
           router-link.site-brand(to="/")
-            img.img-responsive.site-logo(alt="site logo" src="@/assets/images/main-logo.svg")
+            img.img-responsive.site-logo(
+              alt="site logo"
+              src="@/assets/images/main-logo.svg"
+            )
             | $ {{ routeLabel }}
           //- TODO retain box-sizing, hide text
           p(

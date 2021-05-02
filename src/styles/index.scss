@@ -4,36 +4,12 @@
   'colors',
   'transitions',
   'buttons',
-  'forms',
-  'grid',
   'nav';
 
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0
-}
-
-a { 
-  background-color: transparent;
-} 
-
-a:active, 
-a:hover {
-  outline: 0; 
-}
 
 h1 { 
   font-size: 2em;
   margin: .67em 0;
-}
-
-img { 
-  border: 0;
 }
 
 button,
@@ -176,6 +152,28 @@ textarea {
 main {
   padding:15px;
   height:100%;
+}
+
+.fa-icon {
+  color: #000;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  line-height: 32px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto
+}
+
+@media (max-width:767px) {
+  .hidden-xs {
+    display: none !important;
+  }
 }
 
 @media (min-width:768px){

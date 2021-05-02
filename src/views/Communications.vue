@@ -14,26 +14,26 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
             .
               Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
               To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
-          .form-group
+          .main-form-grp
             label(htmlFor="email")
               | Email
-            input#email.form-group__control(
+            input#email.main-form-grp__control(
               required
               type="email"
               name="email"
             )
-          .form-group
+          .main-form-grp
             label(htmlFor="subject")
               | Subject
-            input#subject.form-group__control(
+            input#subject.main-form-grp__control(
               required
               type="text"
               name="subject"
             )
-          .form-group
+          .main-form-grp
             label(htmlFor="content")
               | Message
-            textarea#content.form-group__control(
+            textarea#content.main-form-grp__control(
               required
               type="text"
               name="content"
@@ -67,6 +67,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 <style lang="scss" scoped>
 a {
   color: $main-accent-color;
+
   &:hover,
   &:active {
     color: $main-accent-active;
@@ -87,6 +88,43 @@ a {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+
+  &-grp {
+  margin-bottom: 15px;
+
+    &__control {
+      width: 100%;
+      height: auto;
+      padding: 8px 20px;
+      border: 1px solid #000;
+      border-radius: 2px;
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1.78;
+      color: $main-dark-color;
+
+      &:last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+
+      &:focus {
+        outline: 0;
+        border-color:#66afe9;
+      }
+
+      &::-ms-expand {
+        border: 0;
+        background-color: transparent;
+      }
+
+      &::-moz-placeholder,
+      &:-ms-input-placeholder,
+      &::-webkit-input-placeholder {
+        color: $main-dark-color;
+      }
+    }
+  }
 }
 
 @media (min-width: 992px) {

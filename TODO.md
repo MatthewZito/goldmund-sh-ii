@@ -1,4 +1,4 @@
 # TODOs
 
-- [ ] error boundary
-- [ ] overlay css
+- [] error boundary
+- [x] overlay css

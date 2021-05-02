@@ -12,6 +12,7 @@ import { faShareAltSquare } from '@fortawesome/free-solid-svg-icons/faShareAltSq
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons/faShareAlt';
 import { faFingerprint } from '@fortawesome/free-solid-svg-icons/faFingerprint';
 import { faKey } from '@fortawesome/free-solid-svg-icons/faKey';
+import { faCommentAlt } from '@fortawesome/free-solid-svg-icons/faCommentAlt';
 
 export default function () {
   library.add(
@@ -24,7 +25,8 @@ export default function () {
     faShareAltSquare,
     faShareAlt,
     faFingerprint,
-    faKey
+    faKey,
+    faCommentAlt
   );
 
   return FontAwesomeIcon;

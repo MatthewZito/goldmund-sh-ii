@@ -13,7 +13,8 @@ import { resolveFrontmatter } from '@/utils';
 
 /* Components */
 import BlogPostThumbnail from '@/components/blog/BlogPostThumbnail.vue';
-// import ErrorBoundary from '@/components/layout/ErrorBoundary.vue';
+import FallbackThumbnail from '@/components/fallback/FallbackThumbnail.vue';
+import ErrorBoundary from '@/components/layout/ErrorBoundary.vue';
 
 /* Data */
 let posts = ref([
@@ -65,14 +66,17 @@ onMounted(() => {
 .grid
   .gutter-sizer
     template(v-if="!hasError")
-      BlogPostThumbnail(
+      ErrorBoundary(
         v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
         :key="idx"
-        :title="title"
-        :subtitle="subtitle"
-        :img-src="imgSrc"
-        :slug="slug"
+        :fallback="FallbackThumbnail"
       )
+        BlogPostThumbnail(
+          :title="title"
+          :subtitle="subtitle"
+          :img-src="imgSrc"
+          :slug="slug"
+        )
   .grid__sizer
 </template>
 

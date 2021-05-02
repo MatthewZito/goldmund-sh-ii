@@ -36,7 +36,7 @@ const app = createApp(App)
  ************************************/
 
 /* Global Components */
-app.component('FontAwesomeIcon', fa());
+app.component('FAIcon', fa());
 app.component('BlogContainer', BlogContainer);
 app.component('BlogPostCard', BlogPostCard);
 

@@ -21,7 +21,6 @@ const props = defineProps({
   }
 });
 
-
 /* Data */
 const { imgSrc, title } = toRefs(props);
 
@@ -29,7 +28,7 @@ let hasTargets = ref(false);
 
 const bgImage = `background-image: url(${imgSrc.value})`;
 
-const url = window.location.href; // TODO update when using SSG
+const url = window.location.href; // TODO verify
 
 const shareBtns = [
   { href:`https://www.facebook.com/share.php?u=${url}&title=${title.value}`, icon: ['fab', 'facebook'] },
@@ -42,7 +41,7 @@ function toggleTargets () {
   hasTargets.value = !hasTargets.value;
 }
 
-function open (url) {  // TODO update when using SSG
+function open (url) {  // TODO verify
   window.open(url);
 }
 </script>
@@ -52,7 +51,7 @@ function open (url) {  // TODO update when using SSG
   .blog-post-card__overlay
   .blog-post-card__share
     button.blog-post-card__icon(@click="toggleTargets")
-      FontAwesomeIcon(:icon="['fa', 'share-alt-square']")
+      FAIcon(:icon="['fa', 'share-alt-square']")
     span.blog-post-card__share-targets(
       v-if="hasTargets"
       style="margin-left:5px;"
@@ -62,7 +61,7 @@ function open (url) {  // TODO update when using SSG
         :key="idx"
         @click="open(href)"
       )
-        FontAwesomeIcon(:icon="icon")
+        FAIcon(:icon="icon")
   .blog-post-card__content
     .blog-post-card__header
       h1.blog-post-card__title {{ title }}

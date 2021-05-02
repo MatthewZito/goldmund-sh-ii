@@ -5,14 +5,21 @@ import { ref, onErrorCaptured, defineProps, useContext } from 'vue';
 const hasError = ref(false);
 
 const props = defineProps({
-  params: {
+  fallback: {
     type: Object
+  },
+  propagates: {
+    type: Boolean,
+    default: false
   }
 });
 
 onErrorCaptured((err, vm, info) => {
   hasError.value = true;
-  return false;
+  if (process.env.NODE_ENV === 'development') {
+    console.log({ err }, { info });
+  }
+  return !!props.propagates;
 });
 
 const { slots } = useContext();
@@ -23,7 +30,7 @@ const main = slots.default();
 <template>
 <div>
   <div v-if="hasError">
-    error
+    <component :is="fallback" />
   </div>
   <div v-else>
     <slot :v-bind="{props}" />

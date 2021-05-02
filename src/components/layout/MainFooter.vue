@@ -19,7 +19,7 @@ nav.navigator__footer
       rel="noreferrer"
       target="_blank"
     )
-      FontAwesomeIcon(:icon="['fab', label]" aria-hidden="true")
+      FAIcon(:icon="['fab', label]" aria-hidden="true")
   p © goldmund
 </template>
 

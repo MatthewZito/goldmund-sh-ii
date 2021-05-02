@@ -1,4 +1,5 @@
 <script setup>
+
 /* data */
 const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 </script>
@@ -49,10 +50,11 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
           class="main-form main-.main-form__offset"
           style="margin-left:-15px"
         )
+          hr(class="main-form__sep")
           ul.main-list__unstyled
             li
               span.fa-icon
-                FontAwesomeIcon(
+                FAIcon(
                   :icon="['fa', 'key']",
                   aria-hidden="true"
                 )
@@ -60,8 +62,12 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
                 | public key
             li
               span.fa-icon
-                FontAwesomeIcon(:icon="['fa', 'fingerprint']")
+                FAIcon(:icon="['fa', 'fingerprint']")
               | {{ fingerprint }}
+            li
+              span.fa-icon
+                FAIcon(:icon="['fa', 'comment-alt']")
+              | Catch me on IRC -> goldmund@freeenode
 </template>
 
 <style lang="scss" scoped>
@@ -127,11 +133,20 @@ a {
   }
 }
 
+.main-form__sep {
+  display: block;
+}
+
 @media (min-width: 992px) {
   .main-form__offset {
     float: left;
     width: 50%;
     max-width: 600px;
+  }
+
+
+  .main-form__sep {
+    display: none;
   }
 }
 

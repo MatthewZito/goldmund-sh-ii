@@ -86,7 +86,6 @@ a {
     position: relative;
     float: right;
     padding-right: 1.2em;
-    padding-bottom: 1em;
   }
 
   &__header {
@@ -109,5 +108,4 @@ a {
 .blog-post:hover > img {
   filter: blur(3px);
 }
-
 </style>

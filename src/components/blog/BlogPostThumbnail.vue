@@ -49,7 +49,7 @@ h1,h2,h3 {
   font-size: 3em;
 
   @media screen and (max-width: 768px) {
-    font-size: 4em;
+    font-size: 3em;
   }
 
   @media screen and (max-width: 400px) {

@@ -2,6 +2,7 @@
 
 - [x] error boundary
 - [x] overlay css
-- [] logger module
+- [ ] logger module
 - [x] fix: thumbnail content
-- [] unit tests
+- [ ] unit tests
+- [ ] virtual scroll

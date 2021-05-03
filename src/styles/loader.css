@@ -1,0 +1,46 @@
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #27c4f5 linear-gradient(to right,#27c4f5,#a307ba,#fd8d32,#70c050,#27c4f5);
+  background-size: 500%;
+  animation: 3s linear infinite bar-progress, .3s fadein;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+
+@-webkit-keyframes bar-progress {
+  0% {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 125% 0;
+  }
+}
+
+@keyframes bar-progress {
+  0% {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 125% 0;
+  }
+}
+

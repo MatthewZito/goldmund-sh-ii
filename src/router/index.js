@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter }  from 'vue-router';
 
 import routes from '@/router/routes';
-import { globalBefore } from './guards';
+import { guards } from './guards';
 
 /* Root Router Configurations */
 
@@ -10,6 +10,6 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach(globalBefore);
+guards.call(router);
 
 export default router;

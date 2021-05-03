@@ -6,7 +6,7 @@ import { extractor } from './resolveFrontMatter';
 /* Plugins */
 import Vue from '@vitejs/plugin-vue';
 import legacy from '@vitejs/plugin-legacy';
-import eslint from '@rollup/plugin-eslint';
+// import eslint from '@rollup/plugin-eslint';
 import builtins from 'rollup-plugin-node-builtins';
 import Markdown from 'vite-plugin-md';
 import Pages from 'vite-plugin-pages';
@@ -16,6 +16,11 @@ import prism from 'markdown-it-prism';
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
 export default defineConfig({
+  base: './',
+
+  server: {
+    open: true
+  },
 
   /* Plugins */
   plugins: [
@@ -85,7 +90,7 @@ export default defineConfig({
   /* Alias Resolution */
   resolve: {
     alias: {
-      '@': resolveAbsolute('src'),
+      '@': resolveAbsolute('./src'),
       '@pkg': resolveAbsolute('./package.json')
     }
   },

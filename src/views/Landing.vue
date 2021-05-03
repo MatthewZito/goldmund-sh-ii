@@ -2,7 +2,8 @@
 import {
   ref,
   onMounted,
-  watch
+  watch,
+  onBeforeMount
 } from 'vue';
 
 import Masonry from 'masonry-layout';
@@ -45,20 +46,16 @@ function genMasonry () {
     });
 }
 
-/* Watchers */
-watch(
-  predicate,
-  initMasonry
-);
-
 /* Init */
 onMounted(() => {
-  // console.log('MOUNT');
-  if (predicate()) {
-    genMasonry();
+  genMasonry();
+  initMasonry();
+
+  setTimeout(() => {
     initMasonry();
-  }
+  }, 1000);
 });
+
 // TODO virtual scroll
 </script>
 

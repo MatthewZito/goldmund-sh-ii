@@ -1,15 +1,23 @@
 import { predicate } from '@/router/helpers';
-
-async function globalBefore (to, from, next) {
-  const routeHas = predicate(to);
-
-  if (routeHas('redirect')) {
-    return next({ name: 'Landing' });
-  }
-
-  return next();
-}
+import NProgress from '@/plugins/progress';
 
 export {
-  globalBefore
+  guards
 };
+
+function guards () {
+  this.beforeEach((to, from, next) => {
+    NProgress.start();
+    const routeHas = predicate(to);
+
+    if (routeHas('redirect')) {
+      return next({ name: 'Landing' });
+    }
+
+    return next();
+  });
+
+  this.afterEach(() => {
+    NProgress.done();
+  });
+}

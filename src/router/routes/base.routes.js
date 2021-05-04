@@ -27,12 +27,4 @@ export default [{
     label: 'man',
     desc: 'about a random blog'
   }
-},
-{
-  path: '/test/page',
-  name: 'Test',
-  component: () => import('@/views/Information.vue'),
-  meta: {
-    cache: true
-  }
 }];

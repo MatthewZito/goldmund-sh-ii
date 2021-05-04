@@ -1,4 +1,4 @@
-const { join } = require('path');
+const { join, resolve } = require('path');
 const fs = require('fs');
 
 const matter = require('gray-matter');
@@ -8,7 +8,7 @@ const frontmatter = /---(.|\n)*?---/;
 const matcher = _ => _.match(lookBehind);
 
 export function extractor (rte) {
-  const filePath = join(__dirname, rte);
+  const filePath = join(resolve(__dirname, '../'), rte);
 
   try {
     const raw = fs.readFileSync(filePath)

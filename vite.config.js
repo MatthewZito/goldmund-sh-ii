@@ -16,7 +16,7 @@ import prism from 'markdown-it-prism';
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
 export default defineConfig({
-  base: './',
+  base: process.env.NODE_ENV === 'production' ? '/goldmund-sh-ii/' : './',
 
   server: {
     open: true

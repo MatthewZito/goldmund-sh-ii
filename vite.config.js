@@ -16,10 +16,15 @@ import prism from 'markdown-it-prism';
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
 export default defineConfig({
-  base: './',
+  base: '/',
 
   server: {
     open: true
+    // https: {
+    //   key: fs.readFileSync('./certs/localhost.key'),
+    //   cert: fs.readFileSync('./certs/localhost.crt'),
+    //   ca: fs.readFileSync('./certs/RootCA.crt')
+    // }
   },
 
   /* Plugins */
@@ -55,7 +60,9 @@ export default defineConfig({
 
     /* Route Generator */
     Pages({
-      pagesDir: 'src/pages',
+      pagesDir: [
+        { dir: 'src/pages', baseRoute: '' }
+      ],
       importMode () {
         return 'async';
       },

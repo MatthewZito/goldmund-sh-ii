@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-import { extractor } from './resolveFrontMatter';
+import { extractor } from './scripts/resolveFrontMatter';
 
 /* Plugins */
 import Vue from '@vitejs/plugin-vue';

@@ -1,10 +1,15 @@
 language: node_js
 node_js:
   - lts/*
+cache:
+  yarn: true
+  directories:
+    - public
+    - .cache
 install:
-  - npm ci
+  - yarn
 script:
-  - npm run build
+  - yarn build 
 deploy:
   provider: pages
   skip_cleanup: true

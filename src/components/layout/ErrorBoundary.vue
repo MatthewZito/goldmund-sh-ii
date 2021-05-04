@@ -17,7 +17,8 @@ const props = defineProps({
 onErrorCaptured((err, vm, info) => {
   hasError.value = true;
   if (process.env.NODE_ENV === 'development') {
-    console.log({ err }, { info });
+    // eslint-disable-next-line no-console
+    console.warn({ err }, { info });
   }
   return !!props.propagates;
 });

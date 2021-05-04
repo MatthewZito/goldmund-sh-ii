@@ -90,7 +90,7 @@ button {
 }
 
 .blog-post-card {
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   width: 100%;
   max-width: 1200px;
@@ -120,7 +120,13 @@ button {
   &__overlay {
     width:100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+    // background: linear-gradient(to right, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+    background: rgba(164, 230, 250, 0.2) linear-gradient(to right,
+      rgba(39, 196, 245, 0.2),
+      rgba(255, 121, 198, 0.2)
+      ,rgba(253, 141, 50, 0.2),
+      rgba(112, 192, 80, 0.2),
+      rgba(39, 196, 245, 0.2));
     background-blend-mode: multiply;
     position: absolute;
     top: 0;
@@ -129,7 +135,12 @@ button {
     left: 0;
 
     @media screen and (max-width: 600px) {
-      background: linear-gradient(to bottom, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
+      background: rgba(164, 230, 250, 0.2) linear-gradient(to right,
+      rgba(39, 196, 245, 0.2),
+      rgba(255, 121, 198, 0.2)
+      ,rgba(253, 141, 50, 0.2),
+      rgba(112, 192, 80, 0.2),
+      rgba(39, 196, 245, 0.2));
     }
   }
 
@@ -157,7 +168,7 @@ button {
     color: $main-accent-color;
     background: none;
     padding: 0;
-    font-size: 1.2em;
+    font-size: 2em;
 
     &:hover {
       color: $main-success-color;
@@ -198,24 +209,22 @@ button {
   &__title {
     color: #ffffff;
     margin-bottom: .25em;
-    opacity: .75;
   }
 
   &__info {
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: .8em;
+    font-size: 1.2em;
     color: $main-accent-color;
     line-height: 1;
     margin: 0;
     font-weight: 700;
-    opacity:.5;
   }
 
   &__desc {
-    color: $main-secondary-color;
-    font-weight: 300;
-    opacity: .84;
+    color: $main-error-color;
+    font-weight: 700;
+    text-transform: uppercase;
     margin-bottom: 2em;
   }
 }
@@ -224,7 +233,7 @@ h1,h2,h3 {
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
-  font-weight: 400;
+  font-weight: 470;
 }
 
 @keyframes targets {

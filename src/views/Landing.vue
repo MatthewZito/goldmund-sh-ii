@@ -64,13 +64,12 @@ onMounted(() => {
   .gutter-sizer
     template(v-if="!hasError")
       ErrorBoundary(
-        v-for="({ title, subtitle, imgSrc, slug }, idx) in posts"
+        v-for="({ title, imgSrc, slug }, idx) in posts"
         :key="idx"
         :fallback="FallbackThumbnail"
       )
         BlogPostThumbnail(
           :title="title"
-          :subtitle="subtitle"
           :img-src="imgSrc"
           :slug="slug"
         )

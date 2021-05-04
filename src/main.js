@@ -12,7 +12,7 @@ import '@/plugins/prism';
 
 /* Global Components */
 import fa from '@/plugins/icon';
-import BlogContainer from '@/components/layout/BlogContainer.vue';
+import BlogContainer from '@/components/blog/BlogContainer.vue';
 import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 
 /* Global Error Handlers */

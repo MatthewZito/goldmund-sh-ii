@@ -7,10 +7,6 @@ const props = defineProps({
     type: String,
     required: true
   },
-  subtitle: {
-    type: String,
-    default: ''
-  },
   imgSrc: {
     type: String,
     required: true
@@ -33,7 +29,6 @@ const props = defineProps({
     .blog-post__content
       .blog-post__header
         h3.blog-post__title {{ title }}
-    p.blog-post__desc {{ subtitle }}
 </template>
 
 <style lang="scss" scoped>
@@ -65,6 +60,10 @@ a {
   text-decoration: none !important;
 }
 
+img {
+  width: 100%;
+}
+
 .blog-post {
   &__overlay {
     padding: 20px;
@@ -74,8 +73,7 @@ a {
     right: 0;
     left: 0;
     padding-left: 2em;
-    background: linear-gradient(to right, rgba(42,159,255,.2) 0%,rgba(33,33,32,.6) 60%,rgba(33,33,32,.8) 100%);
-    background-blend-mode: multiply;
+
   }
 
   &__content {
@@ -95,13 +93,6 @@ a {
   &__title {
     color: #fff;
     margin-bottom: .25em;
-    opacity: .75;
-  }
-
-  &__desc {
-    @include overlay-text(1, 400);
-    color: #fff;
-    margin-bottom: 2em;
   }
 }
 

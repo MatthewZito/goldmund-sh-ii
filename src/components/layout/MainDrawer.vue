@@ -21,12 +21,10 @@ const navConfig = [
 const routeLabel = ref('pwd');
 
 /* Methods */
-function setRouteLabel () {
-  return function (to, from) {
-    if (to !== from) {
-      routeLabel.value = route.meta.label;
-    }
-  };
+function setRouteLabel (to, from) {
+  if (to !== from) {
+    routeLabel.value = route.meta.label;
+  }
 }
 
 /* Watchers */
@@ -52,7 +50,7 @@ div
             v-if="route.name === 'Landing'"
             style="color:#555;"
           )
-            | A blog about art and computing
+            | :: Computing -> art -> ramblings
         ul.navigator-main
           li(
             v-for="({ path, label: title }, idx) in navConfig"

@@ -5,11 +5,7 @@ import { guards } from './guards';
 
 /* Root Router Configurations */
 
-const router = createRouter({
+export default guards.call(createRouter({
   history: createWebHistory(),
   routes
-});
-
-guards.call(router);
-
-export default router;
+}));

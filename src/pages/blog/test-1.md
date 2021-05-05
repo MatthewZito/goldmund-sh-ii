@@ -2,7 +2,7 @@
 title: test 1
 subtitle: lorem ipsum dolor lorem
 createdAt: 2021-04-28
-imgSrc: http://www.paperrad.org/media/ben1.jpg
+imgSrc: https://res.cloudinary.com/goldmund/image/upload/s--BxjIhbiB--/fl_progressive:semi,q_auto:best/v1620188265/goldmund-sh/pprd_ggolek.jpg
 slug: test-1
 ---
 

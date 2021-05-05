@@ -91,8 +91,9 @@ img {
   }
 
   &__title {
-    color: #fff;
+    color: #FFF;
     margin-bottom: .25em;
+    font-weight: 700;;
   }
 }
 

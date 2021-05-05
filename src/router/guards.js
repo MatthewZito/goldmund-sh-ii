@@ -20,4 +20,6 @@ function guards () {
   this.afterEach(() => {
     NProgress.done();
   });
+
+  return this;
 }

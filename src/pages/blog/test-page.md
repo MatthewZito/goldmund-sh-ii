@@ -3,7 +3,7 @@ title: Lorem Ipsum Dolor
 subtitle: dolor
 createdAt: 2020-01-01
 updatedAt: 2021-01-01
-imgSrc: https://payload.cargocollective.com/1/17/549798/8559338/paperrad_print09_1000.jpg
+imgSrc: https://res.cloudinary.com/goldmund/image/upload/s--LWq6WoCi--/fl_progressive:semi/v1620189111/goldmund-sh/gimageb2_ndrxpe.jpg
 slug: test-page
 ---
 

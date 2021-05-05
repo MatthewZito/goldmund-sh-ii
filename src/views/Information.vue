@@ -1,4 +1,5 @@
 <script setup>
+import { about } from '@/data/about.json';
 
 </script>
 
@@ -13,9 +14,14 @@
     p
       | Goldmund.sh author and administrator
   .col-main.col-main__offset.col-main__right
-    hr
-    p
-      | Some info will go here
+    hr.break-hidden
+    p(
+      v-for="(para, idx) in about",
+      :key="idx"
+      class="text-main"
+    )
+      | {{ para }}
+      hr.break-hidden
     div
       router-link(
         v-slot="{ navigate }"
@@ -27,6 +33,10 @@
 </template>
 
 <style lang="scss" scoped>
+.break-hidden {
+  border-color: #FFF;
+}
+
 .col-main {
   width: 100%;
 

@@ -1,0 +1,7 @@
+{
+  "about": {
+    "0": "Greetings, my name is Goldmund (on the internet, anyway). I'm a software developer with a focused expertise in JavaScript development and its surrounding ecosystem, UNIX-like systems, and frontend architectures. I'm currently employed as a lead frontend engineer at a cloud insurance software company where I help architect micro-frontends and cross-domain state sharing solutions for micro-service oriented web systems.",
+    "1": "As an engineer, I'm especially interested CSP (communicating sequential processes), reactive / event-based systems, and modeling consensus in browser-native environments. Software aside, I enjoy music archiving and learning about visual and performing arts.",
+    "2": "It's an oft-repeated aphorism that to understand something acutely one must be able to teach it, and that has motivated me to host a blog whereby I can share some of the things I've learned about computing. I'll otherwise probably share some observations, thoughts, and musings from time to time. Hope you enjoy and find something useful here — thanks for visiting."
+  }
+}

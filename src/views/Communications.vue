@@ -46,11 +46,8 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
             type="submit"
           )
             | Send
-        div(
-          class="main-form main-.main-form__offset"
-          style="margin-left:-15px"
-        )
-          hr(class="main-form__sep")
+        .main-form.main-form__offset(style="margin-left:-15px")
+          hr.main-form__sep
           ul.main-list__unstyled
             li
               span.fa-icon
@@ -58,7 +55,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
                   :icon="['fa', 'key']",
                   aria-hidden="true"
                 )
-              a(href="'/pub.asc" download)
+              a(href="/pub.asc" download)
                 | public key
             li
               span.fa-icon

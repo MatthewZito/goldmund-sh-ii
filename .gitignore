@@ -6,3 +6,4 @@ dist-ssr
 .eslintcache
 repl.js
 cache
+.vercel

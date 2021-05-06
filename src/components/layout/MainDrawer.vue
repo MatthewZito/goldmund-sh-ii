@@ -50,7 +50,7 @@ div
             v-if="route.name === 'Landing'"
             style="color:#555;"
           )
-            | :: Computing -> art -> ramblings
+            | :: computing -> art -> ramblings
         ul.navigator-main
           li(
             v-for="({ path, label: title }, idx) in navConfig"

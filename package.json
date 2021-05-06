@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "author": "Matthew Zito (goldmund)",
   "scripts": {
-    "dev": "vite",
+    
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,vue}\" --no-fix",

@@ -114,15 +114,6 @@ onMounted(() => {
   }
 }
 
-/* Mobile + Tablet Viewports */
-@media (max-width: 550px) {
-  .grid {
-    &__item {
-      margin: 1rem;
-    }
-  }
-}
-
 @media (max-width: 768px) and (min-width: 551px) {
   .hidden-xs {
     display: none !important;

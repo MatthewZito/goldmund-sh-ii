@@ -113,7 +113,7 @@ a {
 
 .main-list {
   &__unstyled {
-    margin: 1rem;
+    margin: 0 1rem;
     padding-left: 0;
     list-style: none;
   }
@@ -135,7 +135,7 @@ a {
       border: 1px solid #000;
       border-radius: 2px;
       display: block;
-      font-size: 1.4rem;
+      // font-size: 1.4rem;
       line-height: 1.78;
       color: $main-dark-color;
 

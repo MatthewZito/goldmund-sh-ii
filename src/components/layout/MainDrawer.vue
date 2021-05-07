@@ -79,7 +79,7 @@ div
 .site-brand {
   color: #000;
   font-family: Cabin, Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 1.3rem;
   font-weight: 700;
   display: block;
 

@@ -7,13 +7,14 @@
 - [x] fix: thumbnail content
 - [ ] unit tests
 - [ ] virtual scroll
-- [ ] max-len communications message, subject
+- [x] max-len communications message, subject
 - [ ] update share paths
 - [ ] est ganalytics
-- [ ] responsive fonts
+- [x] responsive fonts
 - [ ] sentry / error logging
 - [ ] ip logging
 - [ ] notifs
+- [ ] refine reponsive fonts, async load
 
 ## api
 

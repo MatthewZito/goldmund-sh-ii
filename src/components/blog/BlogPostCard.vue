@@ -99,6 +99,9 @@ button {
   display: block;
   position: relative;
   margin: 0 auto;
+  margin-top: 20px;
+  font-size: 1.6rem;
+
 
   @media screen and (max-width: 800px) {
     width: 95%;
@@ -109,6 +112,7 @@ button {
   @media screen and (max-width: 768px) {
     width: 100%;
     max-width: 100%;
+    font-size: 1.2rem;
   }
 
   @media screen and (max-width: 600px) {

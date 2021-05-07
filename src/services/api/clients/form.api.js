@@ -11,7 +11,7 @@ console.log('FIXME');
 const client = new HttpClient()
   .intercepts({ request, response, error })
   .logs({ request: true, response: true })
-  .setBaseUrl('http://locahost:3000'/* import.meta.env.VITE_APP_URL_UI */);
+  .setBaseUrl('http://localhost:3000'/* import.meta.env.VITE_APP_URL_UI */);
 
 export default {
   submitComm (data, cb) {

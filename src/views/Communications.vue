@@ -1,6 +1,13 @@
 <script setup>
-import { not } from 'js-heuristics';
-import { ref, reactive, computed } from 'vue';
+import {
+  ref,
+  reactive,
+  computed,
+  inject
+} from 'vue';
+
+/* Est */
+const api = inject('$api');
 
 /* Data */
 const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
@@ -11,19 +18,15 @@ const formData = reactive({
   message: null
 });
 
-const formRef = ref(null);
-
 /* Computed */
-// const isBtnDisabled = computed(() => {
-//   if (formData.)
-// });
+const isValid = computed(() => Object.values(formData).filter(v => v).length === 3);
 
-// const isEmailNull
-console.log(formRef, formRef.value.checkValidity);
-
-function onSubmit (x) {
-  console.log({ x });
-  console.log(formData.value);
+async function onSubmit (x) {
+  await api.form.submitComm(formData, ({ ok }) => {
+    console.log(ok);
+    // TODO handle fail
+    // TODO handle succeed
+  });
 }
 
 </script>
@@ -32,7 +35,7 @@ function onSubmit (x) {
 .row
   .main-form
     h1.main-title Communications
-    form(@submit.prevent.stop="onSubmit", ref="formRef")
+    form(@submit.prevent.stop="onSubmit")
       .row
         .main-form.main-form__offset
           p
@@ -73,6 +76,7 @@ function onSubmit (x) {
           button.btn.btn__primary.btn-lg(
             aria-label="submit form"
             type="submit"
+            :disabled="!isValid"
           )
             | Send
         .main-form.main-form__offset(style="margin-left:-15px")

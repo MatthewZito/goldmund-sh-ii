@@ -13,7 +13,8 @@
 - [ ] responsive fonts
 - [ ] sentry / error logging
 - [ ] ip logging
+- [ ] notifs
 
 ## api
 
-- [ ] create comm
+- [ ] create comm db

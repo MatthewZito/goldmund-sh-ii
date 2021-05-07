@@ -10,5 +10,4 @@ export default {
     app.config.globalProperties.$api = api;
     app.provide('$api', api);
   }
-
 };

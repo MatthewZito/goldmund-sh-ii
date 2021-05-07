@@ -1,3 +1,4 @@
+import { not } from 'js-heuristics';
 import normalize from '../normalizers';
 
 export default function (response) {
@@ -15,6 +16,6 @@ export default function (response) {
   });
 }
 
-function isErroneous ({ status }) {
-  return status && !(status < 300 && status >= 200);
+function isErroneous ({ status = 900 } = {}) {
+  return status && not(status < 300 && status >= 200);
 }

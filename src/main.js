@@ -18,6 +18,9 @@ import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 /* Global Error Handlers */
 import debug from '@/plugins/debug';
 
+/* Providers */
+import api from '@/plugins/api';
+
 /************************************
  *
  * Root Vue Instance Configurations
@@ -25,6 +28,7 @@ import debug from '@/plugins/debug';
  ************************************/
 const app = createApp(App)
   .use(debug)
+  .use(api)
   .use(router)
   .use(store)
   .use(createHead());

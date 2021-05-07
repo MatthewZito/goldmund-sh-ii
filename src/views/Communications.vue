@@ -1,12 +1,13 @@
 <script setup>
 import {
-  ref,
   reactive,
   computed,
   inject
 } from 'vue';
+import { useStore } from 'vuex';
 
 /* Est */
+const store = useStore();
 const api = inject('$api');
 
 /* Data */
@@ -23,9 +24,12 @@ const isValid = computed(() => Object.values(formData).filter(v => v).length ===
 
 async function onSubmit (x) {
   await api.form.submitComm(formData, ({ ok }) => {
-    console.log(ok);
-    // TODO handle fail
-    // TODO handle succeed
+    if (!ok) {
+      store.dispatch('notifications/addNotification', {
+        type: 'error',
+        message: 'testing 123'
+      });
+    }
   });
 }
 

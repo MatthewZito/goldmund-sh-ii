@@ -1,9 +1,7 @@
 <script setup>
 import {
   ref,
-  onMounted,
-  watch,
-  onBeforeMount
+  onMounted
 } from 'vue';
 
 import Masonry from 'masonry-layout';

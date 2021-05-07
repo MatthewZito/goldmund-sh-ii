@@ -8,6 +8,9 @@ import {
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
+/* Components */
+import NotificationDispatch from '@/components/notification/Dispatch.vue';
+
 /* Est */
 const route = useRoute();
 const store = useStore();
@@ -49,7 +52,9 @@ router-view(v-slot="{ Component }")
 img.img__overlay(
   :src="`/rand/m${id}.gif`",
   @click="closeAnnoyingImg",
-  ref="imageRef")
+  ref="imageRef"
+)
+NotificationDispatch(namespace="notifications")
 </template>
 
 <style lang="scss" scoped>

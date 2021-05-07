@@ -1,5 +1,7 @@
-import { predicate } from '@/router/helpers';
+import store from '@/state';
 import NProgress from '@/plugins/progress';
+
+import { predicate } from '@/router/helpers';
 
 export {
   guards
@@ -7,8 +9,13 @@ export {
 
 function guards () {
   this.beforeEach((to, from, next) => {
-    NProgress.start();
     const routeHas = predicate(to);
+
+    NProgress.start();
+
+    // cancel all pending requests for which a cancellation token has been issued
+    // we don't want the api call to proceed if the user has exited
+    store.dispatch('api/cancelPendingRequests');
 
     if (routeHas('redirect')) {
       return next({ name: 'Landing' });

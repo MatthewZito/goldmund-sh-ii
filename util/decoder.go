@@ -14,12 +14,12 @@ import (
 const maxBytesAllowed = 1048576
 
 type MalformedRequest struct {
-	status int
-	msg    string
+	Status  int
+	Message string
 }
 
 func (m *MalformedRequest) Error() string {
-	return m.msg
+	return m.Message
 }
 
 func DecodeJSONBody(w http.ResponseWriter, r *http.Request, m interface{}) error {
@@ -30,7 +30,7 @@ func DecodeJSONBody(w http.ResponseWriter, r *http.Request, m interface{}) error
 		value, _ := header.ParseValueAndParams(r.Header, "Content-Type")
 		if value != "application/json" {
 			msg := "Content-Type header is not application/json"
-			return &MalformedRequest{status: http.StatusUnsupportedMediaType, msg: msg}
+			return &MalformedRequest{Status: http.StatusUnsupportedMediaType, Message: msg}
 		}
 	}
 
@@ -52,37 +52,37 @@ func DecodeJSONBody(w http.ResponseWriter, r *http.Request, m interface{}) error
 		// capture JSON syntax errs and extract loc of said err
 		case errors.As(err, &syntaxErr):
 			msg := fmt.Sprintf("Request body contains malformed JSON at postition %d", syntaxErr.Offset)
-			return &MalformedRequest{status: http.StatusBadRequest, msg: msg}
+			return &MalformedRequest{Status: http.StatusBadRequest, Message: msg}
 
 		// under some circumstances, `Decode` may return a `io.ErrUnexpectedEOF` err for syntax errs in JSON
 		// handle these; see https://github.com/golang/go/issues/25956
 		case errors.Is(err, io.ErrUnexpectedEOF):
 			msg := "Request body contains malformed JSON"
-			return &MalformedRequest{status: http.StatusBadRequest, msg: msg}
+			return &MalformedRequest{Status: http.StatusBadRequest, Message: msg}
 
 		// capture type errs e.g. int value being mapped to a str field
 		case errors.As(err, &unmarshalTypeErr):
 			Field, Offset := unmarshalTypeErr.Field, unmarshalTypeErr.Offset
 			msg := fmt.Sprintf("Request body contains an invalid value for the %q field at position %d", Field, Offset)
-			return &MalformedRequest{status: http.StatusBadRequest, msg: msg}
+			return &MalformedRequest{Status: http.StatusBadRequest, Message: msg}
 
 		// catch errors resulting from unexpected fields in the request body
 		// pending change into sentinel error; see https://github.com/golang/go/issues/29035
 		case strings.HasPrefix(err.Error(), "json: unknown field "):
 			fieldName := strings.TrimPrefix(err.Error(), "json: unknown field ")
 			msg := fmt.Sprintf("Request body contains unknown field %s", fieldName)
-			return &MalformedRequest{status: http.StatusBadRequest, msg: msg}
+			return &MalformedRequest{Status: http.StatusBadRequest, Message: msg}
 
 		// if the request body is empty, we receive an `io.EOF` err from `Decode`
 		case errors.Is(err, io.EOF):
 			msg := "Request body must not be empty"
-			return &MalformedRequest{status: http.StatusBadRequest, msg: msg}
+			return &MalformedRequest{Status: http.StatusBadRequest, Message: msg}
 
 		// request body exceeds `maxBytesAllowed`
 		// pending change into sentinel error; see https://github.com/golang/go/issues/30715
 		case err.Error() == "http: request body too large":
 			msg := "Request body must not exceed 1MB" // TODO size to const bytes -> readable
-			return &MalformedRequest{status: http.StatusRequestEntityTooLarge, msg: msg}
+			return &MalformedRequest{Status: http.StatusRequestEntityTooLarge, Message: msg}
 
 		default:
 			return err
@@ -95,7 +95,7 @@ func DecodeJSONBody(w http.ResponseWriter, r *http.Request, m interface{}) error
 
 	if err != io.EOF {
 		msg := "Request body must only contain a single JSON object"
-		return &MalformedRequest{status: http.StatusBadRequest, msg: msg}
+		return &MalformedRequest{Status: http.StatusBadRequest, Message: msg}
 	}
 
 	return nil

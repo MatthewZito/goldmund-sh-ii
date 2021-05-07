@@ -1,14 +1,38 @@
 <script setup>
+import { not } from 'js-heuristics';
+import { ref, reactive, computed } from 'vue';
 
-/* data */
+/* Data */
 const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
+
+const formData = reactive({
+  email: null,
+  subject: null,
+  message: null
+});
+
+const formRef = ref(null);
+
+/* Computed */
+// const isBtnDisabled = computed(() => {
+//   if (formData.)
+// });
+
+// const isEmailNull
+console.log(formRef, formRef.value.checkValidity);
+
+function onSubmit (x) {
+  console.log({ x });
+  console.log(formData.value);
+}
+
 </script>
 
 <template lang="pug">
 .row
   .main-form
     h1.main-title Communications
-    form
+    form(@submit.prevent.stop="onSubmit", ref="formRef")
       .row
         .main-form.main-form__offset
           p
@@ -19,27 +43,32 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
             label(htmlFor="email")
               | Email
             input#email.main-form-grp__control(
-              required
+              v-model="formData.email"
               type="email"
               name="email"
+              required
             )
           .main-form-grp
             label(htmlFor="subject")
               | Subject
             input#subject.main-form-grp__control(
-              required
+              v-model="formData.subject"
               type="text"
               name="subject"
+              required
+              :maxlength="99"
             )
           .main-form-grp
             label(htmlFor="content")
               | Message
             textarea#content.main-form-grp__control(
-              required
+              v-model="formData.message"
+              placeholder="Enter your message"
               type="text"
               name="content"
+              required
               :rows="3"
-              placeholder="Enter your message"
+              :maxlength="400"
             )
           button.btn.btn__primary.btn-lg(
             aria-label="submit form"
@@ -85,7 +114,7 @@ a {
     list-style: none;
   }
 }
-
+// input:required:invalid, input:focus:invalid
 .main-form {
   position: relative;
   min-height: 1px;

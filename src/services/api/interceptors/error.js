@@ -3,7 +3,7 @@ import { not, objNotEmpty } from 'js-heuristics';
 import normalize from '../normalizers';
 
 export default function (error) {
-  if (not(objNotEmpty(error.response))) {
+  if (not(objNotEmpty(error?.response))) {
     return normalize({
       status: 499,
       error: 'Request cancelled'

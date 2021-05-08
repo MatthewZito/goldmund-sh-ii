@@ -40,6 +40,7 @@ $core-opacity: .8;
   z-index: 9999;
   bottom: 2rem;
   font-size: 1.35rem;
+  font-weight: 900;
 
   @media screen and (max-width: $mobile) {
     font-size: 1rem;

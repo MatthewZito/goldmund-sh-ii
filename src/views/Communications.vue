@@ -22,12 +22,17 @@ const formData = reactive({
 /* Computed */
 const isValid = computed(() => Object.values(formData).filter(v => v).length === 3);
 
-async function onSubmit (x) {
-  await api.form.submitComm(formData, ({ ok }) => {
+async function onSubmit () {
+  await api.form.submitComm(formData, ({ ok, error }) => {
     if (!ok) {
       store.dispatch('notifications/addNotification', {
         type: 'error',
-        message: 'testing 123'
+        message: error
+      });
+    } else {
+      store.dispatch('notifications/addNotification', {
+        type: 'success',
+        message: 'Your message has been submitted'
       });
     }
   });
@@ -96,7 +101,6 @@ async function onSubmit (x) {
         span.comm-icon
           FAIcon(:icon="['fa', 'comment-alt']")
         | Catch me on IRC -> goldmund@freeenode
-    hr
 </template>
 
 <style lang="scss" scoped>
@@ -128,9 +132,16 @@ button {
   }
 }
 
-@media (min-width: 1000px) {
+@media (max-width: $mobile) {
+  .contact-info {
+    font-size: .8em;
+  }
+}
+
+@media (min-width: $tablet-and-desktop) {
   .contact-info {
     margin: 2rem;
+    margin-top: 5rem;
   }
 }
 </style>

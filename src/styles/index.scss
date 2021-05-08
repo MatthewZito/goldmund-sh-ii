@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin:400,700|Source+Sans+Pro:400,700&display=swap);
 
-@import 
+@import
   'variables',
   'transitions',
   'buttons',
@@ -9,7 +9,7 @@
 
 *,
 :after,
-:before { 
+:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -30,13 +30,6 @@ body {
   color:#000;
   background-color:#fff
 }
-
-button,
-input,
-textarea { 
-  color: inherit;
-  font: inherit;
-} 
 
 a {
   color: $main-accent-color;
@@ -64,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Cabin, Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 1.1;
-  color:#000 
+  color:#000
 }
 
 h1, h2, h3 {
@@ -76,12 +69,12 @@ p {
   margin: 0 0 .8rem;
 }
 
-label {
-  display: inline-block;
-  margin-bottom: .3rem;
+button,
+input,
+textarea {
+  color: inherit;
+  font: inherit;
 }
-
-// input:required:invalid, input:focus:invalid
 
 textarea {
   resize: none;
@@ -115,6 +108,11 @@ textarea {
   &:not(:focus):invalid{
     color: $main-error-color;
   }
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .3rem;
 }
 
 ul {

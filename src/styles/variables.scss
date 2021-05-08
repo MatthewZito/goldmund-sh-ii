@@ -10,9 +10,10 @@ $main-info-color: #6272a4;
 $main-dark-color: #44475a;
 
 /* Breakpoints */
+$mobile: 600px;
 $mobile-and-tablet: 768px;
 $tablet: 800px;
-$mobile: 600px;
+$tablet-and-desktop: 1000px;
 
 /* Mixins */
 @mixin drop-cap($el) {

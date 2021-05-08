@@ -6,12 +6,16 @@ import {
   error
 } from '../interceptors';
 
-console.log('FIXME');
+// TODO fix, get dev env with vercel dev
+const isDev = import.meta.env.LOCAL || import.meta.env.DEV;
+const baseUrl = import.meta.env.VITE_LOCAL
+  ? 'http://localhost:3000'
+  : import.meta.env.VITE_APP_URL_UI;
 
 const client = new HttpClient()
   .intercepts({ request, response, error })
-  .logs({ request: true, response: true })
-  .setBaseUrl('http://localhost:3000'/* import.meta.env.VITE_APP_URL_UI */);
+  .logs({ request: isDev, response: isDev })
+  .setBaseUrl(baseUrl);
 
 export default {
   submitComm (data, cb) {

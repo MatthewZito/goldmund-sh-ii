@@ -37,156 +37,96 @@ async function onSubmit (x) {
 
 <template lang="pug">
 .row
-  .main-form
+  .grid-col.grid-col__offset.grid-col__right.main-form
     h1.main-title Communications
     form(@submit.prevent.stop="onSubmit")
-      .row
-        .main-form.main-form__offset
-          p
-            .
-              Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
-              To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
-          .main-form-grp
-            label(htmlFor="email")
-              | Email
-            input#email.main-form-grp__control(
-              v-model="formData.email"
-              type="email"
-              name="email"
-              required
-            )
-          .main-form-grp
-            label(htmlFor="subject")
-              | Subject
-            input#subject.main-form-grp__control(
-              v-model="formData.subject"
-              type="text"
-              name="subject"
-              required
-              :maxlength="99"
-            )
-          .main-form-grp
-            label(htmlFor="content")
-              | Message
-            textarea#content.main-form-grp__control(
-              v-model="formData.message"
-              placeholder="Enter your message"
-              type="text"
-              name="content"
-              required
-              :rows="3"
-              :maxlength="400"
-            )
-          button.btn.btn__primary.btn-lg(
-            aria-label="submit form"
-            type="submit"
-            :disabled="!isValid"
+      p
+        | Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
+        | To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
+
+      label(htmlFor="email")
+        | Email
+      input#email.main-form__control(
+        v-model="formData.email"
+        type="email"
+        name="email"
+        required
+      )
+      label(htmlFor="subject")
+        | Subject
+      input#subject.main-form__control(
+        v-model="formData.subject"
+        type="text"
+        name="subject"
+        required
+        :maxlength="99"
+      )
+      label(htmlFor="content")
+        | Message
+      textarea#content.main-form__control(
+        v-model="formData.message"
+        placeholder="Enter your message"
+        type="text"
+        name="content"
+        required
+        :rows="3"
+        :maxlength="400"
+      )
+      button.btn.btn__primary.btn-lg(
+        aria-label="submit form"
+        type="submit"
+        :disabled="!isValid"
+      )
+        | Send
+  .grid-col.grid-col__offset.grid-col__right
+    ul.contact-info
+      li
+        span.comm-icon
+          FAIcon(
+            :icon="['fa', 'key']",
+            aria-hidden="true"
           )
-            | Send
-        .main-form.main-form__offset(style="margin-left:-15px")
-          hr.main-form__sep
-          ul.main-list__unstyled
-            li
-              span.fa-icon
-                FAIcon(
-                  :icon="['fa', 'key']",
-                  aria-hidden="true"
-                )
-              a(href="/pub.asc" download)
-                | public key
-            li
-              span.fa-icon
-                FAIcon(:icon="['fa', 'fingerprint']")
-              | {{ fingerprint }}
-            li
-              span.fa-icon
-                FAIcon(:icon="['fa', 'comment-alt']")
-              | Catch me on IRC -> goldmund@freeenode
+        a(href="/pub.asc" download)
+          | public key
+      li
+        span.comm-icon
+          FAIcon(:icon="['fa', 'fingerprint']")
+        | {{ fingerprint }}
+      li
+        span.comm-icon
+          FAIcon(:icon="['fa', 'comment-alt']")
+        | Catch me on IRC -> goldmund@freeenode
+    hr
 </template>
 
 <style lang="scss" scoped>
-a {
-  color: $main-accent-color;
-
-  &:hover,
-  &:active {
-    color: $main-accent-active;
-    text-decoration: none;
-  }
+.contact-info {
+  padding-left: 0;
 }
 
-.main-list {
-  &__unstyled {
-    margin: 0 1rem;
-    padding-left: 0;
-    list-style: none;
-  }
+.comm-icon {
+  color: #000;
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  line-height: 2rem;
+  font-size: 15px;
+  text-align: center;
 }
-// input:required:invalid, input:focus:invalid
+
 .main-form {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  max-width: 800px;
 
-  &-grp {
-  margin-bottom: 15px;
-
-    &__control {
-      width: 100%;
-      height: auto;
-      padding: 8px 20px;
-      border: 1px solid #000;
-      border-radius: 2px;
-      display: block;
-      // font-size: 1.4rem;
-      line-height: 1.78;
-      color: $main-dark-color;
-
-      &:last-child {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-      }
-
-      &:focus {
-        outline: 0;
-        border-color:#66afe9;
-      }
-
-      &::-ms-expand {
-        border: 0;
-        background-color: transparent;
-      }
-
-      &::-moz-placeholder,
-      &:-ms-input-placeholder,
-      &::-webkit-input-placeholder {
-        color: $main-dark-color;
-      }
-    }
+  &__control {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
-.main-form__sep {
-  display: block;
-}
-
-@media (min-width: 992px) {
-  .main-form__offset {
-    float: left;
-    width: 50%;
-    max-width: 600px;
-  }
-
-
-  .main-form__sep {
-    display: none;
-  }
-}
-
-@media (max-width:767px) {
-  h1 {
-    margin-top: 30px;
+@media (min-width: 1000px) {
+  .contact-info {
+    margin: 2rem;
   }
 }
 </style>

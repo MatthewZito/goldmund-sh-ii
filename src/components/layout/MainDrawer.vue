@@ -38,7 +38,7 @@ div
   .navigator
     nav.navigator__drawer
       .navigator__collapsed
-        .site-header.hidden-xs
+        .site-header.hidden-mob
           router-link.site-brand(to="/")
             img.img-responsive.site-logo(
               alt="site logo"
@@ -46,11 +46,11 @@ div
             )
             | $ {{ routeLabel }}
           //- TODO retain box-sizing, hide text
-          p(
-            v-if="route.name === 'Landing'"
-            style="color:#555;"
-          )
-            | :: computing -> art -> ramblings
+        p(
+          v-if="route.name === 'Landing'"
+          style="color:#555;"
+        )
+          | :: computing -> art -> ramblings
         ul.navigator-main
           li(
             v-for="({ path, label: title }, idx) in navConfig"
@@ -65,7 +65,6 @@ div
 .router-link-exact-active {
   font-weight: 700;
 }
-
 .site-header {
   margin-bottom: 30px;
   overflow: hidden;
@@ -86,6 +85,12 @@ div
   &:hover {
     text-decoration: none;
     color: $main-accent-active;
+  }
+}
+
+@media (max-width: ($mobile-and-tablet - 1)) {
+  .hidden-mob {
+    display: none !important;
   }
 }
 </style>

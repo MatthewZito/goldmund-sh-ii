@@ -74,7 +74,7 @@ function dateConv (ts) {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $mobile-and-tablet) {
   .main-container {
     margin-left: -15px;
     margin-right: -15px;

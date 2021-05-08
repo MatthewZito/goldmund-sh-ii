@@ -8,9 +8,6 @@ import {
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
-/* Components */
-import NotificationDispatch from '@/components/notification/Dispatch.vue';
-
 /* Est */
 const route = useRoute();
 const store = useStore();
@@ -54,7 +51,6 @@ img.img__overlay(
   @click="closeAnnoyingImg",
   ref="imageRef"
 )
-NotificationDispatch(namespace="notifications")
 </template>
 
 <style lang="scss" scoped>
@@ -70,7 +66,7 @@ NotificationDispatch(namespace="notifications")
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $mobile-and-tablet) {
   .img__overlay {
     max-height: 75px;
   }

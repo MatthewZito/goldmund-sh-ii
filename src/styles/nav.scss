@@ -12,7 +12,6 @@
   &-main {
     margin-bottom: 0;
     padding-left: 0;
-    list-style: none;
   
     & > li,
     & > li > a {
@@ -83,7 +82,7 @@
 }
 
 
-@media (min-width:768px) {
+@media (min-width: $mobile-and-tablet) {
   .navigator {
     &__drawer {
       padding: 30px;
@@ -93,7 +92,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: $mobile-and-tablet - 1) {
   .navigator {
     margin-bottom: .1rem;
 

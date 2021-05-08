@@ -10,7 +10,7 @@ const outboundConfig = [
 <template lang="pug">
 nav.navigator__footer
   p.navigator__footer-social-buttons
-    a.fa-icon.icon__colored(
+    a.social-icon(
       v-for="({ label, href, title, }, idx) in outboundConfig"
       :key="idx"
       :href="href"
@@ -24,8 +24,14 @@ nav.navigator__footer
 </template>
 
 <style lang="scss" scoped>
-.icon__colored {
-  color: $main-accent-color;
+ .social-icon {
+    width: 2.5rem;
+    height: 2rem;
+    display: inline-block;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: $main-accent-color;
 
   &:hover {
     color: $main-accent-active;

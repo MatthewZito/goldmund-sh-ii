@@ -6,6 +6,7 @@ import { useHead } from '@vueuse/head';
 /* Components */
 import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
 import MainDrawer from '@/components/layout/MainDrawer.vue';
+import NotificationDispatch from '@/components/notification/Dispatch.vue';
 
 /* Est */
 const route = useRoute();
@@ -24,6 +25,7 @@ useHead({
 <template lang="pug">
 <!-- /* eslint-disable */ -->
 div
+  NotificationDispatch(namespace="notifications")
   MainDrawer
   main
     MainCacheWrapper

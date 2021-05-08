@@ -43,7 +43,7 @@ h1,h2,h3 {
   text-transform: uppercase;
   font-size: 3em;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $mobile-and-tablet) {
     font-size: 3em;
   }
 
@@ -51,7 +51,7 @@ h1,h2,h3 {
     font-size: 2em;
   }
 
-  @media (max-width: 768px) and (min-width: 551px) {
+  @media (max-width: $mobile-and-tablet) and (min-width: 551px) {
     font-size: 2em;
   }
 }

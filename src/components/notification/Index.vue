@@ -2,15 +2,11 @@
 import {
   defineProps,
   toRefs,
-  watch,
+  onMounted,
   ref
-} from "vue";
+} from 'vue';
 
 const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: null
-  },
   current: {
     type: Object
   }
@@ -18,65 +14,132 @@ const props = defineProps({
 
 const snackBarRef = ref(null);
 
-const { modelValue, current } = toRefs(props);
+const { current } = toRefs(props);
 
-watch(() => modelValue.value, () => toggle());
+const { message, color } = current.value;
 
-function toggle () {
-  if (modelValue.value) snackBarRef.value.className = 'show';
-  else snackBarRef.value.className = '';
-}
+// TODO FIXME
+// const message = 'testing a bunch of things today man';
+// const color = 'red';
+
+onMounted(() => {
+  snackBarRef.value.className = 'show';
+});
 </script>
 
 <template lang="pug">
-#snackbar(v-if="modelValue", ref="snackBarRef")
-  | {{ current.message }}
+#snackbar.show(ref="snackBarRef")
+  | {{ message }}
 </template>
 
-<style scoped>
-/* The snackbar - position it at the bottom and in the middle of the screen */
+<style lang="scss" scoped>
+
+$core-opacity: .6;
+
+@mixin mobile-to {
+  opacity: 1;
+  bottom: 1rem;
+}
+
 #snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
+  visibility: hidden;
+  min-width: 20rem;
+  background-color: v-bind(color);
+  color: #FFF;
+  text-align: center;
+  border-radius: 6px;
+  padding: 2rem;
+  position: fixed;
+  z-index: 9999;
+  bottom: 2rem;
+  font-size: 1.35rem;
+
+  @media screen and (max-width: $mobile-and-tablet) {
+    // left: 20%;
+  }
+
+  @media screen and (max-width: $mobile) {
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: ($mobile - 100)) {
+    // margin-left: -50px;
+    padding: 1rem 2rem;
+    bottom: 1rem;
+    font-size: 1rem;
+  }
 }
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
-  visibility: visible; /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  visibility: visible;
+  -webkit-animation: fade-in 0.5s, fade-out 0.5s 2.5s;
+  animation: fade-in 0.5s, fade-out 0.5s 2.5s;
+  opacity: $core-opacity;
+
+  @media screen and (max-width: ($mobile - 100)) {
+    opacity: 1;
+  }
 }
 
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+@-webkit-keyframes fade-in {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 2rem;
+    opacity: $core-opacity;
+
+    @media screen and (max-width: ($mobile - 100)) {
+      @include mobile-to;
+    }
+  }
+
 }
 
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+@keyframes fade-in {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 2rem;
+    opacity: $core-opacity;
+
+    @media screen and (max-width: ($mobile - 100)) {
+      @include mobile-to;
+    }
+  }
 }
 
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+@-webkit-keyframes fade-out {
+  from {
+    bottom: 2rem;
+    opacity: $core-opacity;
+
+    @media screen and (max-width: ($mobile - 100)) {
+      @include mobile-to;
+    }
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+@keyframes fade-out {
+  from {
+    bottom: 2rem;
+    opacity: $core-opacity;
+
+    @media screen and (max-width: ($mobile - 100)) {
+      @include mobile-to;
+    }
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 </style>

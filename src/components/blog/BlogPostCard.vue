@@ -103,19 +103,19 @@ button {
   font-size: 1.6rem;
 
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: $tablet) {
     width: 95%;
     max-width: 95%;
   }
 
   /* Mobile Full Screen */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $mobile-and-tablet) {
     width: 100%;
     max-width: 100%;
     font-size: 1.2rem;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $mobile) {
     background-position: 50% 0%;
     background-size: cover;
     height: 300px;
@@ -138,7 +138,7 @@ button {
     right: 0;
     left: 0;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: $mobile) {
       background: rgba(164, 230, 250, 0.2) linear-gradient(to right,
       rgba(39, 196, 245, 0.2),
       rgba(255, 121, 198, 0.2)
@@ -154,7 +154,7 @@ button {
     width: 100%;
     max-width: 200px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: $mobile) {
       display: block;
       width: 100%;
     }
@@ -198,7 +198,7 @@ button {
     @media screen and (max-width: 1000px) {
       width: 50%;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: $mobile) {
       width: 100%;
       float: inherit;
       max-width: 100%;

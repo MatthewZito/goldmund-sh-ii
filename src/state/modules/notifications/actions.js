@@ -1,11 +1,11 @@
-import { isObject } from 'js-heuristics';
+import { not, isString } from 'js-heuristics';
 
 /* Enums & Config */
 
 const notificationTypes = {
-  error: 'exception',
-  warning: 'warning',
-  success: 'tertiary'
+  error: '#ff5555',
+  success: '#50fa7b',
+  warning: '#f1fa8c'
 };
 
 let autoId = 0;
@@ -20,26 +20,27 @@ const autoDismissInterval = 3000;
  * @param {string} type
  * @param {string} message
  */
-export const addNotification = ({ commit, getters, dispatch }, notificationConfig) => {
-  if (!isObject(notificationConfig) || !('message' in notificationConfig) || !notificationConfig.type) return;
+export const addNotification = ({ commit, getters, dispatch }, { message, type }) => {
+  if (not(isString(message)) || not(isString(type))) return;
 
-  if (!notificationTypes[notificationConfig.type]) return;
+  if (not(notificationTypes[type])) return;
 
   // if we are currently showing a notif, recurse this action to debounce
   if (getters.hasPendingNotifications) {
-    setTimeout(() => dispatch('addNotification', notificationConfig), autoDismissInterval - 2000);
+    setTimeout(() => dispatch('addNotification', { message, type }), autoDismissInterval - 2000);
     return;
   }
 
   const id = ++autoId;
-  const tsPayload = {
+
+  const payload = {
     time: new Date(),
     id,
-    color: notificationConfig.type,
-    ...notificationConfig
+    color: notificationTypes[type],
+    message
   };
 
-  commit('enqueueNotification', tsPayload);
+  commit('enqueueNotification', payload);
 
   setTimeout(() => commit('dequeueNotification', id), autoDismissInterval);
 };

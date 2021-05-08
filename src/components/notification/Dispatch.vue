@@ -1,8 +1,13 @@
 <script setup>
-import { computed, defineProps, toRefs, watch, reactive } from 'vue';
+import {
+  defineProps,
+  toRefs
+} from 'vue';
 import { useStore } from 'vuex';
-import Notification from './Index.vue';
 import { useGetters } from '@/hooks';
+
+/* Components */
+import Notification from './Index.vue';
 
 /* Est */
 const store = useStore();
@@ -18,7 +23,6 @@ const props = defineProps({
 const { namespace } = toRefs(props);
 
 /* Computed */
-
 const {
   currentNotification: notification,
   hasPendingNotifications: hasPending
@@ -27,16 +31,11 @@ const {
   'hasPendingNotifications'
 ]);
 
-/* Methods */
-function close () {
-  store.dispatch(`${namespace.value}/resolveNotification`, notification.value.id);
-}
-
 </script>
 <template lang="pug">
-div
+div(style="display: flex;justify-content: center;")
   Notification(
-    v-model="hasPending"
+    v-if="hasPending"
     :current="notification"
   )
 </template>

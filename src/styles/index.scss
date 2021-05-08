@@ -1,10 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin:400,700|Source+Sans+Pro:400,700&display=swap);
 
 @import 
-  'colors',
+  'variables',
   'transitions',
   'buttons',
-  'nav';
+  'nav',
+  'grid';
 
 *,
 :after,
@@ -42,15 +43,15 @@ a {
   text-decoration: none;
 }
 
-a:focus,
-a:hover {
-  color: $main-accent-active;
-  text-decoration: underline;
-}
-
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset:-2px
+}
+
+a:focus,
+a:hover {
+  color: $main-accent-active;
+  text-decoration: none;
 }
 
 hr {
@@ -60,10 +61,10 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family:Cabin,Helvetica,Arial,sans-serif;
-  font-weight:700;
-  line-height:1.1;
-  color:#000
+  font-family: Cabin, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  color:#000 
 }
 
 h1, h2, h3 {
@@ -80,14 +81,44 @@ label {
   margin-bottom: .3rem;
 }
 
-.fa-icon {
-  color: #000;
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-  line-height: 32px;
-  font-size: 15px;
-  text-align: center;
+// input:required:invalid, input:focus:invalid
+
+textarea {
+  resize: none;
+}
+
+input,
+textarea {
+  margin-bottom: .5rem;
+  padding: .5rem 1.25rem;
+  border: 1px solid $main-info-color;
+  border-radius: 2px;
+  line-height: 1.5;
+  color: $main-dark-color;
+
+  &:focus {
+    outline: 0;
+    border-color: $main-secondary-active;
+  }
+
+  &::-ms-expand {
+    border: 0;
+    background-color: transparent;
+  }
+
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &::-webkit-input-placeholder {
+    color: $main-dark-color;
+  }
+
+  &:not(:focus):invalid{
+    color: $main-error-color;
+  }
+}
+
+ul {
+  list-style: none;
 }
 
 .img-responsive {
@@ -96,13 +127,7 @@ label {
   height: auto;
 }
 
-@media (max-width:767px) {
-  .hidden-xs {
-    display: none !important;
-  }
-}
-
-@media (min-width:768px){
+@media (min-width: $mobile-and-tablet){
   main {
     margin-left: 240px;
   }

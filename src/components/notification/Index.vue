@@ -1,9 +1,7 @@
 <script setup>
 import {
   defineProps,
-  toRefs,
-  onMounted,
-  ref
+  toRefs
 } from 'vue';
 
 const props = defineProps({
@@ -12,33 +10,22 @@ const props = defineProps({
   }
 });
 
-const snackBarRef = ref(null);
-
 const { current } = toRefs(props);
 
 const { message, color } = current.value;
-
-// TODO FIXME
-// const message = 'testing a bunch of things today man';
-// const color = 'red';
-
-onMounted(() => {
-  snackBarRef.value.className = 'show';
-});
 </script>
 
 <template lang="pug">
-#snackbar.show(ref="snackBarRef")
+#snackbar.toggled
   | {{ message }}
 </template>
 
 <style lang="scss" scoped>
 
-$core-opacity: .6;
+$core-opacity: .8;
 
-@mixin mobile-to {
+@mixin opacity-mob {
   opacity: 1;
-  bottom: 1rem;
 }
 
 #snackbar {
@@ -54,23 +41,19 @@ $core-opacity: .6;
   bottom: 2rem;
   font-size: 1.35rem;
 
-  @media screen and (max-width: $mobile-and-tablet) {
-    // left: 20%;
-  }
-
   @media screen and (max-width: $mobile) {
     font-size: 1rem;
   }
 
   @media screen and (max-width: ($mobile - 100)) {
-    // margin-left: -50px;
     padding: 1rem 2rem;
-    bottom: 1rem;
     font-size: 1rem;
   }
 }
 
-#snackbar.show {
+// toggled state is discrete in the case that we may want to trigger display
+// by appending / removing this class - for now, we leverage `v-if`
+#snackbar.toggled {
   visibility: visible;
   -webkit-animation: fade-in 0.5s, fade-out 0.5s 2.5s;
   animation: fade-in 0.5s, fade-out 0.5s 2.5s;
@@ -81,6 +64,7 @@ $core-opacity: .6;
   }
 }
 
+/* Animations */
 @-webkit-keyframes fade-in {
   from {
     bottom: 0;
@@ -92,10 +76,9 @@ $core-opacity: .6;
     opacity: $core-opacity;
 
     @media screen and (max-width: ($mobile - 100)) {
-      @include mobile-to;
+      @include opacity-mob;
     }
   }
-
 }
 
 @keyframes fade-in {
@@ -108,7 +91,7 @@ $core-opacity: .6;
     opacity: $core-opacity;
 
     @media screen and (max-width: ($mobile - 100)) {
-      @include mobile-to;
+      @include opacity-mob;
     }
   }
 }
@@ -119,7 +102,7 @@ $core-opacity: .6;
     opacity: $core-opacity;
 
     @media screen and (max-width: ($mobile - 100)) {
-      @include mobile-to;
+      @include opacity-mob;
     }
   }
   to {
@@ -134,7 +117,7 @@ $core-opacity: .6;
     opacity: $core-opacity;
 
     @media screen and (max-width: ($mobile - 100)) {
-      @include mobile-to;
+      @include opacity-mob;
     }
   }
   to {

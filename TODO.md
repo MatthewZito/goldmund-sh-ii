@@ -15,6 +15,7 @@
 - [ ] ip logging
 - [ ] notifs
 - [ ] refine reponsive fonts, async load
+- [ ] update res of info photo
 
 ## api
 

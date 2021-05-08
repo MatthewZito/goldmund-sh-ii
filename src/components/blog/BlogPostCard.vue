@@ -73,10 +73,6 @@ function open (url) {  // TODO verify
 
 $primary-font: 'Montserrat', helvetica, arial, sans-serif;
 
-a {
-  text-decoration: none;
-}
-
 button {
   font-family: $primary-font;
   border: 0;
@@ -124,7 +120,6 @@ button {
   &__overlay {
     width:100%;
     height: 100%;
-    // background: linear-gradient(to right, rgba(42,159,255,.2) 0%,rgba(33,33,32,1) 60%,rgba(33,33,32,1) 100%);
     background: rgba(164, 230, 250, 0.2) linear-gradient(to right,
       rgba(39, 196, 245, 0.2),
       rgba(255, 121, 198, 0.2)
@@ -149,10 +144,10 @@ button {
   }
 
   &__share {
-    padding: 1em;
+    padding: 1rem;
     display: inline-block;
     width: 100%;
-    max-width: 200px;
+    max-width: 15rem;
 
     @media screen and (max-width: $mobile) {
       display: block;
@@ -172,7 +167,7 @@ button {
     color: $main-accent-color;
     background: none;
     padding: 0;
-    font-size: 2em;
+    font-size: 2rem;
 
     &:hover {
       color: $main-success-color;
@@ -186,7 +181,7 @@ button {
 
   &__content {
     width: 100%;
-    max-width: 370px;
+    max-width: 40%;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -195,9 +190,11 @@ button {
     padding-right: 1.2em;
     padding-bottom: 1em;
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1080px) {
       width: 50%;
+      max-width: 100%;
     }
+
     @media screen and (max-width: $mobile) {
       width: 100%;
       float: inherit;
@@ -207,7 +204,7 @@ button {
   }
 
   &__header {
-    margin-top: 2em;
+    margin-top: 1em;
   }
 
   &__title {

@@ -72,7 +72,7 @@ async function onSubmit (x) {
         :rows="3"
         :maxlength="400"
       )
-      button.btn.btn__primary.btn-lg(
+      button.btn.btn__primary(
         aria-label="submit form"
         type="submit"
         :disabled="!isValid"
@@ -100,6 +100,10 @@ async function onSubmit (x) {
 </template>
 
 <style lang="scss" scoped>
+button {
+  margin-top: 2rem;
+}
+
 .contact-info {
   padding-left: 0;
 }

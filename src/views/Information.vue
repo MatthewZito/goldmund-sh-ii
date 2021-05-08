@@ -15,10 +15,9 @@ import { about } from '@/data/about.json';
       | Goldmund.sh author and administrator
   .grid-col.grid-col__offset.grid-col__right
     hr.break-hidden
-    p(
+    p.text-main(
       v-for="(para, idx) in about",
       :key="idx"
-      class="text-main"
     )
       | {{ para }}
       hr.break-hidden
@@ -33,6 +32,8 @@ import { about } from '@/data/about.json';
 </template>
 
 <style lang="scss" scoped>
+@include drop-cap('.text-main');
+
 .break-hidden {
   border-color: #FFF;
 }

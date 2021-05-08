@@ -13,3 +13,20 @@ $main-dark-color: #44475a;
 $mobile-and-tablet: 768px;
 $tablet: 800px;
 $mobile: 600px;
+
+/* Mixins */
+@mixin drop-cap($el) {
+  #{$el}:first-of-type::first-letter {
+    @media screen and (min-width: $mobile-and-tablet) {
+      font-family: "Gentium Book Basic", serif;
+      font-weight: bold;
+      font-size: 8rem;
+      vertical-align: bottom;
+      line-height: 1em;
+      float: left;
+      padding-right: 7px;
+      margin-top: -10px;
+      margin-left: -10px;
+    }
+  }
+}

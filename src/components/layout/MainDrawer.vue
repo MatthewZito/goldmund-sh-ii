@@ -46,11 +46,11 @@ div
             )
             | $ {{ routeLabel }}
           //- TODO retain box-sizing, hide text
-        p(
-          v-if="route.name === 'Landing'"
-          style="color:#555;"
-        )
-          | :: computing -> art -> ramblings
+          p(
+            v-if="route.name === 'Landing'"
+            style="color:#555;"
+          )
+            | :: computing -> art -> ramblings
         ul.navigator-main
           li(
             v-for="({ path, label: title }, idx) in navConfig"

@@ -1,6 +1,7 @@
 .navigator {
   &:after,
   &:before {
+    // TODO remove this and add padding-top on Landing view
     content: " ";
     display: table;
   }
@@ -34,7 +35,6 @@
   &__branding {
     float: left;
     padding: 13px 15px;
-    // font-size: 18px;
     line-height: 24px;
     height: 50px;
     color: $main-accent-color;
@@ -81,7 +81,6 @@
   }
 }
 
-
 @media (min-width: $mobile-and-tablet) {
   .navigator {
     &__drawer {
@@ -105,7 +104,7 @@
     }
 
     &__branding {
-      // font-size: 3rem;
+      font-size: 1.6rem;
     }
   
     &__footer-social-buttons, 

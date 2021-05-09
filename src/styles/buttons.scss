@@ -23,8 +23,13 @@ $animation-duration: 0.5s !default;
   transition-duration: $animation-duration;
   overflow: hidden;
 
-  &:hover,
-  &:focus {
+  &:disabled {
+    background: pink;
+    border: none;
+  }
+
+  &:hover:enabled,
+  &:focus:enabled {
     background-color: $main-accent-active;
   }
 
@@ -46,11 +51,11 @@ $animation-duration: 0.5s !default;
     visibility: hidden;
   }
 
-  &:not(:active)::before {
+  &:not(:active:enabled)::before {
     animation: scale-up $animation-duration ease-out 0s;
   }
 
-  &:focus::before {
+  &:focus:enabled:before {
     // display el when focused
     visibility: visible;
   }

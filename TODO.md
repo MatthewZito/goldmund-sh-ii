@@ -9,7 +9,8 @@
 - [ ] virtual scroll
 - [x] max-len communications message, subject
 - [ ] update share paths
-- [ ] est ganalytics
+- [x] est ganalytics
+  - [ ] setup
 - [x] responsive fonts
 - [x] sentry / error logging
 - [ ] ip logging
@@ -17,6 +18,8 @@
 - [ ] update to variable fonts
 - [ ] update res of info photo
 - [x] fix nav menu in mobile viewports
+- [x] fix text realign in comms
+- [ ] add tooltips
 
 ## api
 

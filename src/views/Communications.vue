@@ -5,9 +5,11 @@ import {
   inject
 } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 /* Est */
 const store = useStore();
+const router = useRouter();
 const api = inject('$api');
 
 /* Data */
@@ -33,7 +35,11 @@ async function onSubmit () {
       store.dispatch('notifications/addNotification', {
         type: 'success',
         message: 'Your message has been submitted'
-      });
+      })
+        .finally(() => {
+          console.log('here');
+          router.push({ name: 'Landing' });
+        });
     }
   });
 }
@@ -56,6 +62,7 @@ async function onSubmit () {
         type="email"
         name="email"
         required
+        autocomplete="off"
       )
       label(htmlFor="subject")
         | Subject
@@ -65,17 +72,19 @@ async function onSubmit () {
         name="subject"
         required
         :maxlength="99"
+        autocomplete="off"
       )
-      label(htmlFor="content")
+      label(htmlFor="message")
         | Message
-      textarea#content.main-form__control(
+      textarea#message.main-form__control(
         v-model="formData.message"
         placeholder="Enter your message"
         type="text"
-        name="content"
+        name="message"
         required
         :rows="3"
         :maxlength="400"
+        autocomplete="off"
       )
       button.btn(
         aria-label="submit form"
@@ -128,7 +137,6 @@ button {
   &__control {
     width: 100%;
     height: auto;
-    display: block;
   }
 }
 

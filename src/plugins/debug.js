@@ -72,7 +72,7 @@ function cc (...args) {
 }
 
 export default {
-  install (app, options) {
+  install (app, opts) {
     debug.apply(app);
   }
 };

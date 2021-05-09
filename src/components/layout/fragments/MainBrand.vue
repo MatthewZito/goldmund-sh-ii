@@ -1,11 +1,17 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 import { useRoute } from 'vue-router';
 
 /* Est */
 const route = useRoute();
 const routeLabel = ref('pwd');
+
+/* Computed */
+const showDesc = computed(() => {
+  if (route.name === 'Landing') return '';
+  return 'visibility:hidden;';
+});
 
 /* Methods */
 function setRouteLabel (to, from) {
@@ -35,9 +41,8 @@ watch(() => route.name, setRouteLabel);
         src="@/assets/images/geo.svg"
       )
     p.site-route-label $ {{ routeLabel }}
-  //- TODO retain box-sizing, hide text
-  p(v-if="route.name === 'Landing'")
-    | :: computing -> art -> ramblings
+  p(:style="showDesc")
+    | :: computing -> art -> cogitations
 </template>
 
 <style lang="scss" scoped>

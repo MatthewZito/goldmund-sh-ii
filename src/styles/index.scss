@@ -125,6 +125,12 @@ ul {
   height: auto;
 }
 
+@media (max-width: $mobile-and-tablet){
+  pre {
+    font-size: .6rem !important;
+  }
+}
+
 @media (min-width: $mobile-and-tablet){
   main {
     margin-left: 240px;

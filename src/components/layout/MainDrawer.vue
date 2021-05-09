@@ -34,31 +34,29 @@ watch(() => route.name, setRouteLabel);
 
 <template lang="pug">
 div
-  router-link.navigator__branding(to="/") ./goldmund.sh
   .navigator
     nav.navigator__drawer
-      .navigator__collapsed
-        .site-header.hidden-mob
-          router-link.site-brand(to="/")
-            img.img-responsive.site-logo(
-              alt="site logo"
-              src="@/assets/images/main-logo.svg"
-            )
-            | $ {{ routeLabel }}
-          //- TODO retain box-sizing, hide text
-          p(
-            v-if="route.name === 'Landing'"
-            style="color:#555;"
+      .site-header.hidden-mob
+        router-link.site-brand(to="/")
+          img.img-responsive.site-logo(
+            alt="site logo"
+            src="@/assets/images/main-logo.svg"
           )
-            | :: computing -> art -> ramblings
-        ul.navigator-main
-          li(
-            v-for="({ path, label: title }, idx) in navConfig"
-            :key="idx"
-          )
-            router-link(:to="path")
-              | {{ title }}
-        MainFooter
+          | $ {{ routeLabel }}
+        //- TODO retain box-sizing, hide text
+        p(
+          v-if="route.name === 'Landing'"
+          style="color:#555;"
+        )
+          | :: computing -> art -> ramblings
+      ul.navigator-main
+        li(
+          v-for="({ path, label: title }, idx) in navConfig"
+          :key="idx"
+        )
+          router-link(:to="path")
+            | {{ title }}
+      MainFooter
 </template>
 
 <style lang="scss" scoped>
@@ -88,9 +86,20 @@ div
   }
 }
 
-@media (max-width: ($mobile-and-tablet - 1)) {
-  .hidden-mob {
-    display: none !important;
+@media (max-width: $mobile-and-tablet - 1) {
+  .site-header,
+  .site-logo {
+    display: none;
+  }
+
+  .router-link-exact-active,
+  .router-link-exact-active:focus,
+  .router-link-exact-active:hover,
+  .router-link-exact-active:active {
+    // TODO a/b this
+    border-bottom: 4px $main-accent-color solid;
+    border-bottom: 4px solid;
+    border-image: linear-gradient(to right, $main-secondary-color, $main-accent-color) 1;
   }
 }
 </style>

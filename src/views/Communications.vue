@@ -77,7 +77,7 @@ async function onSubmit () {
         :rows="3"
         :maxlength="400"
       )
-      button.btn.btn__primary(
+      button.btn(
         aria-label="submit form"
         type="submit"
         :disabled="!isValid"

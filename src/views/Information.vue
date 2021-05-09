@@ -11,7 +11,7 @@ import { about } from '@/data/about.json';
       alt="A picture of the site admin"
       src="@/assets/images/headshot.jpg"
     )
-    p
+    p.caption
       | Goldmund.sh author and administrator
   .grid-col.grid-col__offset.grid-col__right
     hr.break-hidden
@@ -27,7 +27,7 @@ import { about } from '@/data/about.json';
         to="/communications"
         custom
       )
-        button.btn.btn__primary(@click="navigate")
+        button.btn(@click="navigate")
           | Communicate
 </template>
 
@@ -36,5 +36,10 @@ import { about } from '@/data/about.json';
 
 .break-hidden {
   border-color: #FFF;
+}
+
+.caption {
+  font-size: 1rem;
+  font-style: italic;
 }
 </style>

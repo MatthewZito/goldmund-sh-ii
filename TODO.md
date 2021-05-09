@@ -13,9 +13,10 @@
 - [x] responsive fonts
 - [ ] sentry / error logging
 - [ ] ip logging
-- [ ] notifs
+- [x] notifs
 - [ ] refine reponsive fonts, async load
 - [ ] update res of info photo
+- [ ] fix nav menu in mobile viewports
 
 ## api
 

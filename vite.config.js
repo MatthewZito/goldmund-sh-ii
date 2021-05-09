@@ -15,16 +15,20 @@ import prism from 'markdown-it-prism';
 
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
+// import { readFileSync } from 'fs';
+// const ssl = {
+//   https: {
+//     key: readFileSync('./certs/localhost.key'),
+//     cert: readFileSync('./certs/localhost.crt'),
+//     ca: readFileSync('./certs/RootCA.crt')
+//   }
+// };
+
 export default defineConfig({
   base: '/',
 
   server: {
     open: true
-    // https: {
-    //   key: fs.readFileSync('./certs/localhost.key'),
-    //   cert: fs.readFileSync('./certs/localhost.crt'),
-    //   ca: fs.readFileSync('./certs/RootCA.crt')
-    // }
   },
 
   /* Plugins */

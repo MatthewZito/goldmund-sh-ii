@@ -80,7 +80,8 @@ function dateConv (ts) {
   .main-container {
     margin-left: -15px;
     margin-right: -15px;
-    padding: 0;
+    padding: 1rem;
+
     &__inner {
       padding: 0;
     }

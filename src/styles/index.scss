@@ -67,6 +67,9 @@ h1, h2, h3 {
 
 p {
   margin: 0 0 .8rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 button,
@@ -127,7 +130,11 @@ ul {
 
 @media (max-width: $mobile-and-tablet){
   pre {
-    font-size: .6rem !important;
+    font-size: .9rem !important;
+  }
+
+  code {
+    white-space: pre-wrap !important;
   }
 }
 

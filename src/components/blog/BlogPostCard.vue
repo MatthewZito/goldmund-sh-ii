@@ -47,26 +47,26 @@ function open (url) {  // TODO verify
 </script>
 
 <template lang="pug">
-.blog-post-card(:style="bgImage")
-  .blog-post-card__overlay
-  .blog-post-card__share
-    button.blog-post-card__icon(@click="toggleTargets")
+.blog-card(:style="bgImage")
+  .blog-card__overlay
+  .blog-card__share
+    button.blog-card__icon(@click="toggleTargets")
       FAIcon(:icon="['fa', 'share-alt-square']")
-    span.blog-post-card__share-targets(
+    span.blog-card__share-targets(
       v-if="hasTargets"
       style="margin-left:5px;"
     )
-      button.blog-post-card__icon(
+      button.blog-card__icon(
         v-for="({ href, icon }, idx) in shareBtns"
         :key="idx"
         @click="open(href)"
       )
         FAIcon(:icon="icon")
-  .blog-post-card__content
-    .blog-post-card__header
-      h1.blog-post-card__title {{ title }}
-      h4.blog-post-card__info {{ date }}
-    p.blog-post-card__desc {{ subtitle }}
+  .blog-card__content
+    .blog-card__header
+      h1.blog-card__title {{ title }}
+      h4.blog-card__info {{ date }}
+    p.blog-card__desc {{ subtitle }}
 </template>
 
 <style lang="scss" scoped>
@@ -85,8 +85,8 @@ button {
   }
 }
 
-.blog-post-card {
-  background-size: auto;
+.blog-card {
+  background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   max-width: 1200px;
@@ -234,7 +234,7 @@ h1,h2,h3 {
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
-  font-weight: 470;
+  font-weight: 400;
 }
 
 @keyframes targets {

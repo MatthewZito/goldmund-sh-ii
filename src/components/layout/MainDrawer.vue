@@ -1,15 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue';
-
-import { useRoute } from 'vue-router';
-import { useStore } from 'vuex';
-
 /* Components */
 import MainFooter from './MainFooter.vue';
-
-/* Est */
-const route = useRoute();
-const store = useStore();
+import MainBrand from './fragments/MainBrand.vue';
 
 /* Data */
 const navConfig = [
@@ -18,36 +10,12 @@ const navConfig = [
   { path: '/communications', label: 'Comm' }
 ];
 
-const routeLabel = ref('pwd');
-
-/* Methods */
-function setRouteLabel (to, from) {
-  if (to !== from) {
-    routeLabel.value = route.meta.label;
-  }
-}
-
-/* Watchers */
-watch(() => route.name, setRouteLabel);
-
 </script>
 
 <template lang="pug">
 .navigator
   nav.navigator__drawer
-    .site-header.hidden-mob
-      router-link.site-brand(to="/")
-        img.img-responsive.site-logo(
-          alt="site logo"
-          src="@/assets/images/main-logo.svg"
-        )
-        | $ {{ routeLabel }}
-      //- TODO retain box-sizing, hide text
-      p(
-        v-if="route.name === 'Landing'"
-        style="color:#555;"
-      )
-        | :: computing -> art -> ramblings
+    MainBrand
     ul.navigator-main
       li(
         v-for="({ path, label: title }, idx) in navConfig"
@@ -62,35 +30,8 @@ watch(() => route.name, setRouteLabel);
 .router-link-exact-active {
   font-weight: 700;
 }
-.site-header {
-  margin-bottom: 30px;
-  overflow: hidden;
-}
-
-.site-brand,
-.site-logo {
-  margin-bottom: 6px;
-}
-
-.site-brand {
-  color: #000;
-  font-family: Cabin, Helvetica, Arial, sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  display: block;
-
-  &:hover {
-    text-decoration: none;
-    color: $main-accent-active;
-  }
-}
 
 @media (max-width: $mobile-and-tablet - 1) {
-  .site-header,
-  .site-logo {
-    display: none;
-  }
-
   .router-link-exact-active,
   .router-link-exact-active:focus,
   .router-link-exact-active:hover,

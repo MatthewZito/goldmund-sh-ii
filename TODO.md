@@ -11,7 +11,7 @@
 - [ ] update share paths
 - [ ] est ganalytics
 - [x] responsive fonts
-- [ ] sentry / error logging
+- [x] sentry / error logging
 - [ ] ip logging
 - [x] notifs
 - [ ] update to variable fonts

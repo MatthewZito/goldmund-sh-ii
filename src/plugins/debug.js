@@ -1,19 +1,37 @@
 /* eslint-disable no-console */
 
 /* Devtools Debug Interface */
-import { appName } from '@pkg';
+import * as Sentry from '@sentry/browser';
+import { Integrations } from '@sentry/tracing';
+
+import { appName, version } from '@pkg';
 const isDev = process.env.NODE_ENV !== 'production';
 
 const header = 'color:#50fa7b;font-weight:bold;padding:6px;';
 const printf = hex => `color:${hex};font-weight:bold`;
 
 function debug () {
+  Sentry.init({
+    // public
+    dsn: 'https://46974b6d1c0649878aae94e80ce1002b@o634926.ingest.sentry.io/5755736',
+    release: appName + version,
+    integrations: [new Integrations.BrowserTracing()],
+    tracesSampleRate: .25,
+    logErrors: true,
+    tracingOptions: {
+      Vue: this,
+      trackComponents: true,
+    }
+  });
+
   /* Runtime Exceptions */
   window.onerror = (message, source, line, column, error) => {
     cc(
       `%cUncaught Exception: ${message}\nInfo: ${source} - Ln${line} Col${column}`,
       printf('#FF5555')
     );
+
+    Sentry.captureException(error);
   };
 
   /* Unhandled Promise Rejections */
@@ -22,6 +40,8 @@ function debug () {
       `%c REJECTION: ${e.reason}`,
       printf('#FF5555')
     );
+
+    Sentry.captureException(e);
   };
 
   /* Vue Errors */
@@ -30,6 +50,8 @@ function debug () {
       `%c ERROR: ${err.toString()}\nInfo: ${info}\nerr`,
       printf('#FF79C6')
     );
+
+    Sentry.captureException(err);
   };
 
   /* Vue Render Warnings */

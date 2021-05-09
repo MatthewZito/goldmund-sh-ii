@@ -36,7 +36,9 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/max-attributes-per-line': 'off',
     'vue/html-self-closing': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'space-before-function-paren': 'error',
+    'comma-dangle': 'error'
   },
 
   reportUnusedDisableDirectives: true

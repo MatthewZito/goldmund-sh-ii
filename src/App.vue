@@ -16,7 +16,7 @@ useHead({
   meta: [
     {
       name: `description`,
-      content: computed(() => route.meta.desc),
+      content: computed(() => route.meta.desc)
     }
   ]
 });

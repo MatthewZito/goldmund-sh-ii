@@ -5,7 +5,7 @@ export {
   useGetters
 };
 
-function useGetters(namespace, getters) {
+function useGetters (namespace, getters) {
   return getters.reduce((getters, getter) => {
     getters[getter] = computed(() => store.getters[`${namespace}/${getter}`]);
     return getters;

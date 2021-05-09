@@ -1,7 +1,7 @@
 {
-  "name": "sh-full",
+  "name": "goldmund-sh",
   "appName": "Goldmund.sh",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Matthew Zito (goldmund)",
   "scripts": {
     "build": "vite build",

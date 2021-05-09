@@ -5,13 +5,13 @@ import { extractor } from './scripts/resolveFrontMatter';
 
 /* Plugins */
 import Vue from '@vitejs/plugin-vue';
-import legacy from '@vitejs/plugin-legacy';
-// import eslint from '@rollup/plugin-eslint';
-import builtins from 'rollup-plugin-node-builtins';
+import Legacy from '@vitejs/plugin-legacy';
+import Builtins from 'rollup-plugin-node-builtins';
 import Markdown from 'vite-plugin-md';
 import Pages from 'vite-plugin-pages';
+import Prism from 'markdown-it-prism';
 
-import prism from 'markdown-it-prism';
+// import eslint from '@rollup/plugin-eslint';
 
 const resolveAbsolute = dir => resolve(__dirname, dir);
 
@@ -43,7 +43,7 @@ export default defineConfig({
     }),
 
     /* Legacy Environment Support */
-    legacy({
+    Legacy({
       targets: [
         'defaults'
       ]
@@ -58,7 +58,7 @@ export default defineConfig({
       },
       wrapperComponent: 'BlogContainer',
       markdownItUses: [
-        prism
+        Prism
       ]
     }),
 
@@ -87,7 +87,7 @@ export default defineConfig({
       ],
       syncIndex: true,
       replaceSquareBrackets: true
-    }),
+    })
 
     /* runtime eslint parsing */
     // {
@@ -111,7 +111,7 @@ export default defineConfig({
     preserveEntrySignatures: 'strict',
     plugins: [
       {
-        ...builtins({
+        ...Builtins({
           /* nodejs stdlib polyfills */
           process: true,
           util: true

@@ -33,7 +33,7 @@ const url = window.location.href; // TODO verify
 const shareBtns = [
   { href:`https://www.facebook.com/share.php?u=${url}&title=${title.value}`, icon: ['fab', 'facebook'] },
   { href: `https://twitter.com/intent/tweet?status=${title.value}+${url}`, icon: ['fab', 'twitter'] },
-  { href:`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title.value}`, icon: ['fab', 'linkedin'] },
+  { href:`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title.value}`, icon: ['fab', 'linkedin'] }
 ];
 
 /* Methods */

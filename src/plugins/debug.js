@@ -20,7 +20,7 @@ function debug () {
     logErrors: true,
     tracingOptions: {
       Vue: this,
-      trackComponents: true,
+      trackComponents: true
     }
   });
 

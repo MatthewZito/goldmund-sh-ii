@@ -29,16 +29,16 @@ watch(() => route.name, setRouteLabel);
   router-link.site-brand(to="/")
     div.site-images
       img.img-responsive.site-image(
-        alt="site logo"
         src="@/assets/images/crescent.svg"
+        alt="site logo"
       )
       img.img-responsive.site-image(
-        alt="site logo"
         src="@/assets/images/lisp.svg"
+        alt="site logo"
       )
       img.img-responsive.site-image(
-        alt="site logo"
         src="@/assets/images/geo.svg"
+        alt="site logo"
       )
     p.site-route-label $ {{ routeLabel }}
   p(:style="showDesc")

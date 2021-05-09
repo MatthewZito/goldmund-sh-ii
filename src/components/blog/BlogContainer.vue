@@ -51,6 +51,7 @@ function dateConv (ts) {
     :subtitle="subtitle"
     :img-src="imgSrc"
     :date="dateHeader"
+    alt="blog header image"
   )
   .main-container__inner
     div

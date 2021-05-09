@@ -86,12 +86,14 @@ async function onSubmit () {
         :maxlength="400"
         autocomplete="off"
       )
-      button.btn(
+      button.btn.tooltipped(
         aria-label="submit form"
         type="submit"
         :disabled="!isValid"
       )
         | Send
+        span.tooltip(v-if="!isValid")
+          | You'll need to complete the required fields in order to submit this form
   .grid-col.grid-col__offset.grid-col__right
     ul.contact-info
       li
@@ -104,6 +106,7 @@ async function onSubmit () {
           | public key
       li
         span.comm-icon
+
           FAIcon(:icon="['fa', 'fingerprint']")
         | {{ fingerprint }}
       li
@@ -115,6 +118,13 @@ async function onSubmit () {
 <style lang="scss" scoped>
 button {
   margin-top: 2rem;
+}
+
+.tooltipped {
+  @include tooltip-ctrl('.tooltip');
+}
+.tooltip {
+  @include tooltip(fixed);
 }
 
 .contact-info {

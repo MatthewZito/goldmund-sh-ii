@@ -33,3 +33,25 @@ $tablet-and-desktop: 1000px;
     }
   }
 }
+
+// tooltip body
+@mixin tooltip($pos:absolute) {
+  visibility: hidden;
+  background: rgb(0, 0, 0, 1);
+  color: #FFF;
+  text-align: center;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  position: $pos;
+  z-index: 99999;
+  margin-top: 2.4em;
+  margin-left: -3em;
+  display: inline-grid;
+}
+
+// tooltip controller
+@mixin tooltip-ctrl($class) {
+  &:hover #{$class} {
+    visibility: visible;
+  }
+}

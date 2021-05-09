@@ -50,6 +50,7 @@ img.img__overlay(
   :src="`/rand/m${id}.gif`",
   @click="closeAnnoyingImg",
   ref="imageRef"
+  alt="randomized overlay image"
 )
 </template>
 

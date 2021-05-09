@@ -5,7 +5,7 @@
 <template lang="pug">
 .grid__item
   img.img-responsive.img-controlled(
-    alt="blog entry thumbnail"
+    alt="blog post thumbnail error image"
     src="@/assets/images/sadmac.jpg"
   )
 </template>

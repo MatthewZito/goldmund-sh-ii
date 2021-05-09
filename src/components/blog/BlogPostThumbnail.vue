@@ -22,7 +22,7 @@ const props = defineProps({
 <template lang="pug">
 .grid__item.blog-post
   img.img-responsive(
-    alt="blog entry thumbnail"
+    alt="blog post thumbnail"
     :src="imgSrc"
   )
   router-link.blog-post__overlay(:to="`/blog/${slug}`")

@@ -32,13 +32,6 @@ div
 </template>
 
 <style lang="scss">
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-.container-section__spacer {
-  margin-bottom: 30px;
-}
+// must exist for injection of root stylesheet
 </style>
 

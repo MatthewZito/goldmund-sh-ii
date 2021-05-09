@@ -33,30 +33,29 @@ watch(() => route.name, setRouteLabel);
 </script>
 
 <template lang="pug">
-div
-  .navigator
-    nav.navigator__drawer
-      .site-header.hidden-mob
-        router-link.site-brand(to="/")
-          img.img-responsive.site-logo(
-            alt="site logo"
-            src="@/assets/images/main-logo.svg"
-          )
-          | $ {{ routeLabel }}
-        //- TODO retain box-sizing, hide text
-        p(
-          v-if="route.name === 'Landing'"
-          style="color:#555;"
+.navigator
+  nav.navigator__drawer
+    .site-header.hidden-mob
+      router-link.site-brand(to="/")
+        img.img-responsive.site-logo(
+          alt="site logo"
+          src="@/assets/images/main-logo.svg"
         )
-          | :: computing -> art -> ramblings
-      ul.navigator-main
-        li(
-          v-for="({ path, label: title }, idx) in navConfig"
-          :key="idx"
-        )
-          router-link(:to="path")
-            | {{ title }}
-      MainFooter
+        | $ {{ routeLabel }}
+      //- TODO retain box-sizing, hide text
+      p(
+        v-if="route.name === 'Landing'"
+        style="color:#555;"
+      )
+        | :: computing -> art -> ramblings
+    ul.navigator-main
+      li(
+        v-for="({ path, label: title }, idx) in navConfig"
+        :key="idx"
+      )
+        router-link(:to="path")
+          | {{ title }}
+    MainFooter
 </template>
 
 <style lang="scss" scoped>

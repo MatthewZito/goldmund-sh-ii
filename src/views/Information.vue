@@ -4,7 +4,7 @@ import { about } from '@/data/about.json';
 </script>
 
 <template lang="pug">
-.row
+.grid-row
   .grid-col.grid-col__offset.grid-col__right
     img.img-responsive(
       style="marginTop:30px;"

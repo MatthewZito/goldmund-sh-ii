@@ -41,7 +41,7 @@ async function onSubmit () {
 </script>
 
 <template lang="pug">
-.row
+.grid-row
   .grid-col.grid-col__offset.grid-col__right.main-form
     h1.main-title Communications
     form(@submit.prevent.stop="onSubmit")

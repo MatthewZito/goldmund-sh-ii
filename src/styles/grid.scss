@@ -1,6 +1,13 @@
 .grid {
   width: 100%;
-  margin-top: -11px;
+  margin-top: 4.2rem;
+
+  &-row {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 2rem;
+    padding: .8rem;
+  }
 
   &-col {
     width: 100%;
@@ -35,15 +42,7 @@
   }
 }
 
-@media (max-width: $mobile-and-tablet) {
-  .grid-col {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-
-@media (min-width:768px) {
+@media (min-width: $mobile-and-tablet) {
   .grid {
     &__item,
     &__sizer {
@@ -63,11 +62,24 @@
 
 @media (max-width: $mobile-and-tablet) and (min-width: 551px) {
   .grid {
-    margin: 0;
-
     &__item,
     &__sizer {
       width: 49.5%;
+    }
+  }
+}
+
+@media (max-width: $mobile-and-tablet) {
+  .grid {
+    margin: 0;
+
+    &-row {
+      margin-top: 0;
+    }
+
+    &-col {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

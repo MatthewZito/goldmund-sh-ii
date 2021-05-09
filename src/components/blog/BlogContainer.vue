@@ -45,7 +45,7 @@ function dateConv (ts) {
 </script>
 
 <template lang="pug">
-.main-container(style="max-width:1150px;")
+.main-container
   BlogPostCard(
     :title="title"
     :subtitle="subtitle"
@@ -66,6 +66,8 @@ function dateConv (ts) {
 <style lang="scss" scoped>
 .main-container {
   margin: auto;
+  margin-top: 4.2rem;
+  max-width:1150px;
   &__inner {
     position: relative;
     min-height: 1px;

@@ -5,6 +5,9 @@ export {
   useCopyToClipboard
 };
 
+/**
+ * @summary Exposes bindings to enable copy-to-clipboard on a given el
+ */
 function useCopyToClipboard (initial) {
   const clipboardRef = ref(initial || '');
   const isSuccess = ref(false);

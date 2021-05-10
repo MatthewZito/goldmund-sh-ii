@@ -19,12 +19,8 @@ const api = inject('$api');
 /* Data */
 const { initTooltip, tooltipRef } = useTooltip();
 
+const { clipboardRef, isSuccess } = useCopyToClipboard();
 const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
-const {
-  clipboardRef,
-  isSuccess,
-  isCopied
-} = useCopyToClipboard();
 
 const formData = reactive({
   email: null,

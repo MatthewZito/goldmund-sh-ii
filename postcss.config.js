@@ -9,10 +9,3 @@ module.exports = {
     'postcss-import': {}
   }
 };
-// router.beforeEach((to, _from, next) => {
-//   NProgress.start();
-// });
-
-// router.afterEach(() => {
-//   NProgress.done();
-// });

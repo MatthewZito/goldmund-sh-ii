@@ -12,6 +12,9 @@ export {
   useMetadata
 };
 
+/**
+ * @summary Expose mappings of frontmatter-generated route definitions
+ */
 function useMetadata (routes) {
   const posts = ref([
     ...resolveFrontmatter(routes)

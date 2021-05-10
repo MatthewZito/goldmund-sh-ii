@@ -5,6 +5,9 @@ export {
   useTooltip
 };
 
+/**
+ * @summary Exposes bindings to enable tooltips on a given el
+ */
 function useTooltip () {
   const tooltipRef = ref(null);
 

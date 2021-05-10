@@ -8,7 +8,7 @@ import Masonry from 'masonry-layout';
 import { notEmpty } from 'js-heuristics';
 
 import routes from '@/router/routes/blog.routes';
-import { resolveFrontmatter } from '@/utils';
+import { useMetadata } from '@/hooks';
 
 /* Components */
 import BlogPostThumbnail from '@/components/blog/BlogPostThumbnail.vue';
@@ -16,9 +16,7 @@ import FallbackThumbnail from '@/components/fallback/FallbackThumbnail.vue';
 import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
 
 /* Data */
-let posts = ref([
-  ...resolveFrontmatter(routes)
-]);
+const { posts } = useMetadata(routes);
 
 let masonryCharger = ref(null);
 

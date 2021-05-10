@@ -9,7 +9,7 @@ import {
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 
-import { useCopyToClipboard, useTooltip } from '@/utils';
+import { useCopyToClipboard, useTooltip } from '@/hooks';
 
 /* Est */
 const store = useStore();

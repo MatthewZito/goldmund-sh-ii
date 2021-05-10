@@ -24,7 +24,8 @@
 
 ## api
 
-- [ ] create comm db
-- [ ] personal err logging sys, db
+- [ ] comm db
+- [ ] event logs sys, db
 - [ ] CORS policies
 - [ ] sentry
+- [ ] fix paths resolution issue w/ fns

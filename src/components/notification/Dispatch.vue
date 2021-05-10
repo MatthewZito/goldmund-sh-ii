@@ -4,7 +4,7 @@ import {
   toRefs
 } from 'vue';
 import { useStore } from 'vuex';
-import { useGetters } from '@/utils';
+import { useGetters } from '@/hooks';
 
 /* Components */
 import Notification from './Notification.vue';

@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -17,7 +16,7 @@ type LogEvent struct {
 	Type  string
 }
 
-func LogError(w http.ResponseWriter, r *http.Request) {
+func LogErrorHandler(w http.ResponseWriter, r *http.Request) {
 	var m LogEvent
 
 	err := util.DecodeJSONBody(w, r, &m)
@@ -37,7 +36,6 @@ func LogError(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(m.Info)
 	fmt.Println(m.Type)
 
-	payload, _ := json.Marshal(m)
-	util.FResponse(w, http.StatusOK, string(payload))
-
+	// payload, _ := json.Marshal(m)
+	util.FResponse(w, http.StatusOK, m.Type)
 }

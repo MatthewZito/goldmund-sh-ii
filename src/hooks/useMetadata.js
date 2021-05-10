@@ -4,11 +4,21 @@ import {
   not
 } from 'js-heuristics';
 
-import { pipe } from './base';
+import { ref } from 'vue';
+
+import { pipe } from '@/utils';
 
 export {
-  resolveFrontmatter
+  useMetadata
 };
+
+function useMetadata (routes) {
+  const posts = ref([
+    ...resolveFrontmatter(routes)
+  ]);
+
+  return { posts };
+}
 
 /**
  * @summary Filters routes containing frontmatter

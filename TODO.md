@@ -20,7 +20,7 @@
 - [x] fix nav menu in mobile viewports
 - [x] fix text realign in comms
 - [x] add tooltips
-- [ ] fix screen overflow (x axis) in mob / tab viewports
+- [x] fix screen overflow (x axis) in mob / tab viewports
 
 ## api
 

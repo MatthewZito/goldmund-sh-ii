@@ -5,6 +5,8 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import { appName, version } from '@pkg';
+import { eventApi } from '@/services/api';
+
 const isDev = process.env.NODE_ENV !== 'production';
 
 const header = 'color:#50fa7b;font-weight:bold;padding:6px;';
@@ -31,7 +33,14 @@ function debug () {
       printf('#FF5555')
     );
 
-    Sentry.captureException(error);
+    eventApi.logEvent({
+      type: 'RUNTIME_EXCEPTION',
+      info: message,
+      error: error.toString()
+    })
+      .finally(() => {
+        Sentry.captureException(error);
+      });
   };
 
   /* Unhandled Promise Rejections */
@@ -41,17 +50,32 @@ function debug () {
       printf('#FF5555')
     );
 
-    Sentry.captureException(e);
+    eventApi.logEvent({
+      type: 'UNHANDLED_PROMISE_REJECTION',
+      info: e.reason,
+      error: 'TODO'
+    })
+      .finally(() => {
+        Sentry.captureException(e);
+        e.preventDefault();
+      });
   };
 
   /* Vue Errors */
   this.config.errorHandler = (err, vm, info) => {
     cc(
-      `%c ERROR: ${err.toString()}\nInfo: ${info}\nerr`,
+      `%c ERROR: ${err.toString()}\nInfo: ${info}`,
       printf('#FF79C6')
     );
 
-    Sentry.captureException(err);
+    eventApi.logEvent({
+      type: 'VUE_ERROR',
+      info,
+      error: err.toString()
+    })
+      .finally(() => {
+        Sentry.captureException(err);
+      });
   };
 
   /* Vue Render Warnings */

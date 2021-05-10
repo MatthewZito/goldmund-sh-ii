@@ -13,7 +13,7 @@ import { resolveFrontmatter } from '@/utils';
 /* Components */
 import BlogPostThumbnail from '@/components/blog/BlogPostThumbnail.vue';
 import FallbackThumbnail from '@/components/fallback/FallbackThumbnail.vue';
-import ErrorBoundary from '@/components/layout/ErrorBoundary.vue';
+import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
 
 /* Data */
 let posts = ref([

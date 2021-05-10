@@ -1,7 +1,7 @@
 <script setup>
 /* Components */
-import MainFooter from './MainFooter.vue';
-import MainBrand from './fragments/MainBrand.vue';
+import MainFooter from '@/layout/MainFooter.vue';
+import MainBrand from '@/components/fragments/MainBrand.vue';
 
 /* Data */
 const navConfig = [

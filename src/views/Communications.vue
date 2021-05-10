@@ -2,10 +2,14 @@
 import {
   reactive,
   computed,
-  inject
+  inject,
+  unref,
+  onMounted
 } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+
+import { useCopyToClipboard, useTooltip } from '@/utils';
 
 /* Est */
 const store = useStore();
@@ -13,7 +17,14 @@ const router = useRouter();
 const api = inject('$api');
 
 /* Data */
+const { initTooltip, tooltipRef } = useTooltip();
+
 const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
+const {
+  clipboardRef,
+  isSuccess,
+  isCopied
+} = useCopyToClipboard();
 
 const formData = reactive({
   email: null,
@@ -24,6 +35,7 @@ const formData = reactive({
 /* Computed */
 const isValid = computed(() => Object.values(formData).filter(v => v).length === 3);
 
+/* Methods */
 async function onSubmit () {
   await api.form.submitComm(formData, ({ ok, error }) => {
     if (!ok) {
@@ -37,13 +49,30 @@ async function onSubmit () {
         message: 'Your message has been submitted'
       })
         .finally(() => {
-          console.log('here');
           router.push({ name: 'Landing' });
         });
     }
   });
 }
 
+function onClickCopy ({ target } = {}) {
+  clipboardRef.value = unref(target?.innerText);
+
+  if (isSuccess) {
+    store.dispatch('notifications/addNotification', {
+      type: 'success',
+      message: 'Successfully copied to clipboard'
+    });
+  }
+}
+
+/* A posteriori */
+onMounted(() => {
+  initTooltip(
+    isValid,
+    'You\'ll need to complete the required fields in order to submit this form'
+  );
+});
 </script>
 
 <template lang="pug">
@@ -86,14 +115,17 @@ async function onSubmit () {
         :maxlength="400"
         autocomplete="off"
       )
-      button.btn.tooltipped(
-        aria-label="submit form"
-        type="submit"
-        :disabled="!isValid"
+      span(
+        flow="right"
+        style="display:flex;width: max-content;"
+        ref="tooltipRef"
       )
-        | Send
-        span.tooltip(v-if="!isValid")
-          | You'll need to complete the required fields in order to submit this form
+        button.btn(
+          aria-label="submit form"
+          type="submit"
+          :disabled="!isValid"
+        )
+          | Send
   .grid-col.grid-col__offset.grid-col__right
     ul.contact-info
       li
@@ -104,9 +136,8 @@ async function onSubmit () {
           )
         a(href="/pub.asc" download)
           | public key
-      li
+      li(@dblclick="onClickCopy")
         span.comm-icon
-
           FAIcon(:icon="['fa', 'fingerprint']")
         | {{ fingerprint }}
       li
@@ -119,16 +150,13 @@ async function onSubmit () {
 button {
   margin-top: 2rem;
 }
-
-.tooltipped {
-  @include tooltip-ctrl('.tooltip');
-}
-.tooltip {
-  @include tooltip(fixed);
-}
-
 .contact-info {
   padding-left: 0;
+
+  li:nth-child(even):hover {
+    cursor: pointer;
+  }
+
 }
 
 .comm-icon {

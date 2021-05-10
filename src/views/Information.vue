@@ -6,13 +6,13 @@ import { about } from '@/data/about.json';
 <template lang="pug">
 .grid-row
   .grid-col.grid-col__offset.grid-col__right
-    img.img-responsive(
-      style="marginTop:30px;"
-      alt="A picture of the site admin"
-      src="@/assets/images/headshot.jpg"
-    )
-    p.caption
-      | Goldmund.sh author and administrator
+    figure.contain
+      img.img-responsive.image-centered(
+        alt="A picture of the site admin"
+        src="@/assets/images/headshot.jpg"
+      )
+      figcaption.caption
+        | Goldmund.sh author and administrator
   .grid-col.grid-col__offset.grid-col__right
     hr.break-hidden
     p.text-main(
@@ -38,8 +38,18 @@ import { about } from '@/data/about.json';
   border-color: #FFF;
 }
 
+.contain {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
 .caption {
   font-size: 1rem;
   font-style: italic;
+}
+
+.image-centered {
+  margin-top: 2rem;
 }
 </style>

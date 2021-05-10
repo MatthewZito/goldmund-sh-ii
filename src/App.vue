@@ -4,8 +4,8 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 
 /* Components */
-import MainCacheWrapper from '@/components/layout/MainCacheWrapper.vue';
-import MainDrawer from '@/components/layout/MainDrawer.vue';
+import MainCacheWrapper from '@/layout/MainCacheWrapper.vue';
+import MainDrawer from '@/layout/MainDrawer.vue';
 import NotificationDispatch from '@/components/notification/Dispatch.vue';
 
 /* Est */

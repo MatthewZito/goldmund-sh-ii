@@ -7,7 +7,7 @@ import { useStore } from 'vuex';
 import { useGetters } from '@/utils';
 
 /* Components */
-import Notification from './Index.vue';
+import Notification from './Notification.vue';
 
 /* Est */
 const store = useStore();
@@ -33,9 +33,16 @@ const {
 
 </script>
 <template lang="pug">
-div(style="display: flex;justify-content: center;")
+.notification-wrapper
   Notification(
     v-if="hasPending"
     :current="notification"
   )
 </template>
+
+<style lang="scss" scoped>
+.notification-wrapper {
+  display: flex;
+  justify-content: center;
+}
+</style>

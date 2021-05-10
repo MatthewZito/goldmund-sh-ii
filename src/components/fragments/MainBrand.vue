@@ -10,7 +10,8 @@ const routeLabel = ref('pwd');
 /* Computed */
 const showDesc = computed(() => {
   if (route.name === 'Landing') return '';
-  return 'visibility:hidden;';
+  // return 'visibility:hidden;';
+  return 'display:none;';
 });
 
 /* Methods */

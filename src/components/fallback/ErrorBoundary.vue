@@ -1,5 +1,10 @@
 <script setup>
-import { ref, onErrorCaptured, defineProps, useContext } from 'vue';
+import {
+  ref,
+  onErrorCaptured,
+  defineProps,
+  useContext
+} from 'vue';
 
 /* Data */
 const hasError = ref(false);

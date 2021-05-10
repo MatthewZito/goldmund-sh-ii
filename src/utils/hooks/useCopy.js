@@ -1,38 +1,40 @@
 import { notNullOrUndefined } from 'js-heuristics';
 import { ref, watch } from 'vue';
 
+export {
+  useCopyToClipboard
+};
 
-export function useCopyToClipboard (initial) {
+function useCopyToClipboard (initial) {
   const clipboardRef = ref(initial || '');
-  const isSuccessRef = ref(false);
-  const copiedRef = ref(false);
+  const isSuccess = ref(false);
+  const isCopied = ref(false);
 
   watch(
     clipboardRef,
     str => {
       if (notNullOrUndefined(str)) {
-        copiedRef.value = true;
-        isSuccessRef.value = copyTextToClipboard(str);
+        isCopied.value = true;
+        isSuccess.value = cpToClipBoard(str);
       }
     },
     { immediate: !!initial, flush: 'sync' }
   );
 
-  return { clipboardRef, isSuccessRef, copiedRef };
+  return {
+    clipboardRef,
+    isSuccess,
+    isCopied
+  };
 }
 
-export function copyTextToClipboard (input, { target = document.body }) {
-  const element = document.createElement('textarea');
+function cpToClipBoard (input, { target = document.body } = {}) {
+  const el = document.createElement('textarea');
   const previouslyFocusedElement = document.activeElement;
 
-  element.value = input;
+  el.value = input;
 
-  element.setAttribute('readonly', '');
-
-  element.style.contain = 'strict';
-  element.style.position = 'absolute';
-  element.style.left = '-9999px';
-  element.style.fontSize = '12pt';
+  el.setAttribute('readonly', '');
 
   const selection = document.getSelection();
 
@@ -42,12 +44,12 @@ export function copyTextToClipboard (input, { target = document.body }) {
     originalRange = selection.getRangeAt(0);
   }
 
-  target.append(element);
+  target.append(el);
 
-  element.select();
+  el.select();
 
-  element.selectionStart = 0;
-  element.selectionEnd = input.length;
+  el.selectionStart = 0;
+  el.selectionEnd = input.length;
 
   let isSuccess = false;
 
@@ -57,10 +59,11 @@ export function copyTextToClipboard (input, { target = document.body }) {
     throw new Error(e);
   }
 
-  element.remove();
+  el.remove();
 
   if (originalRange && selection) {
     selection.removeAllRanges();
+
     selection.addRange(originalRange);
   }
 

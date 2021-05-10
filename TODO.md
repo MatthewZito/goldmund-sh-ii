@@ -19,8 +19,11 @@
 - [ ] update res of info photo
 - [x] fix nav menu in mobile viewports
 - [x] fix text realign in comms
-- [ ] add tooltips
+- [x] add tooltips
 
 ## api
 
 - [ ] create comm db
+- [ ] personal err logging sys, db
+- [ ] CORS policies
+- [ ] sentry

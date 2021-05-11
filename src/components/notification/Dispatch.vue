@@ -26,7 +26,7 @@ const { namespace } = toRefs(props);
 const {
   currentNotification: notification,
   hasPendingNotifications: hasPending
-} = useGetters('notifications', [
+} = useGetters(namespace.value, [
   'currentNotification',
   'hasPendingNotifications'
 ]);

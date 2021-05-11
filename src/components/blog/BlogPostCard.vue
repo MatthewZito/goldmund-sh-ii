@@ -1,5 +1,9 @@
 <script setup>
-import { defineProps, ref, toRefs } from 'vue';
+import {
+  defineProps,
+  ref,
+  toRefs
+} from 'vue';
 
 /* Props */
 const props = defineProps({
@@ -41,9 +45,6 @@ function toggleTargets () {
   hasTargets.value = !hasTargets.value;
 }
 
-function open (url) {  // TODO verify
-  window.open(url);
-}
 </script>
 
 <template lang="pug">

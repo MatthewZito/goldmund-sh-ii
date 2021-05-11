@@ -10,7 +10,9 @@ type ResponseModel struct {
 	Error   string
 }
 
-// FError formats a JSON response (erroneous)
+/*
+FError sends a model-formatted JSON response object for 400-status responses
+*/
 func FError(w http.ResponseWriter, code int, msg string) {
 	payload := &ResponseModel{
 		Message: "",
@@ -25,7 +27,9 @@ func FError(w http.ResponseWriter, code int, msg string) {
 	w.Write(response)
 }
 
-// FResponse formats a JSON response (successful)
+/*
+FResponse sends a model-formatted JSON response object for 200-status responses
+*/
 func FResponse(w http.ResponseWriter, code int, msg string) {
 	payload := &ResponseModel{
 		Message: msg,

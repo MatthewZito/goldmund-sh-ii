@@ -3,8 +3,11 @@ import {
   ref,
   onErrorCaptured,
   defineProps,
-  useContext
+  inject
 } from 'vue';
+
+/* Est */
+const { event } = inject('$api');
 
 /* Data */
 const hasError = ref(false);
@@ -19,17 +22,21 @@ const props = defineProps({
   }
 });
 
-onErrorCaptured((err, vm, info) => {
+onErrorCaptured(async (err, vm, info) => {
   hasError.value = true;
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
     console.warn({ err }, { info });
   }
+
+  event.logEvent({
+    type: 'ERROR_BOUNDARY',
+    error: err.toString(),
+    info
+  });
+
   return !!props.propagates;
 });
-
-const { slots } = useContext();
-const main = slots.default();
 
 </script>
 

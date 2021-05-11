@@ -5,6 +5,7 @@
   "author": "Matthew Zito (goldmund)",
   "scripts": {
     "build": "vite build",
+    "dev:fullstack": "VITE_LOCAL=1 vercel dev",
     "local": "vite",
     "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,vue}\" --no-fix",
@@ -33,6 +34,7 @@
     "http-factory": "1.3.0",
     "js-heuristics": "1.1.0",
     "masonry-layout": "4.2.2",
+    "nprogress": "0.2.0",
     "vue": "^3.0.5",
     "vue-gtag": "1.16.1",
     "vue-router": "4.0.6",
@@ -50,7 +52,6 @@
     "hygen": "6.0.4",
     "lint-staged": "10.5.4",
     "markdown-it-prism": "2.1.6",
-    "nprogress": "0.2.0",
     "postcss-import": "14.0.1",
     "postcss-preset-env": "6.7.0",
     "prismjs": "1.23.0",

@@ -1,29 +1,44 @@
 <script setup>
 import {
-  computed,
   watch,
   onMounted,
-  ref
+  ref,
+  reactive
 } from 'vue';
-import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
+
+import {
+  useActions,
+  useGetters,
+  useNetwork
+} from '@/hooks';
 
 /* Est */
 const route = useRoute();
-const store = useStore();
+const { handleConn } = reactive(useNetwork());
+
+const { addNotification } =
+  useActions('notifications', [
+    'addNotification'
+  ]);
+
+const { addViewToCache } =
+  useActions('config', [
+    'addViewToCache'
+  ]);
+
+const { getCachedViews } =
+  useGetters('config', [
+    'getCachedViews'
+  ]);
 
 /* Data */
 const num = 3;
 const id = Math.floor(Math.random() * num) + 1;
 
-let imageRef = ref(null);
-
-/* Computed */
-const getCachedViews = computed(() => store.getters['config/getCachedViews']);
+const imageRef = ref(null);
 
 /* Methods */
-const addViewToCache = rte => store.dispatch('config/addViewToCache', rte);
-
 function closeAnnoyingImg () {
   imageRef.value.style.display = 'none';
 }
@@ -33,6 +48,19 @@ watch(
   () => route.name,
   () => addViewToCache(route)
 );
+
+// handle online / offline
+handleConn(() => {
+  addNotification({
+    type: 'error',
+    message: 'It seems your network connection has dropped...'
+  });
+}, () => {
+  addNotification({
+    type: 'success',
+    message: 'Your network connection has been restored'
+  });
+});
 
 /* Init */
 onMounted(() => {

@@ -1,6 +1,6 @@
 import initState, { cacheState } from './state';
 
-export const toggleNavDrawer = (state) => {
+export const toggleNavDrawer = state => {
   state.isNavDrawerOpen = !state.isNavDrawerOpen;
 };
 
@@ -16,10 +16,10 @@ export const removeViewFromCache = (state, view) => {
   idx > -1 && state.cachedViews.splice(idx, 1);
 };
 
-export const resetViewCache = (state) => {
+export const resetViewCache = state => {
   Object.assign(state, cacheState());
 };
 
-export const resetState = (state) => {
+export const resetState = state => {
   Object.assign(state, initState());
 };

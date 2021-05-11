@@ -1,8 +1,8 @@
 package handler
 
 import (
+	"encoding/json"
 	"errors"
-	"fmt"
 	"net/http"
 	"time"
 
@@ -16,6 +16,10 @@ type LogEvent struct {
 	Type  string
 }
 
+/*
+RPC: LogErrorHandler handles error events logging by allocating error events from the UI
+into the system database
+*/
 func LogErrorHandler(w http.ResponseWriter, r *http.Request) {
 	var m LogEvent
 
@@ -31,11 +35,6 @@ func LogErrorHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(m.Time)
-	fmt.Println(m.Error)
-	fmt.Println(m.Info)
-	fmt.Println(m.Type)
-
-	// payload, _ := json.Marshal(m)
-	util.FResponse(w, http.StatusOK, m.Type)
+	payload, _ := json.Marshal(m)
+	util.FResponse(w, http.StatusOK, string(payload))
 }

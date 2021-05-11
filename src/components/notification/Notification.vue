@@ -13,6 +13,7 @@ const props = defineProps({
 const { current } = toRefs(props);
 
 const { message, color } = current.value;
+
 </script>
 
 <template lang="pug">

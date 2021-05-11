@@ -6,20 +6,27 @@ import {
   unref,
   onMounted
 } from 'vue';
-import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 
-import { useCopyToClipboard, useTooltip } from '@/hooks';
+import {
+  useClipboard,
+  useTooltip,
+  useActions
+} from '@/hooks';
 
 /* Est */
-const store = useStore();
+const { addNotification } =
+  useActions('notifications', [
+    'addNotification'
+  ]);
+
 const router = useRouter();
-const api = inject('$api');
+const { form } = inject('$api');
 
 /* Data */
 const { initTooltip, tooltipRef } = useTooltip();
+const { copy, isCopied } = useClipboard();
 
-const { clipboardRef, isSuccess } = useCopyToClipboard();
 const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 
 const formData = reactive({
@@ -29,18 +36,21 @@ const formData = reactive({
 });
 
 /* Computed */
-const isValid = computed(() => Object.values(formData).filter(v => v).length === 3);
+const isValid = computed(() => Object
+  .values(formData)
+  .filter(v => !!v)
+  .length === 3);
 
 /* Methods */
 async function onSubmit () {
-  await api.form.submitComm(formData, ({ ok, error }) => {
+  await form.submitComm(formData, ({ ok, error }) => {
     if (!ok) {
-      store.dispatch('notifications/addNotification', {
+      addNotification({
         type: 'error',
         message: error
       });
     } else {
-      store.dispatch('notifications/addNotification', {
+      addNotification({
         type: 'success',
         message: 'Your message has been submitted'
       })
@@ -52,14 +62,15 @@ async function onSubmit () {
 }
 
 function onClickCopy ({ target } = {}) {
-  clipboardRef.value = unref(target?.innerText);
-
-  if (isSuccess) {
-    store.dispatch('notifications/addNotification', {
-      type: 'success',
-      message: 'Successfully copied to clipboard'
+  copy(target?.innerText)
+    .then(isSuccess => {
+      if (isSuccess) {
+        addNotification({
+          type: 'success',
+          message: 'Successfully copied to clipboard'
+        });
+      }
     });
-  }
 }
 
 /* A posteriori */
@@ -69,6 +80,7 @@ onMounted(() => {
     'You\'ll need to complete the required fields in order to submit this form'
   );
 });
+
 </script>
 
 <template lang="pug">

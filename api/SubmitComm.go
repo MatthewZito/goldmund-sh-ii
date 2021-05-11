@@ -2,7 +2,6 @@ package handler
 
 import (
 	"errors"
-	"fmt"
 	"net/http"
 
 	"github.com/MatthewZito/goldmund-sh-ii/api/util"
@@ -14,6 +13,10 @@ type Message struct {
 	Message string
 }
 
+/*
+RPC: SubmitCommHandler handles submitted communications forms by allocating message receipts from the UI
+into the system database
+*/
 func SubmitCommHandler(w http.ResponseWriter, r *http.Request) {
 	var m Message
 
@@ -29,9 +32,6 @@ func SubmitCommHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(m.Email)
-	fmt.Println(m.Subject)
-	fmt.Println(m.Message)
 	util.FResponse(w, http.StatusOK, m.Message)
 }
 

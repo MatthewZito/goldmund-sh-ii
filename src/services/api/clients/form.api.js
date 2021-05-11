@@ -7,10 +7,7 @@ import {
 } from '../interceptors';
 
 // TODO fix, get dev env with vercel dev
-const isDev = import.meta.env.LOCAL || import.meta.env.DEV;
-const baseUrl = import.meta.env.VITE_LOCAL
-  ? 'http://localhost:3000'
-  : import.meta.env.VITE_APP_URL_UI;
+import { isDev, baseUrl } from '@/utils';
 
 const client = new HttpClient()
   .intercepts({ request, response, error })

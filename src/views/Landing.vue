@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted } from 'vue';
 
-
 import routes from '@/router/routes/blog.routes';
 import { useMetadata, useMasonry } from '@/hooks';
 

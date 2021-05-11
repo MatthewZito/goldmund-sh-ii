@@ -1,10 +1,12 @@
 <script setup>
+
 /* Data */
 const outboundConfig = [
   { label: 'instagram', title: 'to instagram', href: 'https://www.instagram.com/magister_zito' },
   { label: 'youtube', title: 'to youtube', href: 'https://www.youtube.com/user/fasolplanetarium/videos' },
   { label: 'github', title: 'to github', href: 'https://github.com/MatthewZito' }
 ];
+
 </script>
 
 <template lang="pug">

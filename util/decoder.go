@@ -22,6 +22,10 @@ func (m *MalformedRequest) Error() string {
 	return m.Message
 }
 
+/*
+DecodeJSONBody accepts as input a struct against which it will validate JSON form data. Returns a `MalformedRequest`
+for any scenario in which the JSON body is erroneous e.g. missing required fields, includes extraneous fields, includes malformed data
+*/
 func DecodeJSONBody(w http.ResponseWriter, r *http.Request, m interface{}) error {
 	// if Content-Type header present, validate that it is application/json
 	// use of `gddo/httputil/header` will ensure extraction even if the client includes additional charset

@@ -6,9 +6,17 @@ Personal website built with:
 - Backend: Golang, Python
 - Database: PostgreSQL
 
-Features:
+Bragging Rights:
 
 - page generation with custom Markdown parsing
 - SPA with integrated SEO configurations
 - automatic AJAX request cancellation
 - serverless API functions written in whichever language best serves the given use case (Golang for concurrency, speed; Python for threading and procedural operations)
+- offline / online state detection
+- custom Beacon API error logging
+- composable state hooks
+- styles from scratch
+- fully responsive, mobile-driven design
+- responsive, variable web typography
+- custom vector graphics
+- response model http schemas

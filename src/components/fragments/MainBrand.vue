@@ -1,5 +1,9 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import {
+  ref,
+  computed,
+  watch
+} from 'vue';
 
 import { useRoute } from 'vue-router';
 
@@ -23,6 +27,7 @@ function setRouteLabel (to, from) {
 
 /* Watchers */
 watch(() => route.name, setRouteLabel);
+
 </script>
 
 <template lang="pug">

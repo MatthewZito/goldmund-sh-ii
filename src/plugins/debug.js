@@ -7,7 +7,7 @@ import { Integrations } from '@sentry/tracing';
 import { appName, version } from '@pkg';
 import { eventApi } from '@/services/api';
 
-const isDev = process.env.NODE_ENV !== 'production';
+import { isDev } from '@/utils';
 
 const header = 'color:#50fa7b;font-weight:bold;padding:6px;';
 const printf = hex => `color:${hex};font-weight:bold`;
@@ -37,10 +37,9 @@ function debug () {
       type: 'RUNTIME_EXCEPTION',
       info: message,
       error: error.toString()
-    })
-      .finally(() => {
-        Sentry.captureException(error);
-      });
+    });
+
+    Sentry.captureException(error);
   };
 
   /* Unhandled Promise Rejections */
@@ -54,11 +53,10 @@ function debug () {
       type: 'UNHANDLED_PROMISE_REJECTION',
       info: e.reason,
       error: 'TODO'
-    })
-      .finally(() => {
-        Sentry.captureException(e);
-        e.preventDefault();
-      });
+    });
+
+    Sentry.captureException(e);
+    e.preventDefault();
   };
 
   /* Vue Errors */
@@ -72,10 +70,9 @@ function debug () {
       type: 'VUE_ERROR',
       info,
       error: err.toString()
-    })
-      .finally(() => {
-        Sentry.captureException(err);
-      });
+    });
+
+    Sentry.captureException(err);
   };
 
   /* Vue Render Warnings */

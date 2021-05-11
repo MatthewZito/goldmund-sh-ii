@@ -123,10 +123,9 @@ onMounted(() => {
         :maxlength="400"
         autocomplete="off"
       )
-      span(
-        flow="right"
-        style="display:flex;width: max-content;"
+      span.button__wrapper(
         ref="tooltipRef"
+        flow="right"
       )
         button.btn(
           aria-label="submit form"
@@ -144,7 +143,11 @@ onMounted(() => {
           )
         a(href="/pub.asc" download)
           | public key
-      li(@dblclick="onClickCopy")
+      li(
+        @dblclick="onClickCopy"
+        tooltip="Double click to copy"
+        flow="left"
+      )
         span.comm-icon
           FAIcon(:icon="['fa', 'fingerprint']")
         | {{ fingerprint }}
@@ -158,13 +161,18 @@ onMounted(() => {
 button {
   margin-top: 2rem;
 }
+
+.button__wrapper {
+  display:flex;
+  width: max-content;
+}
+
 .contact-info {
   padding-left: 0;
 
   li:nth-child(even):hover {
     cursor: pointer;
   }
-
 }
 
 .comm-icon {

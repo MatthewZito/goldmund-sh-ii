@@ -57,10 +57,7 @@ function dateConv (ts) {
     div
       slot
       hr
-      p(
-        v-if="dateFooter"
-        style="font-style:italic;color:#777;"
-      )
+      p.main-container__footer(v-if="dateFooter")
         | {{ dateFooter }}
 </template>
 
@@ -75,6 +72,11 @@ function dateConv (ts) {
     float: left;
     width: 100%;
   }
+
+  &__footer {
+    font-style: italic;
+    color: #777;
+  }
 }
 
 @media screen and (max-width: $mobile-and-tablet) {
@@ -85,6 +87,10 @@ function dateConv (ts) {
 
     &__inner {
       padding: 0;
+    }
+
+    &__footer {
+      font-size: .8em;
     }
   }
 }

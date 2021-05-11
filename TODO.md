@@ -29,3 +29,10 @@
 - [ ] CORS policies
 - [ ] sentry
 - [ ] fix paths resolution issue w/ fns
+
+## integration
+
+- [ ] CDN filters / permissions
+- [ ] GA UA filters / permissions
+- [ ] align CORS policies
+- [ ] add CNAME records

@@ -4,23 +4,21 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
-	"time"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/util"
+	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
 )
 
 type LogEvent struct {
-	Time  time.Time
-	Error string
-	Info  string
-	Type  string
+	Type     string
+	Category string
+	Info     string
 }
 
 /*
-RPC: LogErrorHandler handles error events logging by allocating error events from the UI
+RPC: LogEventHandler handles events logging by allocating events from the UI
 into the system database
 */
-func LogErrorHandler(w http.ResponseWriter, r *http.Request) {
+func LogEventHandler(w http.ResponseWriter, r *http.Request) {
 	var m LogEvent
 
 	err := util.DecodeJSONBody(w, r, &m)
@@ -36,5 +34,5 @@ func LogErrorHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	payload, _ := json.Marshal(m)
-	util.FResponse(w, http.StatusOK, string(payload))
+	util.FResponse(w, http.StatusOK, string(payload), "")
 }

@@ -837,6 +837,11 @@ clone@~0.1.9:
   resolved "https://registry.yarnpkg.com/clone/-/clone-0.1.19.tgz#613fb68639b26a494ac53253e15b1a6bd88ada85"
   integrity sha1-YT+2hjmyaklKxTJT4Vsaa9iK2oU=
 
+coalesce-x@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/coalesce-x/-/coalesce-x-1.1.0.tgz#a0eba1e848ed05c3eac56dabae683ee2b7e657d9"
+  integrity sha512-TulEUOU49RA5kGpd8fu/ljS4VgRe3hI2ndjeZ7l0r/vLERX3x6VK93m8OltSW3O6XltYOS91qMT+6s7h+coNCA==
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"

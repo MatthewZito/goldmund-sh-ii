@@ -5,7 +5,7 @@ export default [{
   meta: {
     cache: true,
     label: 'pwd',
-    desc: 'a blog about computing, programming, art, and...'
+    desc: 'a blog about computing, programming, art, music'
   }
 },
 {
@@ -15,7 +15,7 @@ export default [{
   meta: {
     cache: true,
     label: 'ping',
-    desc: 'get in touch'
+    desc: 'get in touch with the admin'
   }
 },
 {
@@ -25,6 +25,6 @@ export default [{
   meta: {
     cache: true,
     label: 'man',
-    desc: 'about a random blog'
+    desc: 'about this website and its admin'
   }
 }];

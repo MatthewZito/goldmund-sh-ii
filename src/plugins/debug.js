@@ -34,9 +34,8 @@ function debug () {
     );
 
     eventApi.logEvent({
-      type: 'RUNTIME_EXCEPTION',
-      info: message,
-      error: error.toString()
+      category: 'runtime_exception',
+      info: `${message} ${error.toString()}`
     });
 
     Sentry.captureException(error);
@@ -50,9 +49,8 @@ function debug () {
     );
 
     eventApi.logEvent({
-      type: 'UNHANDLED_PROMISE_REJECTION',
-      info: e.reason,
-      error: 'TODO'
+      category: 'promise_rejection',
+      info: e.reason
     });
 
     Sentry.captureException(e);
@@ -67,9 +65,8 @@ function debug () {
     );
 
     eventApi.logEvent({
-      type: 'VUE_ERROR',
-      info,
-      error: err.toString()
+      category: 'vue_exception',
+      info: `${info} ${err.toString()}`
     });
 
     Sentry.captureException(err);

@@ -30,9 +30,8 @@ onErrorCaptured(async (err, vm, info) => {
   }
 
   event.logEvent({
-    type: 'ERROR_BOUNDARY',
-    error: err.toString(),
-    info
+    category: 'error_boundary',
+    info: `${info} ${err.toString()}`
   });
 
   return !!props.propagates;

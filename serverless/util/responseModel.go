@@ -8,6 +8,7 @@ import (
 type ResponseModel struct {
 	Message string
 	Error   string
+	Data    interface{}
 }
 
 /*
@@ -30,16 +31,17 @@ func FError(w http.ResponseWriter, code int, msg string) {
 /*
 FResponse sends a model-formatted JSON response object for 200-status responses
 */
-func FResponse(w http.ResponseWriter, code int, msg string) {
+func FResponse(w http.ResponseWriter, code int, msg string, data interface{}) {
 	payload := &ResponseModel{
 		Message: msg,
 		Error:   "",
+		Data:    data,
 	}
 
-	response, _ := json.Marshal(payload)
+	// response, _ := json.Marshal(payload)
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("X-Clacks-Overhead", "Z29sZG11bmQuc2gK")
 	w.Header().Set("X-Powered-By", "goldmund.sh/2.0")
 	w.WriteHeader(code)
-	w.Write(response)
+	json.NewEncoder(w).Encode(payload)
 }

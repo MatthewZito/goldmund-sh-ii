@@ -1,3 +1,4 @@
+import { not } from 'js-heuristics';
 import { ref, computed } from 'vue';
 
 export {
@@ -13,7 +14,7 @@ function useSort (items, sortProp) {
   const sorting = ref(null);
 
   const displayedItems = computed(() => {
-    if (!sorting.value) return items.value;
+    if (not(sorting.value)) return items.value;
 
     return items.slice().sort((i1, i2) => {
       // asc and match

@@ -21,6 +21,8 @@
 - [x] fix text realign in comms
 - [x] add tooltips
 - [x] fix screen overflow (x axis) in mob / tab viewports
+- [ ] optimize HTML boilerplate for PWA, SEO
+- [ ] graphql srv for comments
 
 ## api
 
@@ -29,6 +31,8 @@
 - [ ] CORS policies
 - [ ] sentry
 - [ ] fix paths resolution issue w/ fns
+- [ ] comments on posts (RECAPTCHA, db, Pusher)
+- [ ] conv markdown render to API
 
 ## integration
 
@@ -36,3 +40,4 @@
 - [ ] GA UA filters / permissions
 - [ ] align CORS policies
 - [ ] add CNAME records
+- [ ] RSS feed integration

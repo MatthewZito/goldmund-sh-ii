@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/util"
+	util "github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
 )
 
 type Message struct {
@@ -32,7 +32,7 @@ func SubmitCommHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	util.FResponse(w, http.StatusOK, m.Message)
+	util.FResponse(w, http.StatusOK, m.Message, "")
 }
 
 // _, err := db.InitSQLSession()

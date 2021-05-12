@@ -1,5 +1,7 @@
 import { not } from 'js-heuristics';
+
 import { baseUrl, blobify } from '@/utils';
+import { EVENT_LOG } from '@/data/enums';
 
 export default {
   client: navigator,
@@ -10,7 +12,7 @@ export default {
 
     return this.client.sendBeacon(
       baseUrl + import.meta.env.VITE_APP_API_LOG_EVENT,
-      blobify(Object.assign(data, { time: new Date() }))
+      blobify(EVENT_LOG(data))
     );
   }
 };

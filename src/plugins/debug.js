@@ -42,7 +42,7 @@ function debug () {
   /* Vue Errors */
   this.config.errorHandler = (err, vm, info) => {
     cc(
-      `%c ERROR: ${err.toString()}\nInfo: ${info} - ${vm}`,
+      `%c ERROR: ${err.toString()}\nInfo: ${info}`,
       printf('#FF79C6')
     );
 

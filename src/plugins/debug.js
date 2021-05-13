@@ -42,13 +42,13 @@ function debug () {
   /* Vue Errors */
   this.config.errorHandler = (err, vm, info) => {
     cc(
-      `%c ERROR: ${err}\nInfo: ${info}${vm}`,
+      `%c ERROR: ${err.toString()}\nInfo: ${info} - ${vm}`,
       printf('#FF79C6')
     );
 
     eventApi.logEvent({
       category: 'vue_exception',
-      info: `${info} ${err}`
+      info: `${info} ${err.toString()}`
     });
   };
 

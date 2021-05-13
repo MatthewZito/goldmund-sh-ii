@@ -8,8 +8,8 @@ import { about } from '@/data/about.json';
   .grid-col.grid-col__offset.grid-col__right
     figure.contain
       img.img-responsive.image-centered(
-        alt="A picture of the site admin"
         src="@/assets/images/headshot.jpg"
+        alt="a picture of the site admin"
       )
       figcaption.caption
         | Goldmund.sh author and administrator

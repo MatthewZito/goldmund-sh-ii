@@ -4,24 +4,34 @@ import { not } from 'js-heuristics';
 import {
   inject,
   defineProps,
+  ref,
   computed,
-  onMounted
+  onMounted,
+  onErrorCaptured
 } from 'vue';
-
-import Markdown from '@/components/fragments/Markdown.vue';
 
 import { useAsync } from '@/hooks';
 import { dateConv } from '@/utils';
 
-/* Est */
-const { blog } = inject('$api');
+/* Components */
+import BlogPostCard from '@/components/blog/BlogPostCard.vue';
+import Markdown from '@/components/fragments/Markdown.vue';
+import Loader from '@/components/fragments/Loader.vue';
+import BlogContainerFallback from '@/components/fallback/BlogContainerFallback.vue';
+import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
 
+/* Est */
+const { blog, event } = inject('$api');
 
 const {
   state: post,
+  error,
   isLoading,
   execute
 } = useAsync(() => blog.fetchPost({ slug: props.slug }));
+
+/* Data */
+const hasError = ref(false);
 
 /* Props */
 const props = defineProps({
@@ -44,24 +54,51 @@ const dateFooter = computed(() => {
   return false;
 });
 
-onMounted(execute);
+/* A Priori */
+onMounted(() => {
+  execute();
+  if (error.value) {
+    hasError.value = true;
+
+    event.logEvent({
+      category: 'http_error',
+      info: error.value
+    });
+  }
+});
+
+onErrorCaptured((err, vm, info) => {
+  hasError.value = true;
+
+  event.logEvent({
+    category: 'runtime_exception',
+    info: err.toString()
+  });
+
+  return false;
+});
 </script>
 
 <template lang="pug">
-.main-container(v-if="!isLoading")
-  BlogPostCard(
-    :title="post.Title"
-    :subtitle="post.Subtitle"
-    :img-src="post.Img_src"
-    :date="dateHeader"
-    alt="blog header image"
+BlogContainerFallback(v-if="hasError")
+Loader(v-else-if="isLoading")
+.main-container(v-else)
+  ErrorBoundary(
+    :fallback="BlogContainerFallback"
   )
-  .main-container__inner
-    div
-      Markdown(:mark-down="post.Body")
-      hr
-      p.main-container__footer(v-if="dateFooter")
-        | {{ dateFooter }}
+    BlogPostCard(
+      :title="post.Title"
+      :subtitle="post.Subtitle"
+      :img-src="post.Img_src"
+      :date="dateHeader"
+      alt="blog header image"
+    )
+    .main-container__inner
+      div
+        Markdown(:mark-down="post.Body")
+        hr
+        p.main-container__footer(v-if="dateFooter")
+          | {{ dateFooter }}
 </template>
 
 <style lang="scss" scoped>

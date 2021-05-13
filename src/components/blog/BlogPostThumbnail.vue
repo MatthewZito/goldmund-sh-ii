@@ -1,4 +1,6 @@
 <script setup>
+import { not, objNotEmptyDeep } from 'js-heuristics';
+
 import { defineProps } from 'vue';
 
 /* Props */
@@ -17,13 +19,17 @@ const props = defineProps({
   }
 });
 
+// if any of the props are null or undefined, trigger error boundary
+if (not(objNotEmptyDeep(props))) {
+  throw new Error('Rendering error');
+}
 </script>
 
 <template lang="pug">
 .grid__item.blog-post
   img.img-responsive(
-    alt="blog post thumbnail"
     :src="imgSrc"
+    alt="blog post thumbnail"
   )
   router-link.blog-post__overlay(:to="`/blog/${slug}`")
     .blog-post__content

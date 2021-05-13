@@ -4,8 +4,10 @@ import {
   computed,
   watch
 } from 'vue';
-
 import { useRoute } from 'vue-router';
+
+/* Components */
+import Svg from '@/components/fragments/Svg.vue';
 
 /* Est */
 const route = useRoute();
@@ -34,18 +36,9 @@ watch(() => route.name, setRouteLabel);
 .site-header.hidden-mob
   router-link.site-brand(to="/")
     div.site-images
-      img.img-responsive.site-image(
-        src="@/assets/images/crescent.svg"
-        alt="site logo"
-      )
-      img.img-responsive.site-image(
-        src="@/assets/images/lisp.svg"
-        alt="site logo"
-      )
-      img.img-responsive.site-image(
-        src="@/assets/images/geo.svg"
-        alt="site logo"
-      )
+      Svg.site-image(name="crescent")
+      Svg.site-image(name="lisp")
+      Svg.site-image(name="geo")
     p.site-route-label $ {{ routeLabel }}
   p(:style="showDesc")
     | :: computing -> art -> cogitations
@@ -72,7 +65,7 @@ watch(() => route.name, setRouteLabel);
 .site-brand,
 .site-image {
   margin-bottom: 6px;
-  padding-right: 2.25rem;
+  padding-right: 1.25rem;
 }
 
 .site-brand {

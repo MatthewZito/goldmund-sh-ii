@@ -44,7 +44,6 @@ const shareBtns = [
 function toggleTargets () {
   hasTargets.value = !hasTargets.value;
 }
-
 </script>
 
 <template lang="pug">
@@ -98,7 +97,6 @@ button {
   margin: 0 auto;
   margin-top: 20px;
   font-size: 1.6rem;
-
 
   @media screen and (max-width: $tablet) {
     width: 95%;
@@ -183,9 +181,6 @@ button {
   &__content {
     width: 100%;
     max-width: 40%;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
     position:relative;
     float: right;
     padding-right: 1.2em;
@@ -196,10 +191,13 @@ button {
       max-width: 100%;
     }
 
+    @media screen and (max-width: 895px) {
+      width: 80%;
+    }
+
     @media screen and (max-width: $mobile) {
       width: 100%;
       float: inherit;
-      max-width: 100%;
       padding: 0 1em 1em;
     }
   }

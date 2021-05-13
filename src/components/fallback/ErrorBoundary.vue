@@ -6,6 +6,8 @@ import {
   inject
 } from 'vue';
 
+import { isDev } from '@/utils';
+
 /* Est */
 const { event } = inject('$api');
 
@@ -22,9 +24,9 @@ const props = defineProps({
   }
 });
 
-onErrorCaptured(async (err, vm, info) => {
+onErrorCaptured((err, vm, info) => {
   hasError.value = true;
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     // eslint-disable-next-line no-console
     console.warn({ err }, { info });
   }

@@ -23,8 +23,8 @@
 - [x] fix screen overflow (x axis) in mob / tab viewports
 - [ ] optimize HTML boilerplate for PWA, SEO
 - [ ] graphql srv for comments
-- [ ] add suspenses
-- [ ] add errorcaptured locals
+- [x] add suspenses
+- [x] add errorcaptured locals
 
 ## api
 

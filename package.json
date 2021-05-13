@@ -57,6 +57,7 @@
     "pug": "3.0.2",
     "rollup-plugin-node-builtins": "2.1.2",
     "sass": "1.32.11",
-    "vite": "2.2.4"
+    "vite": "2.2.4",
+    "vite-plugin-svg-icons": "0.5.0"
   }
 }

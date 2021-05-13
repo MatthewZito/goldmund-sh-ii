@@ -66,7 +66,6 @@ handleConn(() => {
 onMounted(() => {
   addViewToCache(route);
 });
-
 </script>
 
 <template lang="pug">

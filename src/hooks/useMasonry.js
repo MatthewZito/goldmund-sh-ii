@@ -22,6 +22,7 @@ function useMasonry () {
         itemSelector: '.grid__item',
         gutter: '.gutter-sizer'
       });
+
     generateLayout();
   }
 

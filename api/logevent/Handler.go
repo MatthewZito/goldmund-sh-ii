@@ -8,17 +8,11 @@ import (
 	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
 )
 
-type LogEvent struct {
-	Type     string
-	Category string
-	Info     string
-}
-
 /*
 RPC: LogEventHandler handles events logging by allocating events from the UI
 into the system database
 */
-func LogEventHandler(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	var m LogEvent
 
 	err := util.DecodeJSONBody(w, r, &m)
@@ -35,4 +29,10 @@ func LogEventHandler(w http.ResponseWriter, r *http.Request) {
 
 	payload, _ := json.Marshal(m)
 	util.FResponse(w, http.StatusOK, string(payload), "")
+}
+
+type LogEvent struct {
+	Type     string
+	Category string
+	Info     string
 }

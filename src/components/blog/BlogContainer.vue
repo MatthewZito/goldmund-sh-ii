@@ -1,35 +1,42 @@
 <script setup>
+import { not } from 'js-heuristics';
+
 import {
+  inject,
   defineProps,
-  computed
+  computed,
+  onMounted
 } from 'vue';
 
-import { notNullOrUndefined } from 'js-heuristics';
+import Markdown from '@/components/fragments/Markdown.vue';
+
+import { useAsync } from '@/hooks';
+import { dateConv } from '@/utils';
+
+/* Est */
+const { blog } = inject('$api');
+
+
+const {
+  state: post,
+  isLoading,
+  execute
+} = useAsync(() => blog.fetchPost({ slug: props.slug }));
 
 /* Props */
 const props = defineProps({
-  frontmatter: {
-    type: Object,
+  slug: {
+    type: String,
     required: true
   }
 });
 
-const {
-  title,
-  subtitle,
-  imgSrc,
-  createdAt,
-  updatedAt
-} = props.frontmatter;
-
 /* Computed */
-const dateHeader = computed(() => {
-  return dateConv(createdAt);
-});
+const dateHeader = computed(() => dateConv(post.value.Created_at));
 
 const dateFooter = computed(() => {
-  if (notNullOrUndefined(updatedAt)) {
-    const dateF = dateConv(updatedAt);
+  if (not(post.value.Updated_at === post.value.Created_at)) {
+    const dateF = dateConv(post.value.Updated_at);
 
     return `updated on ${dateF}`;
   }
@@ -37,25 +44,21 @@ const dateFooter = computed(() => {
   return false;
 });
 
-/* Methods */
-function dateConv (ts) {
-  return new Date(ts).toDateString();
-}
-
+onMounted(execute);
 </script>
 
 <template lang="pug">
-.main-container
+.main-container(v-if="!isLoading")
   BlogPostCard(
-    :title="title"
-    :subtitle="subtitle"
-    :img-src="imgSrc"
+    :title="post.Title"
+    :subtitle="post.Subtitle"
+    :img-src="post.Img_src"
     :date="dateHeader"
     alt="blog header image"
   )
   .main-container__inner
     div
-      slot
+      Markdown(:mark-down="post.Body")
       hr
       p.main-container__footer(v-if="dateFooter")
         | {{ dateFooter }}

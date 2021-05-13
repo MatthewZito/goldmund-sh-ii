@@ -7,17 +7,11 @@ import (
 	util "github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
 )
 
-type Message struct {
-	Email   string
-	Subject string
-	Message string
-}
-
 /*
 RPC: SubmitCommHandler handles submitted communications forms by allocating message receipts from the UI
 into the system database
 */
-func SubmitCommHandler(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	var m Message
 
 	err := util.DecodeJSONBody(w, r, &m)
@@ -35,9 +29,8 @@ func SubmitCommHandler(w http.ResponseWriter, r *http.Request) {
 	util.FResponse(w, http.StatusOK, m.Message, "")
 }
 
-// _, err := db.InitSQLSession()
-
-// if err != nil {
-// 	util.FError(w, http.StatusBadGateway, "An error occurred while connecting to the system's database")
-// }
-// err = conn.Query(`INSERT INTO "communications" ("subject", "email", "message") VALUES ($1, $2, $3)`, body.subject, body.email, body.message).Run()
+type Message struct {
+	Email   string
+	Subject string
+	Message string
+}

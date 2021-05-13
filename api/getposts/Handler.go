@@ -7,7 +7,7 @@ import (
 	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
 )
 
-func GetPostsHandler(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	posts := posts{}
 
 	err := queryPosts(&posts)

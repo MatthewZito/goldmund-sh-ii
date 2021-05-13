@@ -23,14 +23,14 @@
 - [x] fix screen overflow (x axis) in mob / tab viewports
 - [ ] optimize HTML boilerplate for PWA, SEO
 - [ ] graphql srv for comments
+- [ ] add suspenses
+- [ ] add errorcaptured locals
 
 ## api
 
 - [ ] comm db
 - [ ] event logs sys, db
 - [ ] CORS policies
-- [ ] sentry
-- [ ] fix paths resolution issue w/ fns
 - [ ] comments on posts (RECAPTCHA, db, Pusher)
 - [ ] conv markdown render to API
 
@@ -41,3 +41,7 @@
 - [ ] align CORS policies
 - [ ] add CNAME records
 - [ ] RSS feed integration
+
+## bugs / issues
+
+- [ ] fix relative module resolution err w/ golang serverless builds

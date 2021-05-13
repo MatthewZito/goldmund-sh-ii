@@ -10,29 +10,8 @@ import (
 	"github.com/lib/pq"
 )
 
-/* TypeDefs */
-type postData struct {
-	Uuid       string
-	Title      string
-	Subtitle   string
-	Created_at time.Time
-	Updated_at time.Time
-	Img_src    string
-	Slug       string
-	Tags       pq.StringArray
-	Body       string
-}
-
-type post struct {
-	Post postData
-}
-
-type query struct {
-	Slug string
-}
-
 /* Handler */
-func GetPostHandler(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	var q query
 	post := postData{}
 
@@ -55,6 +34,27 @@ func GetPostHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.FResponse(w, http.StatusOK, "", post)
+}
+
+/* TypeDefs */
+type postData struct {
+	Uuid       string
+	Title      string
+	Subtitle   string
+	Created_at time.Time
+	Updated_at time.Time
+	Img_src    string
+	Slug       string
+	Tags       pq.StringArray
+	Body       string
+}
+
+type post struct {
+	Post postData
+}
+
+type query struct {
+	Slug string
 }
 
 /* Integration */

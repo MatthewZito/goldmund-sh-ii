@@ -11,11 +11,12 @@ export default function (response) {
   return normalize({
     ok: true,
     status: response.status,
-    data: response.data,
+    data: response.data.Data,
     error: null
   });
 }
 
-function isErroneous ({ status = 900 } = {}) {
-  return status && not(status < 300 && status >= 200);
+function isErroneous ({ status = 900, data } = {}) {
+  return not(status < 300 && status >= 200) ||
+    not(data.Data);
 }

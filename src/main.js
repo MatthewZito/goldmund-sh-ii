@@ -7,9 +7,6 @@ import store from '@/state';
 
 import App from './App.vue';
 
-/* Global Styles */
-import '@/plugins/prism';
-
 /* Global Components */
 import fa from '@/plugins/icon';
 import BlogContainer from '@/components/blog/BlogContainer.vue';

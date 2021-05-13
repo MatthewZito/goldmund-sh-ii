@@ -1,3 +1,11 @@
-import routes from 'virtual:generated-pages';
-
-export default routes.map(conf => ({ ...conf, meta: { ...conf.meta, label: 'cat' } }));
+export default [{
+  path: '/blog/:slug',
+  name: 'Blog',
+  component: () => import('@/components/blog/BlogContainer.vue'),
+  props: true,
+  meta: {
+    cache: true,
+    label: 'cat',
+    desc: 'a blog about computing, programming, art, music'
+  }
+}];

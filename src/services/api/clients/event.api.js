@@ -1,7 +1,7 @@
 import { not } from 'js-heuristics';
 
 import { baseUrl, blobify } from '@/utils';
-import { EVENT_LOG } from '@/data/enums';
+import { EVENT_LOG } from '@/services/api/models';
 
 export default {
   client: navigator,

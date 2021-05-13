@@ -1,9 +1,6 @@
 /* eslint-disable no-console */
 
 /* Devtools Debug Interface */
-import * as Sentry from '@sentry/browser';
-import { Integrations } from '@sentry/tracing';
-
 import { appName, version } from '@pkg';
 import { eventApi } from '@/services/api';
 
@@ -13,18 +10,6 @@ const header = 'color:#50fa7b;font-weight:bold;padding:6px;';
 const printf = hex => `color:${hex};font-weight:bold`;
 
 function debug () {
-  Sentry.init({
-    // public
-    dsn: 'https://46974b6d1c0649878aae94e80ce1002b@o634926.ingest.sentry.io/5755736',
-    release: appName + version,
-    integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: .25,
-    logErrors: true,
-    tracingOptions: {
-      Vue: this,
-      trackComponents: true
-    }
-  });
 
   /* Runtime Exceptions */
   window.onerror = (message, source, line, column, error) => {
@@ -37,8 +22,6 @@ function debug () {
       category: 'runtime_exception',
       info: `${message} ${error.toString()}`
     });
-
-    Sentry.captureException(error);
   };
 
   /* Unhandled Promise Rejections */
@@ -53,23 +36,20 @@ function debug () {
       info: e.reason
     });
 
-    Sentry.captureException(e);
     e.preventDefault();
   };
 
   /* Vue Errors */
   this.config.errorHandler = (err, vm, info) => {
     cc(
-      `%c ERROR: ${err.toString()}\nInfo: ${info}`,
+      `%c ERROR: ${err}\nInfo: ${info}${vm}`,
       printf('#FF79C6')
     );
 
     eventApi.logEvent({
       category: 'vue_exception',
-      info: `${info} ${err.toString()}`
+      info: `${info} ${err}`
     });
-
-    Sentry.captureException(err);
   };
 
   /* Vue Render Warnings */

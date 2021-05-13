@@ -1,20 +1,40 @@
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
-import routes from '@/router/routes/blog.routes';
-import { useMetadata, useMasonry } from '@/hooks';
+import {
+  useMasonry,
+  useActions,
+  useGetters
+} from '@/hooks';
 
 /* Components */
 import BlogPostThumbnail from '@/components/blog/BlogPostThumbnail.vue';
 import FallbackThumbnail from '@/components/fallback/FallbackThumbnail.vue';
 import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
 
-/* Data */
+/* Est */
 const { initMasonry } = useMasonry();
-const { posts } = useMetadata(routes);
+
+const { posts } =
+  useGetters('blog', [
+    'posts'
+  ]);
+
+const { fetchPosts } =
+  useActions('blog', [
+    'fetchPosts'
+  ]);
+
+/* Data */
+const isLoading = ref(true);
 
 /* Init */
-onMounted(initMasonry);
+onMounted(() => {
+  fetchPosts()
+    .then(initMasonry)
+    .finally(() => isLoading.value = false);
+});
+
 // TODO virtual scroll
 </script>
 
@@ -22,14 +42,14 @@ onMounted(initMasonry);
 .grid
   .gutter-sizer
     ErrorBoundary(
-      v-for="({ title, imgSrc, slug }, idx) in posts"
+      v-for="({ Title, Img_src, Slug }, idx) in posts"
       :key="idx"
       :fallback="FallbackThumbnail"
     )
       BlogPostThumbnail(
-        :title="title"
-        :img-src="imgSrc"
-        :slug="slug"
+        :title="Title"
+        :img-src="Img_src"
+        :slug="Slug"
       )
   .grid__sizer
 </template>

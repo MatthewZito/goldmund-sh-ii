@@ -8,7 +8,6 @@ import {
 
 // TODO fix, get dev env with vercel dev
 import { isDev, baseUrl } from '@/utils';
-import { CONTACT_FORM } from '@/services/api/models';
 
 
 const client = new HttpClient()
@@ -17,10 +16,16 @@ const client = new HttpClient()
   .setBaseUrl(baseUrl);
 
 export default {
-  submitComm (data, cb) {
+  fetchPost (data, cb) {
     return client.post({
-      url: import.meta.env.VITE_APP_API_SUBMIT_COMM,
-      data: CONTACT_FORM(data)
+      url: import.meta.env.VITE_APP_API_GET_POST,
+      data
+    }, cb);
+  },
+
+  fetchPosts (cb) {
+    return client.get({
+      url: import.meta.env.VITE_APP_API_GET_POSTS
     }, cb);
   }
 };

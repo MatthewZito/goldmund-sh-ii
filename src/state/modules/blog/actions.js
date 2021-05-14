@@ -1,4 +1,4 @@
-import { not } from "js-heuristics";
+import { not, objNotEmpty } from "js-heuristics";
 
 import { blogApi } from '@/services/api';
 
@@ -8,7 +8,7 @@ import { blogApi } from '@/services/api';
 export const fetchPosts = async ({ state, commit, dispatch }) => {
   if (not(state.posts.length)) {
     await blogApi.fetchPosts(({ ok, data, error }) => {
-      if (ok) commit('updatePosts', data.Posts);
+      if (ok && objNotEmpty(data)) commit('updatePosts', data.Posts);
       else {
         dispatch('notifications/addNotification', {
           type: 'error',

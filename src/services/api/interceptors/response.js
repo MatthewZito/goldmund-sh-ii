@@ -16,7 +16,6 @@ export default function (response) {
   });
 }
 
-function isErroneous ({ status = 900, data } = {}) {
-  return not(status < 300 && status >= 200) ||
-    not(data.Data);
+function isErroneous ({ status = 900 } = {}) {
+  return not(status < 300 && status >= 200);
 }

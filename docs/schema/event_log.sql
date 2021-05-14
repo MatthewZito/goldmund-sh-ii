@@ -6,6 +6,6 @@ CREATE TABLE event_log (
   -- via ON UPDATE CASCADE
   event_type VARCHAR(255) REFERENCES meta_valid_events (event) ON UPDATE CASCADE,
   category VARCHAR(255) NOT NULL,
-  info  VARCHAR(255) NOT NULL,
+  info  TEXT NOT NULL,
   logged_at timestamp with time zone DEFAULT now() NOT NULL
 );

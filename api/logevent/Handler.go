@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/api/db"
+	"github.com/MatthewZito/goldmund-sh-ii/api/db"
 	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 )
 
@@ -12,7 +12,7 @@ import (
 RPC: LogEvent handles events logging by allocating events from the UI
 into the system database
 */
-func Handler(w http.ResponseWriter, r *http.Request) {
+func LogEventHandler(w http.ResponseWriter, r *http.Request) {
 	var e Event
 
 	err := util.DecodeJSONBody(w, r, &e)
@@ -42,7 +42,7 @@ type Event struct {
 	Info     string
 }
 
-func createLog(event *Event) error {
+func createLog(e *Event) error {
 	db, err := db.InitDb()
 	if err != nil {
 		return err
@@ -55,7 +55,7 @@ func createLog(event *Event) error {
 	VALUES ($1, $2, $3)`
 
 	// `Exec` uses `ctxDriverPrepare` under the hood and will escape special chars, so we're good here
-	_, err = db.Exec(sql, event.Type, event.Category, event.Info)
+	_, err = db.Exec(sql, e.Type, e.Category, e.Info)
 	if err != nil {
 		return err
 	}

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/api/db"
+	"github.com/MatthewZito/goldmund-sh-ii/api/db"
 	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 )
 
@@ -12,7 +12,7 @@ import (
 RPC: SubmitCommHandler handles submitted communications forms by allocating message receipts from the UI
 into the system database
 */
-func Handler(w http.ResponseWriter, r *http.Request) {
+func SubmitCommHandler(w http.ResponseWriter, r *http.Request) {
 	var m Message
 
 	err := util.DecodeJSONBody(w, r, &m)

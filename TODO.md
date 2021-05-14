@@ -31,12 +31,12 @@
 
 ## api
 
-- [ ] comm db
-- [ ] event logs sys, db
+- [x] comm db
+- [x] event logs sys, db
 - [ ] CORS policies
 - [ ] comments on posts (RECAPTCHA, db, Pusher)
-- [ ] conv markdown render to API
-- [ ] move entire go mod into /api
+- [x] conv markdown render to API
+- [x] move entire go mod into /api
 
 ## integration
 
@@ -45,6 +45,9 @@
 - [ ] align CORS policies
 - [ ] add CNAME records
 - [ ] RSS feed integration
+
+## database
+- [ ] tables -> plural names
 
 ## bugs / issues
 

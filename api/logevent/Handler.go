@@ -1,21 +1,21 @@
 package handler
 
 import (
-	"encoding/json"
 	"errors"
 	"net/http"
 
+	"github.com/MatthewZito/goldmund-sh-ii/api/api/db"
 	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 )
 
 /*
-RPC: LogEventHandler handles events logging by allocating events from the UI
+RPC: LogEvent handles events logging by allocating events from the UI
 into the system database
 */
 func Handler(w http.ResponseWriter, r *http.Request) {
-	var m LogEvent
+	var e Event
 
-	err := util.DecodeJSONBody(w, r, &m)
+	err := util.DecodeJSONBody(w, r, &e)
 
 	if err != nil {
 		var mr *util.MalformedRequest
@@ -27,12 +27,38 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	payload, _ := json.Marshal(m)
-	util.FResponse(w, http.StatusOK, string(payload), "")
+	err = createLog(&e)
+	if err != nil {
+		util.FError(w, http.StatusInternalServerError, "Database write failed")
+		return
+	}
+
+	util.FResponse(w, http.StatusCreated, "OK", "")
 }
 
-type LogEvent struct {
+type Event struct {
 	Type     string
 	Category string
 	Info     string
+}
+
+func createLog(event *Event) error {
+	db, err := db.InitDb()
+	if err != nil {
+		return err
+	}
+
+	defer db.Close()
+
+	sql := `
+	INSERT INTO event_log (event_type, category, info)
+	VALUES ($1, $2, $3)`
+
+	// `Exec` uses `ctxDriverPrepare` under the hood and will escape special chars, so we're good here
+	_, err = db.Exec(sql, event.Type, event.Category, event.Info)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

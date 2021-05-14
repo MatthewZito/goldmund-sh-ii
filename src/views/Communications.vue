@@ -31,7 +31,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 const formData = reactive({
   email: null,
   subject: null,
-  message: null
+  comment: null
 });
 
 /* Computed */
@@ -51,7 +51,7 @@ async function onSubmit () {
     } else {
       addNotification({
         type: 'success',
-        message: 'Your message has been submitted'
+        message: 'Your comment has been submitted'
       })
         .finally(() => {
           router.push({ name: 'Landing' });
@@ -93,7 +93,7 @@ onMounted(() => {
 
       label(htmlFor="email")
         | Email
-      input#email.main-form__control(
+      input.main-form__control(
         v-model="formData.email"
         type="email"
         name="email"
@@ -102,7 +102,7 @@ onMounted(() => {
       )
       label(htmlFor="subject")
         | Subject
-      input#subject.main-form__control(
+      input.main-form__control(
         v-model="formData.subject"
         type="text"
         name="subject"
@@ -110,13 +110,13 @@ onMounted(() => {
         :maxlength="99"
         autocomplete="off"
       )
-      label(htmlFor="message")
-        | Message
-      textarea#message.main-form__control(
-        v-model="formData.message"
-        placeholder="Enter your message"
+      label(htmlFor="comment")
+        | Comment
+      textarea.main-form__control(
+        v-model="formData.comment"
+        placeholder="Enter your comment"
         type="text"
-        name="message"
+        name="comment"
         required
         :rows="3"
         :maxlength="400"

@@ -67,19 +67,19 @@ func queryPost(post *postData, slug string) error {
 	defer db.Close()
 
 	sql := `
-        SELECT
-						Uuid,
-						Title,
-						Subtitle,
-						Created_at,
-						COALESCE(Updated_at, Created_at),
-						Img_src,
-						Slug,
-						Tags,
-						Body
-        FROM blog_post
-        WHERE slug=$1
-        LIMIT 1;`
+		SELECT
+				Uuid,
+				Title,
+				Subtitle,
+				Created_at,
+				COALESCE(Updated_at, Created_at),
+				Img_src,
+				Slug,
+				Tags,
+				Body
+		FROM blog_post
+		WHERE slug=$1
+		LIMIT 1;`
 
 	row := db.QueryRow(sql, slug)
 

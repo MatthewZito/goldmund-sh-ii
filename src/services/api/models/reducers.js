@@ -14,12 +14,12 @@ const EVENT_LOG = ({
 const CONTACT_FORM = ({
   email = 'none',
   subject = 'none',
-  message = 'none'
+  comment = 'none'
 } = {}) =>
 ({
   email,
   subject,
-  message
+  comment
 });
 
 export {

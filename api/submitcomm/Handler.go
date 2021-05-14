@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 
+	"github.com/MatthewZito/goldmund-sh-ii/api/api/db"
 	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 )
 
@@ -26,11 +27,38 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	util.FResponse(w, http.StatusOK, m.Message, "")
+	err = createComm(&m)
+	if err != nil {
+		util.FError(w, http.StatusInternalServerError, "Database write failed")
+		return
+	}
+
+	util.FResponse(w, http.StatusCreated, "OK", "")
 }
 
 type Message struct {
 	Email   string
 	Subject string
-	Message string
+	Comment string
+}
+
+func createComm(m *Message) error {
+	db, err := db.InitDb()
+	if err != nil {
+		return err
+	}
+
+	defer db.Close()
+
+	sql := `
+	INSERT INTO contact_form (email, subject, comment)
+	VALUES ($1, $2, $3)`
+
+	// `Exec` uses `ctxDriverPrepare` under the hood and will escape special chars, so we're good here
+	_, err = db.Exec(sql, m.Email, m.Subject, m.Comment)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

@@ -27,7 +27,10 @@ import { about } from '@/data/about.json';
         to="/communications"
         custom
       )
-        button.btn(@click="navigate")
+        button.btn(
+          aria-label="navigate to contact page",
+          @click="navigate"
+        )
           | Communicate
 </template>
 

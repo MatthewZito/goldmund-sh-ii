@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/db"
-	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
+	"github.com/MatthewZito/goldmund-sh-ii/api/db"
+	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {

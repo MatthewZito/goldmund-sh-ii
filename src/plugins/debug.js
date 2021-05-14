@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 /* Devtools Debug Interface */
-import { appName, version } from '@pkg';
+import { appName } from '@pkg';
 import { eventApi } from '@/services/api';
 
 import { isDev } from '@/utils';
@@ -20,7 +20,7 @@ function debug () {
 
     eventApi.logEvent({
       category: 'runtime_exception',
-      info: `${message} ${error.toString()}`
+      info: `Uncaught Exception: ${message}\nInfo: ${source} - Ln${line} Col${column}: ${error.toString()}`
     });
   };
 
@@ -33,7 +33,7 @@ function debug () {
 
     eventApi.logEvent({
       category: 'promise_rejection',
-      info: e.reason
+      info: `REJECTION: ${e.reason}`
     });
 
     e.preventDefault();
@@ -48,7 +48,7 @@ function debug () {
 
     eventApi.logEvent({
       category: 'vue_exception',
-      info: `${info} ${err.toString()}`
+      info: `ERROR: ${err.toString()}\nInfo: ${info}`
     });
   };
 

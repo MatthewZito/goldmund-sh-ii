@@ -5,7 +5,7 @@
   "author": "Matthew Zito (goldmund)",
   "scripts": {
     "build": "vite build",
-    "dev:fullstack": "VITE_LOCAL=1 vercel dev",
+    "dev:fullstack": "VITE_LOCAL=1 DBHOST=localhost DBPORT=5432 DBUSER=postgres DBPASS=root DBNAME=Test vercel dev",
     "local": "vite",
     "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,vue}\" --no-fix",

@@ -50,7 +50,10 @@ function toggleTargets () {
 .blog-card(:style="bgImage")
   .blog-card__overlay
   .blog-card__share
-    button.blog-card__icon(@click="toggleTargets")
+    button.blog-card__icon(
+      aria-label="share post"
+      @click="toggleTargets"
+    )
       FAIcon(:icon="['fa', 'share-alt-square']")
     span.blog-card__share-targets(
       v-if="hasTargets"
@@ -59,13 +62,14 @@ function toggleTargets () {
       button.blog-card__icon(
         v-for="({ href, icon }, idx) in shareBtns"
         :key="idx"
+        :aria-label="`share post on ${icon[1]}`"
         @click="open(href)"
       )
         FAIcon(:icon="icon")
   .blog-card__content
     .blog-card__header
       h1.blog-card__title {{ title }}
-      h4.blog-card__info {{ date }}
+      h2.blog-card__info {{ date }}
     p.blog-card__desc {{ subtitle }}
 </template>
 

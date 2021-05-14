@@ -25,6 +25,9 @@
 - [ ] graphql srv for comments
 - [x] add suspenses
 - [x] add errorcaptured locals
+- [ ] add frontmatter / html meta for ea post
+- [ ] web worker for markdown rendering
+- [x] loader
 
 ## api
 
@@ -33,6 +36,7 @@
 - [ ] CORS policies
 - [ ] comments on posts (RECAPTCHA, db, Pusher)
 - [ ] conv markdown render to API
+- [ ] move entire go mod into /api
 
 ## integration
 

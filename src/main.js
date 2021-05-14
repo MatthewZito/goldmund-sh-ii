@@ -16,6 +16,7 @@ import debug from '@/plugins/debug';
 
 /* Providers */
 import api from '@/plugins/api';
+
 /************************************
  *
  * Root Vue Instance Configurations

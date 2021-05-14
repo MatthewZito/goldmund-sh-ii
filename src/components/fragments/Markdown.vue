@@ -12,6 +12,7 @@ import 'prismjs/components/prism-docker';
 import 'prismjs/components/prism-git';
 import 'prismjs/components/prism-haskell';
 import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-yaml';
 
 import { computed, defineProps } from 'vue';
 

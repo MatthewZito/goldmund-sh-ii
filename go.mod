@@ -1,4 +1,4 @@
-module github.com/MatthewZito/goldmund-sh-ii/api
+module github.com/MatthewZito/goldmund-sh-ii
 
 go 1.15
 

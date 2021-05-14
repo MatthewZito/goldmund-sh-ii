@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/db"
-	"github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
+	"github.com/MatthewZito/goldmund-sh-ii/api/db"
+	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 	"github.com/lib/pq"
 )
 

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	util "github.com/MatthewZito/goldmund-sh-ii/api/serverless/util"
+	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 )
 
 /*

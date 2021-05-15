@@ -1,9 +1,5 @@
 import initState, { cacheState } from './state';
 
-export const toggleNavDrawer = state => {
-  state.isNavDrawerOpen = !state.isNavDrawerOpen;
-};
-
 export const addViewToCache = (state, view) => {
   if (state.cachedViews.includes(view?.name)) return;
   if (view?.meta?.cache) {

@@ -1,12 +1,11 @@
 import pkg from '@pkg';
 
-const { appName, appAuthor } = pkg;
+const { appName, author } = pkg;
 
 export default () => ({
-  isNavDrawerOpen: false,
   ...cacheState(),
   appName,
-  appAuthor
+  author
 });
 
 export function cacheState () {

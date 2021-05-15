@@ -20,4 +20,4 @@ export const appName = (state) => state.appName;
  * @type {string}
  * @summary Get app author
  */
-export const appAuthor = (state) => state.appAuthor;
+export const appAuthor = (state) => state.author;

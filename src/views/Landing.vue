@@ -1,5 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import {
+  ref,
+  onMounted,
+  inject,
+  onErrorCaptured
+} from 'vue';
 
 import {
   useMasonry,
@@ -15,6 +20,7 @@ import BlogThumbnailFallback from '@/components/fallback/BlogThumbnailFallback.v
 
 /* Est */
 const { initMasonry } = useMasonry();
+const { event } = inject('$api');
 
 const { posts } =
   useGetters('blog', [
@@ -35,6 +41,15 @@ onMounted(() => {
     .then(() => isLoading.value = false)
     .then(initMasonry)
     .finally(() => isLoading.value = false);
+});
+
+onErrorCaptured((err, vm, info) => {
+  event.logEvent({
+    category: 'runtime_exception',
+    info: `${err.toString()} ${vm} ${info}`
+  });
+
+  return false;
 });
 // TODO virtual scroll
 </script>

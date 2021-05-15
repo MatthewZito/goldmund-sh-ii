@@ -1,11 +1,4 @@
 /**
- * @description Toggle the nav drawer state via negation
- */
-export const toggleNavDrawer = ({ commit }) => {
-  commit('toggleNavDrawer');
-};
-
-/**
  * @description Add Vue Router route object to cache list, to be used by keep-alive
  * @param {object} view The Vue Router object to be cached
  */

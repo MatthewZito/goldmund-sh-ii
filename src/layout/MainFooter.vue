@@ -26,14 +26,14 @@ nav.navigator__footer
 </template>
 
 <style lang="scss" scoped>
- .social-icon {
-    width: 2.5rem;
-    height: 2rem;
-    display: inline-block;
-    line-height: 2rem;
-    font-size: 1.2rem;
-    text-align: center;
-    color: $main-accent-color;
+.social-icon {
+  width: 2.5rem;
+  height: 2rem;
+  display: inline-block;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: $main-accent-color;
 
   &:hover {
     color: $main-accent-active;

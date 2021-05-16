@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-idiomatic-order",
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": [
+		"stylelint-order",
+    "stylelint-scss"
+	],
+  "rules": {
+    "no-empty-source": null
+  },
+  "reportNeedlessDisables": true,
+  "reportInvalidScopeDisables": true
+}

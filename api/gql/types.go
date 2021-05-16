@@ -23,7 +23,7 @@ var PostMetaDataType = graphql.NewObject(
 )
 
 var eventsEnum = graphql.NewEnum(graphql.EnumConfig{
-	Name:        "event",
+	Name:        "eventType",
 	Description: "Valid event types",
 	Values: graphql.EnumValueConfigMap{
 		"ERROR": &graphql.EnumValueConfig{
@@ -74,10 +74,10 @@ var PostType = graphql.NewObject(
 		},
 	})
 
-// CommType represents a submitted contact form
-var CommType = graphql.NewObject(
+// MessageType represents a submitted contact form
+var MessageType = graphql.NewObject(
 	graphql.ObjectConfig{
-		Name: "comm",
+		Name: "message",
 		Fields: graphql.Fields{
 			"email": &graphql.Field{
 				Type: graphql.String,
@@ -95,7 +95,7 @@ var CommType = graphql.NewObject(
 // EventLog represents a submitted event log
 var EventLogType = graphql.NewObject(
 	graphql.ObjectConfig{
-		Name: "comm",
+		Name: "event",
 		Fields: graphql.Fields{
 			"type": &graphql.Field{
 				Type: eventsEnum,

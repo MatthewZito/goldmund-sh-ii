@@ -10,8 +10,6 @@ type RootMutation struct {
 	Mutation *graphql.Object
 }
 
-// graphql.NewNonNull()
-
 /* Mutations */
 
 // InitRootMutation is the root mutation object
@@ -25,7 +23,7 @@ func InitRootMutation(db *db.Db) *RootMutation {
 				Fields: graphql.Fields{
 
 					"createMessage": &graphql.Field{
-						Type:        CommType,
+						Type:        MessageType,
 						Description: "Submit a new communications form",
 						Args: graphql.FieldConfigArgument{
 							"email": &graphql.ArgumentConfig{

@@ -16,6 +16,7 @@ import debug from '@/plugins/debug';
 
 /* Providers */
 import api from '@/plugins/api';
+import apollo from '@/plugins/apollo';
 
 /************************************
  *
@@ -25,6 +26,7 @@ import api from '@/plugins/api';
 const app = createApp(App)
   .use(debug)
   .use(api)
+  .use(apollo)
   .use(router)
   .use(store)
   .use(createHead());

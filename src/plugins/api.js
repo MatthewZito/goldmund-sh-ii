@@ -1,15 +1,11 @@
 import {
-  formApi as form,
-  eventApi as event,
-  blogApi as blog
+  eventApi as event
 } from '@/services/api';
 
 export default {
   install (app, opts) {
     const api = {
-      form,
-      event,
-      blog
+      event
     };
 
     app.config.globalProperties.$api = api;

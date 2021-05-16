@@ -3,45 +3,30 @@ package util
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/graphql-go/graphql"
 )
 
-type ResponseModel struct {
-	Message string
-	Error   string
-	Data    interface{}
+type ErroneousResponse struct {
+	Errors []string
 }
 
-/*
-FError sends a model-formatted JSON response object for 400-status responses
-*/
-func FError(w http.ResponseWriter, code int, msg string) {
-	payload := &ResponseModel{
-		Message: "",
-		Error:   msg,
-	}
-
-	response, _ := json.Marshal(payload)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("X-Clacks-Overhead", "Z29sZG11bmQuc2gK")
-	w.Header().Set("X-Powered-By", "goldmund.sh/2.0")
-	w.WriteHeader(code)
-	w.Write(response)
+func FError(w http.ResponseWriter, e error) {
+	writeHeaders(w, true)
+	json.NewEncoder(w).Encode(e)
 }
 
-/*
-FResponse sends a model-formatted JSON response object for 200-status responses
-*/
-func FResponse(w http.ResponseWriter, code int, msg string, data interface{}) {
-	payload := &ResponseModel{
-		Message: msg,
-		Error:   "",
-		Data:    data,
+func FResponse(w http.ResponseWriter, data *graphql.Result) {
+	writeHeaders(w, true)
+	json.NewEncoder(w).Encode(data)
+}
+
+func writeHeaders(w http.ResponseWriter, json bool) {
+	if json {
+		w.Header().Set("Content-Type", "application/json")
 	}
 
-	// response, _ := json.Marshal(payload)
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("X-Clacks-Overhead", "Z29sZG11bmQuc2gK")
+	w.Header().Set("X-Clacks-Overhead", "Ezra Pound")
 	w.Header().Set("X-Powered-By", "goldmund.sh/2.0")
-	w.WriteHeader(code)
-	json.NewEncoder(w).Encode(payload)
+	w.Header().Set("X-Programmed-By", "goldmund")
 }

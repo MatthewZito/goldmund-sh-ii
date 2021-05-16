@@ -1,13 +1,13 @@
 package handler
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/MatthewZito/goldmund-sh-ii/api/db"
 	"github.com/MatthewZito/goldmund-sh-ii/api/gql"
+	"github.com/MatthewZito/goldmund-sh-ii/api/util"
 	"github.com/graphql-go/graphql"
 )
 
@@ -26,8 +26,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	result := executeQuery(r.URL.Query().Get("query"), sc)
-	// TODO FResponse
-	json.NewEncoder(w).Encode(result)
+
+	util.FResponse(w, result)
 }
 
 func executeQuery(query string, schema graphql.Schema) *graphql.Result {

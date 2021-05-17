@@ -13,6 +13,7 @@ import 'prismjs/components/prism-git';
 import 'prismjs/components/prism-haskell';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-graphql';
 
 import { computed, defineProps } from 'vue';
 

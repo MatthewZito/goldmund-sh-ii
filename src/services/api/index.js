@@ -1,3 +1,5 @@
+import eventApi from './clients/event.api';
+
 export {
   eventApi
-} from './clients/event.api';
+};

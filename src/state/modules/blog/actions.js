@@ -1,6 +1,7 @@
 import { not, objNotEmpty } from "js-heuristics";
 
-import { blogApi } from '@/services/api';
+// import { blogApi } from '@/services/api';
+const blogApi = 'TODO';
 
 /**
  * @summary Fetch blog posts metadata

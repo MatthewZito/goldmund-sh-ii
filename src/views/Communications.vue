@@ -1,8 +1,10 @@
 <script setup>
+import { useMutation } from '@vue/apollo-composable';
+
 import {
+  inject,
   reactive,
   computed,
-  inject,
   onMounted
 } from 'vue';
 import { useRouter } from 'vue-router';
@@ -13,14 +15,22 @@ import {
   useActions
 } from '@/hooks';
 
+import { CREATE_MESSAGE } from '@/services/apollo';
+
 /* Est */
+const { event } = inject('$api');
+
+const { mutate: submit, onDone, onError } = useMutation(
+  CREATE_MESSAGE, {
+    fetchPolicy: 'no-cache'
+  });
+
 const { addNotification } =
   useActions('notifications', [
     'addNotification'
   ]);
 
 const router = useRouter();
-const { form } = inject('$api');
 
 /* Data */
 const { initTooltip, tooltipRef } = useTooltip();
@@ -31,7 +41,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 const formData = reactive({
   email: null,
   subject: null,
-  comment: null
+  body: null
 });
 
 /* Computed */
@@ -41,25 +51,6 @@ const isValid = computed(() => Object
   .length === 3);
 
 /* Methods */
-async function onSubmit () {
-  await form.submitComm(formData, ({ ok, error }) => {
-    if (!ok) {
-      addNotification({
-        type: 'error',
-        message: error
-      });
-    } else {
-      addNotification({
-        type: 'success',
-        message: 'Your comment has been submitted'
-      })
-        .finally(() => {
-          router.push({ name: 'Landing' });
-        });
-    }
-  });
-}
-
 function onClickCopy ({ target } = {}) {
   copy(target?.innerText)
     .then(isSuccess => {
@@ -80,13 +71,35 @@ onMounted(() => {
   );
 });
 
+onError(() => {
+  addNotification({
+      type: 'error',
+      message: 'An error occurred while submitting the form'
+    })
+      .finally(() => {
+        event.logEvent({
+          category: 'graphql_exception',
+          info: 'the mutation \'createMessage\' failed'
+        });
+      });
+});
+
+onDone(() => {
+  addNotification({
+      type: 'success',
+      message: 'Your comment has been submitted'
+    })
+    .finally(() => {
+        router.push({ name: 'Landing' });
+      });
+});
 </script>
 
 <template lang="pug">
 .grid-row
   .grid-col.grid-col__offset.grid-col__right.main-form
     h1.main-title Communications
-    form(@submit.prevent.stop="onSubmit")
+    form(@submit.prevent.stop="submit(formData)")
       p
         | Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
         | To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
@@ -110,10 +123,10 @@ onMounted(() => {
         :maxlength="99"
         autocomplete="off"
       )
-      label(htmlFor="comment")
+      label(htmlFor="body")
         | Comment
       textarea.main-form__control(
-        v-model="formData.comment"
+        v-model="formData.body"
         placeholder="Enter your comment"
         type="text"
         name="comment"

@@ -48,6 +48,11 @@ export default defineConfig({
 
   /* Rollup Overrides */
   rollupInputOptions: {
+    external: [
+      // ha, um no
+      // https://github.com/apollographql/apollo-client/issues/8190
+      'react'
+    ],
     preserveEntrySignatures: 'strict',
     plugins: [
       {
@@ -75,6 +80,13 @@ export default defineConfig({
   build: {
     // < limit to base64 string
     assetsInlineLimit: 10000
+  },
+
+  optimizeDeps: {
+    include: [
+      '@apollo/client/core',
+      '@apollo/client/cache'
+    ]
   }
 
 });

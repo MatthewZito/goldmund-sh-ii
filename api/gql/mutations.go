@@ -32,7 +32,7 @@ func InitRootMutation(db *db.Db) *RootMutation {
 							"subject": &graphql.ArgumentConfig{
 								Type: graphql.String,
 							},
-							"comment": &graphql.ArgumentConfig{
+							"body": &graphql.ArgumentConfig{
 								Type: graphql.String,
 							},
 						},

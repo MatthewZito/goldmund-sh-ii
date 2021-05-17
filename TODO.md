@@ -52,3 +52,25 @@
 ## bugs / issues
 
 - [ ] fix relative module resolution err w/ golang serverless builds
+
+#
+stylelint-declaration-block-no-ignored-properties
+
+  "plugins": [
+    "stylelint-declaration-block-no-ignored-properties"
+  ],
+  "rules": {
+    "plugin/declaration-block-no-ignored-properties": true,
+  }
+}
+
+yarn add stylelint@^9.1.0 stylelint-images -D
+
+ "plugins": [
+    "stylelint-images"
+  ],
+  "rules": {
+    "images/broken": true,
+    "images/prefer-data-uri": 256,
+    ...
+  }

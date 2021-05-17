@@ -85,7 +85,7 @@ var MessageType = graphql.NewObject(
 			"subject": &graphql.Field{
 				Type: graphql.String,
 			},
-			"comment": &graphql.Field{
+			"body": &graphql.Field{
 				Type: graphql.String,
 			},
 		},

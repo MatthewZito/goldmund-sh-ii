@@ -7,13 +7,29 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
+type ErrorObject struct {
+	Message   string   `json:"message"`
+	Locations []string `json:"locations"`
+}
+
 type ErroneousResponse struct {
-	Errors []string
+	Data   *string       `json:"data"`
+	Errors []ErrorObject `json:"errors"`
 }
 
 func FError(w http.ResponseWriter, e error) {
+	er := &ErroneousResponse{
+		Data: nil, // will be marshalled as `null`
+		Errors: []ErrorObject{{
+			Message:   e.Error(),
+			Locations: []string{},
+		}},
+	}
+
 	writeHeaders(w, true)
-	json.NewEncoder(w).Encode(e)
+	// w.WriteHeader(400)
+	json.NewEncoder(w).Encode(er)
+
 }
 
 func FResponse(w http.ResponseWriter, data *graphql.Result) {

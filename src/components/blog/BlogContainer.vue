@@ -1,16 +1,18 @@
 <script setup>
 import { not } from 'js-heuristics';
 
+import { useQuery, useResult } from '@vue/apollo-composable';
+
 import {
-  inject,
   defineProps,
   ref,
   computed,
-  onMounted,
-  onErrorCaptured
+  onErrorCaptured,
+  watch,
+  inject
 } from 'vue';
 
-import { useAsync } from '@/hooks';
+import { GET_POST } from '@/services/apollo';
 import { dateConv } from '@/utils';
 
 /* Components */
@@ -21,17 +23,16 @@ import BlogContainerFallback from '@/components/fallback/BlogContainerFallback.v
 import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
 
 /* Est */
-const { blog, event } = inject('$api');
-
-const {
-  state: post,
-  error,
-  isLoading,
-  execute
-} = useAsync(() => blog.fetchPost({ slug: props.slug }));
+const { event } = inject('$api');
+const { result, loading, error } = useQuery(
+  GET_POST,
+  props
+);
 
 /* Data */
 const hasError = ref(false);
+const post = useResult(result, [], data => data.post);
+
 
 /* Props */
 const props = defineProps({
@@ -42,11 +43,11 @@ const props = defineProps({
 });
 
 /* Computed */
-const dateHeader = computed(() => dateConv(post.value.Created_at));
+const dateHeader = computed(() => dateConv(post.value.createdAt));
 
 const dateFooter = computed(() => {
-  if (not(post.value.Updated_at === post.value.Created_at)) {
-    const dateF = dateConv(post.value.Updated_at);
+  if (not(post.value.updatedAt === post.value.createdAt)) {
+    const dateF = dateConv(post.value.updatedAt);
 
     return `updated on ${dateF}`;
   }
@@ -54,17 +55,8 @@ const dateFooter = computed(() => {
   return false;
 });
 
-/* A Priori */
-onMounted(() => {
-  execute();
-  if (error.value) {
-    hasError.value = true;
-
-    event.logEvent({
-      category: 'http_error',
-      info: error.value
-    });
-  }
+watch(() => error.value, () => {
+  hasError.value = true;
 });
 
 onErrorCaptured((err, vm, info) => {
@@ -72,7 +64,7 @@ onErrorCaptured((err, vm, info) => {
 
   event.logEvent({
     category: 'runtime_exception',
-    info: err.toString()
+    info: `${err.toString()} ${vm} ${info}`
   });
 
   return false;
@@ -81,21 +73,21 @@ onErrorCaptured((err, vm, info) => {
 
 <template lang="pug">
 BlogContainerFallback(v-if="hasError")
-Loader(v-else-if="isLoading")
+Loader(v-else-if="loading")
 .main-container(v-else)
   ErrorBoundary(
     :fallback="BlogContainerFallback"
   )
     BlogPostCard(
-      :title="post.Title"
-      :subtitle="post.Subtitle"
-      :img-src="post.Img_src"
+      :title="post.title"
+      :subtitle="post.subtitle"
+      :img-src="post.imgSrc"
       :date="dateHeader"
       alt="blog header image"
     )
     .main-container__inner
       div
-        Markdown(:mark-down="post.Body")
+        Markdown(:mark-down="post.body")
         hr
         p.main-container__footer(v-if="dateFooter")
           | {{ dateFooter }}

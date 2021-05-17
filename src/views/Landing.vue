@@ -1,22 +1,16 @@
 <script setup>
-import { not } from 'js-heuristics';
-import { useQuery, useResult } from '@vue/apollo-composable';
-
 import {
-  inject,
   ref,
-  watch,
-  computed,
   onMounted,
+  inject,
   onErrorCaptured
 } from 'vue';
 
 import {
   useMasonry,
-  useActions
+  useActions,
+  useGetters
 } from '@/hooks';
-
-import { GET_POSTS } from '@/services/apollo';
 
 /* Components */
 import BlogPostThumbnail from '@/components/blog/BlogPostThumbnail.vue';
@@ -25,54 +19,28 @@ import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
 import BlogThumbnailFallback from '@/components/fallback/BlogThumbnailFallback.vue';
 
 /* Est */
-const { event } = inject('$api');
 const { initMasonry } = useMasonry();
+const { event } = inject('$api');
 
-const enabled = ref(false);
-const { result, loading, error } = useQuery(GET_POSTS,
-  null, () => ({
-    // disable until mount - the `grid` selector must be extant
-    enabled: enabled.value
-  })
-);
+const { posts } =
+  useGetters('blog', [
+    'posts'
+  ]);
 
-const { addNotification } =
-  useActions('notifications', [
-    'addNotification'
+const { fetchPosts } =
+  useActions('blog', [
+    'fetchPosts'
   ]);
 
 /* Data */
-const posts = useResult(result, []);
+const isLoading = ref(true);
 
-/* Computed */
-const initialized = computed(() => {
-  return enabled.value
-    && not(loading.value)
-    && !!posts.value.length;
-});
-
-/* Observed */
-watch(() => initialized.value, initMasonry);
-event.logEvent({
-        category: 'graphql_exception',
-        info: 'the query \'GetPosts\' failed'
-      });
-watch(() => error.value, () => {
-  addNotification({
-    type: 'error',
-    message: 'Something went wrong while fetching blog data :/'
-  })
-    .finally(() => {
-      event.logEvent({
-        category: 'graphql_exception',
-        info: 'the query \'GetPosts\' failed'
-      });
-    });
-});
-
-/* A Priori */
+/* Init */
 onMounted(() => {
-  enabled.value = true;
+  fetchPosts()
+    .then(() => isLoading.value = false)
+    .then(initMasonry)
+    .finally(() => isLoading.value = false);
 });
 
 onErrorCaptured((err, vm, info) => {
@@ -84,23 +52,21 @@ onErrorCaptured((err, vm, info) => {
   return false;
 });
 // TODO virtual scroll
-// TODO error fallback
-// TODO ID, cache response
 </script>
 
 <template lang="pug">
-Loader(v-if="loading || !enabled")
+Loader(v-if="isLoading")
 .grid(v-else)
   .gutter-sizer
     ErrorBoundary(
-      v-for="({ title, imgSrc, slug }, idx) in posts"
+      v-for="({ Title, Img_src, Slug }, idx) in posts"
       :key="idx"
       :fallback="BlogThumbnailFallback"
     )
       BlogPostThumbnail(
-        :title="title"
-        :img-src="imgSrc"
-        :slug="slug"
+        :title="Title"
+        :img-src="Img_src"
+        :slug="Slug"
       )
   .grid__sizer
 </template>

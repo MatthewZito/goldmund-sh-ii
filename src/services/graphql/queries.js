@@ -1,10 +1,8 @@
-import gql from 'graphql-tag';
-
 /**
  * @summary Get post contingent on its slug
  * @param {string} slug
  */
-export const GET_POST = gql`
+export const GET_POST = `
   query GetPostBySlug($slug: String!) {
     post(slug: $slug) {
       title
@@ -21,7 +19,7 @@ export const GET_POST = gql`
 /**
  * @summary Get all posts
  */
-export const GET_POSTS = gql`
+export const GET_POSTS = `
   query GetAllPosts {
     posts {
       title

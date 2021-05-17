@@ -3,9 +3,9 @@
     "module": "commonJS",
     "target": "esnext",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["*/src"]
+      "@/*": ["*"]
     }
   }
 }

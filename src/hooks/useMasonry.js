@@ -27,12 +27,8 @@ function useMasonry () {
   }
 
   function initMasonry () {
-    // push into a separate stack to guarantee invocation after VDOM is loaded
-    setTimeout(() => {
-      createMasonry();
-      generateLayout();
-    }, 0);
-
+    createMasonry();
+    generateLayout();
     setTimeout(() => {
       generateLayout();
     }, 1000);

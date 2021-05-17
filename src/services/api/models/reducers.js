@@ -1,5 +1,22 @@
 import { EVENT_TYPES } from './types';
-import { CREATE_EVENT } from '@/services/apollo/mutations';
+import {
+  GET_POST,
+  GET_POSTS,
+  CREATE_EVENT,
+  CREATE_MESSAGE
+} from '@/services/graphql';
+
+
+const FETCH_POSTS = _ => ({
+  query: GET_POSTS
+});
+
+const FETCH_POST = slug => ({
+  query: GET_POST,
+  variables: {
+    slug
+  }
+});
 
 /**
  * @summary Resolve arguments into a `createEvent` mutation
@@ -18,6 +35,19 @@ const EVENT_LOG = ({
   }
 });
 
+const C_MESSAGE = ({ email, subject, body }) =>
+({
+  query: CREATE_MESSAGE,
+  variables: {
+    email,
+    subject,
+    body
+  }
+});
+
 export {
-  EVENT_LOG
+  FETCH_POST,
+  FETCH_POSTS,
+  EVENT_LOG,
+  C_MESSAGE
 };

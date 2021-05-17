@@ -1,10 +1,9 @@
-import gql from 'graphql-tag';
+//  TODO add input types
 
 /**
  * @summary Create a contact message
  */
-export const CREATE_MESSAGE = gql`
-  # TODO add input type
+export const CREATE_MESSAGE = `
   mutation CreateMessage(
     $email: String!,
     $subject: String!,

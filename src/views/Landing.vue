@@ -59,14 +59,14 @@ Loader(v-if="isLoading")
 .grid(v-else)
   .gutter-sizer
     ErrorBoundary(
-      v-for="({ Title, Img_src, Slug }, idx) in posts"
+      v-for="({ title, imgSrc, slug }, idx) in posts"
       :key="idx"
       :fallback="BlogThumbnailFallback"
     )
       BlogPostThumbnail(
-        :title="Title"
-        :img-src="Img_src"
-        :slug="Slug"
+        :title="title"
+        :img-src="imgSrc"
+        :slug="slug"
       )
   .grid__sizer
 </template>

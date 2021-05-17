@@ -8,10 +8,12 @@ import {
 
 
 const FETCH_POSTS = _ => ({
-  query: GET_POSTS
+  query: GET_POSTS,
+  variables: {}
 });
 
-const FETCH_POST = slug => ({
+const FETCH_POST = ({ slug }) =>
+({
   query: GET_POST,
   variables: {
     slug

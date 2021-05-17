@@ -28,7 +28,10 @@ const {
   error,
   isLoading,
   execute
-} = useAsync(() => blog.fetchPost({ slug: props.slug }));
+} = useAsync(
+  blog.fetchPost.bind(null, { slug: props.slug }),
+  { isGql: true }
+);
 
 /* Data */
 const hasError = ref(false);
@@ -57,6 +60,7 @@ const dateFooter = computed(() => {
 /* A Priori */
 onMounted(() => {
   execute();
+
   if (error.value) {
     hasError.value = true;
 
@@ -72,7 +76,7 @@ onErrorCaptured((err, vm, info) => {
 
   event.logEvent({
     category: 'runtime_exception',
-    info: err.toString()
+    info: `${err.toString()} ${vm} ${info}`
   });
 
   return false;
@@ -87,15 +91,15 @@ Loader(v-else-if="isLoading")
     :fallback="BlogContainerFallback"
   )
     BlogPostCard(
-      :title="post.Title"
-      :subtitle="post.Subtitle"
-      :img-src="post.Img_src"
+      :title="post.title"
+      :subtitle="post.subtitle"
+      :img-src="post.imgSrc"
       :date="dateHeader"
       alt="blog header image"
     )
     .main-container__inner
       div
-        Markdown(:mark-down="post.Body")
+        Markdown(:mark-down="post.body")
         hr
         p.main-container__footer(v-if="dateFooter")
           | {{ dateFooter }}

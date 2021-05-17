@@ -4,7 +4,7 @@
  */
 export const GET_POST = `
   query GetPostBySlug($slug: String!) {
-    post(slug: $slug) {
+    payload: post(slug: $slug) {
       title
       subtitle
       createdAt
@@ -21,7 +21,7 @@ export const GET_POST = `
  */
 export const GET_POSTS = `
   query GetAllPosts {
-    posts {
+    payload: posts {
       title
       imgSrc
       slug

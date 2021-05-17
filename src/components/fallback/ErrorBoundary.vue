@@ -26,10 +26,8 @@ const props = defineProps({
 
 onErrorCaptured((err, vm, info) => {
   hasError.value = true;
-  if (isDev) {
-    // eslint-disable-next-line no-console
-    console.warn({ err }, { info });
-  }
+  // eslint-disable-next-line no-console
+  if (isDev) console.warn({ err }, { info });
 
   event.logEvent({
     category: 'error_boundary',

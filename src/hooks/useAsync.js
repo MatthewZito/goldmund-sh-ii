@@ -13,7 +13,7 @@ export {
  * @param executor The promise to be resolved
  * @param opts
  */
-function useAsync (executor, { onError = noop } = {}) {
+function useAsync (executor, { onError = noop, isGql = false } = {}) {
   const state = shallowRef({});
   const isLoading = ref(true);
   const error = ref(undefined);
@@ -24,7 +24,10 @@ function useAsync (executor, { onError = noop } = {}) {
 
       if (not(ok)) throw new Error(error);
 
-      state.value = data;
+      // if graphql query, assign the actual data so we don't need to endure
+      // the pains of destructuring a reactive object that doesn't exist yet at the component level
+      if (isGql) state.value = data.payload;
+      else state.value = data;
 
     } catch (ex) {
       error.value = ex;

@@ -4,8 +4,8 @@ import {
   request,
   response,
   error
-} from '@/services/api/interceptors';
-import { FETCH_POST, FETCH_POSTS } from '@/services/api/models';
+} from '../interceptors';
+import { FETCH_POST, FETCH_POSTS } from '../models';
 
 // TODO fix, get dev env with vercel dev
 import { isDev, baseUrl } from '@/utils';

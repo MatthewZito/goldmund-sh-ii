@@ -1,6 +1,6 @@
 import { not, objNotEmpty } from 'js-heuristics';
 
-import normalize from '@/services/api/normalizers';
+import normalize from '../normalizers';
 
 export default function (error) {
   if (not(objNotEmpty(error?.response))) {
@@ -11,6 +11,6 @@ export default function (error) {
   }
   return normalize({
     status: error.response.status,
-    error: error.response?.errors[0] || 'An error occurred while processing the request'
+    error: error.response?.data?.errors[0] || 'An error occurred while processing the request'
   });
 }

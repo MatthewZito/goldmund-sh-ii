@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin:400,700|Source+Sans+Pro:400,700&display=swap);
-
 @import
   'variables',
   'transitions',
@@ -8,8 +7,8 @@
   'grid';
 
 *,
-:after,
-:before {
+::after,
+::before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -20,11 +19,11 @@ html {
 }
 
 body {
-  font-family:Source Sans Pro,Helvetica,Arial,sans-serif;
+  background-color: #fff;
+  color: #000;
+  font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   font-size: 1.2em;
   line-height: 1.78;
-  color:#000;
-  background-color:#fff
 }
 
 a {
@@ -34,7 +33,7 @@ a {
 
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
-  outline-offset:-2px
+  outline-offset: -2px;
 }
 
 a:focus,
@@ -44,28 +43,35 @@ a:hover {
 }
 
 hr {
-  margin-top: 1em;
-  border:0;
+  border: 0;
   border-top: 1px solid #eee;
+  margin-top: 1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000;
   font-family: Cabin, Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 1.1;
-  color:#000
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 1.5rem;
   margin-bottom: 1.3rem;
 }
 
 p {
-  margin: 0 0 .8rem;
+  margin: 0 0 0.8rem;
+  hyphens: auto;
   overflow-wrap: break-word;
   word-break: break-word;
-  hyphens: auto;
 }
 
 button,
@@ -81,17 +87,12 @@ textarea {
 
 input,
 textarea {
-  margin-bottom: .5rem;
-  padding: .5rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   border: 1px solid $main-info-color;
+  margin-bottom: 0.5rem;
   border-radius: 2px;
-  line-height: 1.5;
   color: $main-dark-color;
-
-  &:focus {
-    outline: 0;
-    border-color: $main-secondary-active;
-  }
+  line-height: 1.5;
 
   &::-ms-expand {
     border: 0;
@@ -99,19 +100,24 @@ textarea {
   }
 
   &::-moz-placeholder,
-  &:-ms-input-placeholder,
-  &::-webkit-input-placeholder {
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder {
     color: $main-dark-color;
   }
 
-  &:not(:focus):invalid{
+  &:focus {
+    border-color: $main-secondary-active;
+    outline: 0;
+  }
+
+  &:not(:focus):invalid {
     color: $main-error-color;
   }
 }
 
 label {
   display: inline-block;
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
 }
 
 ul {
@@ -124,9 +130,9 @@ ul {
   height: auto;
 }
 
-@media (max-width: $mobile-and-tablet){
+@media (max-width: $mobile-and-tablet) {
   pre {
-    font-size: .9rem !important;
+    font-size: 0.9rem !important;
   }
 
   code {
@@ -134,7 +140,7 @@ ul {
   }
 }
 
-@media (min-width: $mobile-and-tablet){
+@media (min-width: $mobile-and-tablet) {
   main {
     margin-left: 240px;
   }

@@ -27,13 +27,13 @@ nav.navigator__footer
 
 <style lang="scss" scoped>
 .social-icon {
+  display: inline-block;
   width: 2.5rem;
   height: 2rem;
-  display: inline-block;
-  line-height: 2rem;
-  font-size: 1.2rem;
-  text-align: center;
   color: $main-accent-color;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
 
   &:hover {
     color: $main-accent-active;

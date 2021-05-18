@@ -84,9 +84,9 @@ img.img__overlay(
 <style lang="scss" scoped>
 .img__overlay {
   position: fixed;
-  bottom: 0;
-  right: 0;
   z-index: 999;
+  right: 0;
+  bottom: 0;
   max-height: 150px;
 
   &:hover {

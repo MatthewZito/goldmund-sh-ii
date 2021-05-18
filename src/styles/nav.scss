@@ -1,8 +1,7 @@
 .navigator {
-
   &-main {
-    margin: 0;
     padding: 0;
+    margin: 0;
 
     & > li,
     & > li > a {
@@ -17,22 +16,22 @@
 
     & > li > a:focus,
     & > li > a:hover {
-      text-decoration: none;
       background-color: transparent;
+      text-decoration: none;
     }
   }
 
   &__branding {
-    float: left;
-    padding: 13px 15px;
-    line-height: 24px;
     height: 50px;
+    padding: 13px 15px;
     color: $main-accent-color;
+    float: left;
+    line-height: 24px;
 
     &:focus,
     &:hover {
-      text-decoration: none;
       color: $main-accent-active;
+      text-decoration: none;
     }
 
     & > img {
@@ -52,66 +51,66 @@
 
   &__drawer {
     position: fixed;
+    z-index: 999;
     top: 0;
+    top: 52px;
     bottom: 0;
+    left: -240px;
     width: 240px;
     height: auto;
+    padding: 20px;
+    background-color: #fff;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: #fff;
-    z-index: 999;
-    left: -240px;
-    top: 52px;
-    padding: 20px;
   }
 }
 
 @media (min-width: $mobile-and-tablet) {
   .navigator {
     &__drawer {
-      padding: 30px;
-      left: 0;
       top: 0;
+      left: 0;
+      padding: 30px;
     }
   }
 }
 
 @media (max-width: $mobile-and-tablet) {
   .navigator {
-    margin: 0 -.6rem;
-    margin-top: -.5rem;
+    margin: 0 -0.6rem;
+    margin-top: -0.5rem;
 
     &__drawer {
-      width: 100%;
-      overflow: hidden;
       position: inherit;
-      padding: 0;
+      overflow: hidden;
+      width: 100%;
       height: 5rem;
+      padding: 0;
     }
 
     &-main {
       display: flex;
-      justify-content: space-around;
       width: 100%;
       height: 100%;
-      background: #FFF;
+      justify-content: space-around;
+      background: #fff;
 
       li {
+        display: inherit;
         width: 33%;
         height: 100%;
-        text-align: center;
-        display: inherit;
-        justify-content: inherit;
         align-items: center;
+        justify-content: inherit;
+        text-align: center;
 
         a {
+          display: inherit;
           width: 100%;
           height: inherit;
-          display: inherit;
           align-items: inherit;
           justify-content: inherit;
-          font-size: 1.3rem;
           color: #000;
+          font-size: 1.3rem;
         }
       }
     }
@@ -121,5 +120,3 @@
     display: none;
   }
 }
-
-

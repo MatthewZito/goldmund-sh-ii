@@ -1,31 +1,31 @@
 
 /* Local Vars */
-$ripple-color: #FFF !default;
+$ripple-color: #fff !default;
 $animation-duration: 0.5s !default;
 
 .btn {
   position: relative;
   display: inline-block;
-  margin-bottom: 0;
+  overflow: hidden;
   padding: 8px 20px;
+  border: 1px solid transparent;
+  border-color: $main-accent-color;
+  margin-bottom: 0;
+  background: $main-accent-color;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
   font-size: 1.2rem;
   font-weight: 400;
-  border: 1px solid transparent;
-  border-radius: 50px;
-  border-color: $main-accent-color;
-  color: #fff;
-  background: $main-accent-color;
-  white-space: nowrap;
   touch-action: manipulation;
-  cursor: pointer;
   // animation props
   transition: background-color;
   transition-duration: $animation-duration;
-  overflow: hidden;
+  white-space: nowrap;
 
   &:disabled {
-    background: pink;
     border: none;
+    background: pink;
   }
 
   &:hover:enabled,
@@ -34,17 +34,17 @@ $animation-duration: 0.5s !default;
   }
 
   &::before {
-    content: "";
+    position: absolute;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
     display: block;
     width: 100%;
     height: auto;
     padding-bottom: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 30;
     background: $ripple-color;
     border-radius: 50%;
+    content: "";
     // initial state - hide the effect when not animating
     transform: translate(-50%, -50%) scale(0);
     // hide el to prevent animate on page load
@@ -55,7 +55,7 @@ $animation-duration: 0.5s !default;
     animation: scale-up $animation-duration ease-out 0s;
   }
 
-  &:focus:enabled:before {
+  &:focus:enabled::before {
     // display el when focused
     visibility: visible;
   }
@@ -66,6 +66,7 @@ $animation-duration: 0.5s !default;
     opacity: 1;
     transform: translate(-50%, -50%) scale(0);
   }
+
   to {
     opacity: 0;
     transform: translate(-50%, -50%) scale(1);

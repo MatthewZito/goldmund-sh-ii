@@ -4,7 +4,7 @@ $main-accent-active: #ff4db2;
 $main-secondary-color: #8be9fd;
 $main-secondary-active: #66afe9;
 $main-success-color: #50fa7b;
-$main-error-color: #ff5555;
+$main-error-color: #f55;
 $main-warn-color: #f1fa8c;
 $main-info-color: #6272a4;
 $main-dark-color: #44475a;
@@ -21,15 +21,15 @@ $tablet-and-desktop: 1000px;
 @mixin drop-cap($el) {
   #{$el}:first-of-type::first-letter {
     @media screen and (min-width: $mobile-and-tablet) {
-      font-family: "Gentium Book Basic", serif;
-      font-weight: bold;
-      font-size: 8rem;
-      vertical-align: bottom;
-      line-height: 1em;
-      float: left;
       padding-right: 7px;
       margin-top: -10px;
       margin-left: -10px;
+      float: left;
+      font-family: "Gentium Book Basic", serif;
+      font-size: 8rem;
+      font-weight: bold;
+      line-height: 1em;
+      vertical-align: bottom;
     }
   }
 }
@@ -45,39 +45,37 @@ $_local-tooltip-color: #333;
 
 [tooltip]::before,
 [tooltip]::after {
-  text-transform: none;
-  font-size: .9em;
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
   position: absolute;
   display: none;
+  font-size: 0.9em;
+  line-height: 1;
   opacity: 0;
+  pointer-events: none;
+  text-transform: none;
+  user-select: none;
 }
 
 [tooltip]::before {
-  content: '';
-  border: 5px solid transparent;
   z-index: 1001;
+  border: 5px solid transparent;
+  content: '';
 }
 
 [tooltip]::after {
-  content: attr(tooltip);
-
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-
+  z-index: 1000;
+  overflow: hidden;
   min-width: 3em;
   max-width: 21em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   padding: 1ch 1.5ch;
-  border-radius: .3ch;
-  box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
   background: $_local-tooltip-color;
+  border-radius: 0.3ch;
+  box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
   color: #fff;
-  z-index: 1000;
+  content: attr(tooltip);
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 [tooltip]:hover::before,
@@ -94,8 +92,8 @@ $_local-tooltip-color: #333;
 [tooltip]:not([flow])::before,
 [tooltip][flow^="up"]::before {
   bottom: 100%;
-  border-bottom-width: 0;
   border-top-color: $_local-tooltip-color;
+  border-bottom-width: 0;
 }
 
 [tooltip]:not([flow])::after,
@@ -108,7 +106,7 @@ $_local-tooltip-color: #333;
 [tooltip][flow^="up"]::before,
 [tooltip][flow^="up"]::after {
   left: 50%;
-  transform: translate(-50%, -.5em);
+  transform: translate(-50%, -0.5em);
 }
 
 /* FLOW: DOWN */
@@ -125,49 +123,49 @@ $_local-tooltip-color: #333;
 [tooltip][flow^="down"]::before,
 [tooltip][flow^="down"]::after {
   left: 50%;
-  transform: translate(-50%, .5em);
+  transform: translate(-50%, 0.5em);
 }
 
 /* FLOW: LEFT */
 [tooltip][flow^="left"]::before {
   top: 50%;
+  left: calc(0em - 5px);
   border-right-width: 0;
   border-left-color: $_local-tooltip-color;
-  left: calc(0em - 5px);
-  transform: translate(-.5em, -50%);
+  transform: translate(-0.5em, -50%);
 }
 
 [tooltip][flow^="left"]::after {
   top: 50%;
   right: calc(100% + 5px);
-  transform: translate(-.5em, -50%);
+  transform: translate(-0.5em, -50%);
 }
 
 /* FLOW: RIGHT */
 [tooltip][flow^="right"]::before {
   top: 50%;
-  border-left-width: 0;
-  border-right-color: $_local-tooltip-color;
   right: calc(0em - 5px);
-  transform: translate(.5em, -50%);
+  border-right-color: $_local-tooltip-color;
+  border-left-width: 0;
+  transform: translate(0.5em, -50%);
 }
 
 [tooltip][flow^="right"]::after {
   top: 50%;
   left: calc(100% + 5px);
-  transform: translate(.5em, -50%);
+  transform: translate(0.5em, -50%);
 }
 
 @keyframes tooltip-vert {
   to {
-    opacity: .9;
+    opacity: 0.9;
     transform: translate(-50%, 0);
   }
 }
 
 @keyframes tooltip-hor {
   to {
-    opacity: .9;
+    opacity: 0.9;
     transform: translate(0, -50%);
   }
 }

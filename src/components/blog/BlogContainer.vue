@@ -109,7 +109,6 @@ Loader(v-else-if="isLoading")
 .main-container {
   max-width: 1150px;
   margin: auto;
-  margin-top: 4.2rem;
 
   &__inner {
     position: relative;
@@ -137,6 +136,12 @@ Loader(v-else-if="isLoading")
     &__footer {
       font-size: 0.8em;
     }
+  }
+}
+
+@media screen and (min-width: $mobile-and-tablet) {
+  .main-container {
+    margin-top: 4.2rem;
   }
 }
 </style>

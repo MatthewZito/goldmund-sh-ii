@@ -45,11 +45,11 @@ const props = defineProps({
 });
 
 /* Computed */
-const dateHeader = computed(() => dateConv(post.value.Created_at));
+const dateHeader = computed(() => dateConv(post.value.createdAt));
 
 const dateFooter = computed(() => {
-  if (not(post.value.Updated_at === post.value.Created_at)) {
-    const dateF = dateConv(post.value.Updated_at);
+  if (not(post.value.updatedAt === post.value.createdAt)) {
+    const dateF = dateConv(post.value.updatedAt);
 
     return `updated on ${dateF}`;
   }

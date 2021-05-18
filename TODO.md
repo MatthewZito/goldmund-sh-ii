@@ -22,7 +22,7 @@
 - [x] add tooltips
 - [x] fix screen overflow (x axis) in mob / tab viewports
 - [ ] optimize HTML boilerplate for PWA, SEO
-- [ ] graphql srv for comments
+- [x] graphql
 - [x] add suspenses
 - [x] add errorcaptured locals
 - [ ] add frontmatter / html meta for ea post
@@ -47,30 +47,12 @@
 - [ ] RSS feed integration
 
 ## database
-- [ ] tables -> plural names
+- [x] ~~tables -> plural names~~
 
 ## bugs / issues
 
 - [ ] fix relative module resolution err w/ golang serverless builds
 
-#
-stylelint-declaration-block-no-ignored-properties
 
-  "plugins": [
-    "stylelint-declaration-block-no-ignored-properties"
-  ],
-  "rules": {
-    "plugin/declaration-block-no-ignored-properties": true,
-  }
-}
-
-yarn add stylelint@^9.1.0 stylelint-images -D
-
- "plugins": [
-    "stylelint-images"
-  ],
-  "rules": {
-    "images/broken": true,
-    "images/prefer-data-uri": 256,
-    ...
-  }
+plugin: "stylelint-at-rule-no-children"
+rule: "aditayvm/at-rule-no-children": []

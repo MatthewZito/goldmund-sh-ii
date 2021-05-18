@@ -5,11 +5,16 @@
     "stylelint-config-recommended-scss"
   ],
   "plugins": [
-		"stylelint-order",
-    "stylelint-scss"
+    "stylelint-order",
+    "stylelint-scss",
+    "stylelint-images",
+    "stylelint-declaration-block-no-ignored-properties"
 	],
   "rules": {
-    "no-empty-source": null
+    "no-empty-source": null,
+    "images/broken": true,
+    "images/prefer-data-uri": 256,
+    "plugin/declaration-block-no-ignored-properties": true
   },
   "reportNeedlessDisables": true,
   "reportInvalidScopeDisables": true

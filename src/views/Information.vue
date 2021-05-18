@@ -38,12 +38,12 @@ import { about } from '@/data/about.json';
 @include drop-cap('.text-main');
 
 .break-hidden {
-  border-color: #FFF;
+  border-color: #fff;
 }
 
 .contain {
-  margin: 0;
   padding: 0;
+  margin: 0;
   text-align: left;
 }
 

@@ -162,7 +162,7 @@ button {
 }
 
 .button__wrapper {
-  display:flex;
+  display: flex;
   width: max-content;
 }
 
@@ -175,12 +175,12 @@ button {
 }
 
 .comm-icon {
-  color: #000;
+  display: inline-block;
   width: 2rem;
   height: 2rem;
-  display: inline-block;
-  line-height: 2rem;
+  color: #000;
   font-size: 15px;
+  line-height: 2rem;
   text-align: center;
 }
 
@@ -195,7 +195,7 @@ button {
 
 @media (max-width: $mobile) {
   .contact-info {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 }
 

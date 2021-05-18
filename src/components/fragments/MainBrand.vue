@@ -46,12 +46,13 @@ watch(() => route.name, setRouteLabel);
 
 <style lang="scss" scoped>
 .site-images {
-  display:flex;
+  display: flex;
   justify-content: flex-start;
 }
+
 .site-header {
-  margin-bottom: 30px;
   overflow: hidden;
+  margin-bottom: 30px;
 
   & > p {
     color: #555;
@@ -64,20 +65,20 @@ watch(() => route.name, setRouteLabel);
 
 .site-brand,
 .site-image {
-  margin-bottom: 6px;
   padding-right: 1.25rem;
+  margin-bottom: 6px;
 }
 
 .site-brand {
+  display: block;
   color: #000;
   font-family: Cabin, Helvetica, Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
-  display: block;
 
   &:hover {
-    text-decoration: none;
     color: $main-accent-active;
+    text-decoration: none;
   }
 }
 

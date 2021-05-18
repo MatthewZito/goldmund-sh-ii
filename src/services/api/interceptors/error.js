@@ -11,6 +11,6 @@ export default function (error) {
   }
   return normalize({
     status: error.response.status,
-    error: error.response?.data?.errors[0] || 'An error occurred while processing the request'
+    error: error.response?.data?.errors[0]?.message || 'An error occurred while processing the request'
   });
 }

@@ -39,13 +39,10 @@ onErrorCaptured((err, vm, info) => {
 
 </script>
 
-<template>
-<div>
-  <div v-if="hasError">
-    <component :is="fallback" />
-  </div>
-  <div v-else>
-    <slot :v-bind="{props}" />
-  </div>
-</div>
+<template lang="pug">
+div
+  div(v-if="hasError")
+    component(:is="fallback")
+  div(v-else)
+    slot(:v-bind="{ props }")
 </template>

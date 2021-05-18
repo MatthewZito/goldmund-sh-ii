@@ -18,7 +18,7 @@ const client = new HttpClient()
   .setBaseUrl(baseUrl);
 
 export default {
-  submitComm (data, cb) {
+  submitMessage (data, cb) {
     return client.post({
       url,
       data: C_MESSAGE(data)

@@ -31,7 +31,7 @@ const fingerprint = 'C899 B092 077E 2A65 C37B B2F7 63E8 AA50 86D4 7BE0';
 const formData = reactive({
   email: null,
   subject: null,
-  comment: null
+  body: null
 });
 
 /* Computed */
@@ -42,7 +42,7 @@ const isValid = computed(() => Object
 
 /* Methods */
 async function onSubmit () {
-  await form.submitComm(formData, ({ ok, error }) => {
+  await form.submitMessage(formData, ({ ok, error }) => {
     if (!ok) {
       addNotification({
         type: 'error',
@@ -62,8 +62,8 @@ async function onSubmit () {
 
 function onClickCopy ({ target } = {}) {
   copy(target?.innerText)
-    .then(isSuccess => {
-      if (isSuccess) {
+    .then(ok => {
+      if (ok) {
         addNotification({
           type: 'success',
           message: 'Successfully copied to clipboard'
@@ -113,7 +113,7 @@ onMounted(() => {
       label(htmlFor="comment")
         | Comment
       textarea.main-form__control(
-        v-model="formData.comment"
+        v-model="formData.body"
         placeholder="Enter your comment"
         type="text"
         name="comment"

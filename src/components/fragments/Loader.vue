@@ -8,35 +8,37 @@
 
 <style lang="scss" scoped>
 $s: 3rem;
+
 .container {
-  height: 90vh;
   display: flex;
-  justify-content: center;
+  height: 90vh;
   align-items: center;
+  justify-content: center;
   background-color: transparent;
 }
+
 .box-1 {
+  position: absolute;
   width: $s;
   height: $s;
   padding: 3px;
-  position: absolute;
-  background: $main-accent-color;
   animation: clockwise 3s ease-in-out 0s infinite alternate;
+  background: $main-accent-color;
 }
 
 .box-2 {
   width: $s;
   height: $s;
   padding: 3px;
+  animation: x-clockwise 3s ease-in-out 0s infinite alternate;
   background: $main-secondary-color;
   transform: rotate(45deg);
-  animation: x-clockwise 3s ease-in-out 0s infinite alternate;
 }
 
 .inner {
   width: 100%;
   height: 100%;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 /* Animations */
@@ -44,15 +46,19 @@ $s: 3rem;
   0% {
     transform: rotate(0);
   }
+
   25% {
     transform: rotate(90deg);
   }
+
   50% {
     transform: rotate(180deg);
   }
+
   75% {
     transform: rotate(270deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -62,15 +68,19 @@ $s: 3rem;
   0% {
     transform: rotate(45deg);
   }
+
   25% {
     transform: rotate(-45deg);
   }
+
   50% {
     transform: rotate(-135deg);
   }
+
   75% {
     transform: rotate(-225deg);
   }
+
   100% {
     transform: rotate(-315deg);
   }

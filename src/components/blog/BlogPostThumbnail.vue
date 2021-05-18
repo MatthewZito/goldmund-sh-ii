@@ -39,15 +39,18 @@ if (not(objNotEmptyDeep(props))) {
 
 <style lang="scss" scoped>
 @mixin overlay-text($height, $weight) {
+  font-weight: $weight;
   letter-spacing: $height * 1px;
   line-height: 1;
-  font-weight: $weight;
 }
 
-h1,h2,h3 {
+h1,
+h2,
+h3 {
   @include overlay-text(3, 400);
-  text-transform: uppercase;
+
   font-size: 3em;
+  text-transform: uppercase;
 
   @media screen and (max-width: $mobile-and-tablet) {
     font-size: 3em;
@@ -72,24 +75,23 @@ img {
 
 .blog-post {
   &__overlay {
-    padding: 20px;
     position: absolute;
     top: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     left: 0;
+    padding: 20px;
     padding-left: 2em;
-
   }
 
   &__content {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
     position: relative;
-    float: right;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
     padding-right: 1.2em;
+    float: right;
   }
 
   &__header {
@@ -97,9 +99,9 @@ img {
   }
 
   &__title {
-    color: #FFF;
-    margin-bottom: .25em;
-    font-weight: 700;;
+    margin-bottom: 0.25em;
+    color: #fff;
+    font-weight: 700;
   }
 }
 

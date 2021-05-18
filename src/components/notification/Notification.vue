@@ -31,17 +31,17 @@ $core-opacity: 0.8;
 
 #snackbar {
   position: fixed;
-  min-width: 20rem;
-  background-color: v-bind(color);
-  visibility: hidden;
-  color: #fff;
   z-index: 9999;
-  padding: 2rem;
-  border-radius: 6px;
-  text-align: center;
   bottom: 2rem;
+  min-width: 20rem;
+  padding: 2rem;
+  background-color: v-bind(color);
+  border-radius: 6px;
+  color: #fff;
   font-size: 1.35rem;
   font-weight: 900;
+  text-align: center;
+  visibility: hidden;
 
   @media screen and (max-width: $mobile) {
     font-size: 1rem;
@@ -58,8 +58,8 @@ $core-opacity: 0.8;
 #snackbar.toggled {
   -webkit-animation: fade-in 0.5s, fade-out 0.5s 2.5s;
   animation: fade-in 0.5s, fade-out 0.5s 2.5s;
-  visibility: visible;
   opacity: $core-opacity;
+  visibility: visible;
 
   @media screen and (max-width: ($mobile - 100)) {
     opacity: 1;

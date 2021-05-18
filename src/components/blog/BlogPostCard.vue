@@ -78,28 +78,28 @@ function toggleTargets () {
 $primary-font: 'Montserrat', helvetica, arial, sans-serif;
 
 button {
-  font-family: $primary-font;
   border: 0;
   cursor: pointer;
-  opacity: .75;
+  font-family: $primary-font;
+  opacity: 0.75;
 
   &:focus {
+    opacity: 1;
     outline: 0;
-     opacity: 1;
   }
 }
 
 .blog-card {
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
+  display: block;
   width: 100%;
   max-width: 1200px;
   height: 100%;
   min-height: 300px;
-  display: block;
-  position: relative;
   margin: 0 auto;
   margin-top: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: 1.6rem;
 
   @media screen and (max-width: $tablet) {
@@ -115,42 +115,48 @@ button {
   }
 
   @media screen and (max-width: $mobile) {
+    height: 300px;
     background-position: 50% 0%;
     background-size: cover;
-    height: 300px;
   }
 
   &__overlay {
-    width:100%;
-    height: 100%;
-    background: rgba(164, 230, 250, 0.2) linear-gradient(to right,
-      rgba(39, 196, 245, 0.2),
-      rgba(255, 121, 198, 0.2)
-      ,rgba(253, 141, 50, 0.2),
-      rgba(112, 192, 80, 0.2),
-      rgba(39, 196, 245, 0.2));
-    background-blend-mode: multiply;
     position: absolute;
     top: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      rgba(164, 230, 250, 0.2) linear-gradient(
+        to right,
+        rgba(39, 196, 245, 0.2),
+        rgba(255, 121, 198, 0.2),
+        rgba(253, 141, 50, 0.2),
+        rgba(112, 192, 80, 0.2),
+        rgba(39, 196, 245, 0.2)
+      );
+    background-blend-mode: multiply;
 
     @media screen and (max-width: $mobile) {
-      background: rgba(164, 230, 250, 0.2) linear-gradient(to right,
-      rgba(39, 196, 245, 0.2),
-      rgba(255, 121, 198, 0.2)
-      ,rgba(253, 141, 50, 0.2),
-      rgba(112, 192, 80, 0.2),
-      rgba(39, 196, 245, 0.2));
+      background:
+        rgba(164, 230, 250, 0.2) linear-gradient(
+          to right,
+          rgba(39, 196, 245, 0.2),
+          rgba(255, 121, 198, 0.2),
+          rgba(253, 141, 50, 0.2),
+          rgba(112, 192, 80, 0.2),
+          rgba(39, 196, 245, 0.2)
+        );
     }
   }
 
   &__share {
-    padding: 1rem;
     display: inline-block;
     width: 100%;
     max-width: 15rem;
+    padding: 1rem;
 
     @media screen and (max-width: $mobile) {
       display: block;
@@ -159,17 +165,18 @@ button {
   }
 
   &__share-targets {
-    animation-name: targets;
     animation-duration: 1s;
+    animation-name: targets;
+
     > button {
       color: $main-error-color;
     }
   }
 
   &__icon {
-    color: $main-accent-color;
-    background: none;
     padding: 0;
+    background: none;
+    color: $main-accent-color;
     font-size: 2rem;
 
     &:hover {
@@ -183,12 +190,12 @@ button {
   }
 
   &__content {
+    position: relative;
     width: 100%;
     max-width: 40%;
-    position:relative;
-    float: right;
     padding-right: 1.2em;
     padding-bottom: 1em;
+    float: right;
 
     @media screen and (max-width: 1080px) {
       width: 50%;
@@ -201,8 +208,8 @@ button {
 
     @media screen and (max-width: $mobile) {
       width: 100%;
-      float: inherit;
       padding: 0 1em 1em;
+      float: inherit;
     }
   }
 
@@ -211,39 +218,42 @@ button {
   }
 
   &__title {
-    color: #ffffff;
-    margin-bottom: .25em;
+    margin-bottom: 0.25em;
+    color: #fff;
   }
 
   &__info {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 1.2em;
-    color: $main-accent-color;
-    line-height: 1;
     margin: 0;
+    color: $main-accent-color;
+    font-size: 1.2em;
     font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   &__desc {
+    margin-bottom: 2em;
     color: $main-error-color;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 2em;
   }
 }
 
-h1,h2,h3 {
-  text-transform: uppercase;
+h1,
+h2,
+h3 {
+  font-weight: 400;
   letter-spacing: 2px;
   line-height: 1;
-  font-weight: 400;
+  text-transform: uppercase;
 }
 
 @keyframes targets {
   to {
     opacity: 1;
   }
+
   from {
     opacity: 0;
   }

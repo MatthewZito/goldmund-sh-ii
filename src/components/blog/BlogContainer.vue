@@ -107,34 +107,35 @@ Loader(v-else-if="isLoading")
 
 <style lang="scss" scoped>
 .main-container {
+  max-width: 1150px;
   margin: auto;
   margin-top: 4.2rem;
-  max-width:1150px;
+
   &__inner {
     position: relative;
+    width: 100%;
     min-height: 1px;
     float: left;
-    width: 100%;
   }
 
   &__footer {
-    font-style: italic;
     color: #777;
+    font-style: italic;
   }
 }
 
 @media screen and (max-width: $mobile-and-tablet) {
   .main-container {
-    margin-left: -15px;
-    margin-right: -15px;
     padding: 1rem;
+    margin-right: -15px;
+    margin-left: -15px;
 
     &__inner {
       padding: 0;
     }
 
     &__footer {
-      font-size: .8em;
+      font-size: 0.8em;
     }
   }
 }

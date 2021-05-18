@@ -12,10 +12,10 @@ figure.container
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 0;
+  justify-content: center;
   padding: 0;
+  margin: 0;
 }
 
 .title {

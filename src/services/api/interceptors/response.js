@@ -5,7 +5,7 @@ export default function (response) {
   if (isErroneous(response)) {
     return normalize({
       status: response.status,
-      error: response?.data?.errors[0] || 'An error occurred while processing the request'
+      error: response?.data?.errors[0]?.message || 'An error occurred while processing the request'
     });
   }
   return normalize({

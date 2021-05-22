@@ -18,7 +18,6 @@ function guards () {
 
     if (not(session.tracking())) {
       session.track();
-
       eventApi.logInteraction();
     }
 

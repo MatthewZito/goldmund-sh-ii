@@ -34,7 +34,7 @@ if (not(objNotEmptyDeep(props))) {
   router-link.blog-post__overlay(:to="`/blog/${slug}`")
     .blog-post__content
       .blog-post__header
-        h3.blog-post__title {{ title }}
+        .blog-post__title {{ title }}
 </template>
 
 <style lang="scss" scoped>
@@ -42,27 +42,6 @@ if (not(objNotEmptyDeep(props))) {
   font-weight: $weight;
   letter-spacing: $height * 1px;
   line-height: 1;
-}
-
-h1,
-h2,
-h3 {
-  @include overlay-text(3, 400);
-
-  font-size: 3em;
-  text-transform: uppercase;
-
-  @media screen and (max-width: $mobile-and-tablet) {
-    font-size: 3em;
-  }
-
-  @media screen and (max-width: 400px) {
-    font-size: 2em;
-  }
-
-  @media (max-width: $mobile-and-tablet) and (min-width: 551px) {
-    font-size: 2em;
-  }
 }
 
 a {
@@ -101,7 +80,10 @@ img {
   &__title {
     margin-bottom: 0.25em;
     color: #fff;
-    font-weight: 700;
+    font-size: 2.2em;
+    text-transform: uppercase;
+
+    @include overlay-text(3, 500);
   }
 }
 

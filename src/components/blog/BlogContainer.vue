@@ -1,4 +1,5 @@
 <script setup>
+import { useHead } from '@vueuse/head';
 import { not } from 'js-heuristics';
 
 import {
@@ -56,6 +57,22 @@ const dateFooter = computed(() => {
   }
 
   return false;
+});
+
+useHead({
+  title: 'goldmund.sh',
+  meta: [
+    {
+      name: `description`,
+      content: computed(
+        () => {
+          const tags = post.value.tags?.join(', ');
+          const content = tags.length ? tags : 'computing, programming, art, music';
+          return 'A blog post about ' + content;
+        }
+      )
+    }
+  ]
 });
 
 /* A Priori */

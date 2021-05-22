@@ -7,4 +7,5 @@ INSERT INTO meta_valid_category (event) VALUES
   ('runtime'),
   ('vue_runtime'),
   ('error_boundary_invocation'),
-  ('logging');
+  ('logging'),
+  ('analytics');

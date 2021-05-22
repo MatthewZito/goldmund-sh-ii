@@ -236,6 +236,7 @@ button {
     margin-bottom: 2em;
     color: $main-error-color;
     font-weight: 700;
+    line-height: 1;
     text-transform: uppercase;
   }
 }

@@ -4,7 +4,8 @@
   'transitions',
   'buttons',
   'nav',
-  'grid';
+  'grid',
+  'syntax';
 
 *,
 ::after,
@@ -120,24 +121,30 @@ label {
   margin-bottom: 0.3rem;
 }
 
-ul {
-  list-style: none;
+table,
+th,
+td {
+  border: 1px solid $main-dark-color;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 0.25em 0.25em 0 0;
+}
+
+th {
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+td {
+  padding: 0.65em 1em;
 }
 
 .img-responsive {
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-@media (max-width: $mobile-and-tablet) {
-  pre {
-    font-size: 0.9rem !important;
-  }
-
-  code {
-    white-space: pre-wrap !important;
-  }
 }
 
 @media (min-width: $mobile-and-tablet) {

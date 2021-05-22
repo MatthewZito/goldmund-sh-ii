@@ -133,7 +133,7 @@ onMounted(() => {
         )
           | Send
   .grid-col.grid-col__offset.grid-col__right
-    ul.contact-info
+    .contact-info
       li
         span.comm-icon
           FAIcon(
@@ -168,6 +168,7 @@ button {
 
 .contact-info {
   padding-left: 0;
+  list-style: none;
 
   li:nth-child(even):hover {
     cursor: pointer;

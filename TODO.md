@@ -9,8 +9,8 @@
 - [ ] virtual scroll
 - [x] max-len communications message, subject
 - [ ] update share paths
-- [x] est ganalytics
-  - [ ] setup
+- [x] ~~est ganalytics~~
+  - [x] ~~setup~~
 - [x] responsive fonts
 - [x] sentry / error logging
 - [ ] ip logging
@@ -28,6 +28,7 @@
 - [ ] add frontmatter / html meta for ea post
 - [ ] web worker for markdown rendering
 - [x] loader
+- [ ] scrollbars
 
 ## api
 

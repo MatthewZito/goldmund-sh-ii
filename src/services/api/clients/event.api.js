@@ -1,7 +1,10 @@
 import { not } from 'js-heuristics';
 
 import { baseUrl, blobify } from '@/utils';
-import { ERROR_EVENT, INTERACTION_EVENT } from '@/services/api/models';
+import {
+  ERROR_EVENT,
+  INTERACTION_EVENT
+} from '@/services/api/models';
 
 export default {
   client: navigator,

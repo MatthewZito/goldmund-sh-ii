@@ -16,7 +16,6 @@ import { useAsync } from '@/hooks';
 import { dateConv } from '@/utils';
 
 /* Components */
-import BlogPostCard from '@/components/blog/BlogPostCard.vue';
 import Markdown from '@/components/fragments/Markdown.vue';
 import Loader from '@/components/fragments/Loader.vue';
 import BlogContainerFallback from '@/components/fallback/BlogContainerFallback.vue';
@@ -108,13 +107,6 @@ Loader(v-else-if="isLoading")
   ErrorBoundary(
     :fallback="BlogContainerFallback"
   )
-    BlogPostCard(
-      :title="post.title"
-      :subtitle="post.subtitle"
-      :img-src="post.imgSrc"
-      :date="dateHeader"
-      alt="blog header image"
-    )
     .main-container__inner
       div
         Markdown(:mark-down="post.body")
@@ -159,7 +151,7 @@ Loader(v-else-if="isLoading")
 
 @media screen and (min-width: $mobile-and-tablet) {
   .main-container {
-    margin-top: 4.2rem;
+    margin-top: 5.5rem;
   }
 }
 </style>

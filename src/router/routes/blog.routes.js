@@ -5,7 +5,6 @@ export default [{
   props: true,
   meta: {
     cache: true,
-    label: 'cat',
-    desc: 'a blog about computing, programming, art, music'
+    label: 'cat'
   }
 }];

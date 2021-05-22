@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
 	"os"
 	"time"
 
@@ -10,13 +9,7 @@ import (
 )
 
 /* Constants */
-const (
-	dbhost = "DBHOST"
-	dbport = "DBPORT"
-	dbuser = "DBUSER"
-	dbpass = "DBPASS"
-	dbname = "DBNAME"
-)
+const dbConn = "DB_CONN"
 
 /* TypeDefs */
 type Db struct {
@@ -56,10 +49,7 @@ type Event struct {
 // Connect initializes a database connection, pings said connection to ensure liveness,
 // and returns either a pointer to the connection or an error
 func Connect() (*Db, error) {
-	connStr, err := resolveConfig()
-	if err != nil {
-		return nil, err
-	}
+	connStr := os.Getenv(dbConn)
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
@@ -72,30 +62,6 @@ func Connect() (*Db, error) {
 	}
 
 	return &Db{db}, nil
-}
-
-// resolveConfig (local) resolves the database connection string
-func resolveConfig() (string, error) {
-	conf := make(map[string]string)
-
-	host := os.Getenv(dbhost)
-	port := os.Getenv(dbport)
-	user := os.Getenv(dbuser)
-	pass := os.Getenv(dbpass)
-	name := os.Getenv(dbname)
-
-	conf[dbhost] = host
-	conf[dbport] = port
-	conf[dbuser] = user
-	conf[dbpass] = pass
-	conf[dbname] = name
-
-	connStr := fmt.Sprintf("host=%s port=%s user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		conf[dbhost], conf[dbport],
-		conf[dbuser], conf[dbpass], conf[dbname])
-
-	return connStr, nil
 }
 
 // GetPosts attempts to select all post metadata from the Postgres database

@@ -61,6 +61,11 @@ img {
     left: 0;
     padding: 20px;
     padding-left: 2em;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+
+    &:hover {
+      background: none;
+    }
   }
 
   &__content {
@@ -85,9 +90,5 @@ img {
 
     @include overlay-text(3, 500);
   }
-}
-
-.blog-post:hover > img {
-  filter: blur(3px);
 }
 </style>

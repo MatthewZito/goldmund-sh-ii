@@ -106,7 +106,7 @@ func (db *Db) GetPosts() ([]PostMetaData, error) {
 			title,
 			img_src,
 			slug 
-		FROM blog_post_meta
+		FROM blog_post
 		ORDER BY created_at ASC`)
 
 	if err != nil {
@@ -145,15 +145,15 @@ func (db *Db) GetPosts() ([]PostMetaData, error) {
 func (db *Db) GetPost(s string) (Post, error) {
 	sql := `
 		SELECT
-			Uuid,
-			Title,
-			Subtitle,
-			Created_at,
-			COALESCE(Updated_at, Created_at),
-			Img_src,
-			Slug,
-			Tags,
-			Body
+			uuid,
+			title,
+			subtitle,
+			created_at,
+			COALESCE(updated_at, created_at),
+			img_src,
+			slug,
+			tags,
+			body
 		FROM blog_post
 		WHERE slug=$1
 		LIMIT 1;`
@@ -199,7 +199,7 @@ func (db *Db) CreateEvent(e *Event) error {
 // CreateMessage attempts to create as a record a user-submitted messag in the Postgres database
 func (db *Db) CreateMessage(e *Message) error {
 	sql := `
-	INSERT INTO contact_form (email, subject, comment)
+	INSERT INTO contact_form (email, subject, body)
 	VALUES ($1, $2, $3)`
 
 	_, err := db.Exec(sql, e.Email, e.Subject, e.Body)

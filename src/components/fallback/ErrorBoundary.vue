@@ -7,6 +7,7 @@ import {
 } from 'vue';
 
 import { isDev } from '@/utils';
+import { ERROR_CAT } from '@/services/api/models';
 
 /* Est */
 const { event } = inject('$api');
@@ -29,8 +30,8 @@ onErrorCaptured((err, vm, info) => {
   // eslint-disable-next-line no-console
   if (isDev) console.warn({ err }, { info });
 
-  event.logEvent({
-    category: 'error_boundary',
+  event.logError({
+    category: ERROR_CAT.BOUND,
     info: `${info} ${err.toString()}`
   });
 

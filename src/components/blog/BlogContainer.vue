@@ -10,6 +10,7 @@ import {
   onErrorCaptured
 } from 'vue';
 
+import { ERROR_CAT } from '@/services/api/models';
 import { useAsync } from '@/hooks';
 import { dateConv } from '@/utils';
 
@@ -64,8 +65,8 @@ onMounted(() => {
   if (error.value) {
     hasError.value = true;
 
-    event.logEvent({
-      category: 'http_error',
+    event.logError({
+      category: ERROR_CAT.HTTP,
       info: error.value
     });
   }
@@ -74,8 +75,8 @@ onMounted(() => {
 onErrorCaptured((err, vm, info) => {
   hasError.value = true;
 
-  event.logEvent({
-    category: 'runtime_exception',
+  event.logError({
+    category: ERROR_CAT.RUNTIME,
     info: `${err.toString()} ${vm} ${info}`
   });
 

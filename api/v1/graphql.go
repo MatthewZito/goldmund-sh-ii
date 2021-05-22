@@ -16,6 +16,10 @@ import (
 // TODO reloc db conn to context
 func Handler(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+	if err != nil {
+		util.FError(w, err)
+		return
+	}
 
 	var apolloQuery map[string]interface{}
 

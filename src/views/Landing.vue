@@ -6,6 +6,7 @@ import {
   onErrorCaptured
 } from 'vue';
 
+import { ERROR_CAT } from '@/services/api/models';
 import {
   useMasonry,
   useActions,
@@ -44,8 +45,8 @@ onMounted(() => {
 });
 
 onErrorCaptured((err, vm, info) => {
-  event.logEvent({
-    category: 'runtime_exception',
+  event.logError({
+    category: ERROR_CAT.RUNTIME,
     info: `${err.toString()} ${vm} ${info}`
   });
 

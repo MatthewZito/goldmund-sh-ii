@@ -1,5 +1,9 @@
+import { not } from 'js-heuristics';
+
 import store from '@/state';
 import NProgress from '@/plugins/progress';
+import { SessionManager } from '@/services/sessions';
+import { eventApi } from '@/services/api';
 
 import { predicate } from '@/router/helpers';
 
@@ -7,9 +11,16 @@ export {
   guards
 };
 
+const session = new SessionManager();
 function guards () {
   this.beforeEach((to, from, next) => {
     const routeHas = predicate(to);
+
+    if (not(session.tracking())) {
+      session.track();
+
+      eventApi.logInteraction();
+    }
 
     NProgress.start();
 

@@ -2,8 +2,9 @@
 
 /* Devtools Debug Interface */
 import { appName } from '@pkg';
-import { eventApi } from '@/services/api';
 
+import { eventApi } from '@/services/api';
+import { ERROR_CAT } from '@/services/api/models';
 import { isDev } from '@/utils';
 
 const header = 'color:#50fa7b;font-weight:bold;padding:6px;';
@@ -18,8 +19,8 @@ function debug () {
       printf('#FF5555')
     );
 
-    eventApi.logEvent({
-      category: 'runtime_exception',
+    eventApi.logError({
+      category: ERROR_CAT.RUNTIME,
       info: `Uncaught Exception: ${message}\nInfo: ${source} - Ln${line} Col${column}: ${error.toString()}`
     });
   };
@@ -31,8 +32,8 @@ function debug () {
       printf('#FF5555')
     );
 
-    eventApi.logEvent({
-      category: 'promise_rejection',
+    eventApi.logError({
+      category: ERROR_CAT.RUNTIME,
       info: `REJECTION: ${e.reason}`
     });
 
@@ -46,8 +47,8 @@ function debug () {
       printf('#FF79C6')
     );
 
-    eventApi.logEvent({
-      category: 'vue_exception',
+    eventApi.logError({
+      category: ERROR_CAT.VUE,
       info: `ERROR: ${err.toString()}\nInfo: ${info}`
     });
   };

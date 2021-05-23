@@ -27,7 +27,6 @@ func (r *Resolver) GetPostResolver(p graphql.ResolveParams) (interface{}, error)
 // PostsResolver resolves queries for all posts metadata
 func (r *Resolver) GetPostsResolver(p graphql.ResolveParams) (interface{}, error) {
 	posts, err := r.db.GetPosts()
-
 	if err != nil {
 		return nil, err
 	}
@@ -47,8 +46,7 @@ func (r *Resolver) CreateMessageResolver(p graphql.ResolveParams) (interface{}, 
 		Body:    body,
 	}
 
-	err := r.db.CreateMessage(&m)
-	if err != nil {
+	if err := r.db.CreateMessage(&m); err != nil {
 		return db.Event{}, err
 	}
 
@@ -67,8 +65,7 @@ func (r *Resolver) CreateEventResolver(p graphql.ResolveParams) (interface{}, er
 		Info:     info,
 	}
 
-	err := r.db.CreateEvent(&e)
-	if err != nil {
+	if err := r.db.CreateEvent(&e); err != nil {
 		return db.Event{}, err
 	}
 

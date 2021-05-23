@@ -48,12 +48,15 @@
 - [ ] RSS feed integration
 
 ## database
+
 - [x] ~~tables -> plural names~~
+
+
+## cli
+
+- [ ] unit tests
+- [ ] cdn upload
 
 ## bugs / issues
 
 - [ ] fix relative module resolution err w/ golang serverless builds
-
-
-plugin: "stylelint-at-rule-no-children"
-rule: "aditayvm/at-rule-no-children": []

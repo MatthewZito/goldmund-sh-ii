@@ -56,8 +56,7 @@ func Connect() (*Db, error) {
 		return nil, err
 	}
 
-	err = db.Ping()
-	if err != nil {
+	if err = db.Ping(); err != nil {
 		return nil, err
 	}
 
@@ -86,20 +85,18 @@ func (db *Db) GetPosts() ([]PostMetaData, error) {
 	for rows.Next() {
 		post := PostMetaData{}
 
-		err = rows.Scan(
+		if err = rows.Scan(
 			&post.Title,
 			&post.Img_src,
 			&post.Slug,
-		)
-		if err != nil {
+		); err != nil {
 			return []PostMetaData{}, err
 		}
 
 		p = append(p, post)
 	}
 
-	err = rows.Err()
-	if err != nil {
+	if err = rows.Err(); err != nil {
 		return []PostMetaData{}, err
 	}
 
@@ -128,7 +125,7 @@ func (db *Db) GetPost(s string) (Post, error) {
 
 	var p Post
 
-	err := row.Scan(
+	if err := row.Scan(
 		&p.Uuid,
 		&p.Title,
 		&p.Subtitle,
@@ -138,9 +135,7 @@ func (db *Db) GetPost(s string) (Post, error) {
 		&p.Slug,
 		&p.Tags,
 		&p.Body,
-	)
-
-	if err != nil {
+	); err != nil {
 		return Post{}, err
 	}
 
@@ -154,8 +149,7 @@ func (db *Db) CreateEvent(e *Event) error {
 	VALUES ($1, $2, $3)`
 
 	// `Exec` uses `ctxDriverPrepare` under the hood and will escape special chars, so we're good here
-	_, err := db.Exec(sql, e.Type, e.Category, e.Info)
-	if err != nil {
+	if _, err := db.Exec(sql, e.Type, e.Category, e.Info); err != nil {
 		return err
 	}
 
@@ -168,8 +162,7 @@ func (db *Db) CreateMessage(e *Message) error {
 	INSERT INTO contact_form (email, subject, body)
 	VALUES ($1, $2, $3)`
 
-	_, err := db.Exec(sql, e.Email, e.Subject, e.Body)
-	if err != nil {
+	if _, err := db.Exec(sql, e.Email, e.Subject, e.Body); err != nil {
 		return err
 	}
 

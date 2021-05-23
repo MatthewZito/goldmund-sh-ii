@@ -12,7 +12,6 @@ func CreateSchema(db *db.Db) (graphql.Schema, error) {
 			Mutation: InitRootMutation(db).Mutation,
 		},
 	)
-
 	if err != nil {
 		return graphql.Schema{}, err
 	}

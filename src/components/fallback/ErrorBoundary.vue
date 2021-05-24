@@ -32,7 +32,7 @@ onErrorCaptured((err, vm, info) => {
 
   event.logError({
     category: ERROR_CAT.BOUND,
-    info: `${info} ${err.toString()}`
+    info: `${info} ${err}`
   });
 
   return !!props.propagates;

@@ -7,6 +7,7 @@ import {
 } from 'vue';
 import { useRouter } from 'vue-router';
 
+import { ERROR_CAT } from '@/services/api/models';
 import {
   useClipboard,
   useTooltip,
@@ -20,7 +21,7 @@ const { addNotification } =
   ]);
 
 const router = useRouter();
-const { form } = inject('$api');
+const { form, event } = inject('$api');
 
 /* Data */
 const { initTooltip, tooltipRef } = useTooltip();
@@ -46,8 +47,14 @@ async function onSubmit () {
     if (!ok) {
       addNotification({
         type: 'error',
-        message: error
-      });
+        message: 'An error occurred and your comment was not submitted'
+      })
+        .finally(() => {
+          event.logError({
+            category: ERROR_CAT.HTTP,
+            info: error
+          });
+        });
     } else {
       addNotification({
         type: 'success',

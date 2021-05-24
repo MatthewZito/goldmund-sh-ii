@@ -53,6 +53,7 @@ onErrorCaptured((err, vm, info) => {
   return false;
 });
 // TODO virtual scroll
+// TODO error fallback
 </script>
 
 <template lang="pug">

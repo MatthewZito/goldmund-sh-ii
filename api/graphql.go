@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/MatthewZito/goldmund-sh-ii/api/db"
-	"github.com/MatthewZito/goldmund-sh-ii/api/gql"
-	"github.com/MatthewZito/goldmund-sh-ii/api/util"
+	"github.com/MatthewZito/goldmund-sh-ii/srv/db"
+	"github.com/MatthewZito/goldmund-sh-ii/srv/gql"
+	"github.com/MatthewZito/goldmund-sh-ii/srv/util"
 	"github.com/graphql-go/graphql"
 )
 

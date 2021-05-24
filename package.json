@@ -5,8 +5,8 @@
   "author": "Matthew Zito (goldmund)",
   "scripts": {
     "build": "vite build",
-    "dev:api": "VITE_LOCAL=1 DB_CONN=\"host=localhost port=5432 user=postgres password=root dbname=Test sslmode=disable\" vercel dev",
     "dev:client": "vite",
+    "dev:local": "VITE_LOCAL=1 DB_CONN=\"host=localhost port=5432 user=postgres password=root dbname=Test sslmode=disable\" vercel dev",
     "dev:remote": "VITE_LOCAL=1 vercel dev",
     "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,vue}\" --no-fix",

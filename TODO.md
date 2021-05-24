@@ -40,6 +40,7 @@
 - [ ] comments on posts (RECAPTCHA, db, Pusher)
 - [x] conv markdown render to API
 - [x] move entire go mod into /api
+- [ ] update to protobuf
 
 ## integration
 

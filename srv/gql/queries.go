@@ -1,7 +1,7 @@
 package gql
 
 import (
-	"github.com/MatthewZito/goldmund-sh-ii/api/db"
+	"github.com/MatthewZito/goldmund-sh-ii/srv/db"
 	"github.com/graphql-go/graphql"
 )
 

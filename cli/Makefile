@@ -1,4 +1,5 @@
 GOCMD=go
+GORUN=$(GOCMD) run
 GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
@@ -21,3 +22,6 @@ clean:
 	$(GOCLEAN)
 	rm -f $(BIN_NAME)
 	rm -f $(BIN_UNIX)
+
+run/dev:
+	$(GORUN) . ${ARGS}

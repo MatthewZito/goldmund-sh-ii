@@ -28,6 +28,19 @@ type Template struct {
 	Body     string
 }
 
+type MetaData struct {
+	Uuid     string         `json:"uuid"`
+	Title    string         `json:"title"`
+	Subtitle string         `json:"subtitle"`
+	ImgSrc   string         `json:"imgSrc"`
+	Slug     string         `json:"slug"`
+	Tags     pq.StringArray `json:"tags"`
+}
+
+type Content struct {
+	Body string `json:"body"`
+}
+
 type Reader interface {
 	DeconstructWorkspace() error
 }

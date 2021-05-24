@@ -5,8 +5,6 @@ import (
 	"errors"
 	"io/ioutil"
 	"os"
-
-	"github.com/lib/pq"
 )
 
 const (
@@ -15,20 +13,7 @@ const (
 	OCTAL_P             = 0644
 )
 
-type MetaData struct {
-	Uuid     string         `json:"uuid"`
-	Title    string         `json:"title"`
-	Subtitle string         `json:"subtitle"`
-	ImgSrc   string         `json:"imgSrc"`
-	Slug     string         `json:"slug"`
-	Tags     pq.StringArray `json:"tags"`
-}
-
-type Content struct {
-	Body string `json:"body"`
-}
-
-// ConstructWorkspace reads data from the Postgres db and initializes an editor workspace
+// ConstructWorkspace reads data from the Postgres db and with it initializes an editor workspace
 func ConstructWorkspace(p *Post) error {
 	m := MetaData{
 		p.Uuid,
@@ -52,7 +37,7 @@ func ConstructWorkspace(p *Post) error {
 	return nil
 }
 
-// DeconstructWorkspace reads data from the editor workspace and uploads to the Postgres db
+// DeconstructWorkspace uploads data from the editor workspace to the Postgres db
 func (t *Template) DeconstructWorkspace() error {
 	f, err := ioutil.ReadFile(TRANSIENT_F_JSON)
 	if err != nil {

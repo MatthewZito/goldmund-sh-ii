@@ -16,7 +16,7 @@ func Itob(n int) bool {
 
 // ErrExit prints an error message to stderr and exits with an erroneous return code
 func ErrExit(m string) {
-	fmt.Println(m)
+	fmt.Printf("[-] %s\n", m)
 	os.Exit(1)
 }
 

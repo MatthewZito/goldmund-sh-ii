@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"cli/internal"
@@ -31,9 +32,11 @@ func main() {
 
 	switch c.Directive {
 	case UPLOAD:
-		if err := upload(&c); err != nil {
+		receipt, err := upload(&c)
+		if err != nil {
 			internal.ErrExit(err.Error())
 		}
+		fmt.Println(receipt)
 	case DOWNLOAD:
 		if err := download(&c); err != nil {
 			internal.ErrExit(err.Error())
@@ -44,36 +47,36 @@ func main() {
 }
 
 /* Actions */
-func upload(c *internal.Command) error {
+func upload(c *internal.Command) (string, error) {
 	var t internal.Template
 
 	if err := t.DeconstructWorkspace(); err != nil {
-		return err
+		return "", err
 	}
 
 	db, err := db.Connect()
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	defer db.Close()
 
 	exists, err := db.CheckIfExists(c.ID)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	if exists {
 		if err := db.UpdatePost(&t); err != nil {
-			return err
+			return "", err
 		}
 	} else {
 		if err := db.CreatePost(&t); err != nil {
-			return err
+			return "", err
 		}
 	}
 
-	return nil
+	return fmt.Sprintf("[+] Post with identifier %s has been %s", t.Slug, fReceipt(exists)), nil
 }
 
 func download(c *internal.Command) error {
@@ -98,4 +101,11 @@ func download(c *internal.Command) error {
 	}
 
 	return nil
+}
+
+func fReceipt(exists bool) string {
+	if exists {
+		return "updated"
+	}
+	return "created"
 }

@@ -29,6 +29,8 @@
 - [ ] web worker for markdown rendering
 - [x] loader
 - [ ] scrollbars
+- [ ] dark mode (#000000d4)
+- [ ] in-page loader
 
 ## api
 

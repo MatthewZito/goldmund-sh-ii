@@ -43,7 +43,7 @@ func (db *Db) CheckIfExists(s string) (bool, error) {
 	sql := `
 		SELECT COUNT(1)
 		FROM blog_post
-		WHERE uuid = $1;
+		WHERE slug = $1;
 	`
 
 	row := db.QueryRow(sql, s)
@@ -104,7 +104,7 @@ func (db *Db) CreatePost(t *internal.Template) error {
 				tags,
 				body
 			)
-			VALUES ($1 $2 $3 $4 $5 $6);
+			VALUES ($1, $2, $3, $4, $5, $6);
 			`
 
 	if _, err := db.Exec(sql,

@@ -96,3 +96,23 @@ func InitWorkspace(c *internal.Command) error {
 
 	return internal.ConstructWorkspace(&p)
 }
+
+func FetchEvents(c *internal.Command) error {
+	db, err := db.Connect()
+	if err != nil {
+		return err
+	}
+
+	defer db.Close()
+
+	e, err := db.GetEventsFor(c.ID)
+	if err != nil {
+		return err
+	}
+
+	for i := range e {
+		fmt.Println(e[i])
+	}
+
+	return nil
+}

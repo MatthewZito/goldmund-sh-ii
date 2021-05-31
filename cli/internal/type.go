@@ -41,6 +41,14 @@ type Content struct {
 	Body string `json:"body"`
 }
 
+type Event struct {
+	Uuid     string `json:"uuid"`
+	Type     string `json:"event"`
+	Category string `json:"category"`
+	Info     string `json:"info"`
+	LoggedAt string `json:"loggedAt"`
+}
+
 type Reader interface {
 	DeconstructWorkspace() error
 }

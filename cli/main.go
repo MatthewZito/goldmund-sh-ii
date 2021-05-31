@@ -8,10 +8,11 @@ import (
 
 /* Commands */
 const (
-	UPLOAD   = "upload"
-	DOWNLOAD = "download"
-	NEW      = "new"
-	CLEAN    = "clean"
+	UPLOAD    = "upload"
+	DOWNLOAD  = "download"
+	NEW       = "new"
+	CLEAN     = "clean"
+	ANALYTICS = "analytics"
 )
 
 func main() {
@@ -24,8 +25,8 @@ func main() {
 	}
 
 	c := internal.Command{
-		args[0],
-		args[1],
+		Directive: args[0],
+		ID:        args[1],
 	}
 
 	switch c.Directive {
@@ -44,6 +45,10 @@ func main() {
 	// TODO - support path arg
 	case CLEAN:
 		if err := internal.Cleanup(); err != nil {
+			internal.ErrExit(err.Error())
+		}
+	case ANALYTICS:
+		if err := FetchEvents(&c); err != nil {
 			internal.ErrExit(err.Error())
 		}
 	default:

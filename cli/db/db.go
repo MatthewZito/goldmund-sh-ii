@@ -151,3 +151,46 @@ func (db *Db) UpdatePost(t *internal.Template) error {
 
 	return nil
 }
+
+// GetEventsFor retrieves from the Postgres database events of the specified category `cat`
+func (db *Db) GetEventsFor(cat string) ([]internal.Event, error) {
+	sql := `
+		SELECT
+			uuid,
+			category,
+			info,
+			logged_at
+		FROM event_log
+		WHERE event_type=$1
+	`
+
+	rows, err := db.Query(sql, cat)
+	if err != nil {
+		return []internal.Event{}, err
+	}
+
+	defer rows.Close()
+
+	var e []internal.Event
+
+	for rows.Next() {
+		event := internal.Event{}
+
+		if err = rows.Scan(
+			&event.Uuid,
+			&event.Category,
+			&event.Info,
+			&event.LoggedAt,
+		); err != nil {
+			return []internal.Event{}, err
+		}
+
+		e = append(e, event)
+	}
+
+	if err = rows.Err(); err != nil {
+		return []internal.Event{}, err
+	}
+
+	return e, nil
+}

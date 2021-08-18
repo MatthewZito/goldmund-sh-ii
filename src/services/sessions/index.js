@@ -4,7 +4,7 @@ export {
 
 function SessionManager () {
   return {
-    id: 'g_x_x_p',
+    id: process.env.VITE_APP_SESSION_KEY,
     adapter: sessionStorage,
     track () {
       sessionStorage.setItem(this.id, 1);

@@ -90,77 +90,76 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-.grid-row
-  .grid-col.grid-col__offset.grid-col__right.main-form
-    h1.main-title Communications
-    form(@submit.prevent.stop="onSubmit")
-      p
-        | Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
-        | To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
+.grid-col.grid-col__offset.grid-col__right.main-form
+  h1.main-title Communications
+  form(@submit.prevent.stop="onSubmit")
+    p
+      | Should you wish to communicate, this is the best means to do so. PGP correspondence is welcome and furthermore encouraged.
+      | To this end, find here my self-signed GPG public key and accompanying fingerprint for validation.
 
-      label(htmlFor="email")
-        | Email
-      input.main-form__control(
-        v-model="formData.email"
-        type="email"
-        name="email"
-        required
-        autocomplete="off"
+    label(htmlFor="email")
+      | Email
+    input.main-form__control(
+      v-model="formData.email"
+      type="email"
+      name="email"
+      required
+      autocomplete="off"
+    )
+    label(htmlFor="subject")
+      | Subject
+    input.main-form__control(
+      v-model="formData.subject"
+      type="text"
+      name="subject"
+      required
+      :maxlength="99"
+      autocomplete="off"
+    )
+    label(htmlFor="comment")
+      | Comment
+    textarea.main-form__control(
+      v-model="formData.body"
+      placeholder="Enter your comment"
+      type="text"
+      name="comment"
+      required
+      :rows="3"
+      :maxlength="400"
+      autocomplete="off"
+    )
+    span.button__wrapper(
+      ref="tooltipRef"
+      flow="right"
+    )
+      button.btn(
+        aria-label="submit form"
+        type="submit"
+        :disabled="!isValid"
       )
-      label(htmlFor="subject")
-        | Subject
-      input.main-form__control(
-        v-model="formData.subject"
-        type="text"
-        name="subject"
-        required
-        :maxlength="99"
-        autocomplete="off"
-      )
-      label(htmlFor="comment")
-        | Comment
-      textarea.main-form__control(
-        v-model="formData.body"
-        placeholder="Enter your comment"
-        type="text"
-        name="comment"
-        required
-        :rows="3"
-        :maxlength="400"
-        autocomplete="off"
-      )
-      span.button__wrapper(
-        ref="tooltipRef"
-        flow="right"
-      )
-        button.btn(
-          aria-label="submit form"
-          type="submit"
-          :disabled="!isValid"
+        | Send
+.grid-col.grid-col__offset.grid-col__right
+  .contact-info
+    li
+      span.comm-icon
+        FAIcon(
+          :icon="['fa', 'key']",
+          aria-hidden="true"
         )
-          | Send
-  .grid-col.grid-col__offset.grid-col__right
-    .contact-info
-      li
-        span.comm-icon
-          FAIcon(
-            :icon="['fa', 'key']",
-            aria-hidden="true"
-          )
-        a(href="/pub.asc" download)
-          | public key
-      li(
-        @dblclick="onClickCopy"
-        tooltip="Double click to copy"
-        flow="left"
-      )
-        span.comm-icon
-          FAIcon(:icon="['fa', 'fingerprint']")
-        | {{ fingerprint }}
-      li
-        span.comm-icon
-          FAIcon(:icon="['fa', 'comment-alt']")
-        | Catch me on IRC -> goldmund@freeenode
+      a(href="/pub.asc" download)
+        | public key
+    li(
+      @dblclick="onClickCopy"
+      tooltip="Double click to copy"
+      flow="left"
+    )
+      span.comm-icon
+        FAIcon(:icon="['fa', 'fingerprint']")
+      | {{ fingerprint }}
+    li
+      span.comm-icon
+        FAIcon(:icon="['fa', 'comment-alt']")
+      | Catch me on IRC -> goldmund@freeenode
 </template>
 
 <style lang="scss" scoped>

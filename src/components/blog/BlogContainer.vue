@@ -1,7 +1,4 @@
 <script setup>
-import { useHead } from '@vueuse/head';
-import { not } from 'js-heuristics';
-
 import {
   inject,
   defineProps,
@@ -10,7 +7,11 @@ import {
   onMounted,
   onErrorCaptured
 } from 'vue';
+import { useHead } from '@vueuse/head';
 
+import { not } from 'js-heuristics';
+
+import { defaultTags } from '@/data/tags.json';
 import { ERROR_CAT } from '@/services/api/models';
 import { useAsync } from '@/hooks';
 import { dateConv } from '@/utils';
@@ -66,7 +67,7 @@ useHead({
       content: computed(
         () => {
           const tags = post.value.tags?.join(', ');
-          const content = tags.length ? tags : 'computing, programming, art, music';
+          const content = tags.length ? tags : defaultTags;
           return 'A blog post about ' + content;
         }
       )

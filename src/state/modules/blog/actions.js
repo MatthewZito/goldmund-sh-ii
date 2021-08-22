@@ -11,7 +11,7 @@ import { dispatchRoot } from '@/state/helpers';
 export const fetchPosts = async ({ state, commit, dispatch }) => {
   const ipc = dispatchRoot(dispatch);
 
-  if (not(state.posts.length)) {
+  if (not(state.posts?.length)) {
     await blogApi.fetchPosts(({ ok, data, error }) => {
       if (ok && objNotEmpty(data)) {
         commit('updatePosts', data.payload);

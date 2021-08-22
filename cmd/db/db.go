@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"cli/internal"
+	"cmd/internal"
 
 	"github.com/lib/pq"
 )

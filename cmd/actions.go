@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"cli/db"
-	"cli/internal"
+	"cmd/db"
+	"cmd/internal"
 )
 
 func Upload(c *internal.Command) error {

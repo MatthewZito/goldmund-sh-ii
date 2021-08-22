@@ -1,9 +1,8 @@
 package main
 
 import (
+	"cmd/internal"
 	"os"
-
-	"cli/internal"
 )
 
 /* Commands */

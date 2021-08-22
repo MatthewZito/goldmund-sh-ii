@@ -12,6 +12,10 @@ export {
 };
 
 const session = new SessionManager();
+
+/**
+ * @summary Wrapper for all system navigation guards
+ */
 function guards () {
   this.beforeEach((to, from, next) => {
     const routeHas = predicate(to);

@@ -6,12 +6,17 @@ import {
   CREATE_MESSAGE
 } from '@/services/graphql';
 
-
+/**
+ * @summary Resolve arguments into a `fetchPosts` query
+ */
 const FETCH_POSTS = _ => ({
   query: GET_POSTS,
   variables: {}
 });
 
+/**
+ * @summary Resolve arguments into a `fetchPost` query
+ */
 const FETCH_POST = ({ slug }) =>
 ({
   query: GET_POST,

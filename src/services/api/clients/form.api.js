@@ -18,6 +18,10 @@ const client = new HttpClient()
   .setBaseUrl(baseUrl);
 
 export default {
+
+  /**
+   * @summary Submit the contact form} data
+   */
   submitMessage (data, cb) {
     return client.post({
       url,

@@ -4,33 +4,34 @@ import { about } from '@/data/about.json';
 </script>
 
 <template lang="pug">
-.grid-col.grid-col__offset.grid-col__right
-  figure.contain
-    img.img-responsive.image-centered(
-      src="@/assets/images/headshot.jpg"
-      alt="a picture of the site admin"
-    )
-    figcaption.caption
-      | Goldmund.sh author and administrator
-.grid-col.grid-col__offset.grid-col__right
-  hr.break-hidden
-  p.text-main(
-    v-for="(para, idx) in about",
-    :key="idx"
-  )
-    | {{ para }}
-    hr.break-hidden
-  div
-    router-link(
-      v-slot="{ navigate }"
-      to="/communications"
-      custom
-    )
-      button.btn(
-        aria-label="navigate to contact page",
-        @click="navigate"
+div
+  .grid-col.grid-col__offset.grid-col__right
+    h1 About the Author
+    figure.contain
+      img.img-responsive.image-centered(
+        src="@/assets/images/headshot.jpg"
       )
-        | Communicate
+      figcaption.caption
+        | Goldmund.sh author and administrator
+  .grid-col.grid-col__offset.grid-col__right
+    hr.break-hidden
+    p.text-main(
+      v-for="(para, idx) in about",
+      :key="idx"
+    )
+      | {{ para }}
+      hr.break-hidden
+    div
+      router-link(
+        v-slot="{ navigate }"
+        to="/communications"
+        custom
+      )
+        button.btn(
+          aria-label="navigate to contact page",
+          @click="navigate"
+        )
+          | Communicate
 </template>
 
 <style lang="scss" scoped>

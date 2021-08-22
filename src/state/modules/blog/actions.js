@@ -18,7 +18,7 @@ export const fetchPosts = async ({ state, commit, dispatch }) => {
       } else {
         ipc('notifications/addNotification', {
           type: 'error',
-          message: 'An error occurred while fetching the blog data'
+          message: 'An error occurred while loading the site'
         })
           .finally(() => {
             eventApi.logError({

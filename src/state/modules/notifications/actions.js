@@ -3,9 +3,18 @@ import { not, isString } from 'js-heuristics';
 /* Enums & Config */
 
 const notificationTypes = {
-  error: '#ff5555',
-  success: '#50fa7b',
-  warning: '#f1fa8c'
+  error: {
+    background: '#ff0000',
+    color: 'white'
+  },
+  success: {
+    background: '#29fa5d',
+    color: 'black'
+  },
+  warning: {
+    background: '#f1fa8c',
+    color: 'black'
+  }
 };
 
 let autoId = 0;
@@ -23,7 +32,7 @@ const autoDismissInterval = 3000;
 export const addNotification = ({ commit, getters, dispatch }, { message, type }) => {
   if (not(isString(message)) || not(isString(type))) return;
 
-  if (not(notificationTypes[type])) return;
+  if (not(notificationTypes[type].background)) return;
 
   // if we are currently showing a notif, recurse this action to debounce
   if (getters.hasPendingNotifications) {
@@ -31,12 +40,14 @@ export const addNotification = ({ commit, getters, dispatch }, { message, type }
     return;
   }
 
+  const { background, color } = notificationTypes[type];
   const id = ++autoId;
 
   const payload = {
     time: new Date(),
     id,
-    color: notificationTypes[type],
+    background,
+    color,
     message
   };
 

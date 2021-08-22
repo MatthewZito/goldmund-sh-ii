@@ -22,6 +22,7 @@ function useClipboard ({ source, timeout = 1500 } = {}) {
       await navigator.clipboard.writeText(value);
       text.value = value;
       isCopied.value = true;
+
       // limit before fail
       setTimeout(() => isCopied.value = false, timeout);
     }

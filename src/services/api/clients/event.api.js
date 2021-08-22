@@ -9,6 +9,9 @@ import {
 export default {
   client: navigator,
 
+  /**
+   * @summary Attempt to log an error event via `sendBeacon`
+   */
   logError (data) {
     // not supported
     if (not(this.client?.sendBeacon)) return;
@@ -20,6 +23,9 @@ export default {
     );
   },
 
+  /**
+   * @summary Attempt to log an interaction event via `sendBeacon`
+   */
   logInteraction (data) {
     if (not(this.client?.sendBeacon)) return;
 

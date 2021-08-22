@@ -12,7 +12,7 @@ const props = defineProps({
 
 const { current } = toRefs(props);
 
-const { message, color } = current.value;
+const { message, background, color } = current.value;
 
 </script>
 
@@ -22,8 +22,7 @@ const { message, color } = current.value;
 </template>
 
 <style lang="scss" scoped>
-
-$core-opacity: 0.8;
+$core-opacity: 1;
 
 @mixin opacity-mob {
   opacity: 1;
@@ -34,22 +33,22 @@ $core-opacity: 0.8;
   z-index: 9999;
   bottom: 2rem;
   min-width: 20rem;
-  padding: 2rem;
-  background-color: v-bind(color);
+  padding: 1.5rem;
+  background: v-bind(background);
   border-radius: 6px;
-  color: #fff;
-  font-size: 1.35rem;
-  font-weight: 900;
+  color: v-bind(color);
+  font-size: $font-md;
+  font-weight: 500;
   text-align: center;
   visibility: hidden;
 
   @media screen and (max-width: $mobile) {
-    font-size: 1rem;
+    font-size: $font-sm;
   }
 
   @media screen and (max-width: ($mobile - 100)) {
     padding: 1rem 2rem;
-    font-size: 1rem;
+    font-size: $font-sm;
   }
 }
 

@@ -74,8 +74,8 @@ router-view(v-slot="{ Component }")
     keep-alive(:include="getCachedViews")
       component(:is="Component")
 img.img__overlay(
-  :src="`/rand/m${id}.gif`",
-  @click="closeAnnoyingImg",
+  :src="`/rand/m${id}.gif`"
+  @click="closeAnnoyingImg"
   ref="imageRef"
   alt="randomized overlay image"
 )

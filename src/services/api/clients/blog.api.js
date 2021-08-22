@@ -18,6 +18,10 @@ const client = new HttpClient()
   .setBaseUrl(baseUrl);
 
 export default {
+
+  /**
+   * @summary Fetch a single post
+   */
   fetchPost (data, cb) {
     return client.post({
       url,
@@ -25,6 +29,9 @@ export default {
     }, cb);
   },
 
+  /**
+   * @summary Fetch all posts
+   */
   fetchPosts (cb) {
     return client.post({
       url,
